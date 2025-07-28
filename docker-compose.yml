@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nemory-landing
+    ports:
+      - "8081:80"
+    networks:
+      - nemory-backend
