@@ -1,0 +1,32 @@
+name: Deploy Landing to DigitalOcean
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .ssh directory
+        run: mkdir -p ~/.ssh
+
+      - name: Add server to known_hosts
+        run: ssh-keyscan -H 178.62.197.181 >> ~/.ssh/known_hosts
+
+      - name: Set up SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY_LANDING }}
+
+      - name: SSH & Deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no root@178.62.197.181 "
+            cd /root/diary-landing &&
+            git pull &&
+            docker-compose up -d --build
+          "

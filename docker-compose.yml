@@ -8,5 +8,3 @@ services:
     container_name: nemory-landing
     ports:
       - "8081:80"
-    networks:
-      - nemory-backend
