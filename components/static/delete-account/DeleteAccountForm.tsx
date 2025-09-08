@@ -40,7 +40,13 @@ export default function DeleteAccountForm({
       onSuccessAction()
       resetForm()
     } catch (e: unknown) {
-      console.log('e', e.message)
+      const msg =
+        e instanceof Error
+          ? e.message
+          : typeof e === 'string'
+            ? e
+            : 'Unknown error'
+      console.log('error', msg)
       resetForm()
     } finally {
       setSubmitting(false)

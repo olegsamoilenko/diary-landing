@@ -85,7 +85,13 @@ export default function ConfirmDeletionAccountForm({
       }
     } catch (e: unknown) {
       setIsSuccess(false)
-      setServerError(e.message)
+      const msg =
+        e instanceof Error
+          ? e.message
+          : typeof e === 'string'
+            ? e
+            : 'Unknown error'
+      setServerError(msg)
       resetForm()
     } finally {
       setSubmitting(false)
