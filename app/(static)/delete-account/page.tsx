@@ -114,7 +114,7 @@ export default function DeleteAccountPage() {
           <div>
             <ConfirmDeletionAccountForm email={email} />
             <Text className="mt-2 mb-4">
-              Didn't receive the code?{' '}
+              Did not receive the code?{' '}
               <button
                 className="cursor-pointer underline"
                 onClick={() => setCodeSent(false)}

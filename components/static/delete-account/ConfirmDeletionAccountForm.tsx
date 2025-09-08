@@ -83,7 +83,7 @@ export default function ConfirmDeletionAccountForm({
         setServerError(msg)
         resetForm()
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       setIsSuccess(false)
       setServerError(e.message)
       resetForm()

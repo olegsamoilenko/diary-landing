@@ -39,8 +39,8 @@ export default function DeleteAccountForm({
       setEmail(values.email)
       onSuccessAction()
       resetForm()
-    } catch (e: any) {
-      console.log('e', e)
+    } catch (e: unknown) {
+      console.log('e', e.message)
       resetForm()
     } finally {
       setSubmitting(false)
