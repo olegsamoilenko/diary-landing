@@ -6,6 +6,8 @@ import Text from '@/components/static/Text'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
+import { fetchJSON, HttpError } from '@/lib/http'
+import { mapErrorToMessage } from '@/lib/error-map'
 
 const schema = Yup.object({
   code: Yup.string().min(6).max(6).required('Field is required'),
@@ -22,77 +24,47 @@ type VerifyDeleteCodeResult =
 
 export default function ConfirmDeletionAccountForm({
   email,
+  requestNewCode,
 }: {
   email: string
+  requestNewCode: () => void
 }) {
   const [serverError, setServerError] = useState<string | null>(null)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [requestNewCodeButton, setRequestNewCodeButton] = useState(false)
 
   const initialValues: FormValues = { code: '' }
-
-  function mapStatusToMessage(d: VerifyDeleteCodeResult): string | null {
-    switch (d.status) {
-      case 'OK':
-        return null
-      case 'INVALID':
-        return 'Incorrect code.'
-      case 'EXPIRED':
-        return 'The code has expired. Request a new code.'
-      case 'ATTEMPTS_EXCEEDED':
-        return 'The limit of attempts has been exceeded. Please request a new code later.'
-      case 'RATE_LIMITED':
-        return 'Too many requests. Please try again later.'
-      default:
-        return 'An error has occurred. Please try again.'
-    }
-  }
 
   const handleSubmit = async (
     values: FormValues,
     { setSubmitting, resetForm }: FormikHelpers<FormValues>,
   ) => {
-    console.log(values)
     setServerError(null)
+    setIsSuccess(false)
+
     try {
-      const res = await fetch(
+      await fetchJSON<VerifyDeleteCodeResult>(
         '/api/users/delete-account-by-verification-code',
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
-          body: JSON.stringify({
-            email,
-            code: values.code,
-          }),
+          body: JSON.stringify({ email, code: values.code }),
         },
       )
 
-      if (!res.ok) {
-        throw new Error(res?.statusText || 'Send code failed')
-      }
-
-      const data = (await res.json()) as VerifyDeleteCodeResult
-
-      const msg = mapStatusToMessage(data)
-      if (data.status === 'OK') {
-        setIsSuccess(true)
-        setServerError(null)
-        resetForm()
-      } else {
-        setIsSuccess(false)
-        setServerError(msg)
-        resetForm()
-      }
-    } catch (e: unknown) {
-      setIsSuccess(false)
-      const msg =
-        e instanceof Error
-          ? e.message
-          : typeof e === 'string'
-            ? e
-            : 'Unknown error'
-      setServerError(msg)
+      setIsSuccess(true)
+      setServerError(null)
       resetForm()
+    } catch (e: unknown) {
+      const msg = mapErrorToMessage(e)
+      setIsSuccess(false)
+      setServerError(msg)
+
+      if (
+        e instanceof HttpError &&
+        (e.code === 'ATTEMPTS_EXCEEDED' || e.code === 'EXPIRED_CODE')
+      ) {
+        setRequestNewCodeButton(true)
+      }
     } finally {
       setSubmitting(false)
       resetForm()
@@ -145,9 +117,19 @@ export default function ConfirmDeletionAccountForm({
               </p>
             )}
 
-            {serverError && (
-              <p className="text-sm text-red-600">{serverError}</p>
-            )}
+            <div>
+              {serverError && (
+                <span className="text-sm text-red-600">{serverError}</span>
+              )}{' '}
+              {requestNewCodeButton && (
+                <button
+                  className="cursor-pointer text-sm text-red-600 underline"
+                  onClick={requestNewCode}
+                >
+                  Request a new code.
+                </button>
+              )}
+            </div>
             {isSuccess && (
               <p className="text-sm text-green-600">
                 You have successfully deleted your account.
