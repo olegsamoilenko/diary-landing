@@ -163,7 +163,9 @@ export default function ReleaseNotificationsDialog() {
                     forceMount
                   >
                     <ReleaseNotificationsEditor
-                      ref={(api) => (editorsRef.current[l] = api)}
+                      ref={(api) => {
+                        editorsRef.current[l] = api
+                      }}
                       initialHtml={
                         l === LOCALES[1]
                           ? '<p>Опис змін…</p>'
