@@ -63,7 +63,7 @@ export const HeadingDropdownMenu = React.forwardRef<
   ) => {
     const { editor } = useTiptapEditor(providedEditor)
     const [isOpen, setIsOpen] = React.useState(false)
-    const { isVisible, isActive, canToggle, Icon } = useHeadingDropdownMenu({
+    const { isVisible, canToggle, Icon } = useHeadingDropdownMenu({
       editor,
       levels,
       hideWhenUnavailable,

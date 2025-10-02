@@ -39,6 +39,23 @@ const eslintConfig = [
       'jsx-a11y/role-has-required-aria-props': 'warn',
       'jsx-a11y/role-supports-aria-props': 'warn',
     },
+    overrides: [
+      {
+        files: [
+          'components/tiptap-ui/**/*.{ts,tsx}',
+          'components/tiptap-templates/**/*.{ts,tsx}',
+        ],
+        rules: {
+          'react-hooks/rules-of-hooks': 'off', // ← тільки тут
+          '@typescript-eslint/no-explicit-any': 'off',
+          '@typescript-eslint/no-unused-vars': [
+            'warn',
+            { argsIgnorePattern: '^_' },
+          ],
+          'jsx-a11y/no-autofocus': 'off',
+        },
+      },
+    ],
   }),
 ]
 

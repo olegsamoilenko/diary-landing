@@ -7,9 +7,7 @@ type StatsByDate = {
 
 type EntriesMap = Record<string, StatsByDate>
 
-type ResponseItem = {
+export type UserEntryResponse = {
   entries: EntriesMap
   user: User
 }
-
-export type UserEntryResponse = ResponseItem[]

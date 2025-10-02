@@ -73,7 +73,7 @@ export default function EntriesPage() {
         </TableHeader>
         <TableBody>
           {usersEntries &&
-            usersEntries.map((raw: any) => (
+            usersEntries.map((raw: UserEntryResponse) => (
               <TableRow key={raw.user.id}>
                 <TableCell className="font-medium">{raw.user.name}</TableCell>
                 <TableCell>{raw.user.uuid}</TableCell>
