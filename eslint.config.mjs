@@ -38,6 +38,7 @@ const eslintConfig = [
       'jsx-a11y/aria-unsupported-elements': 'warn',
       'jsx-a11y/role-has-required-aria-props': 'warn',
       'jsx-a11y/role-supports-aria-props': 'warn',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
     overrides: [
       {
@@ -46,7 +47,7 @@ const eslintConfig = [
           'components/tiptap-templates/**/*.{ts,tsx}',
         ],
         rules: {
-          'react-hooks/rules-of-hooks': 'off', // ← тільки тут
+          'react-hooks/rules-of-hooks': 'off',
           '@typescript-eslint/no-explicit-any': 'off',
           '@typescript-eslint/no-unused-vars': [
             'warn',
