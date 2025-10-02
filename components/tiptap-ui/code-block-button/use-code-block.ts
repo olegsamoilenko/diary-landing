@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { type Editor } from "@tiptap/react"
-import { NodeSelection, TextSelection } from "@tiptap/pm/state"
+import * as React from 'react'
+import { type Editor } from '@tiptap/react'
+import { NodeSelection, TextSelection } from '@tiptap/pm/state'
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor"
+import { useTiptapEditor } from '@/hooks/use-tiptap-editor'
 
 // --- Lib ---
 import {
@@ -13,12 +13,12 @@ import {
   isNodeInSchema,
   isNodeTypeSelected,
   isValidPosition,
-} from "@/lib/tiptap-utils"
+} from '@/lib/tiptap-utils'
 
 // --- Icons ---
-import { CodeBlockIcon } from "@/components/tiptap-icons/code-block-icon"
+import { CodeBlockIcon } from '@/components/tiptap-icons/code-block-icon'
 
-export const CODE_BLOCK_SHORTCUT_KEY = "mod+alt+c"
+export const CODE_BLOCK_SHORTCUT_KEY = 'mod+alt+c'
 
 /**
  * Configuration for the code block functionality
@@ -44,17 +44,17 @@ export interface UseCodeBlockConfig {
  */
 export function canToggle(
   editor: Editor | null,
-  turnInto: boolean = true
+  turnInto: boolean = true,
 ): boolean {
   if (!editor || !editor.isEditable) return false
   if (
-    !isNodeInSchema("codeBlock", editor) ||
-    isNodeTypeSelected(editor, ["image"])
+    !isNodeInSchema('codeBlock', editor) ||
+    isNodeTypeSelected(editor, ['image'])
   )
     return false
 
   if (!turnInto) {
-    return editor.can().toggleNode("codeBlock", "paragraph")
+    return editor.can().toggleNode('codeBlock', 'paragraph')
   }
 
   try {
@@ -121,9 +121,9 @@ export function toggleCodeBlock(editor: Editor | null): boolean {
       chain = chain.setTextSelection({ from, to }).clearNodes()
     }
 
-    const toggle = editor.isActive("codeBlock")
-      ? chain.setNode("paragraph")
-      : chain.toggleNode("codeBlock", "paragraph")
+    const toggle = editor.isActive('codeBlock')
+      ? chain.setNode('paragraph')
+      : chain.toggleNode('codeBlock', 'paragraph')
 
     toggle.run()
 
@@ -145,9 +145,9 @@ export function shouldShowButton(props: {
   const { editor, hideWhenUnavailable } = props
 
   if (!editor || !editor.isEditable) return false
-  if (!isNodeInSchema("codeBlock", editor)) return false
+  if (!isNodeInSchema('codeBlock', editor)) return false
 
-  if (hideWhenUnavailable && !editor.isActive("code")) {
+  if (hideWhenUnavailable && !editor.isActive('code')) {
     return canToggle(editor)
   }
 
@@ -207,7 +207,7 @@ export function useCodeBlock(config?: UseCodeBlockConfig) {
   const { editor } = useTiptapEditor(providedEditor)
   const [isVisible, setIsVisible] = React.useState<boolean>(true)
   const canToggleState = canToggle(editor)
-  const isActive = editor?.isActive("codeBlock") || false
+  const isActive = editor?.isActive('codeBlock') || false
 
   React.useEffect(() => {
     if (!editor) return
@@ -218,10 +218,10 @@ export function useCodeBlock(config?: UseCodeBlockConfig) {
 
     handleSelectionUpdate()
 
-    editor.on("selectionUpdate", handleSelectionUpdate)
+    editor.on('selectionUpdate', handleSelectionUpdate)
 
     return () => {
-      editor.off("selectionUpdate", handleSelectionUpdate)
+      editor.off('selectionUpdate', handleSelectionUpdate)
     }
   }, [editor, hideWhenUnavailable])
 
@@ -240,7 +240,7 @@ export function useCodeBlock(config?: UseCodeBlockConfig) {
     isActive,
     handleToggle,
     canToggle: canToggleState,
-    label: "Code Block",
+    label: 'Code Block',
     shortcutKeys: CODE_BLOCK_SHORTCUT_KEY,
     Icon: CodeBlockIcon,
   }

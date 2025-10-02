@@ -9,7 +9,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import {
   Select,
@@ -22,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ReleaseNotificationsEditor from '@/components/admin/notifications/ReleaseNotificationsEditor'
 import React, { useRef, useState } from 'react'
 import type { ReleaseNotificationsEditorRef } from '@/types'
+import { Platforms } from '@/types'
 
 const LOCALES = ['en', 'uk'] as const
 type Locale = (typeof LOCALES)[number]
@@ -110,7 +110,7 @@ export default function ReleaseNotificationsDialog() {
               <Select
                 value={platform}
                 onValueChange={(v) => {
-                  setPlatform(v as any)
+                  setPlatform(v as Platforms)
                   setErrorPlatform(null)
                 }}
               >

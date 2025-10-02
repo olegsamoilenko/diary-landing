@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-import { cn } from "@/lib/tiptap-utils"
-import "@/components/tiptap-ui-primitive/dropdown-menu/dropdown-menu.scss"
+import * as React from 'react'
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import { cn } from '@/lib/tiptap-utils'
+import '@/components/tiptap-ui-primitive/dropdown-menu/dropdown-menu.scss'
 
 function DropdownMenu({
   ...props
@@ -42,13 +42,13 @@ const DropdownMenuSubContent = React.forwardRef<
   const content = (
     <DropdownMenuPrimitive.SubContent
       ref={ref}
-      className={cn("tiptap-dropdown-menu", className)}
+      className={cn('tiptap-dropdown-menu', className)}
       {...props}
     />
   )
 
   return portal ? (
-    <DropdownMenuPortal {...(typeof portal === "object" ? portal : {})}>
+    <DropdownMenuPortal {...(typeof portal === 'object' ? portal : {})}>
       {content}
     </DropdownMenuPortal>
   ) : (
@@ -69,13 +69,13 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       onCloseAutoFocus={(e) => e.preventDefault()}
-      className={cn("tiptap-dropdown-menu", className)}
+      className={cn('tiptap-dropdown-menu', className)}
       {...props}
     />
   )
 
   return portal ? (
-    <DropdownMenuPortal {...(typeof portal === "object" ? portal : {})}>
+    <DropdownMenuPortal {...(typeof portal === 'object' ? portal : {})}>
       {content}
     </DropdownMenuPortal>
   ) : (

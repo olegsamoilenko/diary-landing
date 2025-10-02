@@ -9,9 +9,10 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { useEffect, useMemo, useState } from 'react'
+import { UserEntryResponse } from '@/types'
 
 export default function EntriesPage() {
-  const [usersEntries, setUsersEntries] = useState<any[]>([])
+  const [usersEntries, setUsersEntries] = useState<UserEntryResponse[]>([])
   const getUsersEntriesForStatistics = async () => {
     try {
       const res = await fetch('/api/users/get-users-entries-for-statistics', {
