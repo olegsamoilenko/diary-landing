@@ -22,6 +22,10 @@ export default async function AdminLayout({
           <br />
           <Link href="/admin/users">Users</Link>
           <br />
+          <Link href="/admin/entries">Entries</Link>
+          <br />
+          <Link href="/admin/release-notifications">Release notifications</Link>
+          <br />
         </nav>
         <div className="mt-6 text-xs opacity-70">
           {session?.email} &middot; {session?.role}
