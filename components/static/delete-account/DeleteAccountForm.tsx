@@ -13,10 +13,10 @@ const schema = Yup.object({
 type FormValues = InferType<typeof schema>
 
 export default function DeleteAccountForm({
-  setEmail,
+  setEmailAction,
   onSuccessAction,
 }: {
-  setEmail: (email: string) => void
+  setEmailAction: (email: string) => void
   onSuccessAction: () => void
 }) {
   const initialValues: FormValues = { email: '' }
@@ -36,7 +36,7 @@ export default function DeleteAccountForm({
       if (!res.ok) {
         throw new Error(res?.statusText || 'Send email failed')
       }
-      setEmail(values.email)
+      setEmailAction(values.email)
       onSuccessAction()
       resetForm()
     } catch (e: unknown) {

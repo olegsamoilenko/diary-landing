@@ -95,7 +95,7 @@ export const TextAlignButton = React.forwardRef<
       onAligned,
     })
 
-    const isActive = useEditorState({
+    const isActive = useEditorState<boolean>({
       editor,
       selector: (ctx) => ctx.editor?.isActive({ textAlign: align }) ?? false,
     })
@@ -109,11 +109,13 @@ export const TextAlignButton = React.forwardRef<
       [handleTextAlign, onClick],
     )
 
+    const ariaPressed: boolean | undefined = isActive || undefined
+
+    const RenderIcon = CustomIcon ?? Icon
+
     if (!isVisible) {
       return null
     }
-
-    const RenderIcon = CustomIcon ?? Icon
 
     return (
       <Button
@@ -125,7 +127,7 @@ export const TextAlignButton = React.forwardRef<
         role="button"
         tabIndex={-1}
         aria-label={label}
-        aria-pressed={isActive}
+        aria-pressed={ariaPressed}
         tooltip={label}
         onClick={handleClick}
         {...buttonProps}

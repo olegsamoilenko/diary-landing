@@ -114,7 +114,7 @@ export default function DeleteAccountPage() {
           <div>
             <ConfirmDeletionAccountForm
               email={email}
-              requestNewCode={() => setCodeSent(false)}
+              requestNewCodeAction={() => setCodeSent(false)}
             />
             <Text className="mt-2 mb-4">
               Did not receive the code?{' '}
@@ -128,7 +128,7 @@ export default function DeleteAccountPage() {
           </div>
         ) : (
           <DeleteAccountForm
-            setEmail={setEmail}
+            setEmailAction={setEmail}
             onSuccessAction={() => setCodeSent(true)}
           />
         )}

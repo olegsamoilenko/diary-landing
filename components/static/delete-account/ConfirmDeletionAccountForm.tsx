@@ -24,10 +24,10 @@ type VerifyDeleteCodeResult =
 
 export default function ConfirmDeletionAccountForm({
   email,
-  requestNewCode,
+  requestNewCodeAction,
 }: {
   email: string
-  requestNewCode: () => void
+  requestNewCodeAction: () => void
 }) {
   const [serverError, setServerError] = useState<string | null>(null)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -124,7 +124,7 @@ export default function ConfirmDeletionAccountForm({
               {requestNewCodeButton && (
                 <button
                   className="cursor-pointer text-sm text-red-600 underline"
-                  onClick={requestNewCode}
+                  onClick={requestNewCodeAction}
                 >
                   Request a new code.
                 </button>

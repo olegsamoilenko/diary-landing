@@ -78,7 +78,7 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
       onToggled,
     })
 
-    const isActive = useEditorState({
+    const isActive = useEditorState<boolean>({
       editor,
       selector: (ctx) => ctx.editor?.isActive(type) ?? false,
     })
@@ -91,6 +91,8 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
       },
       [handleMark, onClick],
     )
+
+    const ariaPressed: boolean | undefined = isActive || undefined
 
     if (!isVisible) {
       return null
@@ -106,7 +108,7 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
         role="button"
         tabIndex={-1}
         aria-label={label}
-        aria-pressed={isActive}
+        aria-pressed={ariaPressed}
         tooltip={label}
         onClick={handleClick}
         {...buttonProps}

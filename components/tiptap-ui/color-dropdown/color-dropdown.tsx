@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import type { Editor } from '@tiptap/react'
 import { useEditorState } from '@tiptap/react'
 
 const COLORS = [
@@ -12,7 +13,11 @@ const COLORS = [
   '#00acc1',
 ]
 
-export function ColorDropdown({ editor }) {
+type ColorDropdownProps = {
+  editor: Editor | null | undefined
+}
+
+export function ColorDropdown({ editor }: ColorDropdownProps) {
   const [open, setOpen] = useState(false)
   if (!editor) return null
 
