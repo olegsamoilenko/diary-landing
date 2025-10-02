@@ -93,7 +93,7 @@ const ReleaseNotificationsEditor = forwardRef<
       return { html, docJson }
     },
     setHtml: (html: string) => {
-      editor?.commands.setContent(html, false)
+      editor?.commands.setContent(html, { emitUpdate: false })
     },
   }))
 
