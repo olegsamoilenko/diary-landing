@@ -18,7 +18,7 @@ export type AdminSession = {
 }
 
 export async function getAdminSession(): Promise<AdminSession | null> {
-  const store = await cookies() // ⬅️ важливо: await
+  const store = await cookies()
   const token = store.get('admin_session')?.value
   if (!token) return null
   try {

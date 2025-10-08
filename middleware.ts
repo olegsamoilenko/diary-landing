@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose'
 
 const ADMIN_PREFIX = '/admin'
 const AUTH_PATH = '/admin/auth'
-const LOGIN_PATH = '/admin/login' // якщо є така сторінка
+const LOGIN_PATH = '/admin/login'
 const PUBLIC_ADMIN = [AUTH_PATH, LOGIN_PATH]
 
 const SECRET = new TextEncoder().encode(
@@ -52,11 +52,11 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url)
     }
 
-    if (pathname.startsWith('/admin/users') && session.role !== 'SUPER_ADMIN') {
-      const url = req.nextUrl.clone()
-      url.pathname = '/admin'
-      return debug(NextResponse.redirect(url))
-    }
+    // if (pathname.startsWith('/admin/users') && session.role !== 'SUPER_ADMIN') {
+    //   const url = req.nextUrl.clone()
+    //   url.pathname = '/admin'
+    //   return debug(NextResponse.redirect(url))
+    // }
 
     return debug(NextResponse.next())
   }

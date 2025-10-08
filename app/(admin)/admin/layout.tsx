@@ -17,15 +17,12 @@ export default async function AdminLayout({
     <div className="grid min-h-screen grid-cols-[240px_1fr]">
       <aside className="border-r p-4">
         <div className="mb-4 font-semibold">Nemory Admin</div>
-        <nav className="space-y-2 text-sm">
+        <nav className="flex flex-col gap-0 space-y-2 text-sm">
           <Link href="/admin">Dashboard</Link>
-          <br />
           <Link href="/admin/users">Users</Link>
-          <br />
           <Link href="/admin/entries">Entries</Link>
-          <br />
           <Link href="/admin/release-notifications">Release notifications</Link>
-          <br />
+          <Link href="/admin/admins">Admins</Link>
         </nav>
         <div className="mt-6 text-xs opacity-70">
           {session?.email} &middot; {session?.role}

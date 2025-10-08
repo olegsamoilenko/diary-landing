@@ -15,7 +15,7 @@ export default function EntriesPage() {
   const [usersEntries, setUsersEntries] = useState<UserEntryResponse[]>([])
   const getUsersEntriesForStatistics = async () => {
     try {
-      const res = await fetch('/api/users/get-users-entries-for-statistics', {
+      const res = await fetch('/api/statistics/get-users-entries', {
         method: 'GET',
       })
       const data = await res.json()
