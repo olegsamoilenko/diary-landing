@@ -14,9 +14,10 @@ export const getUsersStatistics = async () => {
     const data = await res.json()
     console.log('res', data)
     return data
-  } catch (error: unknown) {
-    console.error('error', error)
-    console.error('error response', error.response)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch users failed:', msg)
+    return undefined
   }
 }
 
@@ -40,9 +41,10 @@ export const getNewUsers = async (
     const data = await res.json()
     console.log('getNewUsers', data)
     return data
-  } catch (error: unknown) {
-    console.error('error', error)
-    console.error('error response', error.response)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch new users failed:', msg)
+    return undefined
   }
 }
 
@@ -66,9 +68,10 @@ export const getNewPaidUsers = async (
     const data = await res.json()
     console.log('getNewPaidUsers', data)
     return data
-  } catch (error: unknown) {
-    console.error('error', error)
-    console.error('error response', error.response)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch paid users failed:', msg)
+    return undefined
   }
 }
 
@@ -86,9 +89,10 @@ export const getTotalPaidUsers = async () => {
     const data = await res.json()
     console.log('getTotalPaidUsers', data)
     return data
-  } catch (error: unknown) {
-    console.error('error', error)
-    console.error('error response', error.response)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch total paid users failed:', msg)
+    return undefined
   }
 }
 
@@ -106,8 +110,9 @@ export const getPaidUsersByPlan = async () => {
     const data = await res.json()
     console.log('getPaidUsersByPlan', data)
     return data
-  } catch (error: unknown) {
-    console.error('error', error)
-    console.error('error response', error.response)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch paid users by plan failed:', msg)
+    return undefined
   }
 }
