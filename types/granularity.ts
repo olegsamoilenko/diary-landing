@@ -1,1 +1,1 @@
-export type Granularity = 'day' | 'week' | 'month';
+export type Granularity = 'day' | 'week' | 'month'
