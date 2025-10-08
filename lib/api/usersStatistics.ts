@@ -14,7 +14,7 @@ export const getUsersStatistics = async () => {
     const data = await res.json()
     console.log('res', data)
     return data
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('error', error)
     console.error('error response', error.response)
   }
@@ -40,7 +40,7 @@ export const getNewUsers = async (
     const data = await res.json()
     console.log('getNewUsers', data)
     return data
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('error', error)
     console.error('error response', error.response)
   }
@@ -66,7 +66,7 @@ export const getNewPaidUsers = async (
     const data = await res.json()
     console.log('getNewPaidUsers', data)
     return data
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('error', error)
     console.error('error response', error.response)
   }
@@ -86,7 +86,7 @@ export const getTotalPaidUsers = async () => {
     const data = await res.json()
     console.log('getTotalPaidUsers', data)
     return data
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('error', error)
     console.error('error response', error.response)
   }
@@ -106,7 +106,7 @@ export const getPaidUsersByPlan = async () => {
     const data = await res.json()
     console.log('getPaidUsersByPlan', data)
     return data
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('error', error)
     console.error('error response', error.response)
   }

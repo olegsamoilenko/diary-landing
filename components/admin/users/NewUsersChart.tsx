@@ -44,7 +44,7 @@ export default function NewUsersBarChart({
           <XAxis dataKey="x" tickMargin={8} />
           <YAxis allowDecimals={false} />
           <Tooltip
-            formatter={(value: any) => [value, barName]}
+            formatter={(value) => [value, barName]}
             // labelFormatter={(label) => dayjs(label).format('YYYY-MM-DD')}
           />
           <Bar dataKey="y" fill="#526D73" name={barName} />
