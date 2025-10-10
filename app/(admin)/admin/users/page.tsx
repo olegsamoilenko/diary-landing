@@ -10,13 +10,13 @@ import {
   getNewPaidUsers,
   getTotalPaidUsers,
   getPaidUsersByPlan,
+  getUsersActivityByDates,
 } from '@/lib/api/usersStatistics'
-import dayjs from 'dayjs'
 import { DatePicker } from '@/components/ui/DatePicker'
 import { Button } from '@/components/ui/button'
-import NewUsersBarChart from '@/components/admin/users/NewUsersChart'
+import SimpleBarChart from '@/components/admin/users/SimpleBarChart'
 import NewPaidUsersBarChart from '@/components/admin/users/NewPaidUsersChart'
-import TotalPaidUsersChart from '@/components/admin/users/TotalPaidUsersChart'
+import TotalStatChart from '@/components/admin/users/TotalStatChart'
 import TotalPaidUsersByPlanChart from '@/components/admin/users/TotalPaidUsersByPlanChart'
 import {
   Select,
@@ -26,7 +26,6 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { granularityOptions } from '@/lib/constants/granularity'
-import { string } from 'yup'
 
 export default function UsersPage() {
   const [userStatisticsData, setUserStatisticsData] =
@@ -52,6 +51,11 @@ export default function UsersPage() {
   const [newPaidUsers, setNewPaidUsers] = useState<
     { date: string; lite: number; base: number; pro: number }[]
   >([])
+  const [paidUsersActivityByDates, setPaidUsersActivityByDates] = useState<
+    { date: string; count: number }[]
+  >([])
+  const [notPaidUsersActivityByDates, setNotPaidUsersActivityByDates] =
+    useState<{ date: string; count: number }[]>([])
 
   useEffect(() => {
     fetchGetUsersStatistics()
@@ -92,6 +96,8 @@ export default function UsersPage() {
       setErrorGranularity('Please select a granularity')
       return
     }
+    console.log('start', startDate, 'end', endDate, 'granularity', granularity)
+
     const newUsersRes = await getNewUsers(startDate, endDate, granularity)
     setNewUsers(newUsersRes)
 
@@ -101,6 +107,22 @@ export default function UsersPage() {
       granularity,
     )
     setNewPaidUsers(newPaidUsersRes)
+
+    const paidUsersActivityByDatesRes = await getUsersActivityByDates(
+      startDate,
+      endDate,
+      granularity,
+      'paid',
+    )
+    setPaidUsersActivityByDates(paidUsersActivityByDatesRes)
+
+    const notPaidUsersActivityByDatesRes = await getUsersActivityByDates(
+      startDate,
+      endDate,
+      granularity,
+      'not-paid',
+    )
+    setNotPaidUsersActivityByDates(notPaidUsersActivityByDatesRes)
   }
 
   // function fillMissingDays(
@@ -156,7 +178,7 @@ export default function UsersPage() {
       </div>
       <div className="mb-8">
         <h3 className="mb-4 text-xl font-semibold">Total Paid Users</h3>
-        <TotalPaidUsersChart data={totalPaidUsers} />
+        <TotalStatChart data={totalPaidUsers} barName="Total paid users" />
       </div>
       <div className="mb-8">
         <h3 className="mb-4 text-xl font-semibold">Total Paid Users by Plan</h3>
@@ -202,11 +224,25 @@ export default function UsersPage() {
       </div>
       <div>
         <h3 className="mb-4 text-xl font-semibold">New Users</h3>
-        <NewUsersBarChart data={newUsers} />
+        <SimpleBarChart data={newUsers} barName="New Users" />
       </div>
       <div>
         <h3 className="mb-4 text-xl font-semibold">New Paid Users</h3>
         <NewPaidUsersBarChart data={newPaidUsers} />
+      </div>
+      <div>
+        <h3 className="mb-4 text-xl font-semibold">Paid Users Activity</h3>
+        <SimpleBarChart
+          data={paidUsersActivityByDates}
+          barName="Users Activity"
+        />
+      </div>
+      <div>
+        <h3 className="mb-4 text-xl font-semibold">Trial Users Activity</h3>
+        <SimpleBarChart
+          data={notPaidUsersActivityByDates}
+          barName="Users Activity"
+        />
       </div>
     </>
   )

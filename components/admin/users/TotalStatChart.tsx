@@ -17,14 +17,10 @@ type Point = { day: string | Date; count: number }
 type Props = {
   data: Point[]
   height?: number
-  barName?: string
+  barName: string
 }
 
-export default function NewPaidUsersBarChart({
-  data,
-  height = 300,
-  barName = 'Total Paid users',
-}: Props) {
+export default function TotalStatChart({ data, height = 300, barName }: Props) {
   const chartData = useMemo(
     () =>
       (data ?? []).map((d) => ({
