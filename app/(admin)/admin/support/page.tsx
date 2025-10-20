@@ -34,12 +34,8 @@ export default function SupportPage({
 }) {
   const spPromise: Promise<SP> = searchParams ?? Promise.resolve({})
   const sp = use(spPromise)
-  const [category, setCategory] = useState<SupportMessageCategory | undefined>(
-    undefined,
-  )
-  const [status, setStatus] = useState<SupportMessageStatus | undefined>(
-    undefined,
-  )
+  const [category, setCategory] = useState<string | undefined>(undefined)
+  const [status, setStatus] = useState<string | undefined>(undefined)
   const [messages, setMessages] = useState<SupportMessage[]>([])
   const page = Number(sp.page ?? '1') || 1
   const limit = 20
@@ -47,10 +43,16 @@ export default function SupportPage({
   const [email, setEmail] = useState<string | undefined>(undefined)
   const [userUuid, setUserUuid] = useState<string | undefined>(undefined)
 
+  const toCategory = (v?: string): SupportMessageCategory | undefined =>
+    v as SupportMessageCategory | undefined
+
+  const toStatus = (v?: string): SupportMessageStatus | undefined =>
+    v as SupportMessageStatus | undefined
+
   const loadMessages = async () => {
     const res = await getSupportMessages({
-      category,
-      status,
+      category: toCategory(category),
+      status: toStatus(status),
       messageId,
       email,
       userUuid,
@@ -72,7 +74,7 @@ export default function SupportPage({
           <Select
             value={category}
             onValueChange={(c) => {
-              setCategory(c as SupportMessageCategory)
+              setCategory(c)
             }}
           >
             <SelectTrigger className="w-[180px]">
@@ -80,7 +82,7 @@ export default function SupportPage({
             </SelectTrigger>
             <SelectContent>
               {categoryOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem key={option.value} value={option.value as string}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -99,7 +101,7 @@ export default function SupportPage({
             </SelectTrigger>
             <SelectContent>
               {statusOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem key={option.value} value={option.value as string}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -191,7 +193,11 @@ export default function SupportPage({
                     {message.status === SupportMessageStatus.NEW && (
                       <div className="mb-1">
                         <span className="font-bold">Closed At: </span>
-                        {new Date(message.closedAt).toLocaleString()}
+                        {new Date(
+                          message.closedAt
+                            ? new Date(message.closedAt).toLocaleString()
+                            : '—',
+                        ).toLocaleString()}
                       </div>
                     )}
                     <div className="flex items-center gap-4">
@@ -210,7 +216,10 @@ export default function SupportPage({
                         </SelectTrigger>
                         <SelectContent>
                           {statusOptions.map((option) => (
-                            <SelectItem key={option.value} value={option.value}>
+                            <SelectItem
+                              key={option.value}
+                              value={option.value as string}
+                            >
                               {option.label}
                             </SelectItem>
                           ))}
