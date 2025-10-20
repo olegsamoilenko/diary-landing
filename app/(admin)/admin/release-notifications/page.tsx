@@ -53,7 +53,7 @@ export default function ReleaseNotificationsPage({
     <div>
       <h1 className="mb-4 text-xl font-semibold">Release Notifications</h1>
       <div className="mb-4">
-        <ReleaseNotificationsDialog />
+        <ReleaseNotificationsDialog onSuccess={loadNotifications} />
       </div>
       <div className="mb-4 flex gap-6">
         <div>
@@ -83,6 +83,7 @@ export default function ReleaseNotificationsPage({
           notifications={
             (releaseNotifications?.notifications as ReleaseNotification[]) ?? []
           }
+          onSuccessDelete={loadNotifications}
         />
         <Pagination
           page={releaseNotifications?.page ?? 0}

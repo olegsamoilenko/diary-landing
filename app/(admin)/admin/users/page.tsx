@@ -206,7 +206,7 @@ export default function UsersPage() {
             }}
           >
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Platform" />
+              <SelectValue placeholder="Period" />
             </SelectTrigger>
             <SelectContent>
               {granularityOptions.map((option) => (

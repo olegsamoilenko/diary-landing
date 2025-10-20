@@ -6,15 +6,19 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { UserEntryResponse } from '@/types'
-import React, { useEffect, useMemo, useState } from 'react'
+
+import React from 'react'
 import type { ReleaseNotification } from '@/types'
-import { Button } from '@/components/ui/button'
+import DeleteReleaseNotificationsDialog from './DeleteReleaseNotificationsDialog'
 
 type Props = {
   notifications: ReleaseNotification[]
+  onSuccessDelete?: () => void
 }
-export default function EntriesByUserTable({ notifications }: Props) {
+export default function AllReleaseNotificationsTable({
+  notifications,
+  onSuccessDelete,
+}: Props) {
   const getHtml = (n: ReleaseNotification, locale: 'en' | 'uk') =>
     n.translations.find((t) => t.locale === locale)?.html || ''
 
@@ -27,6 +31,7 @@ export default function EntriesByUserTable({ notifications }: Props) {
           <TableHead>CreatedAt</TableHead>
           <TableHead>EN</TableHead>
           <TableHead>UA</TableHead>
+          <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -50,6 +55,12 @@ export default function EntriesByUserTable({ notifications }: Props) {
                   dangerouslySetInnerHTML={{
                     __html: getHtml(raw, 'uk'),
                   }}
+                />
+              </TableCell>
+              <TableCell>
+                <DeleteReleaseNotificationsDialog
+                  id={Number(raw.id)}
+                  onSuccessDelete={onSuccessDelete}
                 />
               </TableCell>
             </TableRow>

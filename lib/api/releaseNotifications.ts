@@ -19,11 +19,23 @@ export const getAllReleaseNotificationsByPlatform = async (
     }
 
     const data = await res.json()
-    console.log('getAllReleaseNotificationsByPlatform', data)
+
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
     console.error('fetch release notifications failed:', msg)
     return undefined
+  }
+}
+
+export const deleteNotification = async (id: number) => {
+  try {
+    await fetch(`/api/release-notifications/${id}`, {
+      method: 'DELETE',
+    })
+
+    return true
+  } catch (error) {
+    console.error('Error delete notification:', error)
   }
 }

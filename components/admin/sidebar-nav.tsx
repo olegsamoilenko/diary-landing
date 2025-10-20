@@ -10,6 +10,8 @@ const items = [
   { href: '/admin/entries', label: 'Entries' },
   { href: '/admin/release-notifications', label: 'Release notifications' },
   { href: '/admin/admins', label: 'Admins' },
+  { href: '/admin/logs', label: 'Logs' },
+  { href: '/admin/support', label: 'Support' },
 ]
 
 export function SidebarNav() {

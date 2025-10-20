@@ -9,6 +9,10 @@ import type {
   ReleaseNotificationTranslation,
   ReleaseNotificationsResponse,
 } from './releaseNotifications'
+import { LogsLevel } from './logs'
+import type { Log } from './logs'
+import type { SupportMessage } from './support'
+import { SupportMessageCategory, SupportMessageStatus } from './support'
 
 export type {
   ReleaseNotificationsEditorRef,
@@ -19,6 +23,8 @@ export type {
   ReleaseNotification,
   ReleaseNotificationTranslation,
   ReleaseNotificationsResponse,
+  Log,
+  SupportMessage,
 }
 
-export { Platforms }
+export { Platforms, LogsLevel, SupportMessageCategory, SupportMessageStatus }

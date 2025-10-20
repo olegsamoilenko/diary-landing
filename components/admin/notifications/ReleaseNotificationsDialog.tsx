@@ -26,7 +26,11 @@ import { Platforms } from '@/types'
 const LOCALES = ['en', 'uk'] as const
 type Locale = (typeof LOCALES)[number]
 
-export default function ReleaseNotificationsDialog() {
+export default function ReleaseNotificationsDialog({
+  onSuccess,
+}: {
+  onSuccess: () => void
+}) {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState<Locale>('en')
   const [platform, setPlatform] = useState<'android' | 'ios' | undefined>(
@@ -72,8 +76,6 @@ export default function ReleaseNotificationsDialog() {
       translations,
     }
 
-    console.log('Payload to save:', payload)
-
     const res = await fetch('/api/release-notifications', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -90,7 +92,7 @@ export default function ReleaseNotificationsDialog() {
     const data = await res.json()
     setOpen(false)
 
-    console.log('Created notification:', data)
+    onSuccess()
   }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
