@@ -44,7 +44,7 @@ export default function LogsPage({
     pageCount: 0,
   })
 
-  const loadLogs = async () => {
+  const loadLogs = async (pageNumber: number) => {
     if (!startDate || !endDate) return
 
     const logsRes = await getLogs(
@@ -53,15 +53,19 @@ export default function LogsPage({
       logsLevel,
       userId,
       userUuid,
-      page,
+      pageNumber,
       limit,
     )
     setLogs(logsRes)
   }
 
   useEffect(() => {
-    loadLogs()
+    loadLogs(page)
   }, [page])
+
+  useEffect(() => {
+    console.log('logsLevel', logsLevel)
+  }, [logsLevel])
 
   return (
     <div>
@@ -127,7 +131,7 @@ export default function LogsPage({
             placeholder="User Uuid"
           ></Input>
         </div>
-        <Button onClick={loadLogs}>Load</Button>
+        <Button onClick={() => loadLogs(1)}>Load</Button>
       </div>
       <div>
         <AllLogsTable logs={logs.logs} />

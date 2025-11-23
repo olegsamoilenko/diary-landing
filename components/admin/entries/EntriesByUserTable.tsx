@@ -21,7 +21,7 @@ export default function EntriesByUserTable() {
       console.log('res', data)
       setUsersEntries(data)
     } catch (error) {
-      console.error('Error fetching entries:', error)
+      console.error('Error fetching diary:', error)
     }
   }
 

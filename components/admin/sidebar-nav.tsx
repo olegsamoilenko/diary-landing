@@ -7,8 +7,9 @@ import * as React from 'react'
 const items = [
   { href: '/admin', label: 'Dashboard' },
   { href: '/admin/users', label: 'Users' },
-  { href: '/admin/entries', label: 'Entries' },
+  { href: '/admin/diary', label: 'Diary' },
   { href: '/admin/release-notifications', label: 'Release notifications' },
+  { href: '/admin/common-notifications', label: 'Common notifications' },
   { href: '/admin/admins', label: 'Admins' },
   { href: '/admin/logs', label: 'Logs' },
   { href: '/admin/support', label: 'Support' },

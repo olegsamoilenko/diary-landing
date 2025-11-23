@@ -17,8 +17,8 @@ export default function DeleteAccountPage() {
       <Text>Developer: Oleg Samoilenko</Text>
       <Text className="mb-4">App: Nemory</Text>
       <Text className="mb-4">
-        Use this page to request deletion of your account and all associated
-        data.
+        Use this page to request deletion of your account and associated
+        server-side data.
       </Text>
       <Title level={2} className="mb-2">
         How to delete your account
@@ -35,14 +35,25 @@ export default function DeleteAccountPage() {
         Option B — Web request (this page)
       </Title>
       <Text className="mb-2">
-        If you can’t access the app, submit the form below.
+        If you can’t access the app, submit the form below and we’ll process
+        your request by email.
       </Text>
 
       <div className="my-6 rounded-md border-l-4 border-gray-500/70 bg-gray-50 py-3 pl-4">
         <Text className="m-0">
-          <span className="font-medium">Note:</span> Anonymous use (no sign-in)
-          cannot be manually deleted; see{' '}
-          <span className="font-bold">Anonymous use</span> below.
+          <b className="font-bold">Important:</b>{' '}
+          <span>
+            Your journal entries (notes, images, AI comments) are stored locally
+            on your device in an encrypted database.
+          </span>
+        </Text>
+        <Text className="m-0">
+          Deleting your account does not automatically delete local data or
+          backup files.
+        </Text>
+        <Text className="m-0">
+          To remove them, uninstall the app and/or delete any backups you
+          created.
         </Text>
       </div>
       <Title className="mb-4" level={2}>
@@ -58,54 +69,60 @@ export default function DeleteAccountPage() {
           (if used).
         </li>
         <li>
-          Profile & settings: app preferences, language, plan, feature flags.
+          Profile & settings: language, basic app preferences, plan information.
         </li>
+        <li>Subscription status: active/expired plan flags.</li>
         <li>
-          Content you created: notes/entries, moods, AI comments/threads,
-          attachments (including uploaded images).
-        </li>
-        <li>
-          Session & auth data: access tokens, refresh tokens, device/session IDs
-          linked to your account.
+          Session & auth data: access/refresh tokens, server-side device/session
+          IDs linked to your account.
         </li>
       </UnorderedList>
       <Title className="mb-4" level={3}>
         What we keep after deletion
       </Title>
       <Text className="mb-4">
-        We do not retain any personal data after account deletion. Anonymous,
-        aggregated metrics that cannot identify you may be retained for app
-        quality (if collected).
-      </Text>
-      <Title className="mb-4" level={3}>
-        Anonymous use (no registration)
-      </Title>
-      <Text className="mb-4">
-        When you use Nemory without registration, we create a random UUID and
-        store only:
+        After account deletion we may still retain, as described in the Privacy
+        Policy:
       </Text>
       <UnorderedList className="mb-4">
-        <li>your chosen display name (can be anything), and</li>
-        <li>the UUID to operate your session.</li>
+        <li>
+          Technical logs for a short period (typically up to 30 days) for
+          security and diagnostics, after which they are removed.
+        </li>
+        <li>
+          Payment and subscription records as required by law (billing, tax,
+          disputes/refunds), typically with the user reference removed or
+          pseudonymised where possible.
+        </li>
+        <li>
+          Aggregate, anonymous statistics that cannot reasonably be linked back
+          to you.
+        </li>
       </UnorderedList>
-      <Text>
-        There is no manual deletion for anonymous sessions because we cannot
-        verify ownership.
-      </Text>
       <Text className="mb-4">
-        Anonymous sessions are automatically purged after 90 days of inactivity.
+        We do not keep a server-side copy of your journal entries.
       </Text>
       <Title className="mb-4" level={3}>
         Data security
       </Title>
       <UnorderedList className="mb-4">
-        <li>Data in transit: protected with HTTPS (TLS).</li>
-        <li>Data at rest (server): encrypted using KMS-managed keys.</li>
         <li>
-          Once deletion is confirmed, related personal data is removed from our
-          production systems.
+          In transit: data sent between the app, our servers, and AI providers
+          is protected with HTTPS (TLS).
+        </li>
+        <li>
+          On device: your journal database is stored encrypted on your device.
+        </li>
+        <li>
+          On our servers: limited account, subscription, and log data is stored
+          in databases protected with access controls and encryption (for
+          example, KMS-managed keys).
         </li>
       </UnorderedList>
+      <Text className="mb-4">
+        Once deletion is confirmed, account-related data is removed from our
+        production systems as described above.
+      </Text>
       <Title className="mb-4" level={2}>
         Deletion request form
       </Title>

@@ -18,7 +18,8 @@ async function verify(token?: string) {
       algorithms: ['HS256'],
     })
     return payload as any
-  } catch {
+  } catch (err) {
+    console.error('JWT verify failed', err)
     return null
   }
 }

@@ -9,6 +9,11 @@ import type {
   ReleaseNotificationTranslation,
   ReleaseNotificationsResponse,
 } from './releaseNotifications'
+import type {
+  CommonNotification,
+  CommonNotificationTranslation,
+  CommonNotificationsResponse,
+} from './commonNotifications'
 import { LogsLevel } from './logs'
 import type { Log } from './logs'
 import type { SupportMessage } from './support'
@@ -25,6 +30,9 @@ export type {
   ReleaseNotificationsResponse,
   Log,
   SupportMessage,
+  CommonNotification,
+  CommonNotificationTranslation,
+  CommonNotificationsResponse,
 }
 
 export { Platforms, LogsLevel, SupportMessageCategory, SupportMessageStatus }

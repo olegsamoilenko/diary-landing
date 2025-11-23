@@ -5,7 +5,7 @@ import {
   getTotalEntries,
   getTotalDialogs,
   getNewEntriesAndDialogsByDate,
-} from '@/lib/api/usersStatistics'
+} from '@/lib/api/diaryStatistics'
 import TotalStatChart from '@/components/admin/users/TotalStatChart'
 import EntriesByUserTable from '@/components/admin/entries/EntriesByUserTable'
 import { DatePicker } from '@/components/ui/DatePicker'
@@ -52,7 +52,7 @@ export default function EntriesPage() {
       const data = await getTotalEntries()
       setTotalEntries(data)
     } catch (error) {
-      console.error('Error fetching total entries:', error)
+      console.error('Error fetching total diary:', error)
     }
   }
 
@@ -79,7 +79,7 @@ export default function EntriesPage() {
       )
       setNewEntriesAndDialogs(res)
     } catch (error) {
-      console.error('Error fetching new entries and dialogs:', error)
+      console.error('Error fetching new diary and dialogs:', error)
     }
   }
 

@@ -17,4 +17,8 @@ export const logsLevelOptions = [
     value: LogsLevel.ERROR,
     label: 'Error',
   },
+  {
+    value: LogsLevel.WARN_ERROR,
+    label: 'Warn and Error',
+  },
 ] as const

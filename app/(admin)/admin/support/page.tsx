@@ -82,7 +82,7 @@ export default function SupportPage({
             </SelectTrigger>
             <SelectContent>
               {categoryOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value as string}>
+                <SelectItem key={option.label} value={option.value as string}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -101,7 +101,7 @@ export default function SupportPage({
             </SelectTrigger>
             <SelectContent>
               {statusOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value as string}>
+                <SelectItem key={option.label} value={option.value as string}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -154,7 +154,7 @@ export default function SupportPage({
               <AccordionItem key={message.id} value={String(message.id)}>
                 <AccordionTrigger className="w-full">
                   <div className="mr-10 flex-0">{message.id}</div>
-                  <div className="mr-10 flex-0">{message.user.name}</div>
+                  <div className="mr-10 flex-0">{message.user?.name}</div>
                   <div className="flex-0">{message.category}</div>
                   <div className="mr-4 flex-0">{message.status}</div>
                   <div className="flex-1 truncate" style={{ maxWidth: '70ch' }}>
@@ -168,15 +168,15 @@ export default function SupportPage({
                   <div className="w-1/3">
                     <div className="mb-1">
                       <span className="font-bold">User Id: </span>
-                      {message.user.id}
+                      {message.user?.id}
                     </div>
                     <div className="mb-1">
                       <span className="font-bold">User UUid: </span>
-                      {message.user.uuid}
+                      {message.user?.uuid}
                     </div>
                     <div className="mb-4">
                       <span className="font-bold">User email: </span>
-                      {message.user.email}
+                      {message.user?.email}
                     </div>
                     <div className="mb-1">
                       <span className="font-bold">Email: </span>

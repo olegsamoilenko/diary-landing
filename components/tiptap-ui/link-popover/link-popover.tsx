@@ -74,6 +74,12 @@ export interface LinkPopoverProps
   autoOpenOnLinkActive?: boolean
 }
 
+function isValidHttpUrl(value: string | null): boolean {
+  if (!value) return false
+  const trimmed = value.trim()
+  return /^https?:\/\/\S+$/i.test(trimmed)
+}
+
 /**
  * Link button component for triggering the link popover
  */
@@ -250,9 +256,16 @@ export const LinkPopover = React.forwardRef<
     )
 
     const handleSetLink = React.useCallback(() => {
+      const value = url?.trim() ?? ''
+
+      if (value && !isValidHttpUrl(value)) {
+        window.alert('Link must start with http:// or https://')
+        return
+      }
+
       setLink()
       setIsOpen(false)
-    }, [setLink])
+    }, [setLink, url])
 
     const handleClick = React.useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {

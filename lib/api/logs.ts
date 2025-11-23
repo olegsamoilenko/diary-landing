@@ -12,9 +12,8 @@ export const getLogs = async (
   try {
     const params = new URLSearchParams()
 
-    const sd =
-      startDate instanceof Date ? startDate.toISOString() : String(startDate)
-    const ed = endDate instanceof Date ? endDate.toISOString() : String(endDate)
+    const sd = ymdLocal(startDate)
+    const ed = ymdLocal(endDate)
 
     params.set('startDate', sd)
     params.set('endDate', ed)
@@ -27,7 +26,7 @@ export const getLogs = async (
       params.set('userId', String(userId))
     }
 
-    const res = await fetch(`/api/statistics/get-logs?${params.toString()}`, {
+    const res = await fetch(`/api/logs/get-logs?${params.toString()}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -44,4 +43,12 @@ export const getLogs = async (
     console.error('fetch logs failed:', msg)
     return undefined
   }
+}
+
+function ymdLocal(input: Date | string) {
+  const d = new Date(input)
+  const y = d.getFullYear()
+  const m = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${y}-${m}-${day}` // без будь-яких TZ-зсувів
 }
