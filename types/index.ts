@@ -18,6 +18,13 @@ import { LogsLevel } from './logs'
 import type { Log } from './logs'
 import type { SupportMessage } from './support'
 import { SupportMessageCategory, SupportMessageStatus } from './support'
+import { Theme, Font } from './settings'
+import { BasePlanIds } from './plans'
+import type {
+  TokenStatistics,
+  CoastStatistics,
+  TokenStatisticsResponse,
+} from './tokenStatistics'
 
 export type {
   ReleaseNotificationsEditorRef,
@@ -33,6 +40,17 @@ export type {
   CommonNotification,
   CommonNotificationTranslation,
   CommonNotificationsResponse,
+  TokenStatistics,
+  CoastStatistics,
+  TokenStatisticsResponse,
 }
 
-export { Platforms, LogsLevel, SupportMessageCategory, SupportMessageStatus }
+export {
+  Platforms,
+  LogsLevel,
+  SupportMessageCategory,
+  SupportMessageStatus,
+  Theme,
+  Font,
+  BasePlanIds,
+}

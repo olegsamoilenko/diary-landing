@@ -29,7 +29,7 @@ export default function Pagination({
   const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i)
 
   return (
-    <div className="mt-4 flex items-center gap-2">
+    <div className="my-4 flex items-center gap-2">
       <Button variant="outline" size="sm" asChild disabled={prevDisabled}>
         <Link href={makeHref(page - 1)}>Prev</Link>
       </Button>
