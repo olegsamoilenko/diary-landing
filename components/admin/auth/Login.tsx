@@ -12,9 +12,10 @@ export default function AdminLoginPage() {
     ).get('next') || '/admin'
 
   const onSubmit = async (e: React.FormEvent) => {
+    console.log('submit')
     e.preventDefault()
     setErr('')
-    const res = await fetch('https://api.nemoryai.com/admin/login', {
+    const res = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
