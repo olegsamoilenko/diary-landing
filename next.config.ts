@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // output: 'standalone',
   async rewrites() {
     const API = process.env.NEXT_PUBLIC_API_URL
     if (process.env.NODE_ENV === 'development') {
