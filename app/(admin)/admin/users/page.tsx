@@ -27,6 +27,8 @@ import {
 } from '@/components/ui/select'
 import { granularityOptions } from '@/lib/constants/granularity'
 
+// commit
+
 export default function UsersPage() {
   const [userStatisticsData, setUserStatisticsData] =
     useState<UserStatisticsData | null>(null)
