@@ -17,6 +17,7 @@ type Point = {
   userEmail?: string
   input: number
   output: number
+  finishReason: string
 }
 type Props = {
   data: Point[]
@@ -29,12 +30,14 @@ export default function TokenUsageStatisticsChart({
 }: Props) {
   const chartData = useMemo(
     () =>
-      (data ?? []).map((d) => ({
-        uuid: d.userUuid,
+      (data ?? []).map((d, i) => ({
+        key: `${d.userUuid}-${i}`,
+        // uuid: d.userUuid,
         input: d.input ?? 0,
         output: d.output ?? 0,
         userName: d.userName,
         userEmail: d.userEmail ?? '',
+        finishReason: d.finishReason ?? '',
       })),
     [data],
   )
@@ -47,7 +50,7 @@ export default function TokenUsageStatisticsChart({
           margin={{ top: 8, right: 16, left: 0, bottom: 320 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="uuid" tickMargin={8} angle={-90} textAnchor="end" />
+          <XAxis dataKey="key" tickMargin={8} angle={-90} textAnchor="end" />
           <YAxis allowDecimals={false} />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="input" fill="#aad8e3" name="Input" />
@@ -64,6 +67,7 @@ type ChartPoint = {
   output: number
   userName: string
   userEmail?: string
+  finishReason?: string
 }
 
 type CustomTooltipProps = {
@@ -78,13 +82,15 @@ type CustomTooltipProps = {
 
 function CustomTooltip({ payload, label, active }: CustomTooltipProps) {
   if (!active || !payload || payload.length === 0) return null
-  const { userName, userEmail, input, output } = payload[0]?.payload ?? {}
+  const { userName, userEmail, input, output, finishReason } =
+    payload[0]?.payload ?? {}
   if (active) {
     return (
       <div className="custom-tooltip">
         <p className="label">{`${input} / ${output}`}</p>
         <p className="intro">{userName}</p>
         <p className="desc">{userEmail ?? ''}</p>
+        <p className="desc">{finishReason ?? ''}</p>
       </div>
     )
   }

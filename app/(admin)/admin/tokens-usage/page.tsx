@@ -46,7 +46,7 @@ export default function TokensPage({
 
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-semibold">Tokens statistics</h1>
+      <h1 className="mb-4 text-2xl font-semibold">Usage statistics</h1>
       <h3 className="mb-2 text-lg font-semibold">
         Tokens statistics Embedding
       </h3>
@@ -85,7 +85,7 @@ export default function TokensPage({
       />
 
       <h3 className="mb-2 text-lg font-semibold">
-        Tokens coast statistics Embedding
+        Credits coast statistics Embedding (cents)
       </h3>
       <TokenUsageCoastStatisticsChart data={embeddingTokenUsageStatistics} />
       <Pagination
@@ -93,7 +93,7 @@ export default function TokensPage({
         pageCount={tokenUsageStatistics?.meta.pageCount ?? 0}
       />
       <h3 className="mb-2 text-lg font-semibold">
-        Tokens coast statistics Entry
+        Credits coast statistics Entry (cents)
       </h3>
       <TokenUsageCoastStatisticsChart data={entryTokenUsageStatistics} />
       <Pagination
@@ -101,7 +101,7 @@ export default function TokensPage({
         pageCount={tokenUsageStatistics?.meta.pageCount ?? 0}
       />
       <h3 className="mb-2 text-lg font-semibold">
-        Tokens coast statistics Dialog
+        Credits coast statistics Dialog (cents)
       </h3>
       <TokenUsageCoastStatisticsChart data={dialogTokenUsageStatistics} />
       <Pagination
@@ -109,7 +109,7 @@ export default function TokensPage({
         pageCount={tokenUsageStatistics?.meta.pageCount ?? 0}
       />
       <h3 className="mb-2 text-lg font-semibold">
-        Tokens coast statistics User memory
+        Credits coast statistics User memory (cents)
       </h3>
       <TokenUsageCoastStatisticsChart data={userMemoryTokenUsageStatistics} />
       <Pagination
@@ -117,7 +117,7 @@ export default function TokensPage({
         pageCount={tokenUsageStatistics?.meta.pageCount ?? 0}
       />
       <h3 className="mb-2 text-lg font-semibold">
-        Tokens coast statistics Assistant memory
+        Credits coast statistics Assistant memory (cents)
       </h3>
       <TokenUsageCoastStatisticsChart
         data={assistantMemoryTokenUsageStatistics}

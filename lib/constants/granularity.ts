@@ -12,7 +12,15 @@ export const granularityOptions = [
     label: 'Month',
   },
   {
+    value: 'quarter',
+    label: 'Quarter',
+  },
+  {
     value: 'year',
     label: 'Year',
+  },
+  {
+    value: 'all',
+    label: 'All',
   },
 ] as const

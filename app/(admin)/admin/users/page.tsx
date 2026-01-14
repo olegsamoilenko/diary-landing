@@ -151,6 +151,10 @@ export default function UsersPage() {
           value={userStatisticsData?.inTrialUsers}
         />
         <StatisticBlock
+          name="Without Plan"
+          value={userStatisticsData?.usersWithoutPlan}
+        />
+        <StatisticBlock
           name="Past Trial period"
           value={userStatisticsData?.pastTrialUsers}
         />

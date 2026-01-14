@@ -15,8 +15,8 @@ type Point = {
   userUuid: string
   userName: string
   userEmail?: string
-  inputUsedTokens: number
-  outputUsedTokens: number
+  inputUsedCredits: number
+  outputUsedCredits: number
 }
 type Props = {
   data: Point[]
@@ -28,8 +28,8 @@ export default function TokenStatisticsChart({ data, height = 800 }: Props) {
     () =>
       (data ?? []).map((d) => ({
         uuid: d.userUuid,
-        input: d.inputUsedTokens ?? 0,
-        output: d.outputUsedTokens ?? 0,
+        input: d.inputUsedCredits ?? 0,
+        output: d.outputUsedCredits ?? 0,
         userName: d.userName,
         userEmail: d.userEmail ?? '',
       })),
@@ -74,6 +74,7 @@ type CustomTooltipProps = {
 }
 
 function CustomTooltip({ payload, label, active }: CustomTooltipProps) {
+  console.log('payload', payload)
   if (!active || !payload || payload.length === 0) return null
   const { userName, userEmail, input, output } = payload[0]?.payload ?? {}
   if (active) {

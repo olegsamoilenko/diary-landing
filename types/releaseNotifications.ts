@@ -14,6 +14,7 @@ export type ReleaseNotification = {
   defaultLocale: string
   platform: Platforms
   build: number
+  isUrgent: boolean
   translations: ReleaseNotificationTranslation[]
   createdAt: string
 }

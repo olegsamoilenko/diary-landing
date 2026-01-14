@@ -1,8 +1,7 @@
 import { BasePlanIds } from './plans'
 
 export type TokenStatisticsResponse = {
-  tokenStatistics: TokenStatistics[]
-  coastStatistics: CoastStatistics[]
+  creditsStatistics: CreditStatistics[]
   meta: {
     total: number
     page: number
@@ -11,22 +10,13 @@ export type TokenStatisticsResponse = {
   }
 }
 
-export type TokenStatistics = {
+export type CreditStatistics = {
   userName: string
   userEmail: string
   userUuid: string
   basePlanId: BasePlanIds
-  inputUsedTokens: number
-  outputUsedTokens: number
-}
-
-export type CoastStatistics = {
-  userName: string
-  userEmail: string
-  userUuid: string
-  basePlanId: BasePlanIds
-  inputUsedTokensCoast: number
-  outputUsedTokensCoast: number
+  inputUsedCredits: number
+  outputUsedCredits: number
 }
 
 export enum TokenType {
@@ -43,8 +33,9 @@ export type TokenUsageItem = {
   userEmail?: string
   input: number
   output: number
-  inputCoast: number
-  outputCoast: number
+  inputCredits: number
+  outputCredits: number
+  finishReason: string
 }
 
 export type TokenUsageStat = Record<TokenType, TokenUsageItem[]>

@@ -22,6 +22,8 @@ import ReleaseNotificationsEditor from '@/components/admin/notifications/Release
 import React, { useRef, useState } from 'react'
 import type { ReleaseNotificationsEditorRef } from '@/types'
 import { Platforms } from '@/types'
+import * as Checkbox from '@radix-ui/react-checkbox'
+import { CheckIcon } from '@radix-ui/react-icons'
 
 const LOCALES = ['en', 'uk'] as const
 type Locale = (typeof LOCALES)[number]
@@ -39,6 +41,7 @@ export default function ReleaseNotificationsDialog({
   const [errorPlatform, setErrorPlatform] = useState<string | null>(null)
   const [build, setBuild] = useState<number | undefined>(undefined)
   const [errorBuild, setErrorBuild] = useState<string | null>(null)
+  const [isUrgent, setIsUrgent] = React.useState<boolean>(true)
 
   const editorsRef = useRef<
     Record<Locale, ReleaseNotificationsEditorRef | null>
@@ -73,6 +76,7 @@ export default function ReleaseNotificationsDialog({
       defaultLocale: 'en',
       platform,
       build,
+      isUrgent,
       translations,
     }
 
@@ -143,6 +147,28 @@ export default function ReleaseNotificationsDialog({
               {errorBuild && (
                 <p className="mt-1 text-sm text-red-600">{errorBuild}</p>
               )}
+            </div>
+            <div>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Checkbox.Root
+                  checked={isUrgent}
+                  onCheckedChange={(v) => setIsUrgent(v === true)}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: 6,
+                    border: '1px solid #ccc',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Checkbox.Indicator>
+                    <CheckIcon />
+                  </Checkbox.Indicator>
+                </Checkbox.Root>
+                Is it urgent?
+              </label>
             </div>
             <div className="grid gap-4">
               <Tabs

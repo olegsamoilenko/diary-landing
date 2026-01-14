@@ -22,12 +22,15 @@ export default function AllReleaseNotificationsTable({
   const getHtml = (n: ReleaseNotification, locale: 'en' | 'uk') =>
     n.translations.find((t) => t.locale === locale)?.html || ''
 
+  console.log('notifications', notifications)
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Platform</TableHead>
           <TableHead>Build</TableHead>
+          <TableHead>Is Urgent</TableHead>
           <TableHead>CreatedAt</TableHead>
           <TableHead>EN</TableHead>
           <TableHead>UA</TableHead>
@@ -40,6 +43,7 @@ export default function AllReleaseNotificationsTable({
             <TableRow key={raw.id}>
               <TableCell className="font-medium">{raw.platform}</TableCell>
               <TableCell>{raw.build}</TableCell>
+              <TableCell>{raw.isUrgent ? 'Yes' : 'No'}</TableCell>
               <TableCell>{new Date(raw.createdAt).toLocaleString()}</TableCell>
               <TableCell>
                 <div

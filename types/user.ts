@@ -1,4 +1,5 @@
 import { Platforms } from './platforms'
+import type { Plan, Settings } from '@/types'
 
 type BufferLike = { type: 'Buffer'; data: number[] }
 
@@ -10,7 +11,7 @@ export type User = {
 
   name: string | null
   email: string | null
-  phone: string | null
+  role: UserRole
 
   platform: PlatformStr
   regionCode: string | null
@@ -35,10 +36,18 @@ export type User = {
   inactivityWarnedAt: string | null
   scheduledDeletionAt: string | null
 
-  hash: string | null
+  hash: string
   password: string | null
 
   createdAt: string
   updatedAt: string
   lastActiveAt: string | null
+  plans: Plan[]
+  settings: Settings
+}
+
+export enum UserRole {
+  USER = 'user',
+  ADMIN = 'admin',
+  TESTER = 'tester',
 }

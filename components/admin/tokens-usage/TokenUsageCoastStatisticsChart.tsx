@@ -15,8 +15,8 @@ type Point = {
   userUuid: string
   userName: string
   userEmail?: string
-  inputCoast: number
-  outputCoast: number
+  inputCredits: number
+  outputCredits: number
 }
 type Props = {
   data: Point[]
@@ -26,12 +26,13 @@ type Props = {
 export default function TokenStatisticsChart({ data, height = 800 }: Props) {
   const chartData = useMemo(
     () =>
-      (data ?? []).map((d) => {
-        const input = d.inputCoast * 100
-        const output = d.outputCoast * 100
+      (data ?? []).map((d, i) => {
+        const input = d.inputCredits / 100
+        const output = d.outputCredits / 100
 
         return {
-          uuid: d.userUuid,
+          key: `${d.userUuid}-c${i}`,
+          // uuid: d.userUuid,
           input: input ?? 0,
           output: output ?? 0,
           userName: d.userName,
@@ -49,7 +50,7 @@ export default function TokenStatisticsChart({ data, height = 800 }: Props) {
           margin={{ top: 8, right: 16, left: 0, bottom: 320 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="uuid" tickMargin={8} angle={-90} textAnchor="end" />
+          <XAxis dataKey="key" tickMargin={8} angle={-90} textAnchor="end" />
           <YAxis allowDecimals={false} domain={[0, 'dataMax']} />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="input" fill="#aad8e3" name="Input" />

@@ -1,3 +1,22 @@
+export type Settings = {
+  aiModel: string
+  appBuild: number
+  appVersion: string
+  conversationLanguage: string
+  dateFormat: string
+  font: string
+  id: number
+  lang: string
+  locale: string
+  model: string
+  osBuildId: string
+  osVersion: string
+  platform: string
+  theme: string
+  timeFormat: string
+  uniqueId: string
+}
+
 export enum Theme {
   LIGHT = 'light',
   SILENT_PEAKS = 'silentPeaks',
