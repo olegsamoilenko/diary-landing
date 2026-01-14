@@ -1,8 +1,12 @@
-name: Deploy Landing to DigitalOcean
+name: Deploy Nemory Next to Prod
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+
+concurrency:
+  group: deploy-next-main
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -12,21 +16,41 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create .ssh directory
-        run: mkdir -p ~/.ssh
-
-      - name: Add server to known_hosts
-        run: ssh-keyscan -H 178.62.197.181 >> ~/.ssh/known_hosts
-
       - name: Set up SSH agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.SERVER_SSH_KEY_LANDING }}
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: SSH & Deploy
+      - name: Add server to known_hosts
         run: |
-          ssh -o StrictHostKeyChecking=no root@178.62.197.181 "
-            cd /root/diary-landing &&
-            git pull &&
-            docker compose up -d --build
-          "
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 165.22.194.84 >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=yes nemory@165.22.194.84 << 'EOF'
+            set -e
+
+            APP_DIR=/var/www/nemory-app
+
+            echo ">>> cd \$APP_DIR"
+            cd "$APP_DIR"
+
+            echo ">>> git fetch + reset"
+            git fetch --all
+            git reset --hard origin/main
+
+            echo ">>> npm ci"
+            npm ci
+
+            echo ">>> npm run build"
+            npm run build
+
+            echo ">>> restart systemd service"
+            sudo systemctl restart nemory-app
+
+            echo ">>> status"
+            sudo systemctl status nemory-app --no-pager -l || true
+
+            echo ">>> done"
+          EOF
