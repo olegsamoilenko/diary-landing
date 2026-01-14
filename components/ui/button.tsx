@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
@@ -79,19 +78,36 @@ function Button({
   children,
   ...props
 }: ButtonProps) {
-  const Comp = asChild ? Slot : 'button'
+  const isDisabled = Boolean(disabled || loading)
+  const classes = cn(buttonVariants({ variant, size, className }))
+
+  if (asChild) {
+    const child = React.Children.only(children) as React.ReactElement
+
+    return (
+      <Slot
+        data-slot="button"
+        className={cn(classes, isDisabled && 'pointer-events-none opacity-50')}
+        aria-busy={loading || undefined}
+        aria-disabled={isDisabled || undefined}
+        {...props}
+      >
+        {child}
+      </Slot>
+    )
+  }
 
   return (
-    <Comp
+    <button
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      disabled={disabled || loading}
+      className={classes}
+      disabled={isDisabled}
       aria-busy={loading || undefined}
       {...props}
     >
       {loading ? (loader ?? <Spinner />) : null}
       {children}
-    </Comp>
+    </button>
   )
 }
 
