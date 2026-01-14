@@ -47,10 +47,8 @@ export async function proxy(req: NextRequest) {
     }
 
     if (!session || session.type !== 'admin' || session.active !== true) {
-      const url = req.nextUrl.clone()
-      url.pathname = AUTH_PATH
-      url.searchParams.set('next', pathname)
-      return NextResponse.redirect(url)
+      const next = encodeURIComponent(req.nextUrl.pathname + req.nextUrl.search)
+      return NextResponse.redirect(`${AUTH_PATH}?next=${next}`)
     }
 
     // if (pathname.startsWith('/admin/users') && session.role !== 'SUPER_ADMIN') {
