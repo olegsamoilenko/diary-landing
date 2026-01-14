@@ -46,9 +46,24 @@ export async function proxy(req: NextRequest) {
       return res
     }
 
+    function getOrigin(req: NextRequest) {
+      const xfProto = req.headers.get('x-forwarded-proto')
+      const xfHost = req.headers.get('x-forwarded-host')
+      const host = xfHost || req.headers.get('host') || 'localhost:3000'
+
+      const proto =
+        xfProto ||
+        (host.includes('localhost') || host.startsWith('127.0.0.1')
+          ? 'http'
+          : 'https')
+      return `${proto}://${host}`
+    }
+
     if (!session || session.type !== 'admin' || session.active !== true) {
       const next = encodeURIComponent(req.nextUrl.pathname + req.nextUrl.search)
-      return NextResponse.redirect(`${AUTH_PATH}?next=${next}`)
+      const origin = getOrigin(req)
+      const url = new URL(`${AUTH_PATH}?next=${next}`, origin)
+      return NextResponse.redirect(url)
     }
 
     // if (pathname.startsWith('/admin/users') && session.role !== 'SUPER_ADMIN') {
