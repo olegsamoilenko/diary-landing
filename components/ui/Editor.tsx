@@ -7,7 +7,7 @@ import '@/components/tiptap-node/code-block-node/code-block-node.scss'
 import '@/components/tiptap-node/list-node/list-node.scss'
 import '@/components/tiptap-node/paragraph-node/paragraph-node.scss'
 import { forwardRef, useImperativeHandle } from 'react'
-import type { ReleaseNotificationsEditorRef } from '@/types'
+import type { EditorRef } from '@/types'
 import { ToolbarGroup } from '@/components/tiptap-ui-primitive/toolbar'
 import { MarkButton } from '@/components/tiptap-ui/mark-button'
 import { TaskList } from '@tiptap/extension-task-list'
@@ -67,91 +67,90 @@ const SANITIZE_OPTS: sanitizeHtml.IOptions = {
   allowedSchemes: ['http', 'https', 'mailto'],
 }
 
-const Editor = forwardRef<
-  ReleaseNotificationsEditorRef,
-  { initialHtml: string }
->(({ initialHtml }, ref) => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      TaskList,
-      TaskItem,
-      TextAlign.configure({ types: ['heading', 'paragraph'] }),
-      TextStyle,
-      Color,
-    ],
-    immediatelyRender: false,
-    content: initialHtml,
-  })
+const Editor = forwardRef<EditorRef, { initialHtml: string }>(
+  ({ initialHtml }, ref) => {
+    const editor = useEditor({
+      extensions: [
+        StarterKit,
+        TaskList,
+        TaskItem,
+        TextAlign.configure({ types: ['heading', 'paragraph'] }),
+        TextStyle,
+        Color,
+      ],
+      immediatelyRender: false,
+      content: initialHtml,
+    })
 
-  useImperativeHandle(ref, () => ({
-    get: () => {
-      if (!editor) return { html: '', docJson: null }
-      const rawHtml = editor.getHTML()
-      const html = sanitizeHtml(rawHtml, SANITIZE_OPTS)
-      const docJson = editor.getJSON()
-      return { html, docJson }
-    },
-    setHtml: (html: string) => {
-      editor?.commands.setContent(html, { emitUpdate: false })
-    },
-  }))
+    useImperativeHandle(ref, () => ({
+      get: () => {
+        if (!editor) return { html: '', docJson: null }
+        const rawHtml = editor.getHTML()
+        const html = sanitizeHtml(rawHtml, SANITIZE_OPTS)
+        const docJson = editor.getJSON()
+        return { html, docJson }
+      },
+      setHtml: (html: string) => {
+        editor?.commands.setContent(html, { emitUpdate: false })
+      },
+    }))
 
-  if (!editor) return null
+    if (!editor) return null
 
-  return (
-    <EditorContext.Provider value={{ editor }}>
-      <div className="flex flex-wrap">
-        <ToolbarGroup>
-          <HeadingDropdownMenu
+    return (
+      <EditorContext.Provider value={{ editor }}>
+        <div className="flex flex-wrap">
+          <ToolbarGroup>
+            <HeadingDropdownMenu
+              editor={editor}
+              levels={[1, 2, 3]}
+              hideWhenUnavailable={true}
+              portal={false}
+            />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <MarkButton type="bold" />
+            <MarkButton type="italic" />
+            <MarkButton type="strike" />
+            <MarkButton type="underline" />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <ListDropdownMenu
+              editor={editor}
+              types={['bulletList', 'orderedList', 'taskList']}
+              hideWhenUnavailable={true}
+              portal={false}
+            />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <TextAlignButton align="left" />
+            <TextAlignButton align="center" />
+            <TextAlignButton align="right" />
+            <TextAlignButton align="justify" />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <LinkPopover
+              editor={editor}
+              hideWhenUnavailable={true}
+              autoOpenOnLinkActive={true}
+            />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <ColorDropdown editor={editor}></ColorDropdown>
+          </ToolbarGroup>
+        </div>
+
+        <div className="rounded border p-2">
+          <EditorContent
             editor={editor}
-            levels={[1, 2, 3]}
-            hideWhenUnavailable={true}
-            portal={false}
+            className="ProseMirror prose min-h-[120px]"
+            role="presentation"
           />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <MarkButton type="bold" />
-          <MarkButton type="italic" />
-          <MarkButton type="strike" />
-          <MarkButton type="underline" />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <ListDropdownMenu
-            editor={editor}
-            types={['bulletList', 'orderedList', 'taskList']}
-            hideWhenUnavailable={true}
-            portal={false}
-          />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <TextAlignButton align="left" />
-          <TextAlignButton align="center" />
-          <TextAlignButton align="right" />
-          <TextAlignButton align="justify" />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <LinkPopover
-            editor={editor}
-            hideWhenUnavailable={true}
-            autoOpenOnLinkActive={true}
-          />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <ColorDropdown editor={editor}></ColorDropdown>
-        </ToolbarGroup>
-      </div>
-
-      <div className="rounded border p-2">
-        <EditorContent
-          editor={editor}
-          className="ProseMirror prose min-h-[120px]"
-          role="presentation"
-        />
-      </div>
-    </EditorContext.Provider>
-  )
-})
+        </div>
+      </EditorContext.Provider>
+    )
+  },
+)
 
 Editor.displayName = 'Editor'
 
