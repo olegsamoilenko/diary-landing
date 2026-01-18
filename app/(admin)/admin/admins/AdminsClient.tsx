@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState, use } from 'react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { getUser } from '@/lib/api/users'
+import { getAll, getUser } from '@/lib/api/users'
 import {
   Table,
   TableBody,
@@ -14,17 +14,36 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import ChangeRoleDialog from '@/components/admin/admins/ChangeRoleDialog'
-import { PlanStatus, User } from '@/types'
+import { GetAllUsersResp, PlanStatus, User } from '@/types'
 import { getErrorMessage } from '@/lib/errors'
 import ChangeStatusDialog from '@/components/admin/admins/ChangeStatusDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
+import AllUsersTable from '@/components/admin/admins/AllUsersTable'
+import Pagination from '@/components/ui/pagination'
 
-export default function AdminsClient() {
+type SP = { page?: string }
+
+export default function AdminsClient({
+  spPromise,
+}: {
+  spPromise: Promise<SP>
+}) {
   const [email, setEmail] = useState('')
   const [uuid, setUuid] = useState('')
   const [loader, setLoader] = useState<boolean>(false)
   const [fetchUserError, setFetchUserError] = useState<string>('')
   const [user, setUser] = useState<User | null>(null)
+  const sp = use(spPromise)
+  const page = Number(sp.page ?? '1') || 1
+  const [sortBy, setSortBy] = useState<'dialog' | 'entry'>('entry')
+  const limit = 50
+  const [fetchUsersRes, setFetchUsersRes] = useState<GetAllUsersResp | null>(
+    null,
+  )
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   const fetchUser = async () => {
     setFetchUserError('')
@@ -41,28 +60,31 @@ export default function AdminsClient() {
     }
   }
 
-  function formatDateTimeUA(d: Date | string | number) {
-    const date = d instanceof Date ? d : new Date(d)
+  const fetchUsers = async () => {
+    try {
+      const res = await getAll(page, limit, sortBy)
 
-    const parts = new Intl.DateTimeFormat('uk-UA', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    }).formatToParts(date)
+      if (!res) {
+        throw new Error('No response')
+      }
 
-    const get = (type: string) =>
-      parts.find((p) => p.type === type)?.value ?? ''
-
-    return `${get('day')}.${get('month')}.${get('year')} | ${get('hour')}:${get('minute')}`
+      console.log('res', res)
+      setFetchUsersRes(res)
+    } catch (err: unknown) {
+      console.error('error', err)
+    }
   }
 
   return (
     <>
       <h1 className="mb-4 text-xl font-semibold">User Management</h1>
-
+      <div className="mb-8">
+        <AllUsersTable users={fetchUsersRes?.users as User[]} />
+        <Pagination
+          page={fetchUsersRes?.page ?? 0}
+          pageCount={fetchUsersRes?.pageCount ?? 0}
+        />
+      </div>
       <div className="flex items-end gap-4">
         <div>
           <Label htmlFor="email" className="mb-2">
@@ -126,10 +148,11 @@ export default function AdminsClient() {
                     onSuccess={fetchUser}
                   />
                   <ChangeStatusDialog
-                    id={user.plans.find((p) => p.actual)?.id as number}
+                    id={user.plans?.find((p) => p.actual)?.id as number}
                     onSuccess={fetchUser}
                     status={
-                      user.plans.find((p) => p.actual)?.planStatus as PlanStatus
+                      user.plans?.find((p) => p.actual)
+                        ?.planStatus as PlanStatus
                     }
                   />
                 </TableCell>

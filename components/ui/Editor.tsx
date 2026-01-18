@@ -67,7 +67,7 @@ const SANITIZE_OPTS: sanitizeHtml.IOptions = {
   allowedSchemes: ['http', 'https', 'mailto'],
 }
 
-const ReleaseNotificationsEditor = forwardRef<
+const Editor = forwardRef<
   ReleaseNotificationsEditorRef,
   { initialHtml: string }
 >(({ initialHtml }, ref) => {
@@ -153,6 +153,6 @@ const ReleaseNotificationsEditor = forwardRef<
   )
 })
 
-ReleaseNotificationsEditor.displayName = 'ReleaseNotificationsEditor'
+Editor.displayName = 'Editor'
 
-export default ReleaseNotificationsEditor
+export default Editor

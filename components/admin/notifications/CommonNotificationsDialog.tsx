@@ -10,9 +10,9 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import ReleaseNotificationsEditor from '@/components/admin/notifications/ReleaseNotificationsEditor'
+import Editor from '@/components/ui/Editor'
 import React, { useRef, useState } from 'react'
-import type { ReleaseNotificationsEditorRef } from '@/types'
+import type { EditorRef } from '@/types'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 
@@ -27,16 +27,14 @@ export default function CommonNotificationsDialog({
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState<Locale>('en')
 
-  const editorsRef = useRef<
-    Record<Locale, ReleaseNotificationsEditorRef | null>
-  >({
+  const editorRef = useRef<Record<Locale, EditorRef | null>>({
     uk: null,
     en: null,
   })
 
   const handleSave = async () => {
     const translations = LOCALES.map((loc) => {
-      const api = editorsRef.current[loc]
+      const api = editorRef.current[loc]
       const { html, docJson } = api?.get() ?? { html: '', docJson: null }
       return { locale: loc, html, docJson }
     })
@@ -109,9 +107,9 @@ export default function CommonNotificationsDialog({
                     className="mt-4 data-[state=inactive]:hidden"
                     forceMount
                   >
-                    <ReleaseNotificationsEditor
+                    <Editor
                       ref={(api) => {
-                        editorsRef.current[l] = api
+                        editorRef.current[l] = api
                       }}
                       initialHtml={
                         l === LOCALES[1]

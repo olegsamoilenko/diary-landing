@@ -35,6 +35,12 @@ export async function requireRole(required?: 'SUPER_ADMIN' | 'ADMIN') {
   const s = await getAdminSession()
   if (!s) return null
   if (s.type !== 'admin' || s.active !== true) return null
-  if (required && s.role !== required) return null
+
+  if (required === 'SUPER_ADMIN') {
+    if (s.role !== 'SUPER_ADMIN') return null
+  } else if (required === 'ADMIN') {
+    if (s.role !== 'ADMIN' && s.role !== 'SUPER_ADMIN') return null
+  }
+
   return s
 }

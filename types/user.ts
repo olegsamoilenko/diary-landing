@@ -42,12 +42,24 @@ export type User = {
   createdAt: string
   updatedAt: string
   lastActiveAt: string | null
-  plans: Plan[]
+  plans?: Plan[]
+  plan?: Plan | null
   settings: Settings
+
+  entriesStatsCount?: number
+  dialogsStatsCount?: number
 }
 
 export enum UserRole {
   USER = 'user',
   ADMIN = 'admin',
   TESTER = 'tester',
+}
+
+export type GetAllUsersResp = {
+  users: User[]
+  total: number
+  page: number
+  pageCount: number
+  limit: number
 }

@@ -18,9 +18,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import ReleaseNotificationsEditor from '@/components/admin/notifications/ReleaseNotificationsEditor'
+import Editor from '@/components/ui/Editor'
 import React, { useRef, useState } from 'react'
-import type { ReleaseNotificationsEditorRef } from '@/types'
+import type { EditorRef } from '@/types'
 import { Platforms } from '@/types'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
@@ -43,9 +43,7 @@ export default function ReleaseNotificationsDialog({
   const [errorBuild, setErrorBuild] = useState<string | null>(null)
   const [isUrgent, setIsUrgent] = React.useState<boolean>(true)
 
-  const editorsRef = useRef<
-    Record<Locale, ReleaseNotificationsEditorRef | null>
-  >({
+  const editorRef = useRef<Record<Locale, EditorRef | null>>({
     uk: null,
     en: null,
   })
@@ -62,7 +60,7 @@ export default function ReleaseNotificationsDialog({
     }
 
     const translations = LOCALES.map((loc) => {
-      const api = editorsRef.current[loc]
+      const api = editorRef.current[loc]
       const { html, docJson } = api?.get() ?? { html: '', docJson: null }
       return { locale: loc, html, docJson }
     })
@@ -190,9 +188,9 @@ export default function ReleaseNotificationsDialog({
                     className="mt-4 data-[state=inactive]:hidden"
                     forceMount
                   >
-                    <ReleaseNotificationsEditor
+                    <Editor
                       ref={(api) => {
-                        editorsRef.current[l] = api
+                        editorRef.current[l] = api
                       }}
                       initialHtml={
                         l === LOCALES[1]

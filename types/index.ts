@@ -1,4 +1,4 @@
-import type { ReleaseNotificationsEditorRef } from './refs'
+import type { EditorRef } from './refs'
 import type { UserEntryResponse } from './userEntry'
 import { Platforms } from './platforms'
 import type { UserStatisticPlanType } from './userStatisticPlanType'
@@ -25,10 +25,10 @@ import type { Plan } from './plans'
 import type { TokenStatisticsResponse } from './tokenStatistics'
 import { FinancePeriod } from './finance'
 import { UserRole } from './user'
-import type { User } from './user'
+import type { User, GetAllUsersResp } from './user'
 
 export type {
-  ReleaseNotificationsEditorRef,
+  EditorRef,
   UserEntryResponse,
   UserStatisticPlanType,
   UserStatisticsData,
@@ -45,6 +45,7 @@ export type {
   User,
   Settings,
   Plan,
+  GetAllUsersResp,
 }
 
 export {
