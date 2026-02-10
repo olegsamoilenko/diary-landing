@@ -16,6 +16,7 @@ const items = [
   { href: '/admin/common-notifications', label: 'Common notifications' },
   { href: '/admin/admins', label: 'Admins' },
   { href: '/admin/logs', label: 'Logs' },
+  { href: '/admin/server-logs', label: 'Server Logs' },
   { href: '/admin/support', label: 'Support' },
 ]
 

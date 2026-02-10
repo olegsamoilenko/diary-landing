@@ -15,7 +15,7 @@ import type {
   CommonNotificationsResponse,
 } from './commonNotifications'
 import { LogsLevel } from './logs'
-import type { Log } from './logs'
+import type { Log, ServerLog } from './logs'
 import type { SupportMessage } from './support'
 import { SupportMessageCategory, SupportMessageStatus } from './support'
 import { Theme, Font } from './settings'
@@ -46,6 +46,7 @@ export type {
   Settings,
   Plan,
   GetAllUsersResp,
+  ServerLog,
 }
 
 export {
