@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { logsLevelOptions } from '@/lib/constants/logs'
-import { Log, LogsLevel } from '@/types'
+import { Log, LogsLevel, ServerLog } from '@/types'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { getServerLogs } from '@/lib/api/logs'
@@ -35,7 +35,7 @@ export default function LogsPage({
   const page = Number(sp.page ?? '1') || 1
   const limit = 50
   const [logs, setLogs] = useState<{
-    logs: Log[]
+    logs: ServerLog[]
     page: number
     pageCount: number
   }>({
