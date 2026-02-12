@@ -26,6 +26,7 @@ import type { TokenStatisticsResponse } from './tokenStatistics'
 import { FinancePeriod } from './finance'
 import { UserRole } from './user'
 import type { User, GetAllUsersResp, SortBy, HasPlan } from './user'
+import { Limit } from './pagination'
 
 export type {
   EditorRef,
@@ -49,6 +50,7 @@ export type {
   ServerLog,
   SortBy,
   HasPlan,
+  Limit,
 }
 
 export {
