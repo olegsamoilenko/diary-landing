@@ -37,6 +37,7 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Status</TableHead>
           <TableHead>Start</TableHead>
           <TableHead>Expiry</TableHead>
+          <TableHead>Without Subs</TableHead>
           <TableHead>Entries</TableHead>
           <TableHead>Dialogs</TableHead>
           <TableHead>Created At</TableHead>
@@ -69,6 +70,7 @@ export default function AllUsersTable({ users }: Props) {
                     ? new Date(raw.plan.expiryTime).toLocaleString()
                     : '-'}
                 </TableCell>
+                <TableCell>{raw?.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.entriesStatsCount ?? 0}</TableCell>
                 <TableCell>{raw?.dialogsStatsCount ?? 0}</TableCell>
                 <TableCell>

@@ -15,6 +15,7 @@ export type User = {
 
   platform: PlatformStr
   regionCode: string | null
+  usesWithoutSubscription: boolean
 
   dekVersion: number | null
   dekEncrypted: BufferLike | null
