@@ -1,5 +1,5 @@
 import { apiFetch } from '@/lib/api/apiFetch'
-import { GetAllUsersResp, PlanStatus, UserRole } from '@/types'
+import { GetAllUsersResp, HasPlan, PlanStatus, UserRole } from '@/types'
 import type { User } from '@/types'
 
 export const getUser = async (
@@ -16,10 +16,11 @@ export const getAll = async (
   page: number,
   limit: number,
   sortBy: string,
+  hasPlan: HasPlan,
 ): Promise<GetAllUsersResp | null> => {
   console.log('sortBy', sortBy, 'sort by')
   return apiFetch(
-    `/api/users/get-all?page=${page}&limit=${limit}&sortBy=${sortBy}`,
+    `/api/users/get-all?page=${page}&limit=${limit}&sortBy=${sortBy}&hasPlan=${hasPlan}`,
     {
       method: 'GET',
     },

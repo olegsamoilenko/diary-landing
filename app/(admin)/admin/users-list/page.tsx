@@ -14,7 +14,14 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import ChangeRoleDialog from '@/components/admin/admins/ChangeRoleDialog'
-import { GetAllUsersResp, Granularity, PlanStatus, User, SortBy } from '@/types'
+import {
+  GetAllUsersResp,
+  Granularity,
+  PlanStatus,
+  User,
+  SortBy,
+  HasPlan,
+} from '@/types'
 import { getErrorMessage } from '@/lib/errors'
 import ChangeStatusDialog from '@/components/admin/admins/ChangeStatusDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
@@ -27,7 +34,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { UsersSortByOptions } from '@/lib/constants/users'
+import { UsersHavePlanOptions, UsersSortByOptions } from '@/lib/constants/users'
 
 type SP = { page?: string }
 
@@ -50,9 +57,10 @@ export default function AdminsClient({
     null,
   )
   const [errorSortBy, setErrorSortBy] = useState<string | null>(null)
+  const [hasPlan, setHasPlan] = useState<HasPlan>('All')
 
   useEffect(() => {
-    fetchUsers(sortBy)
+    fetchUsers()
   }, [])
 
   const fetchUser = async () => {
@@ -70,9 +78,9 @@ export default function AdminsClient({
     }
   }
 
-  const fetchUsers = async (sortBy: SortBy) => {
+  const fetchUsers = async () => {
     try {
-      const res = await getAll(page, limit, sortBy)
+      const res = await getAll(page, limit, sortBy, hasPlan)
 
       if (!res) {
         throw new Error('No response')
@@ -88,30 +96,57 @@ export default function AdminsClient({
   return (
     <>
       <h1 className="mb-4 text-xl font-semibold">Users</h1>
-      <div className="items-end">
-        <Select
-          value={sortBy}
-          onValueChange={async (s: SortBy) => {
-            console.log('s', s)
-            setSortBy(s as SortBy)
-            setErrorSortBy(null)
-            await fetchUsers(s)
-          }}
-        >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            {UsersSortByOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        {errorSortBy && (
-          <p className="mt-1 text-sm text-red-600">{errorSortBy}</p>
-        )}
+      <div className="mb-4 flex gap-4">
+        <div className="items-end">
+          <Select
+            value={sortBy}
+            onValueChange={async (s: SortBy) => {
+              setSortBy(s as SortBy)
+              setErrorSortBy(null)
+            }}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              {UsersSortByOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errorSortBy && (
+            <p className="mt-1 text-sm text-red-600">{errorSortBy}</p>
+          )}
+        </div>
+        <div className="items-end">
+          <Select
+            value={hasPlan}
+            onValueChange={async (p: HasPlan) => {
+              console.log('p', p)
+              setHasPlan(p as HasPlan)
+              setErrorSortBy(null)
+            }}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              {UsersHavePlanOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errorSortBy && (
+            <p className="mt-1 text-sm text-red-600">{errorSortBy}</p>
+          )}
+        </div>
+        <div>
+          <Button onClick={fetchUsers}>Load</Button>
+        </div>
       </div>
       <div className="mb-8">
         <AllUsersTable users={fetchUsersRes?.users as User[]} />

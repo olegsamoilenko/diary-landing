@@ -65,3 +65,4 @@ export type GetAllUsersResp = {
 }
 
 export type SortBy = 'dialog' | 'entry' | 'createdAt' | 'lastActiveAt'
+export type HasPlan = 'true' | 'false' | 'All'

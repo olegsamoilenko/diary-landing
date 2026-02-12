@@ -16,3 +16,18 @@ export const UsersSortByOptions = [
     label: 'Dialogs count',
   },
 ]
+
+export const UsersHavePlanOptions = [
+  {
+    value: 'All',
+    label: 'All',
+  },
+  {
+    value: 'true',
+    label: 'Yes',
+  },
+  {
+    value: 'false',
+    label: 'No',
+  },
+]

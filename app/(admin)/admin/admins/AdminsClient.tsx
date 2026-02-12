@@ -14,7 +14,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import ChangeRoleDialog from '@/components/admin/admins/ChangeRoleDialog'
-import { GetAllUsersResp, PlanStatus, User } from '@/types'
+import { GetAllUsersResp, HasPlan, PlanStatus, SortBy, User } from '@/types'
 import { getErrorMessage } from '@/lib/errors'
 import ChangeStatusDialog from '@/components/admin/admins/ChangeStatusDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
@@ -35,11 +35,12 @@ export default function AdminsClient({
   const [user, setUser] = useState<User | null>(null)
   const sp = use(spPromise)
   const page = Number(sp.page ?? '1') || 1
-  const [sortBy, setSortBy] = useState<'dialog' | 'entry'>('entry')
+  const [sortBy, setSortBy] = useState<SortBy>('createdAt')
   const limit = 50
   const [fetchUsersRes, setFetchUsersRes] = useState<GetAllUsersResp | null>(
     null,
   )
+  const [hasPlan, setHasPlan] = useState<HasPlan>('All')
 
   useEffect(() => {
     fetchUsers()
@@ -62,7 +63,7 @@ export default function AdminsClient({
 
   const fetchUsers = async () => {
     try {
-      const res = await getAll(page, limit, sortBy)
+      const res = await getAll(page, limit, sortBy, hasPlan)
 
       if (!res) {
         throw new Error('No response')

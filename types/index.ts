@@ -25,7 +25,7 @@ import type { Plan } from './plans'
 import type { TokenStatisticsResponse } from './tokenStatistics'
 import { FinancePeriod } from './finance'
 import { UserRole } from './user'
-import type { User, GetAllUsersResp, SortBy } from './user'
+import type { User, GetAllUsersResp, SortBy, HasPlan } from './user'
 
 export type {
   EditorRef,
@@ -48,6 +48,7 @@ export type {
   GetAllUsersResp,
   ServerLog,
   SortBy,
+  HasPlan,
 }
 
 export {
