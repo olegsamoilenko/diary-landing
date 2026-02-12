@@ -63,3 +63,5 @@ export type GetAllUsersResp = {
   pageCount: number
   limit: number
 }
+
+export type SortBy = 'dialog' | 'entry' | 'createdAt' | 'lastActiveAt'

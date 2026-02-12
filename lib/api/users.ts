@@ -17,6 +17,7 @@ export const getAll = async (
   limit: number,
   sortBy: string,
 ): Promise<GetAllUsersResp | null> => {
+  console.log('sortBy', sortBy, 'sort by')
   return apiFetch(
     `/api/users/get-all?page=${page}&limit=${limit}&sortBy=${sortBy}`,
     {
