@@ -79,7 +79,9 @@ export default function AllUsersTable({ users }: Props) {
                   {new Date(raw?.createdAt).toLocaleString()}
                 </TableCell>
                 <TableCell>
-                  {formatAcquisitionSource(raw?.acquisitionMetaJson)}
+                  <div className="break-words whitespace-pre-line">
+                    {formatAcquisitionSource(raw?.acquisitionMetaJson)}
+                  </div>
                 </TableCell>
                 {/*<TableCell onClick={(e) => e.stopPropagation()}>*/}
                 {/*  <SendEmailDialog*/}
