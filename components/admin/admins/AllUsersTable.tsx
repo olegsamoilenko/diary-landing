@@ -11,6 +11,7 @@ import React, { useMemo, useState } from 'react'
 import type { User } from '@/types'
 import SendEmailDialog from '@/components/admin/admins/SendEmailDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
+import { formatAcquisitionSource } from '@/lib/utils/formatAcquisitionSource'
 
 type Props = {
   users: User[]
@@ -41,6 +42,7 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Entries</TableHead>
           <TableHead>Dialogs</TableHead>
           <TableHead>Created At</TableHead>
+          <TableHead>Source</TableHead>
           {/*<TableHead>Action</TableHead>*/}
         </TableRow>
       </TableHeader>
@@ -75,6 +77,9 @@ export default function AllUsersTable({ users }: Props) {
                 <TableCell>{raw?.dialogsStatsCount ?? 0}</TableCell>
                 <TableCell>
                   {new Date(raw?.createdAt).toLocaleString()}
+                </TableCell>
+                <TableCell>
+                  {formatAcquisitionSource(raw?.acquisitionMetaJson)}
                 </TableCell>
                 {/*<TableCell onClick={(e) => e.stopPropagation()}>*/}
                 {/*  <SendEmailDialog*/}

@@ -19,6 +19,7 @@ export type User = {
 
   dekVersion: number | null
   dekEncrypted: BufferLike | null
+  acquisitionMetaJson: string | null
 
   emailVerified: boolean
   emailVerificationCode: string | null
