@@ -32,6 +32,7 @@ export default function AllUsersTable({ users }: Props) {
       <TableHeader>
         <TableRow>
           <TableHead>Uuid</TableHead>
+          <TableHead>Id</TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Email</TableHead>
           <TableHead>Plan</TableHead>
@@ -58,6 +59,7 @@ export default function AllUsersTable({ users }: Props) {
                 className="hover:bg-muted/50 cursor-pointer"
               >
                 <TableCell>{raw.uuid}</TableCell>
+                <TableCell>{raw.id}</TableCell>
                 <TableCell>{raw.name}</TableCell>
                 <TableCell>{raw.email}</TableCell>
                 <TableCell>{raw.plan?.name ?? '-'}</TableCell>
