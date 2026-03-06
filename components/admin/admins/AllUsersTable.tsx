@@ -35,6 +35,7 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Id</TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Email</TableHead>
+          <TableHead>Country</TableHead>
           <TableHead>Plan</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Start</TableHead>
@@ -62,6 +63,7 @@ export default function AllUsersTable({ users }: Props) {
                 <TableCell>{raw.id}</TableCell>
                 <TableCell>{raw.name}</TableCell>
                 <TableCell>{raw.email}</TableCell>
+                <TableCell>{raw.regionCode}</TableCell>
                 <TableCell>{raw.plan?.name ?? '-'}</TableCell>
                 <TableCell>{raw.plan?.planStatus ?? '-'}</TableCell>
                 <TableCell>
