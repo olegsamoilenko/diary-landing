@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { useSearchParams, usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -7,17 +5,29 @@ import { Button } from '@/components/ui/button'
 export default function Pagination({
   page,
   pageCount,
+  isComponent = false,
+  onPress,
 }: {
   page: number
   pageCount: number
+  isComponent?: boolean
+  onPress?: (p: number) => void
 }) {
   const pathname = usePathname()
   const params = useSearchParams()
 
   const makeHref = (p: number) => {
-    const sp = new URLSearchParams(params)
+    const sp = new URLSearchParams(params.toString())
     sp.set('page', String(p))
     return `${pathname}?${sp.toString()}`
+  }
+
+  const handlePressButton = (p: number) => {
+    if (p < 1 || p > pageCount) return
+
+    if (onPress && isComponent) {
+      onPress(p)
+    }
   }
 
   const prevDisabled = page <= 1
@@ -30,47 +40,108 @@ export default function Pagination({
 
   return (
     <div className="my-4 flex items-center gap-2">
-      <Button variant="outline" size="sm" asChild disabled={prevDisabled}>
-        <Link href={makeHref(page - 1)}>Prev</Link>
-      </Button>
-
-      {start > 1 && (
+      {isComponent ? (
         <>
-          <Button variant="ghost" size="sm" asChild>
-            <Link href={makeHref(1)}>1</Link>
-          </Button>
-          {start > 2 && <span className="px-1">…</span>}
-        </>
-      )}
-
-      {pages.map((p) => (
-        <Button
-          key={p}
-          size="sm"
-          variant={p === page ? 'default' : 'ghost'}
-          asChild
-        >
-          <Link
-            href={makeHref(p)}
-            aria-current={p === page ? 'page' : undefined}
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={prevDisabled}
+            onClick={() => handlePressButton(page - 1)}
           >
-            {p}
-          </Link>
-        </Button>
-      ))}
+            Prev
+          </Button>
 
-      {end < pageCount && (
+          {start > 1 && (
+            <>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handlePressButton(1)}
+              >
+                1
+              </Button>
+              {start > 2 && <span className="px-1">…</span>}
+            </>
+          )}
+
+          {pages.map((p) => (
+            <Button
+              key={p}
+              size="sm"
+              variant={p === page ? 'default' : 'ghost'}
+              onClick={() => handlePressButton(p)}
+            >
+              {p}
+            </Button>
+          ))}
+
+          {end < pageCount && (
+            <>
+              {end < pageCount - 1 && <span className="px-1">…</span>}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handlePressButton(pageCount)}
+              >
+                {pageCount}
+              </Button>
+            </>
+          )}
+
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={nextDisabled}
+            onClick={() => handlePressButton(page + 1)}
+          >
+            Next
+          </Button>
+        </>
+      ) : (
         <>
-          {end < pageCount - 1 && <span className="px-1">…</span>}
-          <Button variant="ghost" size="sm" asChild>
-            <Link href={makeHref(pageCount)}>{pageCount}</Link>
+          <Button variant="outline" size="sm" asChild disabled={prevDisabled}>
+            <Link href={makeHref(page - 1)}>Prev</Link>
+          </Button>
+
+          {start > 1 && (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href={makeHref(1)}>1</Link>
+              </Button>
+              {start > 2 && <span className="px-1">…</span>}
+            </>
+          )}
+
+          {pages.map((p) => (
+            <Button
+              key={p}
+              size="sm"
+              variant={p === page ? 'default' : 'ghost'}
+              asChild
+            >
+              <Link
+                href={makeHref(p)}
+                aria-current={p === page ? 'page' : undefined}
+              >
+                {p}
+              </Link>
+            </Button>
+          ))}
+
+          {end < pageCount && (
+            <>
+              {end < pageCount - 1 && <span className="px-1">…</span>}
+              <Button variant="ghost" size="sm" asChild>
+                <Link href={makeHref(pageCount)}>{pageCount}</Link>
+              </Button>
+            </>
+          )}
+
+          <Button variant="outline" size="sm" asChild disabled={nextDisabled}>
+            <Link href={makeHref(page + 1)}>Next</Link>
           </Button>
         </>
       )}
-
-      <Button variant="outline" size="sm" asChild disabled={nextDisabled}>
-        <Link href={makeHref(page + 1)}>Next</Link>
-      </Button>
     </div>
   )
 }

@@ -63,7 +63,7 @@ export default function AdminsClient({
 
   useEffect(() => {
     fetchUsers()
-  }, [])
+  }, [page])
 
   const fetchUser = async () => {
     setFetchUserError('')

@@ -7,12 +7,13 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import type { User } from '@/types'
 import SendEmailDialog from '@/components/admin/admins/SendEmailDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
 import { formatAcquisitionSource } from '@/lib/utils/formatAcquisitionSource'
 import { Button } from '@/components/ui/button'
+import UserLogs from '@/components/admin/user-list/UserLogs'
 
 type Props = {
   users: User[]
@@ -23,6 +24,7 @@ export default function AllUsersTable({ users }: Props) {
   const [expandedUserId, setExpandedUserId] = useState<number | null>(null)
 
   const columnsCount = 10
+  const scrollRef = useRef<HTMLDivElement | null>(null)
 
   const toggle = (id: number) => {
     setExpandedUserId((prev) => (prev === id ? null : id))
@@ -46,7 +48,7 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Source</TableHead>
-          <TableHead>Action</TableHead>
+          {/*<TableHead>Action</TableHead>*/}
         </TableRow>
       </TableHeader>
 
@@ -89,17 +91,17 @@ export default function AllUsersTable({ users }: Props) {
                   </div>
                 </TableCell>
                 <TableCell onClick={(e) => e.stopPropagation()}>
-                  <Button
-                    onClick={() => {
-                      window.open(
-                        `/admin/users-list/logs?userUuid=${encodeURIComponent(raw.uuid)}`,
-                        '_blank',
-                        'noopener,noreferrer',
-                      )
-                    }}
-                  >
-                    Logs
-                  </Button>
+                  {/*<Button*/}
+                  {/*  onClick={() => {*/}
+                  {/*    window.open(*/}
+                  {/*      `/admin/users-list/logs?userUuid=${encodeURIComponent(raw.uuid)}`,*/}
+                  {/*      '_blank',*/}
+                  {/*      'noopener,noreferrer',*/}
+                  {/*    )*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  Logs*/}
+                  {/*</Button>*/}
                   {/*<SendEmailDialog*/}
                   {/*  email={raw.email as any as string}*/}
                   {/*  lang={raw.settings?.lang}*/}
@@ -109,13 +111,30 @@ export default function AllUsersTable({ users }: Props) {
 
               {isOpen && (
                 <TableRow>
-                  <TableCell colSpan={columnsCount} className="p-0">
+                  <TableCell colSpan={3} className="p-0">
                     <div className="bg-muted/20 border-t p-4">
                       <div className="mb-2 text-sm font-medium">
                         User details
                       </div>
-                      <div className="bg-background max-h-[620px] overflow-auto rounded-md border p-3">
+                      <div className="bg-background max-h-[1020px] overflow-auto rounded-md border p-3">
                         <JsonViewer data={raw} />
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell colSpan={12} className="p-0">
+                    <div className="bg-muted/20 border-t p-4">
+                      <div className="mb-2 text-sm font-medium">
+                        User details
+                      </div>
+
+                      <div
+                        ref={scrollRef}
+                        className="bg-background max-h-[1020px] overflow-auto rounded-md border p-3"
+                      >
+                        <UserLogs
+                          userUuid={raw.uuid}
+                          scrollContainerRef={scrollRef}
+                        />
                       </div>
                     </div>
                   </TableCell>
