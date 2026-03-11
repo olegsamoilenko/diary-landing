@@ -12,6 +12,7 @@ import type { User } from '@/types'
 import SendEmailDialog from '@/components/admin/admins/SendEmailDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
 import { formatAcquisitionSource } from '@/lib/utils/formatAcquisitionSource'
+import { Button } from '@/components/ui/button'
 
 type Props = {
   users: User[]
@@ -45,7 +46,7 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Source</TableHead>
-          {/*<TableHead>Action</TableHead>*/}
+          <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
 
@@ -87,12 +88,23 @@ export default function AllUsersTable({ users }: Props) {
                     {formatAcquisitionSource(raw?.acquisitionMetaJson)}
                   </div>
                 </TableCell>
-                {/*<TableCell onClick={(e) => e.stopPropagation()}>*/}
-                {/*  <SendEmailDialog*/}
-                {/*    email={raw.email as any as string}*/}
-                {/*    lang={raw.settings?.lang}*/}
-                {/*  />*/}
-                {/*</TableCell>*/}
+                <TableCell onClick={(e) => e.stopPropagation()}>
+                  <Button
+                    onClick={() => {
+                      window.open(
+                        `/admin/users-list/logs?userUuid=${encodeURIComponent(raw.uuid)}`,
+                        '_blank',
+                        'noopener,noreferrer',
+                      )
+                    }}
+                  >
+                    Logs
+                  </Button>
+                  {/*<SendEmailDialog*/}
+                  {/*  email={raw.email as any as string}*/}
+                  {/*  lang={raw.settings?.lang}*/}
+                  {/*/>*/}
+                </TableCell>
               </TableRow>
 
               {isOpen && (
