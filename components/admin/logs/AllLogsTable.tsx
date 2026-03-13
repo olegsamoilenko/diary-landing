@@ -9,11 +9,13 @@ import {
 import React from 'react'
 import { Log, LogsLevel } from '@/types'
 import { RenderValue, normalizeData } from '@/lib/utils/log-render'
+import { Button } from '@/components/ui/button'
 
 type Props = {
   logs: Log[]
+  showFullLogsByUser?: (userUuid: string) => void
 }
-export default function AllLogsTable({ logs }: Props) {
+export default function AllLogsTable({ logs, showFullLogsByUser }: Props) {
   function levelColor(level: unknown): string {
     const v = String(level).toLowerCase().trim()
     switch (v) {
@@ -28,6 +30,7 @@ export default function AllLogsTable({ logs }: Props) {
         return 'inherit'
     }
   }
+
   return (
     <Table>
       <TableHeader>
@@ -94,7 +97,14 @@ export default function AllLogsTable({ logs }: Props) {
                   {String(raw.level)}
                 </span>
               </TableCell>
-              <TableCell>{raw.userUuid}</TableCell>
+              <TableCell>
+                <Button
+                  onClick={() => showFullLogsByUser?.(raw.userUuid)}
+                  variant="outline"
+                >
+                  {raw.userUuid}
+                </Button>
+              </TableCell>
               <TableCell>{raw.userId}</TableCell>
             </TableRow>
           ))}

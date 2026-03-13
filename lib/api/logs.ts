@@ -45,6 +45,34 @@ export const getLogs = async (
   }
 }
 
+export const getLogsByUuid = async (
+  uuid: string | undefined,
+  level: LogsLevel,
+  page: number,
+  limit: number,
+) => {
+  try {
+    const res = await fetch(`/api/logs/get-logs-by-uuid`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ uuid, level, page, limit }),
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch logs')
+    }
+
+    const data = await res.json()
+    console.log('getLogsByUuid', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch getLogsByUuid failed:', msg)
+    return undefined
+  }
+}
+
 export const getServerLogs = async (
   startDate: Date | string,
   endDate: Date | string,

@@ -18,7 +18,12 @@ import { getLogs } from '@/lib/api/logs'
 import AllLogsTable from '@/components/admin/logs/AllLogsTable'
 import Pagination from '@/components/ui/pagination'
 
-type SP = { page?: string }
+type SP = {
+  page?: string
+  userUuid?: string
+  startDate?: string
+  endDate?: string
+}
 export default function LogsPage({
   searchParams,
 }: {
@@ -26,12 +31,20 @@ export default function LogsPage({
 }) {
   const spPromise: Promise<SP> = searchParams ?? Promise.resolve({})
   const sp = use(spPromise)
-  const [startDate, setStartDate] = useState<Date | undefined>(undefined)
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined)
+  const [startDate, setStartDate] = useState<Date | undefined>(
+    new Date(
+      sp.startDate ?? new Date().toISOString().split('T')[0] + 'T00:00:00Z',
+    ),
+  )
+  const [endDate, setEndDate] = useState<Date | undefined>(
+    new Date(
+      sp.endDate ?? new Date().toISOString().split('T')[0] + 'T23:59:59Z',
+    ),
+  )
   const [logsLevel, setLogsLevel] = useState<LogsLevel>(LogsLevel.ALL)
   const [errorLogsLevel, setErrorLogsLevel] = useState<string | null>(null)
   const [userId, setUserId] = useState<number | undefined>(undefined)
-  const [userUuid, setUserUuid] = useState<string | undefined>(undefined)
+  const [userUuid, setUserUuid] = useState<string | undefined>(sp.userUuid)
   const page = Number(sp.page ?? '1') || 1
   const limit = 50
   const [logs, setLogs] = useState<{
@@ -63,9 +76,16 @@ export default function LogsPage({
     loadLogs(page)
   }, [page])
 
-  useEffect(() => {
-    console.log('logsLevel', logsLevel)
-  }, [logsLevel])
+  function showFullLogsByUser(uuid: string) {
+    console.log('showFullLogsByUser', uuid)
+    console.log('startDate', startDate)
+    console.log('endDate', endDate)
+    window.open(
+      `/admin/logs?startDate=${startDate}&endDate=${endDate}&userUuid=${uuid}&logsLevel=${logsLevel}&page=${page}`,
+      '_blank',
+      'noopener,noreferrer',
+    )
+  }
 
   return (
     <div>
@@ -134,7 +154,10 @@ export default function LogsPage({
         <Button onClick={() => loadLogs(1)}>Load</Button>
       </div>
       <div>
-        <AllLogsTable logs={logs.logs} />
+        <AllLogsTable
+          logs={logs.logs}
+          showFullLogsByUser={showFullLogsByUser}
+        />
         <Pagination page={logs?.page ?? 0} pageCount={logs?.pageCount ?? 0} />
       </div>
     </div>
