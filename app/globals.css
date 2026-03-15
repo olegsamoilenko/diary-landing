@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import './globals-admin.css';
 @import '../styles/_variables.scss';
 @import '../styles/_keyframe-animations.scss';
 @import '../styles/_tiptap-main.scss';
@@ -7,132 +8,303 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --color-landing-header: var(--landing-header);
+  --color-landing-header-foreground: var(--landing-header-foreground);
+  --color-landing-header-border: var(--landing-header-border);
+
+  --color-landing-surface: var(--landing-surface);
+  --color-landing-surface-2: var(--landing-surface-2);
+  --color-landing-surface-3: var(--landing-surface-3);
+
+  --color-landing-border: var(--landing-border);
+  --color-landing-border-strong: var(--landing-border-strong);
+  --color-landing-divider: var(--landing-divider);
+
+  --color-landing-soft: var(--landing-soft);
+  --color-landing-soft-strong: var(--landing-soft-strong);
+
+  --color-landing-primary-mist: var(--landing-primary-mist);
+  --color-landing-accent-mist: var(--landing-accent-mist);
+
+  --color-landing-text-strong: var(--landing-text-strong);
+  --color-landing-text: var(--landing-text);
+  --color-landing-text-muted: var(--landing-text-muted);
+  --color-landing-text-soft: var(--landing-text-soft);
+  --color-landing-text-on-soft: var(--landing-text-on-soft);
+  --color-landing-text-inverse: var(--landing-text-inverse);
+
+  --color-landing-primary: var(--landing-primary);
+  --color-landing-primary-foreground: var(--landing-primary-foreground);
+  --color-landing-primary-hover: var(--landing-primary-hover);
+  --color-landing-primary-active: var(--landing-primary-active);
+  --color-landing-primary-border: var(--landing-primary-border);
+  --color-landing-primary-soft: var(--landing-primary-soft);
+
+  --color-landing-secondary: var(--landing-secondary);
+  --color-landing-secondary-hover: var(--landing-secondary-hover);
+  --color-landing-secondary-foreground: var(--landing-secondary-foreground);
+  --color-landing-secondary-border: var(--landing-secondary-border);
+
+  --color-landing-accent-soft: var(--landing-accent-soft);
+
+  --color-landing-focus-ring: var(--landing-focus-ring);
+  --color-landing-overlay: var(--landing-overlay);
+  --color-landing-shadow-color: var(--landing-shadow-color);
+
+  --color-landing-success-soft: var(--landing-success-soft);
+  --color-landing-success-foreground: var(--landing-success-foreground);
+
+  --color-landing-warning-soft: var(--landing-warning-soft);
+  --color-landing-warning-foreground: var(--landing-warning-foreground);
+
+  --color-landing-glow-primary: var(--landing-glow-primary);
+  --color-landing-glow-accent: var(--landing-glow-accent);
+  --color-landing-paper-tint: var(--landing-paper-tint);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --font-sans: var(--font-manrope);
+  --font-accent: var(--font-prata);
+  /* =========================
+     LANDING / CORE SURFACES
+     ========================= */
+
+  --landing-header: oklch(0.978 0.01 100); /* фон sticky header, top bar */
+  --landing-header-foreground: oklch(0.21 0.03 255); /* текст/іконки в header */
+  --landing-header-border: oklch(0.91 0.013 100); /* нижня межа header, border header controls */
+
+  --landing-surface: oklch(0.992 0.004 98); /* базова світла поверхня: cards, dropdowns, floating panels */
+  --landing-surface-2: oklch(0.972 0.01 98); /* другий рівень поверхні: pressed/secondary cards, controls, subtle elevated blocks */
+
+  /* НОВЕ */
+  --landing-surface-3: oklch(0.952 0.012 98); /* ще щільніша surface для виділених карток, FAQ opened state, secondary emphasized panels */
+
+
+  /* =========================
+     LANDING / BORDERS & LINES
+     ========================= */
+
+  /* НОВЕ */
+  --landing-border: oklch(0.92 0.01 98); /* стандартні бордери card, dropdown, input-like elements */
+  --landing-border-strong: oklch(0.88 0.014 98); /* сильніший border для active container, emphasized blocks, sticky separation */
+  --landing-divider: oklch(0.94 0.008 98); /* дуже легкі розділювачі між items, FAQ rows, nav separators */
+
+
+  /* =========================
+     LANDING / SOFT STATES
+     ========================= */
+
+  --landing-soft: oklch(0.89 0.038 228 / 0.6); /* hover / active background для nav items, pills, subtle selected states */
+  --landing-soft-strong: oklch(0.84 0.05 228 / 0.76); /* сильніший selected state, hovered cards, emphasized chips */
+
+  --landing-primary-soft: oklch(0.93 0.03 215); /* м’яка primary-підкладка для selected CTA block, icon badges, soft highlights */
+  --landing-accent-soft: oklch(0.94 0.04 190); /* альтернативний м’який accent для decorative badges, info callouts, secondary highlights */
+
+  /* НОВЕ */
+  --landing-primary-mist: oklch(0.96 0.02 215 / 0.7); /* дуже слабка primary haze: background glow, hero ornaments, subtle gradient overlays */
+  --landing-accent-mist: oklch(0.965 0.018 190 / 0.72); /* дуже легкі декоративні tint areas, illustrations, floating blurred spots */
+
+
+  /* =========================
+     LANDING / TEXT
+     ========================= */
+
+  --landing-text-strong: oklch(0.28 0.024 255); /* головні заголовки, strong labels, важливі значення */
+  --landing-text: oklch(0.4 0.02 255); /* основний текст, body copy, nav items */
+  --landing-text-muted: oklch(0.56 0.017 255); /* secondary text, helper text, meta info, captions */
+
+  /* НОВЕ */
+  --landing-text-soft: oklch(0.68 0.014 255); /* ще легший текст: timestamps, decorative labels, tiny UI notes */
+  --landing-text-on-soft: oklch(0.26 0.028 255); /* текст на soft / primary-soft / accent-soft backgrounds */
+  --landing-text-inverse: oklch(0.985 0.004 85); /* текст на щільних/яскравих accent backgrounds, dark-ish overlays */
+
+
+  /* =========================
+     LANDING / PRIMARY ACTION
+     ========================= */
+
+  --landing-primary: oklch(0.72 0.09 215); /* основний CTA, головні кнопки, selected important controls */
+  --landing-primary-hover: oklch(0.66 0.1 215); /* hover / pressed для primary button */
+  --landing-primary-foreground: oklch(0.99 0.004 85); /* текст/іконки на primary */
+
+  /* НОВЕ */
+  --landing-primary-active: oklch(0.61 0.11 215); /* pressed/active state для CTA кнопки */
+  --landing-primary-border: oklch(0.66 0.08 215); /* outline/edge для primary button або strong active chip, якщо потрібен контур */
+
+
+  /* =========================
+     LANDING / SECONDARY ACTIONS
+     ========================= */
+
+  /* НОВЕ */
+  --landing-secondary: oklch(0.965 0.012 98); /* secondary button background, neutral pills, calm controls */
+  --landing-secondary-hover: oklch(0.945 0.015 98); /* hover для secondary button */
+  --landing-secondary-foreground: oklch(0.26 0.028 255); /* текст/іконки на secondary background */
+  --landing-secondary-border: oklch(0.9 0.012 98); /* border secondary buttons, chips, controls */
+
+
+  /* =========================
+     LANDING / FOCUS & INTERACTION
+     ========================= */
+
+  /* НОВЕ */
+  --landing-focus-ring: oklch(0.74 0.08 215 / 0.35); /* focus ring для buttons, nav, dropdown items */
+  --landing-overlay: oklch(0.24 0.02 255 / 0.08); /* легкий overlay для mobile menu backdrop, modal backdrop */
+  --landing-shadow-color: oklch(0.22 0.02 255 / 0.12); /* базовий tint для shadow system, якщо хочеш уніфікувати тіні */
+
+
+  /* =========================
+     LANDING / STATUS-LIKE ROLES
+     ========================= */
+
+  /* НОВЕ — не для "системи статусів" як у адмінці, а для м’яких semantic blocks на лендингу */
+  --landing-success-soft: oklch(0.95 0.03 155); /* trust/safe/privacy positive notes, “encrypted”, “private”, “secure” badges */
+  --landing-success-foreground: oklch(0.32 0.05 155); /* текст/іконки на success-soft */
+
+  --landing-warning-soft: oklch(0.96 0.035 95); /* “gentle warning”, disclaimers, careful notes */
+  --landing-warning-foreground: oklch(0.4 0.05 95); /* текст/іконки на warning-soft */
+
+
+  /* =========================
+     LANDING / DECORATIVE / ATMOSPHERIC
+     ========================= */
+
+  /* НОВЕ */
+  --landing-glow-primary: oklch(0.94 0.03 215 / 0.45); /* blur glow біля CTA, hero ornaments, icon aura */
+  --landing-glow-accent: oklch(0.95 0.028 190 / 0.42); /* accent glow для decorative illustrations / floating details */
+  --landing-paper-tint: oklch(0.985 0.008 92); /* легкий paper tint для section wrappers, where plain white feels too sterile */
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+html {
+  scroll-behavior: smooth;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+.landing-theme {
+  min-height: 100vh;
+  background: var(--landing-header);
+  color: var(--landing-text);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.landing-theme .font-accent {
+  font-family: var(--font-accent), serif;
+}
+
+.landing-theme p {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.landing-theme h1,
+.landing-theme h2,
+.landing-theme h3,
+.landing-theme h4,
+.landing-theme h5,
+.landing-theme h6 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 500;
+}
+
+.landing-theme h1 {
+  font-size: 30px;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  color: var(--landing-text);
+  font-weight: 400;
+}
+
+.landing-theme h2 {
+  font-size: 24px;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--landing-text-strong);
+}
+
+.landing-theme h3 {
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--landing-text-strong);
+}
+
+.landing-theme .text-small {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.landing-theme .text-eyebrow {
+  font-size: 12px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.landing-theme .text-lead {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .landing-theme {
+    font-size: 16px;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .landing-theme h1 {
+    font-size: 42px;
+  }
+
+  .landing-theme h2 {
+    font-size: 32px;
+  }
+
+  .landing-theme h3 {
+    font-size: 22px;
+  }
+
+  .landing-theme .text-small {
+    font-size: 13px;
+  }
+
+  .landing-theme .text-eyebrow {
+    font-size: 13px;
+  }
+
+  .landing-theme .text-lead {
+    font-size: 18px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (min-width: 1024px) {
+  .landing-theme h1 {
+    font-size: 54px;
+  }
+
+  .landing-theme h2 {
+    font-size: 40px;
+  }
+
+  .landing-theme h3 {
+    font-size: 26px;
+  }
+
+  .landing-theme .text-small {
+    font-size: 14px;
+  }
+
+  .landing-theme .text-eyebrow {
+    font-size: 14px;
+  }
+
+  .landing-theme .text-lead {
+    font-size: 20px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 1280px) {
+  .landing-theme h1 {
+    font-size: 64px;
+  }
 }

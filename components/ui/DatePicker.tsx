@@ -16,14 +16,14 @@ type DatePickerProps = {
   label: string
   placeholder: string
   date: Date | undefined
-  setDate: (date: Date | undefined) => void
+  setDateAction: (date: Date | undefined) => void
 }
 
 export function DatePicker({
   label,
   placeholder,
   date,
-  setDate,
+  setDateAction,
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
 
@@ -49,7 +49,7 @@ export function DatePicker({
             selected={date}
             captionLayout="dropdown"
             onSelect={(date) => {
-              setDate(date)
+              setDateAction(date)
               setOpen(false)
             }}
           />

@@ -1,6 +1,10 @@
+import createMiddleware from 'next-intl/middleware'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { routing } from '@/lib/i18n/routing'
 import { jwtVerify } from 'jose'
+
+const handleI18nRouting = createMiddleware(routing)
 
 const ADMIN_PREFIX = '/admin'
 const AUTH_PATH = '/admin/auth'
@@ -27,6 +31,14 @@ async function verify(token?: string) {
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
 
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next()
+  }
+
   if (PUBLIC_ADMIN.some((p) => pathname.startsWith(p))) {
     return NextResponse.next()
   }
@@ -35,47 +47,19 @@ export async function proxy(req: NextRequest) {
     const token = req.cookies.get('admin_session')?.value
     const session = await verify(token)
 
-    const debug = (res: NextResponse) => {
-      if (session) {
-        res.headers.set('x-mw', 'hit')
-        res.headers.set('x-admin-role', String(session.role || 'none'))
-        res.headers.set('x-admin-active', String(session.active))
-      } else {
-        res.headers.set('x-mw', 'no-session')
-      }
-      return res
-    }
-
-    function getOrigin(req: NextRequest) {
-      const xfProto = req.headers.get('x-forwarded-proto')
-      const xfHost = req.headers.get('x-forwarded-host')
-      const host = xfHost || req.headers.get('host') || 'localhost:3000'
-
-      const proto =
-        xfProto ||
-        (host.includes('localhost') || host.startsWith('127.0.0.1')
-          ? 'http'
-          : 'https')
-      return `${proto}://${host}`
-    }
-
     if (!session || session.type !== 'admin' || session.active !== true) {
-      const next = encodeURIComponent(req.nextUrl.pathname + req.nextUrl.search)
-      const origin = getOrigin(req)
-      const url = new URL(`${AUTH_PATH}?next=${next}`, origin)
+      const url = req.nextUrl.clone()
+      url.pathname = AUTH_PATH
+      url.searchParams.set('next', req.nextUrl.pathname + req.nextUrl.search)
       return NextResponse.redirect(url)
     }
 
-    // if (pathname.startsWith('/admin/users') && session.role !== 'SUPER_ADMIN') {
-    //   const url = req.nextUrl.clone()
-    //   url.pathname = '/admin'
-    //   return debug(NextResponse.redirect(url))
-    // }
-
-    return debug(NextResponse.next())
+    return NextResponse.next()
   }
 
-  return NextResponse.next()
+  return handleI18nRouting(req)
 }
 
-export const config = { matcher: ['/admin', '/admin/:path*'] }
+export const config = {
+  matcher: ['/((?!_next|api|.*\\..*).*)'],
+}

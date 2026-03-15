@@ -1,0 +1,31 @@
+{
+  "Logo": {
+    "smartJournal": "Розумний щоденник"
+  },
+  "Header": {
+    "Menu": {
+      "home": "Головна",
+      "whyUs": "Чому ми",
+      "whyNemory": "Чому Nemory",
+      "features": "Можливості",
+      "howItWorks": "Як це працює",
+      "privacy": "Приватність",
+      "gallery": "Галерея",
+      "getStarted": "Почати",
+      "faq": "Поширені запитання"
+    }
+  },
+  "Sections": {
+    "Hero": {
+      "Title": {
+        "yourPersonal": "Ваш особистий",
+        "journal": "щоденник",
+        "&": "і",
+        "growth": "помічник",
+        "companion": "для зростання",
+        "with": "з",
+        "ai": "AI"
+      }
+    }
+  }
+}

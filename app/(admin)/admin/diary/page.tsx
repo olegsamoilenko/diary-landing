@@ -99,13 +99,13 @@ export default function EntriesPage() {
           label={'Start date'}
           placeholder={'Start date'}
           date={startDate}
-          setDate={setStartDate}
+          setDateAction={setStartDate}
         />
         <DatePicker
           label={'End date'}
           placeholder={'End date'}
           date={endDate}
-          setDate={setEndDate}
+          setDateAction={setEndDate}
         />
         <div className="items-end">
           <Select

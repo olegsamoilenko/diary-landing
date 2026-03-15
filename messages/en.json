@@ -1,0 +1,31 @@
+{
+  "Logo": {
+    "smartJournal": "Smart Journal"
+  },
+  "Header": {
+    "Menu": {
+      "home": "Home",
+      "whyUs": "Why Us",
+      "whyNemory": "Why Nemory",
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "privacy": "Privacy",
+      "gallery": "Gallery",
+      "getStarted": "Get Started",
+      "faq": "FAQ"
+    }
+  },
+  "Sections": {
+    "Hero": {
+      "Title": {
+        "yourPersonal": "Your personal",
+        "journal": "journal",
+        "&": "&amp;",
+        "growth": "growth",
+        "companion": "companion",
+        "with": "with",
+        "ai": "AI"
+      }
+    }
+  }
+}

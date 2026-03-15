@@ -75,13 +75,13 @@ export default function LogsPage({
           label={'Start date'}
           placeholder={'Start date'}
           date={startDate}
-          setDate={setStartDate}
+          setDateAction={setStartDate}
         />
         <DatePicker
           label={'End date'}
           placeholder={'End date'}
           date={endDate}
-          setDate={setEndDate}
+          setDateAction={setEndDate}
         />
         <div className="items-end">
           <div className="mb-2">Level</div>
