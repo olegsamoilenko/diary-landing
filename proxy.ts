@@ -29,6 +29,14 @@ async function verify(token?: string) {
 }
 
 export async function proxy(req: NextRequest) {
+  console.log('--- PROXY DEBUG START ---')
+  console.log('req.url =', req.url)
+  console.log('nextUrl.href =', req.nextUrl.href)
+  console.log('host =', req.headers.get('host'))
+  console.log('x-forwarded-host =', req.headers.get('x-forwarded-host'))
+  console.log('x-forwarded-proto =', req.headers.get('x-forwarded-proto'))
+  console.log('x-forwarded-port =', req.headers.get('x-forwarded-port'))
+  console.log('--- PROXY DEBUG END ---')
   const { pathname } = req.nextUrl
 
   if (
