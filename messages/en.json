@@ -20,12 +20,18 @@
       "Title": {
         "yourPersonal": "Your personal",
         "journal": "journal",
-        "&": "&amp;",
+        "&": "&",
         "growth": "growth",
         "companion": "companion",
         "with": "with",
         "ai": "AI"
-      }
+      },
+      "subtitle": "Capture thoughts, track emotions, set goals and reflect with AI - all in one place.",
+      "aiReflections": "AI Reflections",
+      "moodTracking": "Mood Tracking",
+      "goalsAndHabits": "Goals & Habits",
+      "progressAnalytics": "Progress Analytics",
+      "getItOn": "Get it on Google Play"
     }
   }
 }
