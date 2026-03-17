@@ -24,7 +24,7 @@ export default function Pill({
         'inline-flex items-center rounded-full border whitespace-nowrap',
         'border-landing-border bg-landing-surface',
         'gap-2 px-3 py-2',
-        'md:gap-2.5 md:px-4 md:py-2.5',
+        'md:gap-2.5 md:px-3 md:py-2',
         'shadow-[0_8px_24px_-12px_var(--landing-shadow-color)]',
         className,
       )}

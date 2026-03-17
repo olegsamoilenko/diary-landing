@@ -8,7 +8,9 @@ export default function TitleUk({ className }: TitleProps) {
   const t = useTranslations('Sections.Hero.TitleEn')
   return (
     <h1 className={clsx(className, 'text-left')}>
-      <span className="text-landing-primary mb-2 block">Розумний щоденник</span>
+      <span className="text-landing-primary mb-2 block text-nowrap">
+        Розумний щоденник
+      </span>
       <span className="mb-2 block">для думок, цілей</span>
       <span className="block text-nowrap">
         і зростання{' '}

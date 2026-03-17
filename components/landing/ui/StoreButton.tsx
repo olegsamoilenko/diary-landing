@@ -54,7 +54,7 @@ export default function StoreButton({
 
   const sharedClassName = clsx(
     'group inline-flex items-center justify-center gap-3 rounded-[12px]',
-    'px-3 py-2',
+    'px-3 py-2 md:px-5 md:py-3',
     'border border-white/6',
     'bg-[linear-gradient(180deg,rgba(44,49,63,0.98)_0%,rgba(28,33,46,0.98)_100%)]',
     'text-[var(--landing-text-inverse)]',
@@ -69,7 +69,12 @@ export default function StoreButton({
 
   if (href) {
     return (
-      <a href={href} className={sharedClassName}>
+      <a
+        href={href}
+        className={sharedClassName}
+        target="_blank"
+        rel="noreferrer"
+      >
         {content}
       </a>
     )
