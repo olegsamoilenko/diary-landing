@@ -37,6 +37,13 @@
       "progressAnalytics": "Аналітика прогресу",
       "getItOn": "Завантажити в Google Play",
       "downloadOn": "Завантажити в"
+    },
+    "Credibility": {
+      "title": "Credibility",
+      "card1": "Приватний простір для думок",
+      "card2": "AI, що допомагає краще зрозуміти себе",
+      "card3": "Цілі, звички й аналітика в одному місці",
+      "card4": "Доступно на Google Play"
     }
   }
 }

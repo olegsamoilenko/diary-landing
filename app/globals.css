@@ -219,14 +219,14 @@ html {
   font-size: 24px;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: var(--landing-text-strong);
+  color: var(--landing-text);
 }
 
 .landing-theme h3 {
   font-size: 18px;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: var(--landing-text-strong);
+  color: var(--landing-text);
 }
 
 .landing-theme .text-small {

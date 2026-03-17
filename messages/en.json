@@ -37,6 +37,13 @@
       "progressAnalytics": "Progress Analytics",
       "getItOn": "Get it on Google Play",
       "downloadOn": "Download on"
+    },
+    "Credibility": {
+      "title": "Credibility",
+      "card1": "A private space for your thoughts",
+      "card2": "AI that helps you understand yourself better",
+      "card3": "Goals, habits and insights in one place",
+      "card4": "Available on Google Play"
     }
   }
 }
