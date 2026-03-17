@@ -1,13 +1,23 @@
+'use client'
+
 import Image from 'next/image'
-import Title from './Title'
+import TitleEn from './TitleEn'
 import { useTranslations } from 'next-intl'
 import Pill from '@/components/landing/ui/Pill'
 import { Brain, ChartNoAxesColumn, Flame, Target } from 'lucide-react'
 import StoreButton from '@/components/landing/ui/StoreButton'
 import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
+import { useLocale } from 'next-intl'
+import { useEffect } from 'react'
+import TitleUk from '@/components/landing/hero/TitleUk'
 
 export default function HeroSection() {
   const t = useTranslations('Sections.Hero')
+  const locale = useLocale()
+
+  useEffect(() => {
+    console.log('locale: ', locale)
+  }, [locale])
   return (
     <section
       className="relative h-[680px] overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -16,14 +26,28 @@ export default function HeroSection() {
       }}
     >
       <div className="mx-auto max-w-7xl px-6 py-4">
-        <Title className="mb-6" />
+        {locale === 'uk' && <TitleUk className="mb-6"></TitleUk>}
+        {locale === 'en' && <TitleEn className="mb-6"></TitleEn>}
+        <div className="mb-6">
+          <p>{t('subtitle')}</p>
+        </div>
+        <div>
+          <StoreButton
+            href="#"
+            icon={<GooglePlayIcon />}
+            sublabel={t('downloadOn')}
+            className="mb-6"
+          >
+            Google Play
+          </StoreButton>
+        </div>
         <div className="mb-4 flex items-center justify-center gap-4">
           <Image
             src="/assets/images/screens/screen-3.png"
             alt="Nemory logo"
             width={100}
             height={200}
-            className="relative left-14 z-1 h-[190px] w-auto bg-transparent"
+            className="relative left-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent"
             priority
           />
           <Image
@@ -31,7 +55,7 @@ export default function HeroSection() {
             alt="Nemory logo"
             width={100}
             height={200}
-            className="relative z-2 w-auto bg-transparent"
+            className="relative z-2 h-[250px] w-auto bg-transparent"
             priority
           />
           <Image
@@ -39,12 +63,9 @@ export default function HeroSection() {
             alt="Nemory logo"
             width={100}
             height={200}
-            className="relative right-14 z-1 h-[190px] w-auto bg-transparent"
+            className="relative right-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent"
             priority
           />
-        </div>
-        <div className="mb-6">
-          <p>{t('subtitle')}</p>
         </div>
         <div className="mb-6">
           <div className="mb-2 flex items-center justify-center gap-2">
@@ -103,11 +124,6 @@ export default function HeroSection() {
               {t('progressAnalytics')}
             </Pill>
           </div>
-        </div>
-        <div>
-          <StoreButton href="#" icon={<GooglePlayIcon />}>
-            {t('getItOn')}
-          </StoreButton>
         </div>
       </div>
     </section>

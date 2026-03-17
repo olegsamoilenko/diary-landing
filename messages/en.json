@@ -1,4 +1,8 @@
 {
+  "Metadata": {
+    "title": "Nemory - Smart Journal",
+    "description": "Private AI journal for thoughts, goals, mood tracking and personal growth."
+  },
   "Logo": {
     "smartJournal": "Smart Journal"
   },
@@ -31,7 +35,8 @@
       "moodTracking": "Mood Tracking",
       "goalsAndHabits": "Goals & Habits",
       "progressAnalytics": "Progress Analytics",
-      "getItOn": "Get it on Google Play"
+      "getItOn": "Get it on Google Play",
+      "downloadOn": "Download on"
     }
   }
 }

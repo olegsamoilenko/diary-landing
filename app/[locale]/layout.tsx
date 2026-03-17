@@ -1,8 +1,13 @@
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, setRequestLocale } from 'next-intl/server'
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/lib/i18n/routing'
+import type { Metadata } from 'next'
 
 type Props = {
   children: React.ReactNode
@@ -11,6 +16,30 @@ type Props = {
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+
+  const t = await getTranslations({
+    locale,
+    namespace: 'Metadata',
+  })
+
+  const isUk = locale === 'uk'
+  const path = isUk ? '/uk' : '/en'
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: path,
+      languages: {
+        en: '/en',
+        uk: '/uk',
+      },
+    },
+  }
 }
 
 export default async function LocaleLayout({ children, params }: Props) {

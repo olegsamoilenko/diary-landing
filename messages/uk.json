@@ -1,4 +1,8 @@
 {
+  "Metadata": {
+    "title": "Nemory - Розумний щоденник",
+    "description": "Приватний AI-щоденник для думок, цілей, трекінгу настрою та саморозвитку."
+  },
   "Logo": {
     "smartJournal": "Розумний щоденник"
   },
@@ -31,7 +35,8 @@
       "moodTracking": "Трекінг настрою",
       "goalsAndHabits": "Цілі та звички",
       "progressAnalytics": "Аналітика прогресу",
-      "getItOn": "Завантажити в Google Play"
+      "getItOn": "Завантажити в Google Play",
+      "downloadOn": "Завантажити в"
     }
   }
 }

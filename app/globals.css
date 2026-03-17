@@ -184,7 +184,7 @@ html {
   background: var(--landing-header);
   color: var(--landing-text);
   font-family: var(--font-sans), sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 

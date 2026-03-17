@@ -65,14 +65,14 @@ export default function SendEmailDialog({ email, lang, onSuccess }: Props) {
               <div>Lang: {lang}</div>
               <div>
                 <Label htmlFor="title" className="mb-2">
-                  Title
+                  TitleEn
                 </Label>
                 <Input
                   id="title"
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Title"
+                  placeholder="TitleEn"
                 />
               </div>
               <Editor
