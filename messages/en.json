@@ -44,6 +44,50 @@
       "card2": "AI that helps you understand yourself better",
       "card3": "Goals, habits and insights in one place",
       "card4": "Available on Google Play"
+    },
+    "WhyNemory": {
+      "title": "Why Nemory?",
+      "Journaling": {
+        "title": "Write freely, reflect more deeply",
+        "description": "A private space for your thoughts, emotions, and everyday moments — designed to help you slow down, process, and reflect with more clarity.",
+        "point1": "Rich journal entries",
+        "point2": "Mood and personal context",
+        "point3": "Space for honest reflection"
+      },
+      "AiReflection": {
+        "title": "AI that helps you notice what matters",
+        "description": "Get thoughtful reflections that help you better understand your emotions, patterns, and the things that may be shaping your day.",
+        "point1": "Insightful reflections",
+        "point2": "Better self-awareness",
+        "point3": "Supportive guidance"
+      },
+      "Goals": {
+        "title": "Turn reflection into real progress",
+        "description": "Connect your journal with goals, habits, and personal insights so growth feels more intentional, more visible, and easier to sustain.",
+        "point1": "Track goals and habits",
+        "point2": "See your progress over time",
+        "point3": "Build a more connected system"
+      }
+    },
+    "CoreFeatures": {
+      "title": "How Nemory supports your growth",
+      "description": "Nemory helps you move from scattered thoughts to clearer self-understanding, meaningful action, and steady personal progress.",
+      "card1": {
+        "title": "See yourself more clearly",
+        "description": "Nemory helps you go beyond raw thoughts by turning your entries into clearer self-understanding through reflection, patterns, and AI-guided insight."
+      },
+      "card2": {
+        "title": "Get support when your mind feels full",
+        "description": "Instead of being left alone with everything you feel, Nemory helps you process mental and emotional overload with a calmer space to reflect and respond."
+      },
+      "card3": {
+        "title": "Turn reflection into real change",
+        "description": "Nemory connects your thoughts with goals, habits, and personal direction — so self-awareness can become something practical, not just personal."
+      },
+      "card4": {
+        "title": "Notice growth that is easy to miss",
+        "description": "By bringing together your entries, patterns, and progress over time, Nemory helps you see meaningful change that would otherwise stay invisible day to day."
+      }
     }
   }
 }

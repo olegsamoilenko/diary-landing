@@ -1,6 +1,6 @@
 import HeroSection from '@/components/landing/hero/HeroSection'
 import CredibilityStripSection from '@/components/landing/CredibilityStripSection'
-import WhyNemorySection from '@/components/landing/WhyNemorySection'
+import WhyNemorySection from '@/components/landing/why-namory/WhyNemorySection'
 import CoreFeaturesSection from '@/components/landing/CoreFeaturesSection'
 import HowItWorksSection from '@/components/landing/HowItWorksSection'
 import SafeSpaceSection from '@/components/landing/SafeSpaceSection'

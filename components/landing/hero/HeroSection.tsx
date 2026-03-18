@@ -15,9 +15,6 @@ export default function HeroSection() {
   const t = useTranslations('Sections.Hero')
   const locale = useLocale()
 
-  useEffect(() => {
-    console.log('locale: ', locale)
-  }, [locale])
   return (
     <section
       className="relative h-[690px] overflow-hidden bg-cover bg-center bg-no-repeat md:h-[500px] lg:h-[530px] xl:h-[530px]"
@@ -47,24 +44,24 @@ export default function HeroSection() {
               <Image
                 src="/assets/images/screens/screen-02-en.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative left-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent"
                 priority
               />
               <Image
                 src="/assets/images/screens/screen-01-en.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative z-2 h-[250px] w-auto bg-transparent"
                 priority
               />
               <Image
                 src="/assets/images/screens/screen-03-en.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative right-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent"
                 priority
               />
@@ -75,24 +72,24 @@ export default function HeroSection() {
               <Image
                 src="/assets/images/screens/screen-02-uk.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative left-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent"
                 priority
               />
               <Image
                 src="/assets/images/screens/screen-01-uk.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative z-2 h-[250px] w-auto bg-transparent"
                 priority
               />
               <Image
                 src="/assets/images/screens/screen-03-uk.png"
                 alt="Nemory prom screen"
-                width={100}
-                height={200}
+                width={1152}
+                height={2048}
                 className="relative right-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent"
                 priority
               />
@@ -163,24 +160,24 @@ export default function HeroSection() {
             <Image
               src="/assets/images/screens/screen-02-en.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative left-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent lg:h-[280px] xl:left-22 xl:h-[310px]"
               priority
             />
             <Image
               src="/assets/images/screens/screen-01-en.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative z-2 h-[320px] w-auto bg-transparent lg:h-[350px] xl:h-[380px]"
               priority
             />
             <Image
               src="/assets/images/screens/screen-03-en.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative right-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent lg:h-[280px] xl:right-22 xl:h-[310px]"
               priority
             />
@@ -191,24 +188,24 @@ export default function HeroSection() {
             <Image
               src="/assets/images/screens/screen-02-uk.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative left-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent lg:h-[280px] xl:left-22 xl:h-[310px]"
               priority
             />
             <Image
               src="/assets/images/screens/screen-01-uk.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative z-2 h-[320px] w-auto bg-transparent lg:h-[350px] xl:h-[380px]"
               priority
             />
             <Image
               src="/assets/images/screens/screen-03-uk.png"
               alt="Nemory prom screen"
-              width={100}
-              height={200}
+              width={1152}
+              height={2048}
               className="relative right-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent lg:h-[280px] xl:right-22 xl:h-[310px]"
               priority
             />
