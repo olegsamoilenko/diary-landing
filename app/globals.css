@@ -247,6 +247,27 @@ html {
   line-height: 1.5;
 }
 
+.showcase-swiper .swiper-pagination {
+  position: static;
+  margin-top: 24px;
+}
+
+.showcase-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  opacity: 1;
+  background: var(--landing-soft-strong);
+  transition:
+          transform 250ms ease,
+          background-color 250ms ease,
+          opacity 250ms ease;
+}
+
+.showcase-swiper .swiper-pagination-bullet-active {
+  background: var(--landing-primary);
+  transform: scale(1.2);
+}
+
 @media (min-width: 768px) {
   .landing-theme {
     font-size: 16px;

@@ -88,6 +88,37 @@
         "title": "Notice growth that is easy to miss",
         "description": "By bringing together your entries, patterns, and progress over time, Nemory helps you see meaningful change that would otherwise stay invisible day to day."
       }
+    },
+    "HowItWorks": {
+      "title": "How it works",
+      "description": "A simple flow that helps you turn everyday thoughts into reflection, deeper conversation and personal growth.",
+      "card1": {
+        "title": "Capture what’s on your mind",
+        "description": "Write about your day, your thoughts, or whatever feels important in the moment."
+      },
+      "card2": {
+        "title": "Get a reflection from Nemory",
+        "description": "Nemory responds with a thoughtful reflection that helps you better understand your emotions, decisions and experiences."
+      },
+      "card3": {
+        "title": "Continue in chat",
+        "description": "Ask follow-up questions, explore a specific situation, or go deeper into what you are feeling through an ongoing conversation with Nemory."
+      },
+      "card4": {
+        "title": "Turn reflection into growth",
+        "description": "Use your insights to build more awareness through your journal, goals, habits and personal progress over time."
+      }
+    },
+    "SafeSpace": {
+      "title": "A personal space for honest reflection",
+      "description": "Local storage, encrypted data, and AI reflections built from your journal entries.",
+      "point1": "Your journal entries are stored locally on your device, so your writing stays with you.",
+      "point2": "Your local database is encrypted to better protect your notes, reflections, and personal records.",
+      "point3": "When AI generates reflections or replies, it uses relevant parts of your journal entries to create a meaningful response."
+    },
+    "Showcase": {
+      "title": "A journal that feels like your space",
+      "description": "Explore beautifully crafted themes or create your own with custom backgrounds and colors, so your journal feels truly personal."
     }
   }
 }

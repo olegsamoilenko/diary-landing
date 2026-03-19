@@ -16,7 +16,7 @@ export default function CoreFeaturesCard({
   return (
     <div
       className={clsx(
-        'flex flex-1 flex-col items-center justify-center gap-5 px-3 py-4',
+        'flex flex-1 flex-col items-center justify-start gap-5 px-3 py-4',
         className,
       )}
     >
