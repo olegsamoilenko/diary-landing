@@ -1,25 +1,47 @@
+'use client'
+
 import React from 'react'
 import clsx from 'clsx'
+import { useSearchParams } from 'next/navigation'
 
 type StoreButtonProps = {
   icon?: React.ReactNode
   children: React.ReactNode
-  href?: string
+  isLink?: boolean
   className?: string
   iconClassName?: string
   contentClassName?: string
   sublabel?: React.ReactNode
 }
 
+const PLAY_STORE_PACKAGE = 'com.soniac12.nemory'
+
+function buildPlayStoreHref(campaignId?: string | null) {
+  const referrerParams = new URLSearchParams()
+
+  referrerParams.set('source', 'landing')
+  referrerParams.set('campaignId', campaignId?.trim() ? campaignId : 'organic')
+
+  const playStoreUrl = new URL('https://play.google.com/store/apps/details')
+  playStoreUrl.searchParams.set('id', PLAY_STORE_PACKAGE)
+  playStoreUrl.searchParams.set('referrer', referrerParams.toString())
+
+  return playStoreUrl.toString()
+}
+
 export default function StoreButton({
   icon,
   children,
-  href,
+  isLink = true,
   className,
   iconClassName,
   contentClassName,
   sublabel,
 }: StoreButtonProps) {
+  const searchParams = useSearchParams()
+  const campaignId = searchParams.get('campaignId')
+  const playStoreHref = buildPlayStoreHref(campaignId)
+
   const content = (
     <>
       {icon ? (
@@ -67,10 +89,10 @@ export default function StoreButton({
     className,
   )
 
-  if (href) {
+  if (isLink) {
     return (
       <a
-        href={href}
+        href={playStoreHref}
         className={sharedClassName}
         target="_blank"
         rel="noreferrer"

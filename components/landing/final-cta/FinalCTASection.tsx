@@ -30,7 +30,6 @@ export default function FinalCTASection() {
         <p className="mb-6 text-center">{t('description')}</p>
         <div className="flex justify-center">
           <StoreButton
-            href="https://play.google.com/store/apps/details?id=com.soniac12.nemory"
             icon={<GooglePlayIcon />}
             sublabel={t('ctaButton')}
             className="mb-6"

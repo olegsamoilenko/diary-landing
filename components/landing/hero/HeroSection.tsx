@@ -31,7 +31,6 @@ export default function HeroSection() {
           </div>
           <div>
             <StoreButton
-              href="https://play.google.com/store/apps/details?id=com.soniac12.nemory"
               icon={<GooglePlayIcon />}
               sublabel={t('downloadOn')}
               className="mb-6"
