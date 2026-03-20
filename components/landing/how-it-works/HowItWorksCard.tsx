@@ -14,7 +14,7 @@ export default function HowItWorksCard({
   return (
     <div
       className={clsx(
-        'flex flex-col items-center justify-center gap-2 rounded-3xl bg-white px-3 py-4 shadow-2xl',
+        'flex flex-col items-center justify-center gap-2 rounded-3xl bg-white px-3 py-4 shadow-xl',
         className,
       )}
     >

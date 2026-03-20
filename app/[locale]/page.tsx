@@ -5,9 +5,10 @@ import CoreFeaturesSection from '@/components/landing/core-features/CoreFeatures
 import HowItWorksSection from '@/components/landing/how-it-works/HowItWorksSection'
 import SafeSpaceSection from '@/components/landing/safe-space/SafeSpaceSection'
 import ShowcaseGallerySection from '@/components/landing/showcase/ShowcaseGallerySection'
-import FinalCTASection from '@/components/landing/FinalCTASection'
-import FAQSection from '@/components/landing/FAQSection'
+import FinalCTASection from '@/components/landing/final-cta/FinalCTASection'
+import FAQSection from '@/components/landing/faq/FAQSection'
 import Header from '@/components/landing/header/Header'
+import Footer from '@/components/landing/footer/Footer'
 
 export default function Home() {
   return (
@@ -50,6 +51,7 @@ export default function Home() {
           <FAQSection />
         </section>
       </main>
+      <Footer />
     </>
   )
 }
