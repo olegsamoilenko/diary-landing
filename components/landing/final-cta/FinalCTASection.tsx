@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import StoreButton from '@/components/landing/ui/StoreButton'
 import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
+import { Suspense } from 'react'
 
 export default function FinalCTASection() {
   const t = useTranslations('Sections.FinalCTA')
@@ -29,13 +30,15 @@ export default function FinalCTASection() {
         </h2>
         <p className="mb-6 text-center">{t('description')}</p>
         <div className="flex justify-center">
-          <StoreButton
-            icon={<GooglePlayIcon />}
-            sublabel={t('ctaButton')}
-            className="mb-6"
-          >
-            Google Play
-          </StoreButton>
+          <Suspense fallback={null}>
+            <StoreButton
+              icon={<GooglePlayIcon />}
+              sublabel={t('ctaButton')}
+              className="mb-6"
+            >
+              Google Play
+            </StoreButton>
+          </Suspense>
         </div>
       </div>
     </section>

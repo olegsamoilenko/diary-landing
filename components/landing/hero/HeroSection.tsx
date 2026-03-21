@@ -8,7 +8,7 @@ import { Brain, ChartNoAxesColumn, Flame, Target } from 'lucide-react'
 import StoreButton from '@/components/landing/ui/StoreButton'
 import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
 import { useLocale } from 'next-intl'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import TitleUk from '@/components/landing/hero/TitleUk'
 
 export default function HeroSection() {
@@ -30,13 +30,15 @@ export default function HeroSection() {
             <p>{t('subtitle')}</p>
           </div>
           <div>
-            <StoreButton
-              icon={<GooglePlayIcon />}
-              sublabel={t('downloadOn')}
-              className="mb-6"
-            >
-              Google Play
-            </StoreButton>
+            <Suspense fallback={null}>
+              <StoreButton
+                icon={<GooglePlayIcon />}
+                sublabel={t('downloadOn')}
+                className="mb-6"
+              >
+                Google Play
+              </StoreButton>
+            </Suspense>
           </div>
           {locale === 'en' && (
             <div className="mb-4 flex items-center justify-center gap-4 md:hidden">

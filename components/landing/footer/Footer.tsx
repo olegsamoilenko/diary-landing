@@ -4,7 +4,7 @@ import Logo from '@/components/landing/header/Logo'
 import { useTranslations } from 'next-intl'
 import StoreButton from '@/components/landing/ui/StoreButton'
 import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
-import { useMemo } from 'react'
+import { Suspense, useMemo } from 'react'
 import { landingNavItems } from '@/lib/constants/landingNavItems'
 import clsx from 'clsx'
 import { useLandingActiveSection } from '@/lib/hooks/useLandingActiveSection'
@@ -65,13 +65,15 @@ export default function Footer() {
               </ul>
             </nav>
             <div className="md:border-landing-border mb-4 flex flex-1 justify-center md:border-b xl:pb-9">
-              <StoreButton
-                icon={<GooglePlayIcon />}
-                sublabel={t('downloadOn')}
-                className="mb-6"
-              >
-                Google Play
-              </StoreButton>
+              <Suspense fallback={null}>
+                <StoreButton
+                  icon={<GooglePlayIcon />}
+                  sublabel={t('downloadOn')}
+                  className="mb-6"
+                >
+                  Google Play
+                </StoreButton>
+              </Suspense>
             </div>
           </div>
           <div
