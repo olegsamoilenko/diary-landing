@@ -11,7 +11,7 @@ type Props = {
   params?: Promise<{ locale?: string }>
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://nemoryai.com'
 
 function asset(path: string) {
   return new URL(path, SITE_URL).toString()
