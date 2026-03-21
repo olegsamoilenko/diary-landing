@@ -114,6 +114,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       locale: localeTag,
       alternateLocale: [alternateLocaleTag],
+      images: [
+        {
+          url: `${SITE_URL}/${locale}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt:
+            locale === 'uk'
+              ? 'Попередній перегляд застосунку Nemory — AI-щоденник для саморефлексії, відстеження настрою, цілей, звичок і особистого розвитку'
+              : 'Nemory app preview — AI journal for self-reflection, mood tracking, goals, habits, and personal growth',
+        },
+      ],
     },
 
     twitter: {
@@ -121,6 +132,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       creator: '@nemoryai',
+      images: [
+        {
+          url: `${SITE_URL}/${locale}/twitter-image`,
+          alt:
+            locale === 'uk'
+              ? 'Попередній перегляд застосунку Nemory з AI-рефлексіями, відстеженням настрою, цілями, звичками та інструментами особистого розвитку'
+              : 'Nemory smart journal app preview with AI reflections, mood tracking, goals, habits, and personal growth tools',
+        },
+      ],
     },
 
     icons: {
