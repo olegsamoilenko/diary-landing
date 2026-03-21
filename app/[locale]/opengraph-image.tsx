@@ -194,7 +194,7 @@ export default async function OpenGraphImage({ params }: Props = {}) {
                 style={{
                   color: '#67BED8',
                   marginLeft: 10,
-                  textWrap: 'nowrap',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {copy.headlineBottomAccent}
