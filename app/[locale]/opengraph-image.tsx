@@ -25,14 +25,14 @@ function getCopy(locale: string) {
     subtitle: isUk ? 'Розумний щоденник' : 'Smart Journal',
     headlineTop: isUk ? 'Розумний щоденник' : 'Smart journal',
     headlineMiddle: isUk ? 'для думок,' : 'for thoughts,',
-    headlineBottomStart: isUk ? 'цілей і розвитку' : 'goals & growth',
+    headlineBottomStart: isUk ? 'цілей і розвитку' : 'goals and growth',
     headlineBottomAccent: isUk ? ' з AI' : ' with AI',
     description: isUk
       ? 'Приватний AI-щоденник для саморефлексії, відстеження настрою, звичок, цілей і особистісного розвитку.'
       : 'Private AI journal and diary app for self-reflection, mood tracking, habits, goals, and personal growth.',
     pill1: isUk ? 'AI щоденник' : 'AI Journal',
     pill2: isUk ? 'Відстеження настрою' : 'Mood Tracking',
-    pill3: isUk ? 'Цілі та звички' : 'Goals & Habits',
+    pill3: isUk ? 'Цілі та звички' : 'Goals and Habits',
     pill4: isUk ? 'Аналітика прогресу' : 'Progress Analytics',
   }
 }
