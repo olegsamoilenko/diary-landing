@@ -2,6 +2,46 @@ import Container from '@/components/static/Container'
 import Title from '@/components/static/Title'
 import Text from '@/components/static/Text'
 import UnorderedList from '@/components/static/UnorderedList'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+const SITE_URL = 'https://nemoryai.com'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({
+    locale,
+    namespace: 'TermsPage.Metadata',
+  })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/terms`,
+      languages: {
+        en: `${SITE_URL}/en/terms`,
+        uk: `${SITE_URL}/uk/terms`,
+        'x-default': `${SITE_URL}/en/terms`,
+      },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `${SITE_URL}/${locale}/terms`,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('title'),
+      description: t('description'),
+    },
+  }
+}
 
 export default function TermsPage() {
   return (

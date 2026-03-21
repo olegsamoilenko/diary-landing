@@ -1,7 +1,25 @@
 {
   "Metadata": {
     "title": "Nemory - Smart Journal",
-    "description": "Private AI journal for thoughts, goals, mood tracking and personal growth."
+    "description": "Private AI journal and diary app for self-reflection, mood tracking, goals, habits, and personal growth."
+  },
+  "PrivacyPage": {
+    "Metadata": {
+      "title": "Privacy Policy | Nemory",
+      "description": "Read Nemory's privacy policy and learn how journal data, account data, and app usage data are handled."
+    }
+  },
+  "TermsPage": {
+    "Metadata": {
+      "title": "Terms of Service | Nemory",
+      "description": "Read the terms of service for Nemory and learn the rules for using the app and website."
+    }
+  },
+  "DeleteAccountPage": {
+    "Metadata": {
+      "title": "Delete Account | Nemory",
+      "description": "Learn how to delete your Nemory account and what happens to your account data after deletion."
+    }
   },
   "Logo": {
     "smartJournal": "Smart Journal"
@@ -30,8 +48,9 @@
         "with": "with",
         "ai": "AI"
       },
-      "subtitle": "Capture thoughts, track emotions, set goals and reflect with AI - all in one place.",
+      "subtitle": "Capture thoughts, track emotions, build habits and grow with AI - all in one place.",
       "aiReflections": "AI Reflections",
+      "aIJournal": "AI Journal",
       "moodTracking": "Mood Tracking",
       "goalsAndHabits": "Goals & Habits",
       "progressAnalytics": "Progress Analytics",
@@ -40,16 +59,16 @@
     },
     "Credibility": {
       "title": "Credibility",
-      "card1": "A private space for your thoughts",
-      "card2": "AI that helps you understand yourself better",
-      "card3": "Goals, habits and insights in one place",
-      "card4": "Available on Google Play"
+      "card1": "Private journaling for your thoughts",
+      "card2": "AI support for better self-understanding",
+      "card3": "Goals, habits and mood in one place",
+      "card4": "Android app on Google Play"
     },
     "WhyNemory": {
       "title": "Why Nemory?",
       "Journaling": {
         "title": "Write freely, reflect more deeply",
-        "description": "A private space for your thoughts, emotions, and everyday moments — designed to help you slow down, process, and reflect with more clarity.",
+        "description": "A private journal and diary for your thoughts, emotions, and everyday moments — designed to help you slow down, process your day, and reflect with more clarity.",
         "point1": "Rich journal entries",
         "point2": "Mood and personal context",
         "point3": "Space for honest reflection"
@@ -70,55 +89,55 @@
       }
     },
     "CoreFeatures": {
-      "title": "How Nemory supports your growth",
-      "description": "Nemory helps you move from scattered thoughts to clearer self-understanding, meaningful action, and steady personal progress.",
+      "title": "How Nemory supports your personal growth",
+      "description": "Nemory helps you move from scattered thoughts to clearer self-understanding, meaningful action, and steady progress in everyday life.",
       "card1": {
         "title": "See yourself more clearly",
-        "description": "Nemory helps you go beyond raw thoughts by turning your entries into clearer self-understanding through reflection, patterns, and AI-guided insight."
+        "description": "Nemory helps you go beyond scattered thoughts by turning your journal entries into clearer self-understanding through reflection, patterns, and AI-guided insight."
       },
       "card2": {
         "title": "Get support when your mind feels full",
-        "description": "Instead of being left alone with everything you feel, Nemory helps you process mental and emotional overload with a calmer space to reflect and respond."
+        "description": "Instead of being left alone with everything you feel, Nemory helps you process mental and emotional overload with a calmer space for reflection and AI support."
       },
       "card3": {
         "title": "Turn reflection into real change",
-        "description": "Nemory connects your thoughts with goals, habits, and personal direction — so self-awareness can become something practical, not just personal."
+        "description": "Nemory connects your journal with goals, habits, and personal direction — so reflection can become practical action, not just a personal insight."
       },
       "card4": {
         "title": "Notice growth that is easy to miss",
-        "description": "By bringing together your entries, patterns, and progress over time, Nemory helps you see meaningful change that would otherwise stay invisible day to day."
+        "description": "By bringing together your journal entries, patterns, and progress over time, Nemory helps you see meaningful personal growth that is easy to miss day to day."
       }
     },
     "HowItWorks": {
       "title": "How it works",
-      "description": "A simple flow that helps you turn everyday thoughts into reflection, deeper conversation and personal growth.",
+      "description": "A simple flow that helps you turn everyday thoughts into AI reflection, deeper conversation, and personal growth.",
       "card1": {
         "title": "Capture what’s on your mind",
-        "description": "Write about your day, your thoughts, or whatever feels important in the moment."
+        "description": "Write about your day, your thoughts, or whatever feels important in your journal."
       },
       "card2": {
-        "title": "Get a reflection from Nemory",
-        "description": "Nemory responds with a thoughtful reflection that helps you better understand your emotions, decisions and experiences."
+        "title": "Get an AI reflection from Nemory",
+        "description": "Nemory responds with a thoughtful AI reflection that helps you better understand your emotions, decisions, and experiences."
       },
       "card3": {
         "title": "Continue in chat",
-        "description": "Ask follow-up questions, explore a specific situation, or go deeper into what you are feeling through an ongoing conversation with Nemory."
+        "description": "Ask follow-up questions, explore a specific situation, or go deeper into your thoughts through an ongoing chat with Nemory."
       },
       "card4": {
         "title": "Turn reflection into growth",
-        "description": "Use your insights to build more awareness through your journal, goals, habits and personal progress over time."
+        "description": "Use your insights to build personal growth through your journal, goals, habits, and progress over time."
       }
     },
     "SafeSpace": {
-      "title": "A personal space for honest reflection",
+      "title": "A private space for honest reflection",
       "description": "Local storage, encrypted data, and AI reflections built from your journal entries.",
-      "point1": "Your journal entries are stored locally on your device, so your writing stays with you.",
-      "point2": "Your local database is encrypted to better protect your notes, reflections, and personal records.",
+      "point1": "Your private journal entries are stored locally on your device, so your writing stays with you.",
+      "point2": "Your local database is encrypted to protect your notes, journal entries, and personal records.",
       "point3": "When AI generates reflections or replies, it uses relevant parts of your journal entries to create a meaningful response."
     },
     "Showcase": {
-      "title": "A journal that feels like your space",
-      "description": "Explore beautifully crafted themes or create your own with custom backgrounds and colors, so your journal feels truly personal."
+      "title": "A journal that feels like your own space",
+      "description": "Explore beautifully crafted themes or create your own with custom backgrounds and colors, so your journal or diary feels truly personal."
     },
     "FinalCTA": {
       "subTitle": "Start your journey with Nemory",
@@ -135,7 +154,15 @@
       "items": [
         {
           "question": "What is Nemory?",
-          "answer": "Nemory is a private journaling app designed to help you capture your thoughts, reflect with AI, and stay connected to your goals, habits, and personal growth."
+          "answer": "Nemory is a private journaling app that helps you capture your thoughts, reflect with AI, and stay connected to your goals, habits, and personal growth."
+        },
+        {
+          "question": "Is Nemory a journal or a diary app?",
+          "answer": "Nemory is designed first as a journal app for deeper reflection, personal growth, and daily self-understanding, but you can also use it as a private diary for your thoughts, feelings, and everyday life."
+        },
+        {
+          "question": "Can I use Nemory as a private diary?",
+          "answer": "Yes. Nemory can be used as a private diary for personal thoughts, emotions, and everyday experiences, while also giving you tools for AI reflection, goals, habits, and progress."
         },
         {
           "question": "How does AI help inside Nemory?",
@@ -143,11 +170,11 @@
         },
         {
           "question": "Is my journal private?",
-          "answer": "Your journal is designed to be a personal and private space. When you use AI features, parts of your entries are securely sent to our AI providers to generate responses. This is only used to support your reflection."
+          "answer": "Your journal is designed to be a personal and private space. When you use AI features, relevant parts of your entries are securely sent to our AI providers to generate responses. This is only used to support your reflection."
         },
         {
           "question": "Can I use Nemory for goals and habits too?",
-          "answer": "Yes. Nemory brings together journaling, goals, habits, and insights in one place, so your daily thoughts and long-term growth stay connected."
+          "answer": "Yes. Nemory brings together journaling, goals, habits, and personal insights in one place, so your daily thoughts and long-term growth stay connected."
         },
         {
           "question": "Do I need to write every day?",
@@ -159,7 +186,7 @@
         },
         {
           "question": "Where can I download Nemory?",
-          "answer": "Nemory is currently available on Google Play."
+          "answer": "Nemory is currently available on Google Play as an Android app."
         },
         {
           "question": "Who is Nemory for?",

@@ -11,7 +11,7 @@ export default function WhyNemorySection() {
         backgroundImage: "url('/assets/images/backgrounds/why-nemory.png')",
       }}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-10">
         <h2 className="mb-4">{t('title')}</h2>
         <WhyNemoryCard
           title={t('Journaling.title')}

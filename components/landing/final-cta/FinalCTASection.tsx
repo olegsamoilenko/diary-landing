@@ -11,7 +11,7 @@ export default function FinalCTASection() {
         backgroundImage: "url('/assets/images/backgrounds/final-cta.png')",
       }}
     >
-      <div className="text-landing-text-inverse container mx-auto px-6 py-5">
+      <div className="text-landing-text-inverse container mx-auto px-6 py-10">
         <div className="mb-4 text-center">
           <span className="text-landing-text-inverse/70 text-center text-sm">
             {t('subTitle')}

@@ -2,6 +2,46 @@ import Container from '@/components/static/Container'
 import Title from '@/components/static/Title'
 import Text from '@/components/static/Text'
 import UnorderedList from '@/components/static/UnorderedList'
+import { getTranslations } from 'next-intl/server'
+import type { Metadata } from 'next'
+
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+const SITE_URL = 'https://nemoryai.com'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({
+    locale,
+    namespace: 'PrivacyPage.Metadata',
+  })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/privacy`,
+      languages: {
+        en: `${SITE_URL}/en/privacy`,
+        uk: `${SITE_URL}/uk/privacy`,
+        'x-default': `${SITE_URL}/en/privacy`,
+      },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `${SITE_URL}/${locale}/privacy`,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('title'),
+      description: t('description'),
+    },
+  }
+}
 
 export default function PrivacyPage() {
   return (

@@ -9,10 +9,24 @@ import FinalCTASection from '@/components/landing/final-cta/FinalCTASection'
 import FAQSection from '@/components/landing/faq/FAQSection'
 import Header from '@/components/landing/header/Header'
 import Footer from '@/components/landing/footer/Footer'
+import { getHomeJsonLd } from '@/lib/seo/jsonld'
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: string }>
+}
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+  const safeLocale = locale === 'uk' ? 'uk' : 'en'
+
+  const jsonLd = getHomeJsonLd(safeLocale)
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <Header />
       <main>
         <section id="hero" className="scroll-mt-24">

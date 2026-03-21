@@ -1,16 +1,55 @@
-'use client'
 import Container from '@/components/static/Container'
 import Title from '@/components/static/Title'
 import Text from '@/components/static/Text'
 import OrderedList from '@/components/static/OrderedList'
 import UnorderedList from '@/components/static/UnorderedList'
-import DeleteAccountForm from '@/components/static/delete-account/DeleteAccountForm'
-import { useState } from 'react'
-import ConfirmDeletionAccountForm from '@/components/static/delete-account/ConfirmDeletionAccountForm'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import DeleteAccountPageClient from './DeleteAccountPageClient'
+
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+const SITE_URL = 'https://nemoryai.com'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({
+    locale,
+    namespace: 'DeleteAccountPage.Metadata',
+  })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/delete-account`,
+      languages: {
+        en: `${SITE_URL}/en/delete-account`,
+        uk: `${SITE_URL}/uk/delete-account`,
+        'x-default': `${SITE_URL}/en/delete-account`,
+      },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `${SITE_URL}/${locale}/delete-account`,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('title'),
+      description: t('description'),
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  }
+}
 
 export default function DeleteAccountPage() {
-  const [codeSent, setCodeSent] = useState(false)
-  const [email, setEmail] = useState('')
   return (
     <Container className="py-10">
       <Title>Nemory — Account Deletion</Title>
@@ -20,9 +59,11 @@ export default function DeleteAccountPage() {
         Use this page to request deletion of your account and associated
         server-side data.
       </Text>
+
       <Title level={2} className="mb-2">
         How to delete your account
       </Title>
+
       <Title className="mb-2" level={3}>
         Option A — In-app (recommended)
       </Title>
@@ -31,6 +72,7 @@ export default function DeleteAccountPage() {
         <li>Go to the Settings → Profile → Delete account.</li>
         <li>Follow the prompts to confirm account deletion.</li>
       </OrderedList>
+
       <Title className="mb-2" level={3}>
         Option B — Web request (this page)
       </Title>
@@ -56,6 +98,7 @@ export default function DeleteAccountPage() {
           created.
         </Text>
       </div>
+
       <Title className="mb-4" level={2}>
         What will be deleted
       </Title>
@@ -77,6 +120,7 @@ export default function DeleteAccountPage() {
           IDs linked to your account.
         </li>
       </UnorderedList>
+
       <Title className="mb-4" level={3}>
         What we keep after deletion
       </Title>
@@ -99,9 +143,11 @@ export default function DeleteAccountPage() {
           to you.
         </li>
       </UnorderedList>
+
       <Text className="mb-4">
         We do not keep a server-side copy of your journal entries.
       </Text>
+
       <Title className="mb-4" level={3}>
         Data security
       </Title>
@@ -115,46 +161,26 @@ export default function DeleteAccountPage() {
         </li>
         <li>
           On our servers: limited account, subscription, and log data is stored
-          in databases protected with access controls and encryption (for
-          example, KMS-managed keys).
+          in databases protected with access controls and encryption.
         </li>
       </UnorderedList>
+
       <Text className="mb-4">
         Once deletion is confirmed, account-related data is removed from our
         production systems as described above.
       </Text>
+
       <Title className="mb-4" level={2}>
         Deletion request form
       </Title>
-      <div className="mb-4">
-        {codeSent ? (
-          <div>
-            <ConfirmDeletionAccountForm
-              email={email}
-              requestNewCodeAction={() => setCodeSent(false)}
-            />
-            <Text className="mt-2 mb-4">
-              Did not receive the code?{' '}
-              <button
-                className="cursor-pointer underline"
-                onClick={() => setCodeSent(false)}
-              >
-                Try again
-              </button>
-            </Text>
-          </div>
-        ) : (
-          <DeleteAccountForm
-            setEmailAction={setEmail}
-            onSuccessAction={() => setCodeSent(true)}
-          />
-        )}
-      </div>
+
+      <DeleteAccountPageClient />
+
       <Title className="mb-4" level={3}>
         Contact
       </Title>
       <Text className="mb-4">
-        If you have questions about deletion or privacy, contact us at{'  '}
+        If you have questions about deletion or privacy, contact us at{' '}
         <a href="mailto:nemoryai.diary@gmail.com" className="underline">
           nemoryai.diary@gmail.com
         </a>

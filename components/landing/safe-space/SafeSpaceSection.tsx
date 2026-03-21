@@ -11,7 +11,7 @@ export default function SafeSpaceSection() {
         backgroundImage: "url('/assets/images/backgrounds/safe-space-bg.png')",
       }}
     >
-      <div className="container mx-auto px-6 py-5">
+      <div className="container mx-auto px-6 py-12">
         <h2 className="mb-4">{t('title')}</h2>
         <p className="text-lead mb-8">{t('description')}</p>
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row">

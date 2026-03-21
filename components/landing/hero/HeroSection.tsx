@@ -108,7 +108,7 @@ export default function HeroSection() {
                 // iconWrapperClassName="bg-landing-primary-soft"
                 // iconClassName="text-landing-primary"
               >
-                {t('aiReflections')}
+                {t('aIJournal')}
               </Pill>
               <Pill
                 icon={
