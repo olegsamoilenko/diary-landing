@@ -35,6 +35,7 @@ export default function FinalCTASection() {
               icon={<GooglePlayIcon />}
               sublabel={t('ctaButton')}
               className="mb-6"
+              placement="middle"
             >
               Google Play
             </StoreButton>

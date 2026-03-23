@@ -35,6 +35,7 @@ export default function HeroSection() {
                 icon={<GooglePlayIcon />}
                 sublabel={t('downloadOn')}
                 className="mb-6"
+                placement="hero"
               >
                 Google Play
               </StoreButton>

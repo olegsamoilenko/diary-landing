@@ -70,6 +70,7 @@ export default function Footer() {
                   icon={<GooglePlayIcon />}
                   sublabel={t('downloadOn')}
                   className="mb-6"
+                  placement="footer"
                 >
                   Google Play
                 </StoreButton>

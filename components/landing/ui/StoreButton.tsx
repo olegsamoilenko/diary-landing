@@ -12,6 +12,7 @@ type StoreButtonProps = {
   iconClassName?: string
   contentClassName?: string
   sublabel?: React.ReactNode
+  placement: 'hero' | 'middle' | 'footer'
 }
 
 const PLAY_STORE_PACKAGE = 'com.soniac12.nemory'
@@ -29,6 +30,23 @@ function buildPlayStoreHref(campaignId?: string | null) {
   return playStoreUrl.toString()
 }
 
+function trackGooglePlayClick(placement: 'hero' | 'middle' | 'footer') {
+  if (typeof window === 'undefined') return
+
+  const gtag = (
+    window as Window & {
+      gtag?: (...args: unknown[]) => void
+    }
+  ).gtag
+
+  if (!gtag) return
+
+  gtag('event', 'click_google_play', {
+    placement,
+    destination: 'google_play',
+  })
+}
+
 export default function StoreButton({
   icon,
   children,
@@ -37,6 +55,7 @@ export default function StoreButton({
   iconClassName,
   contentClassName,
   sublabel,
+  placement,
 }: StoreButtonProps) {
   const searchParams = useSearchParams()
   const campaignId = searchParams.get('campaignId')
@@ -96,6 +115,7 @@ export default function StoreButton({
         className={sharedClassName}
         target="_blank"
         rel="noreferrer"
+        onClick={() => trackGooglePlayClick(placement)}
       >
         {content}
       </a>
@@ -103,7 +123,11 @@ export default function StoreButton({
   }
 
   return (
-    <button type="button" className={sharedClassName}>
+    <button
+      type="button"
+      className={sharedClassName}
+      onClick={() => trackGooglePlayClick(placement)}
+    >
       {content}
     </button>
   )
