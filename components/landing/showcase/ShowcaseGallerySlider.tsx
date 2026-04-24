@@ -29,7 +29,7 @@ const slides: ShowcaseSlide[] = [
 ]
 
 function getSlideImageSrc(id: string, locale: Locale) {
-  return `/assets/images/theme/theme-screen-${id}-${locale}.png`
+  return `/assets/images/theme/theme-screen-${id}-${locale}.webp`
 }
 
 export default function ShowcaseGallerySlider() {

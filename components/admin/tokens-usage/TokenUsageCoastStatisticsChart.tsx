@@ -42,6 +42,10 @@ export default function TokenStatisticsChart({ data, height = 800 }: Props) {
     [data],
   )
 
+  const maxValue = useMemo(() => {
+    return Math.max(0, ...chartData.flatMap((d) => [d.input, d.output]))
+  }, [chartData])
+
   return (
     <div className="w-full">
       <ResponsiveContainer width="100%" height={height}>
@@ -51,7 +55,11 @@ export default function TokenStatisticsChart({ data, height = 800 }: Props) {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="key" tickMargin={8} angle={-90} textAnchor="end" />
-          <YAxis allowDecimals={false} domain={[0, 'dataMax']} />
+          <YAxis
+            allowDecimals={false}
+            domain={[0, Math.ceil(maxValue)]}
+            tickCount={6}
+          />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="input" fill="#aad8e3" name="Input" />
           <Bar dataKey="output" fill="#83a6ae" name="Output" />

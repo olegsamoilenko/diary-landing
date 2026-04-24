@@ -27,6 +27,7 @@ import { FinancePeriod } from './finance'
 import { UserRole } from './user'
 import type { User, GetAllUsersResp, SortBy, HasPlan } from './user'
 import { Limit } from './pagination'
+import type { ModelReview } from './modelReview'
 
 export type {
   EditorRef,
@@ -51,6 +52,7 @@ export type {
   SortBy,
   HasPlan,
   Limit,
+  ModelReview,
 }
 
 export {

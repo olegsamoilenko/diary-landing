@@ -15,6 +15,7 @@ const items = [
   { href: '/admin/tokens-usage', label: 'Credits  usage' },
   { href: '/admin/finance', label: 'Finance' },
   { href: '/admin/settings', label: 'Settings' },
+  { href: '/admin/model-reviews', label: 'Model Reviews' },
   { href: '/admin/release-notifications', label: 'Release notifications' },
   { href: '/admin/common-notifications', label: 'Common notifications' },
   { href: '/admin/admins', label: 'Admins' },
