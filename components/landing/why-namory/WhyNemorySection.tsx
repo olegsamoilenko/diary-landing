@@ -21,8 +21,8 @@ export default function WhyNemorySection() {
           point3={t('Journaling.point3')}
           src={
             locale === 'uk'
-              ? '/assets/images/screens/screen-06-uk.jpg'
-              : '/assets/images/screens/screen-06-en.jpg'
+              ? '/assets/images/screens/screen-06-uk-v2.jpg'
+              : '/assets/images/screens/screen-06-en-v2.jpg'
           }
           className="mb-10"
         />
@@ -34,8 +34,8 @@ export default function WhyNemorySection() {
           point3={t('AiReflection.point3')}
           src={
             locale === 'uk'
-              ? '/assets/images/screens/screen-08-uk.jpg'
-              : '/assets/images/screens/screen-08-en.jpg'
+              ? '/assets/images/screens/screen-08-uk-v2.jpg'
+              : '/assets/images/screens/screen-08-en-v2.jpg'
           }
           className="mb-10"
           reverse={true}
@@ -48,8 +48,8 @@ export default function WhyNemorySection() {
           point3={t('Goals.point3')}
           src={
             locale === 'uk'
-              ? '/assets/images/screens/screen-09-uk.jpg'
-              : '/assets/images/screens/screen-09-en.jpg'
+              ? '/assets/images/screens/screen-09-uk-v2.jpg'
+              : '/assets/images/screens/screen-09-en-v2.jpg'
           }
           className="mb-3"
         />

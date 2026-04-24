@@ -44,7 +44,7 @@ export default function HeroSection() {
           {locale === 'en' && (
             <div className="mb-4 flex items-center justify-center gap-4 md:hidden">
               <Image
-                src="/assets/images/screens/screen-02-en.png"
+                src="/assets/images/screens/screen-02-en-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -52,7 +52,7 @@ export default function HeroSection() {
                 priority
               />
               <Image
-                src="/assets/images/screens/screen-01-en.png"
+                src="/assets/images/screens/screen-01-en-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -60,7 +60,7 @@ export default function HeroSection() {
                 priority
               />
               <Image
-                src="/assets/images/screens/screen-03-en.png"
+                src="/assets/images/screens/screen-03-en-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -72,7 +72,7 @@ export default function HeroSection() {
           {locale === 'uk' && (
             <div className="mb-4 flex items-center justify-center gap-4 md:hidden">
               <Image
-                src="/assets/images/screens/screen-02-uk.png"
+                src="/assets/images/screens/screen-02-uk-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -80,7 +80,7 @@ export default function HeroSection() {
                 priority
               />
               <Image
-                src="/assets/images/screens/screen-01-uk.png"
+                src="/assets/images/screens/screen-01-uk-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -88,7 +88,7 @@ export default function HeroSection() {
                 priority
               />
               <Image
-                src="/assets/images/screens/screen-03-uk.png"
+                src="/assets/images/screens/screen-03-uk-v2.png"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -160,7 +160,7 @@ export default function HeroSection() {
         {locale === 'en' && (
           <div className="mb-4 hidden flex-1 items-center justify-center gap-4 md:flex">
             <Image
-              src="/assets/images/screens/screen-02-en.png"
+              src="/assets/images/screens/screen-02-en-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
@@ -168,7 +168,7 @@ export default function HeroSection() {
               priority
             />
             <Image
-              src="/assets/images/screens/screen-01-en.png"
+              src="/assets/images/screens/screen-01-en-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
@@ -176,7 +176,7 @@ export default function HeroSection() {
               priority
             />
             <Image
-              src="/assets/images/screens/screen-03-en.png"
+              src="/assets/images/screens/screen-03-en-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
@@ -188,7 +188,7 @@ export default function HeroSection() {
         {locale === 'uk' && (
           <div className="mb-4 hidden flex-1 items-center justify-center gap-4 md:flex">
             <Image
-              src="/assets/images/screens/screen-02-uk.png"
+              src="/assets/images/screens/screen-02-uk-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
@@ -196,7 +196,7 @@ export default function HeroSection() {
               priority
             />
             <Image
-              src="/assets/images/screens/screen-01-uk.png"
+              src="/assets/images/screens/screen-01-uk-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
@@ -204,7 +204,7 @@ export default function HeroSection() {
               priority
             />
             <Image
-              src="/assets/images/screens/screen-03-uk.png"
+              src="/assets/images/screens/screen-03-uk-v2.png"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
