@@ -205,8 +205,8 @@ export default function AdminsClient({
                 <TableCell>
                   {user?.usesWithoutSubscription.toString()}
                 </TableCell>
-                <TableCell>{user?.entriesStatsCount ?? 0}</TableCell>
-                <TableCell>{user?.dialogsStatsCount ?? 0}</TableCell>
+                <TableCell>{user?.entriesStats?.length ?? 0}</TableCell>
+                <TableCell>{user?.dialogsStats?.length ?? 0}</TableCell>
                 <TableCell>
                   {user?.createdAt
                     ? new Date(user?.createdAt).toLocaleDateString('uk-UA', {

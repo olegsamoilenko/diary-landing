@@ -48,6 +48,15 @@ export type User = {
   plan?: Plan | null
   settings: Settings
 
+  entriesStats?: {
+    id: number
+    createdAt: string
+  }[]
+  dialogsStats?: {
+    id: number
+    createdAt: string
+  }[]
+
   entriesStatsCount?: number
   dialogsStatsCount?: number
 }
