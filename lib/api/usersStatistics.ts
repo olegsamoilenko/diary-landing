@@ -1,4 +1,4 @@
-import type { Granularity } from '@/types'
+import { ActivityPlanType, Granularity } from '@/types'
 
 export const getUsersStatistics = async () => {
   try {
@@ -140,6 +140,63 @@ export const getUsersActivityByDates = async (
 
     const data = await res.json()
     console.log('getUsersActivityByDates', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch user activity failed:', msg)
+    return undefined
+  }
+}
+
+export const getUsersActivityCountByDays = async (
+  startDate: Date | undefined,
+  endDate: Date | undefined,
+  type: ActivityPlanType,
+) => {
+  try {
+    const res = await fetch(
+      '/api/user-statistics/get-users-activity-count-by-dates',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ startDate, endDate, type }),
+      },
+    )
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch user activity By Dates')
+    }
+
+    const data = await res.json()
+    console.log('getUsersActivityCountByDays', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch user activity failed:', msg)
+    return undefined
+  }
+}
+
+export const getUsersActivityRecords = async (
+  startDate: Date | undefined,
+  endDate: Date | undefined,
+  type: ActivityPlanType,
+) => {
+  try {
+    const res = await fetch('/api/user-statistics/get-users-activity-records', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ startDate, endDate, type }),
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch user activity By Dates')
+    }
+
+    const data = await res.json()
+    console.log('getUsersActivityRecords', data)
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)

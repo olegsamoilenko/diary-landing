@@ -28,6 +28,8 @@ import { UserRole } from './user'
 import type { User, GetAllUsersResp, SortBy, HasPlan } from './user'
 import { Limit } from './pagination'
 import type { ModelReview } from './modelReview'
+import type { ActivityPlanType } from './activityPlanType'
+import type { ActivityRecords } from './activityRecords'
 
 export type {
   EditorRef,
@@ -53,6 +55,8 @@ export type {
   HasPlan,
   Limit,
   ModelReview,
+  ActivityPlanType,
+  ActivityRecords,
 }
 
 export {
