@@ -43,7 +43,7 @@ export type User = {
 
   createdAt: string
   updatedAt: string
-  lastActiveAt: string | null
+  lastActiveAt: string
   plans?: Plan[]
   plan?: Plan | null
   settings: Settings
