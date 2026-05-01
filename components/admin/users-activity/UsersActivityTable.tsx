@@ -90,7 +90,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
                 <TableCell>
-                  {new Date(raw?.createdAt).toLocaleString()}
+                  {new Date(raw?.user.createdAt).toLocaleString()}
                 </TableCell>
                 <TableCell>
                   {new Date(raw?.user.lastActiveAt).toLocaleString()}
