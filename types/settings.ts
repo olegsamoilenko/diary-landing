@@ -18,6 +18,7 @@ export type Settings = {
 }
 
 export enum Theme {
+  CUSTOM = 'custom',
   LIGHT = 'light',
   SILENT_PEAKS = 'silentPeaks',
   GOLDEN_HOUR = 'goldenHour',

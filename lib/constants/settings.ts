@@ -2,6 +2,8 @@ import { Theme } from '@/types'
 
 export const ThemeMap = (theme: Theme) => {
   switch (theme) {
+    case Theme.CUSTOM:
+      return 'Custom'
     case Theme.LIGHT:
       return 'Light'
     case Theme.SILENT_PEAKS:
