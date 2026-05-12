@@ -17,13 +17,50 @@ type StoreButtonProps = {
 
 const PLAY_STORE_PACKAGE = 'com.soniac12.nemory'
 
-function buildPlayStoreHref(campaignId?: string | null) {
+const DEFAULT_UTM = {
+  source: 'landing',
+  medium: 'organic',
+  campaign: 'landing_organic',
+}
+
+function getSearchParam(
+  searchParams: URLSearchParams,
+  key: string,
+): string | null {
+  const value = searchParams.get(key)?.trim()
+  return value || null
+}
+
+function buildPlayStoreHref(searchParams: URLSearchParams) {
   const referrerParams = new URLSearchParams()
 
-  referrerParams.set('source', 'landing')
-  referrerParams.set('campaignId', campaignId?.trim() ? campaignId : 'organic')
+  referrerParams.set(
+    'utm_source',
+    getSearchParam(searchParams, 'utm_source') ?? DEFAULT_UTM.source,
+  )
+
+  referrerParams.set(
+    'utm_medium',
+    getSearchParam(searchParams, 'utm_medium') ?? DEFAULT_UTM.medium,
+  )
+
+  referrerParams.set(
+    'utm_campaign',
+    getSearchParam(searchParams, 'utm_campaign') ?? DEFAULT_UTM.campaign,
+  )
+
+  const optionalUtmKeys = ['utm_content', 'utm_term'] as const
+
+  optionalUtmKeys.forEach((key) => {
+    const value = getSearchParam(searchParams, key)
+
+    if (value) {
+      referrerParams.set(key, value)
+    }
+  })
 
   const playStoreUrl = new URL('https://play.google.com/store/apps/details')
+
   playStoreUrl.searchParams.set('id', PLAY_STORE_PACKAGE)
   playStoreUrl.searchParams.set('referrer', referrerParams.toString())
 
@@ -58,8 +95,7 @@ export default function StoreButton({
   placement,
 }: StoreButtonProps) {
   const searchParams = useSearchParams()
-  const campaignId = searchParams.get('campaignId')
-  const playStoreHref = buildPlayStoreHref(campaignId)
+  const playStoreHref = buildPlayStoreHref(searchParams)
 
   const content = (
     <>

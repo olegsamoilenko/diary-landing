@@ -30,6 +30,7 @@ import { Limit } from './pagination'
 import type { ModelReview } from './modelReview'
 import type { ActivityPlanType } from './activityPlanType'
 import type { ActivityRecords } from './activityRecords'
+export * from './community'
 
 export type {
   EditorRef,

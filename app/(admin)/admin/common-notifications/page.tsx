@@ -11,7 +11,7 @@ import { CommonNotificationsResponse, CommonNotification } from '@/types'
 
 type SP = { page?: string; platform?: Platforms }
 
-export default function ReleaseNotificationsPage({
+export default function CommonNotificationsPage({
   searchParams,
 }: {
   searchParams?: Promise<SP>

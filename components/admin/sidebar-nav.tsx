@@ -23,6 +23,7 @@ const items = [
   { href: '/admin/logs', label: 'Logs' },
   { href: '/admin/server-logs', label: 'Server Logs' },
   { href: '/admin/support', label: 'Support' },
+  { href: '/admin/community', label: 'Community' },
 ]
 
 export function SidebarNav() {
