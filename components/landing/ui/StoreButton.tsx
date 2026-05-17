@@ -112,7 +112,7 @@ export default function StoreButton({
 
       <span className="flex min-w-0 flex-col items-start justify-center">
         {sublabel ? (
-          <span className="text-[10px] leading-none font-medium tracking-[0.04em] text-[var(--landing-text-inverse)]/72 md:text-[11px]">
+          <span className="mb-1 text-[10px] leading-none font-medium tracking-[0.04em] text-[var(--landing-text-inverse)]/72 md:text-[11px]">
             {sublabel}
           </span>
         ) : null}
@@ -131,7 +131,7 @@ export default function StoreButton({
 
   const sharedClassName = clsx(
     'group inline-flex items-center justify-center gap-3 rounded-[12px]',
-    'px-3 py-2 md:px-5 md:py-3',
+    'px-3 py-2 md:px-8 md:py-3',
     'border border-white/6',
     'bg-[linear-gradient(180deg,rgba(44,49,63,0.98)_0%,rgba(28,33,46,0.98)_100%)]',
     'text-[var(--landing-text-inverse)]',

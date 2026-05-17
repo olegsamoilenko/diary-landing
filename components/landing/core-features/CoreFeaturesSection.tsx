@@ -7,8 +7,10 @@ export default function CoreFeaturesSection() {
     <section
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage:
-          "url('/assets/images/backgrounds/core-features-bg.png')",
+        // backgroundImage:
+        //   "url('/assets/images/backgrounds/core-features-bg.png')",
+        background:
+          'radial-gradient(circle at 18% 22%, rgba(93, 190, 211, 0.08), transparent 36%), radial-gradient(circle at 82% 16%, rgba(203, 187, 166, 0.14), transparent 34%), linear-gradient(180deg, #FBFAF5 0%, #F8F7F1 52%, #F3F7F5 100%)',
       }}
     >
       <div className="container mx-auto px-6 py-12">

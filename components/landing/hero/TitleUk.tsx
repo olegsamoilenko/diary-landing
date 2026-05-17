@@ -9,13 +9,13 @@ export default function TitleUk({ className }: TitleProps) {
   return (
     <h1 className={clsx(className, 'text-left')}>
       <span className="text-landing-primary mb-2 block text-nowrap">
-        Розумний щоденник
+        Думайте ясніше.
       </span>
-      <span className="mb-2 block">для думок, цілей</span>
-      <span className="block text-nowrap">
-        і зростання{' '}
-        <span className="text-landing-primary font-semibold">з AI</span>
-      </span>
+      <span className="mb-2 block">Розумійте себе глибше.</span>
+      {/*<span className="block text-nowrap">*/}
+      {/*  і зростання{' '}*/}
+      {/*  <span className="text-landing-primary font-semibold">з AI</span>*/}
+      {/*</span>*/}
     </h1>
   )
 }

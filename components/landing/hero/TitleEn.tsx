@@ -8,12 +8,17 @@ export default function TitleEn({ className }: TitleProps) {
   const t = useTranslations('Sections.Hero.TitleEn')
   return (
     <h1 className={clsx(className, 'text-left')}>
-      <span className="text-landing-primary mb-2 block">Smart journal</span>
-      <span className="mb-2 block">for thoughts,</span>
-      <span className="block text-nowrap">
-        goals & growth{' '}
-        <span className="text-landing-primary font-semibold">with AI</span>
+      <span className="text-landing-primary mb-2 block">
+        Think more clearly.
       </span>
+
+      <span className="mb-2 block whitespace-nowrap">
+        Understand yourself deeply.
+      </span>
+      {/*<span className="block text-nowrap">*/}
+      {/*  <span>with</span>{' '}*/}
+      {/*  <span className="text-landing-primary font-semibold">AI</span>*/}
+      {/*</span>*/}
     </h1>
   )
 }

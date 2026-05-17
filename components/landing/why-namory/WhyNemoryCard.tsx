@@ -58,17 +58,21 @@ export default function WhyNemoryCard({
           </ul>
         </div>
       </div>
-      <div className="flex flex-1 justify-center">
+      <div className="relative flex flex-1 justify-center">
+        <div className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-[36px] bg-[radial-gradient(circle,rgba(93,190,211,0.12)_0%,rgba(203,187,166,0.07)_42%,transparent_70%)] blur-xl" />
+
         <Image
           src={src}
-          alt="journaling card"
+          alt="Nemory app preview"
           width={1080}
           height={1285}
           className={clsx(
-            'h-auto w-[300px] rounded-2xl',
+            'relative z-10 h-auto w-[300px] rounded-2xl',
+            'drop-shadow-[0_28px_40px_rgba(34,38,51,0.22)]',
+            'contrast-[1.04] saturate-[1.04]',
             reverse
-              ? 'md:[transform:perspective(1000px)_rotateY(24deg)_rotateX(14deg)]'
-              : 'md:[transform:perspective(1000px)_rotateY(-24deg)_rotateX(14deg)]',
+              ? 'md:[transform:perspective(1000px)_rotateY(18deg)_rotateX(10deg)]'
+              : 'md:[transform:perspective(1000px)_rotateY(-18deg)_rotateX(10deg)]',
           )}
         />
       </div>

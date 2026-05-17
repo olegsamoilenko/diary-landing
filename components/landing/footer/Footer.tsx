@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
           <div
             className={clsx(
-              'border-landing-border flex flex-col gap-2 border-b pb-2 md:flex-row md:items-center md:justify-center md:gap-6 xl:w-[25%] xl:flex-col xl:gap-2 xl:pb-16',
+              'border-landing-border flex flex-col gap-2 border-b pb-2 md:flex-row md:items-center md:justify-center md:gap-6 xl:w-[20%] xl:flex-col xl:gap-2 xl:pb-16',
             )}
           >
             <a href="https://nemoryai.com/privacy" target="_blank">

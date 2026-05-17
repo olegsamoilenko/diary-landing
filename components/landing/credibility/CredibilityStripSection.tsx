@@ -14,8 +14,9 @@ export default function CredibilityStripSection() {
     <section
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage:
-          "url('/assets/images/backgrounds/credibility-strip-bg.png')",
+        // backgroundImage:
+        //   "url('/assets/images/backgrounds/credibility-strip-bg.png')",
+        backgroundColor: 'white',
       }}
     >
       <div className="container mx-auto px-6 py-8">

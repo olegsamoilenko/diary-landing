@@ -48,27 +48,27 @@
         "with": "with",
         "ai": "AI"
       },
-      "subtitle": "Capture thoughts, track emotions, build habits and grow with AI - all in one place.",
+      "subtitle": "Write what’s on your mind, get gentle AI reflections,\n and notice patterns in your mood, habits, and personal growth.",
       "aiReflections": "AI Reflections",
       "aIJournal": "AI Journal",
       "moodTracking": "Mood Tracking",
       "goalsAndHabits": "Goals & Habits",
       "progressAnalytics": "Progress Analytics",
       "getItOn": "Get it on Google Play",
-      "downloadOn": "Download on"
+      "downloadOn": "Get Nemory on "
     },
     "Credibility": {
       "title": "Credibility",
-      "card1": "Private journaling for your thoughts",
+      "card1": "Private space for your thoughts",
       "card2": "AI support for better self-understanding",
       "card3": "Goals, habits and mood in one place",
-      "card4": "Android app on Google Play"
+      "card4": "Available on Google Play"
     },
     "WhyNemory": {
       "title": "Why Nemory?",
       "Journaling": {
         "title": "Write freely, reflect more deeply",
-        "description": "A private journal and diary for your thoughts, emotions, and everyday moments — designed to help you slow down, process your day, and reflect with more clarity.",
+        "description": "A private space for your thoughts, emotions, and everyday moments — helping you slow down, process your day, and understand yourself more clearly.",
         "point1": "Rich journal entries",
         "point2": "Mood and personal context",
         "point3": "Space for honest reflection"
@@ -81,7 +81,7 @@
         "point3": "Supportive guidance"
       },
       "Goals": {
-        "title": "Turn reflection into real progress",
+        "title": "Turn reflection into personal growth",
         "description": "Connect your journal with goals, habits, and personal insights so growth feels more intentional, more visible, and easier to sustain.",
         "point1": "Track goals and habits",
         "point2": "See your progress over time",

@@ -9,7 +9,9 @@ export default function FinalCTASection() {
     <section
       className="relativeoverflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/images/backgrounds/final-cta.png')",
+        // backgroundImage: "url('/assets/images/backgrounds/final-cta.png')",
+        background:
+          'radial-gradient(circle at 78% 22%, rgba(93, 190, 211, 0.22), transparent 30%), radial-gradient(circle at 20% 82%, rgba(203, 187, 166, 0.16), transparent 34%), linear-gradient(135deg, #202432 0%, #2E3442 44%, #1B202B 100%)',
       }}
     >
       <div className="text-landing-text-inverse container mx-auto px-6 py-10">

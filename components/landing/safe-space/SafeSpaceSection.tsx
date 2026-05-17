@@ -8,7 +8,9 @@ export default function SafeSpaceSection() {
     <section
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/images/backgrounds/safe-space-bg.png')",
+        // backgroundImage: "url('/assets/images/backgrounds/safe-space-bg.png')",
+        background:
+          'radial-gradient(circle at 20% 24%, rgba(93, 190, 211, 0.06), transparent 34%), radial-gradient(circle at 82% 18%, rgba(203, 187, 166, 0.12), transparent 32%), linear-gradient(180deg, #FCFBF7 0%, #F8F8F3 54%, #F4F7F5 100%)',
       }}
     >
       <div className="container mx-auto px-6 py-12">

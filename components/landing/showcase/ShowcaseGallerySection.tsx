@@ -10,8 +10,9 @@ export default function ShowcaseGallerySection() {
     <section
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage:
-          "url('/assets/images/backgrounds/showcase-gallery-bg.png')",
+        // backgroundImage:
+        //   "url('/assets/images/backgrounds/showcase-gallery-bg.png')",
+        backgroundColor: 'white',
       }}
     >
       <div className="container mx-auto px-6 py-10">

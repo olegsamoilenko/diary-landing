@@ -19,14 +19,16 @@ export default function HeroSection() {
     <section
       className="relative h-[690px] overflow-hidden bg-cover bg-center bg-no-repeat md:h-[500px] lg:h-[530px] xl:h-[530px]"
       style={{
-        backgroundImage: "url('/assets/images/backgrounds/hero-bg.png')",
+        background:
+          'radial-gradient(circle at 20% 24%, rgba(93, 190, 211, 0.06), transparent 34%), radial-gradient(circle at 82% 18%, rgba(203, 187, 166, 0.12), transparent 32%), linear-gradient(180deg, #FCFBF7 0%, #F8F8F3 54%, #F4F7F5 100%)',
+        // backgroundImage: "url('/assets/images/backgrounds/hero-bg.png')",
       }}
     >
       <div className="container mx-auto md:flex">
         <div className="max-w-7xl flex-1 px-6 py-4">
           {locale === 'uk' && <TitleUk className="mb-6"></TitleUk>}
           {locale === 'en' && <TitleEn className="mb-6"></TitleEn>}
-          <div className="mb-6">
+          <div className="mb-6 whitespace-pre-line">
             <p>{t('subtitle')}</p>
           </div>
           <div>
