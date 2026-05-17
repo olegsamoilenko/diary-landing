@@ -25,23 +25,34 @@ import { removeComment, removeTopic } from '@/lib/api/moderation'
 export default function ModerationRemoveCommentDialog({
   id,
   adminId,
+  lang,
+  targetUserId,
   onSuccessRemoveComment,
 }: {
   id: string
   adminId: number
+  lang: string
+  targetUserId: number
   onSuccessRemoveComment?: () => void
 }) {
   const [open, setOpen] = useState(false)
   const [moderationRemoveReason, setModerationRemoveReason] =
     useState<ForumModerationReason>(ForumModerationReason.SPAM)
   const [moderationRemoveNote, setModerationRemoveNote] = useState('')
+  const [error, setError] = useState<string | null>(null)
 
   const handleRemove = async () => {
+    if (!moderationRemoveNote) {
+      setError('Please enter a note')
+      return
+    }
     await removeComment(id, {
       moderationRemovedByAdminId: adminId,
+      targetUserId: targetUserId,
       moderationRemoveReason: moderationRemoveReason,
       moderationRemoveNote: moderationRemoveNote,
     })
+    setOpen(false)
   }
 
   return (
@@ -79,15 +90,19 @@ export default function ModerationRemoveCommentDialog({
           </div>
           <div className="mb-4 items-end">
             <Label htmlFor="email" className="mb-2">
-              Note
+              Note. Lang: {lang}
             </Label>
             <Textarea
               id="note"
               value={moderationRemoveNote}
-              onChange={(e) => setModerationRemoveNote(e.target.value)}
+              onChange={(e) => {
+                setModerationRemoveNote(e.target.value)
+                setError(null)
+              }}
               placeholder="Note"
             />
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="overflow-y-auto pr-2">
             <DialogFooter>
               <DialogClose asChild>
@@ -98,7 +113,6 @@ export default function ModerationRemoveCommentDialog({
                 onClick={async () => {
                   await handleRemove()
                   if (onSuccessRemoveComment) onSuccessRemoveComment()
-                  setOpen(false)
                 }}
               >
                 Remove

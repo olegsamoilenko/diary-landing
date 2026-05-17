@@ -25,23 +25,34 @@ import { removeTopic } from '@/lib/api/moderation'
 export default function ModerationRemoveTopicDialog({
   id,
   adminId,
+  lang,
+  targetUserId,
   onSuccessRemoveTopic,
 }: {
   id: string
   adminId: number
+  lang: string
+  targetUserId: number
   onSuccessRemoveTopic?: () => void
 }) {
   const [open, setOpen] = useState(false)
   const [moderationRemoveReason, setModerationRemoveReason] =
     useState<ForumModerationReason>(ForumModerationReason.SPAM)
   const [moderationRemoveNote, setModerationRemoveNote] = useState('')
+  const [error, setError] = useState<string | null>(null)
 
   const handleRemove = async () => {
+    if (!moderationRemoveNote) {
+      setError('Please enter a note')
+      return
+    }
     await removeTopic(id, {
       moderationRemovedByAdminId: adminId,
+      targetUserId,
       moderationRemoveReason: moderationRemoveReason,
       moderationRemoveNote: moderationRemoveNote,
     })
+    setOpen(false)
   }
 
   return (
@@ -79,15 +90,19 @@ export default function ModerationRemoveTopicDialog({
           </div>
           <div className="mb-4 items-end">
             <Label htmlFor="email" className="mb-2">
-              Note
+              Note. Lang: {lang}
             </Label>
             <Textarea
               id="note"
               value={moderationRemoveNote}
-              onChange={(e) => setModerationRemoveNote(e.target.value)}
+              onChange={(e) => {
+                setModerationRemoveNote(e.target.value)
+                setError(null)
+              }}
               placeholder="Note"
             />
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="overflow-y-auto pr-2">
             <DialogFooter>
               <DialogClose asChild>
@@ -98,7 +113,6 @@ export default function ModerationRemoveTopicDialog({
                 onClick={async () => {
                   await handleRemove()
                   if (onSuccessRemoveTopic) onSuccessRemoveTopic()
-                  setOpen(false)
                 }}
               >
                 Remove

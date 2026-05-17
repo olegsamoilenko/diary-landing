@@ -1,4 +1,9 @@
-import { ForumModerationReason, TakeOptions } from '@/types'
+import {
+  ForumModerationReason,
+  ForumModerationTargetType,
+  ForumUserRestrictionType,
+  TakeOptions,
+} from '@/types'
 
 export const takeCommentsOptions = [
   {
@@ -65,3 +70,29 @@ export const moderationRemoveReasonOptions = [
     label: 'Other',
   },
 ] as const
+
+export const moderationRestrictionTypeOptions = [
+  {
+    value: ForumUserRestrictionType.TEMPORARY_BAN,
+    label: 'Temporary ban',
+  },
+  {
+    value: ForumUserRestrictionType.PERMANENT_BAN,
+    label: 'Permanent ban',
+  },
+  {
+    value: ForumUserRestrictionType.READ_ONLY,
+    label: 'Read only',
+  },
+]
+
+export const moderationTargetTypeOptions = [
+  {
+    value: ForumModerationTargetType.TOPIC,
+    label: 'Topic',
+  },
+  {
+    value: ForumModerationTargetType.COMMENT,
+    label: 'Comment',
+  },
+]

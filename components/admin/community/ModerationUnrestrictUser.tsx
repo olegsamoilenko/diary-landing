@@ -10,14 +10,14 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
-export default function ModerationRestoreTopicDialog({
-  id,
-  targetUserId,
-  onRestore,
+export default function ModerationUnrestrictUser({
+  userId,
+  adminId,
+  onUnrestrict,
 }: {
-  id: string
-  targetUserId: number
-  onRestore: (id: string, targetUserId: number) => void
+  userId: number
+  adminId: number
+  onUnrestrict: (userId: number, adminId: number) => void
 }) {
   const [open, setOpen] = useState(false)
 
@@ -25,15 +25,15 @@ export default function ModerationRestoreTopicDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="default" size="sm" asChild className="cursor-pointer">
-          <span>Restore</span>
+          <span>Unrestrict</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <div className="grid max-h-[85vh] grid-rows-[auto_minmax(0,1fr)_auto]">
           <DialogHeader className="mb-4">
-            <DialogTitle>Restore topic</DialogTitle>
+            <DialogTitle>Unrestrict user</DialogTitle>
             <DialogDescription>
-              A you really want to restore this topic?
+              A you really want to unrestrict this user?
             </DialogDescription>
           </DialogHeader>
           <div className="overflow-y-auto pr-2">
@@ -44,10 +44,11 @@ export default function ModerationRestoreTopicDialog({
               <Button
                 type="button"
                 onClick={() => {
-                  onRestore(id, targetUserId)
+                  onUnrestrict(userId, adminId)
+                  setOpen(false)
                 }}
               >
-                Restore
+                Unrestrict
               </Button>
             </DialogFooter>
           </div>

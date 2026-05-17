@@ -22,8 +22,11 @@ export default function CommentCard({
     null,
   )
   const [expandedReplyId, setExpandedReplyId] = useState<string | null>(null)
-  const handleRestore = async (commentId: string) => {
-    await restoreComment(commentId, { moderationRestoredByAdminId: adminId })
+  const handleRestore = async (commentId: string, targetUserId: number) => {
+    await restoreComment(commentId, {
+      moderationRestoredByAdminId: adminId,
+      targetUserId,
+    })
   }
 
   const toggleComment = (id: string) => {
@@ -40,6 +43,7 @@ export default function CommentCard({
       <div className="flex gap-4">
         <div>{comment.author.name}</div>
         <div>{comment.author.id}</div>
+        <div>{comment.author.settings.lang}</div>
         <div>{new Date(comment.createdAt).toLocaleString()}</div>
         <div>{comment.status}</div>
       </div>
@@ -49,14 +53,17 @@ export default function CommentCard({
           <ModerationRemoveCommentDialog
             id={comment.id}
             adminId={adminId}
+            lang={comment.author.settings.lang}
+            targetUserId={comment.author.id}
             onSuccessRemoveComment={onSuccessRemoveComment}
           />
         )}
         {comment.status === ForumContentStatus.REMOVED_BY_MODERATOR && (
           <ModerationRestoreCommentDialog
             id={comment.id}
-            onRestore={async (id: string) => {
-              await handleRestore(id)
+            targetUserId={comment.author.id}
+            onRestore={async (id: string, targetUserId: number) => {
+              await handleRestore(id, targetUserId)
               onSuccessRestoreComment()
             }}
           />
@@ -90,6 +97,8 @@ export default function CommentCard({
               {reply.status === ForumContentStatus.PUBLISHED && (
                 <ModerationRemoveCommentDialog
                   id={reply.id}
+                  targetUserId={reply.author.id}
+                  lang={reply.author.settings.lang}
                   adminId={adminId}
                   onSuccessRemoveComment={onSuccessRemoveComment}
                 />
@@ -97,8 +106,9 @@ export default function CommentCard({
               {reply.status === ForumContentStatus.REMOVED_BY_MODERATOR && (
                 <ModerationRestoreCommentDialog
                   id={reply.id}
-                  onRestore={async (id: string) => {
-                    await handleRestore(id)
+                  targetUserId={reply.author.id}
+                  onRestore={async (id: string, targetUserId: number) => {
+                    await handleRestore(id, targetUserId)
                     onSuccessRestoreComment()
                   }}
                 />

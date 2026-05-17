@@ -12,10 +12,12 @@ import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
 export default function ModerationRestoreCommentDialog({
   id,
+  targetUserId,
   onRestore,
 }: {
   id: string
-  onRestore: (id: string) => void
+  targetUserId: number
+  onRestore: (id: string, targetUserId: number) => void
 }) {
   const [open, setOpen] = useState(false)
 
@@ -42,7 +44,7 @@ export default function ModerationRestoreCommentDialog({
               <Button
                 type="button"
                 onClick={() => {
-                  onRestore(id)
+                  onRestore(id, targetUserId)
                 }}
               >
                 Restore
