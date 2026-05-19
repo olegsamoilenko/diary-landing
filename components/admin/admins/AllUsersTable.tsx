@@ -80,7 +80,7 @@ export default function AllUsersTable({ users }: Props) {
                     ? new Date(raw.plan.expiryTime).toLocaleString()
                     : '-'}
                 </TableCell>
-                <TableCell>{raw?.usesWithoutSubscription.toString()}</TableCell>
+                <TableCell>{!!raw?.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.entriesStatsCount ?? 0}</TableCell>
                 <TableCell>{raw?.dialogsStatsCount ?? 0}</TableCell>
                 <TableCell>

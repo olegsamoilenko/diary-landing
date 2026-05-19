@@ -202,9 +202,7 @@ export default function AdminsClient({
                       )
                     : '-'}
                 </TableCell>
-                <TableCell>
-                  {user?.usesWithoutSubscription.toString()}
-                </TableCell>
+                <TableCell>{!!user?.usesWithoutSubscription}</TableCell>
                 <TableCell>{user?.entriesStats?.length ?? 0}</TableCell>
                 <TableCell>{user?.dialogsStats?.length ?? 0}</TableCell>
                 <TableCell>

@@ -82,9 +82,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                     ? new Date(raw.user.plan.expiryTime).toLocaleString()
                     : '-'}
                 </TableCell>
-                <TableCell>
-                  {raw?.user.usesWithoutSubscription.toString()}
-                </TableCell>
+                <TableCell>{!!raw?.user.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.entries}</TableCell>
                 <TableCell>{raw?.dialogs}</TableCell>
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
