@@ -93,7 +93,7 @@ export default function AllMonitoringUsersTable({
                     : '-'}
                 </TableCell>
                 <TableCell>
-                  {raw?.user.usesWithoutSubscription.toString()}
+                  {raw?.user?.usesWithoutSubscription?.toString()}
                 </TableCell>
                 <TableCell>{raw?.user.entriesStatsCount ?? 0}</TableCell>
                 <TableCell>{raw?.user.dialogsStatsCount ?? 0}</TableCell>
