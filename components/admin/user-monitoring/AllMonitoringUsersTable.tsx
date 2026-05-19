@@ -92,9 +92,7 @@ export default function AllMonitoringUsersTable({
                     ? new Date(raw.user.plan.expiryTime).toLocaleString()
                     : '-'}
                 </TableCell>
-                <TableCell>
-                  {raw?.user?.usesWithoutSubscription}
-                </TableCell>
+                <TableCell>{raw?.user?.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.user.entriesStatsCount ?? 0}</TableCell>
                 <TableCell>{raw?.user.dialogsStatsCount ?? 0}</TableCell>
                 <TableCell>
