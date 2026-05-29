@@ -53,6 +53,7 @@ export default function AdminsClient({
 }) {
   const [email, setEmail] = useState('')
   const [uuid, setUuid] = useState('')
+  const [userId, setUserId] = useState<number>(0)
   const [loader, setLoader] = useState<boolean>(false)
   const [fetchUserError, setFetchUserError] = useState<string>('')
   const [user, setUser] = useState<User | null>(null)
@@ -70,7 +71,7 @@ export default function AdminsClient({
     setFetchUserError('')
     setLoader(true)
     try {
-      const user = await getUser(email, uuid)
+      const user = await getUser(userId, email, uuid)
       console.log('user', user)
       setUser(user)
     } catch (err: unknown) {
@@ -106,6 +107,18 @@ export default function AdminsClient({
     <>
       <h1 className="mb-4 text-xl font-semibold">User</h1>
       <div className="flex items-end gap-4">
+        <div>
+          <Label htmlFor="email" className="mb-2">
+            ID
+          </Label>
+          <Input
+            id="userId"
+            type="number"
+            value={userId as number}
+            onChange={(e) => setUserId(Number(e.target.value))}
+            placeholder="ID"
+          />
+        </div>
         <div>
           <Label htmlFor="email" className="mb-2">
             Email
@@ -152,9 +165,7 @@ export default function AdminsClient({
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[60px]">Id</TableHead>
-                <TableHead>Uuid</TableHead>
                 <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
                 <TableHead className="w-[70px]">Country </TableHead>
                 <TableHead className="w-[70px]">Plan</TableHead>
                 <TableHead className="w-[70px]">Status</TableHead>
@@ -172,9 +183,7 @@ export default function AdminsClient({
             <TableBody>
               <TableRow>
                 <TableCell>{user.id}</TableCell>
-                <TableCell>{user.uuid}</TableCell>
                 <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
                 <TableCell>{user.regionCode}</TableCell>
                 <TableCell>{user.plan?.name ?? '-'}</TableCell>
                 <TableCell>{user.plan?.planStatus ?? '-'}</TableCell>

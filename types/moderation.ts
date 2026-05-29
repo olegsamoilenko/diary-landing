@@ -64,3 +64,103 @@ export type Restriction = {
   userId: number
   violationCount: number
 }
+
+export type ModerationCoast = {
+  createdAt: string | Date
+  estimatedCostUsd: string
+  inputTokens: number
+  llmReviewCalls: number
+  moderationApiCalls: number
+  monthKey: string
+  outputTokens: number
+  periodEnd: string | Date
+  periodStart: string | Date
+  totalTokens: number
+  updatedAt: string | Date
+}
+
+export enum ForumModerationDecision {
+  ALLOW = 'allow',
+  NEEDS_LLM_REVIEW = 'needs_llm_review',
+  BLOCK = 'block',
+  ESCALATE_HUMAN = 'escalate_human',
+}
+
+export enum ForumModerationRuleCode {
+  RATE_LIMIT_OR_DUPLICATE = 'rate_limit_or_duplicate',
+  OPENAI_HARASSMENT = 'OPENAI_HARASSMENT',
+  OPENAI_HARASSMENT_THREATENING = 'OPENAI_HARASSMENT_THREATENING',
+
+  OPENAI_HATE = 'OPENAI_HATE',
+  OPENAI_HATE_THREATENING = 'OPENAI_HATE_THREATENING',
+
+  OPENAI_ILLICIT = 'OPENAI_ILLICIT',
+  OPENAI_ILLICIT_VIOLENT = 'OPENAI_ILLICIT_VIOLENT',
+
+  OPENAI_SELF_HARM = 'OPENAI_SELF_HARM',
+  OPENAI_SELF_HARM_INTENT = 'OPENAI_SELF_HARM_INTENT',
+  OPENAI_SELF_HARM_INSTRUCTIONS = 'OPENAI_SELF_HARM_INSTRUCTIONS',
+
+  OPENAI_SEXUAL = 'OPENAI_SEXUAL',
+  OPENAI_SEXUAL_MINORS = 'OPENAI_SEXUAL_MINORS',
+
+  OPENAI_VIOLENCE = 'OPENAI_VIOLENCE',
+  OPENAI_VIOLENCE_GRAPHIC = 'OPENAI_VIOLENCE_GRAPHIC',
+
+  OPENAI_MODERATION_FLAGGED = 'OPENAI_MODERATION_FLAGGED',
+
+  LLM_MODERATION_BLOCK = 'LLM_MODERATION_BLOCK',
+  TOO_MANY_LINKS = 'too_many_links',
+  DUPLICATE_CONTENT = 'duplicate_content',
+  REPEATED_CHARACTERS = 'repeated_characters',
+  SUSPICIOUS_PROMOTION = 'suspicious_promotion',
+  AGGRESSIVE_LANGUAGE = 'aggressive_language',
+  TOO_SHORT = 'too_short',
+  TOO_LONG = 'too_long',
+  UNKNOWN = 'unknown',
+}
+
+export enum ForumModerationStage {
+  BASELINE_RISK_CHECK = 'baseline_risk_check',
+  OPENAI_MODERATION_API = 'openai_moderation_api',
+  LLM_RULES_MODERATION = 'llm_rules_moderation',
+}
+
+export type forumAutoModerationLog = {
+  adminNote: string | null
+  adminReviewStatus: 'false_positive' | 'valid_block' | 'ignored' | null
+  adminReviewedAt: string | Date | null
+  adminReviewedById: number | null
+  contentHash: string | null
+  contentText: string
+  createdAt: string | Date
+  decision: ForumModerationDecision
+  id: string
+  metadataJson: Record<string, never> | null
+  reason: string | null
+  riskScore: number
+  ruleCode: ForumModerationRuleCode | null
+  signalsJson: string[] | null
+  stage: ForumModerationStage
+  targetId: string | null
+  targetType: ForumModerationTargetType
+  titleText: string | null
+  userId: number
+  user: {
+    email: string
+    id: number
+    uuid: string
+    settings: {
+      id: number
+      lang: string
+    }
+  }
+}
+
+export type ForumAutoModerationLogsResp = {
+  limit: number
+  logs: forumAutoModerationLog[]
+  page: number
+  pageCount: number
+  total: number
+}

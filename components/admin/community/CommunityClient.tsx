@@ -23,6 +23,7 @@ import {
 import { moderationTargetTypeOptions } from '@/lib/constants/community'
 import ModerationTopicCard from '@/components/admin/community/ModerationTopicCard'
 import ModerationCommentCard from '@/components/admin/community/ModerationCommentCard'
+import CreateSystemTopicDialog from '@/components/admin/community/CreateSystemTopicDialog'
 
 type SP = { page?: string }
 
@@ -72,12 +73,16 @@ export default function CommunityClient({
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold">Community</h1>
+      <div className="mb-4">
+        <CreateSystemTopicDialog adminId={adminId} />
+      </div>
       <div className="mb-10">
         <CommunityTable
           topics={(topicsResp?.items as Topic[]) ?? []}
           adminId={adminId}
           onSuccessRemoveTopic={loadTopics}
           onSuccessRestoreTopic={loadTopics}
+          onSuccessDeleteTopic={loadTopics}
         />
         <Pagination
           page={topicsResp?.page ?? 0}

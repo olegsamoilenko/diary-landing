@@ -34,6 +34,27 @@ export const removeTopic = async (
   }
 }
 
+export const deleteTopic = async (topicId: string) => {
+  try {
+    const res = await fetch(`/api/forum/moderation/topics/${topicId}/delete`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed deleteTopic')
+    }
+
+    const data = await res.json()
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('deleteTopic failed:', msg)
+    return undefined
+  }
+}
+
 export const restoreTopic = async (
   topicId: string,
   body: {
@@ -189,6 +210,68 @@ export const unrestrictUser = async (
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
     console.error('unrestrictUser failed:', msg)
+    return undefined
+  }
+}
+
+export const getModerationCoast = async () => {
+  try {
+    const res = await fetch(`/api/forum-moderation/admin/ai-usage`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed getModerationCoast')
+    }
+
+    const data = await res.json()
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('getModerationCoast failed:', msg)
+    return undefined
+  }
+}
+
+export const getModerationLogs = async (params: {
+  page?: number
+  limit?: number
+  userId?: number
+  targetType?: 'topic' | 'comment'
+}) => {
+  const searchParams = new URLSearchParams()
+
+  searchParams.set('page', String(params.page ?? 1))
+  searchParams.set('limit', String(params.limit ?? 20))
+
+  if (params.userId) {
+    searchParams.set('userId', String(params.userId))
+  }
+
+  if (params.targetType) {
+    searchParams.set('targetType', params.targetType)
+  }
+  try {
+    const res = await fetch(
+      `/api/forum-moderation/admin/logs?${searchParams.toString()}`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
+    )
+
+    if (!res.ok) {
+      throw new Error('Failed getModerationLogs')
+    }
+
+    const data = await res.json()
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('getModerationLogs failed:', msg)
     return undefined
   }
 }

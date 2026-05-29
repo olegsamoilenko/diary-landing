@@ -65,21 +65,6 @@ export default function AdminsClient({
     fetchUsers()
   }, [page])
 
-  const fetchUser = async () => {
-    setFetchUserError('')
-    setLoader(true)
-    try {
-      const user = await getUser(email, uuid)
-      console.log('user', user)
-      setUser(user)
-    } catch (err: unknown) {
-      console.error('error', err)
-      setFetchUserError(getErrorMessage(err))
-    } finally {
-      setLoader(false)
-    }
-  }
-
   const fetchUsers = async () => {
     try {
       const res = await getAll(page, Number(limit), sortBy, hasPlan)

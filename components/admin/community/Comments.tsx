@@ -18,8 +18,9 @@ import { getLogs } from '@/lib/api/logs'
 import AllLogsTable from '@/components/admin/logs/AllLogsTable'
 import Pagination from '@/components/ui/pagination'
 import { takeCommentsOptions } from '@/lib/constants/community'
-import { getComments } from '@/lib/api/community'
+import { getCommentLocationInTopic, getComments } from '@/lib/api/community'
 import CommentCard from '@/components/admin/community/CommentCard'
+import ModerationAnswerTopicDialog from '@/components/admin/community/ModerationAnswerTopicDialog'
 
 type SP = { page?: string; topicId?: string }
 export default function Comments({
@@ -43,6 +44,7 @@ export default function Comments({
     pageCount: 0,
   })
   const [page, setPage] = useState<number>(1)
+  const [commentId, setCommentId] = useState<string>('')
 
   const loadComments = async (pageNumber: number) => {
     const logsRes = await getComments(topicId, {
@@ -60,9 +62,28 @@ export default function Comments({
     })
   }
 
+  const findComment = async () => {
+    const location = await getCommentLocationInTopic(topicId, commentId, limit)
+
+    const logsRes = await getComments(topicId, {
+      page: location.page,
+      limit: location.limit,
+      take,
+    })
+    setCommentsResp(logsRes)
+
+    requestAnimationFrame(() => {
+      document.getElementById(`comment-${commentId}`)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
+    })
+  }
+
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold">Comments</h1>
+      <ModerationAnswerTopicDialog id={topicId} adminId={adminId} />
       <div className="my-4 flex items-end gap-4">
         <div className="items-end">
           <div className="mb-2">Take</div>
@@ -85,6 +106,25 @@ export default function Comments({
           </Select>
         </div>
         <Button onClick={() => loadComments(1)}>Load</Button>
+        <div>
+          <Label htmlFor="uuid" className="mb-2">
+            ID
+          </Label>
+          <Input
+            id="uuid"
+            type="text"
+            value={commentId}
+            onChange={(e) => setCommentId(e.target.value)}
+            placeholder="Uuid"
+          />
+        </div>
+        <Button
+          onClick={async () => {
+            await findComment()
+          }}
+        >
+          Find
+        </Button>
       </div>
       <div>
         {commentsResp.items &&

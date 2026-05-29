@@ -3,12 +3,14 @@ import { GetAllUsersResp, HasPlan, PlanStatus, UserRole } from '@/types'
 import type { User } from '@/types'
 
 export const getUser = async (
+  userId: number | null,
   email?: string,
   uuid?: string,
 ): Promise<User | null> => {
+  console.log('userId', userId, 'email', email, 'uuid', uuid, 'get user')
   return apiFetch(`/api/users/get-one-by`, {
     method: 'POST',
-    body: JSON.stringify({ email, uuid }),
+    body: JSON.stringify({ userId, email, uuid }),
   })
 }
 

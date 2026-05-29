@@ -1,8 +1,11 @@
 import {
+  ForumCategorySlug,
   ForumModerationReason,
   ForumModerationTargetType,
+  ForumTopicType,
   ForumUserRestrictionType,
   TakeOptions,
+  UserRole,
 } from '@/types'
 
 export const takeCommentsOptions = [
@@ -88,11 +91,87 @@ export const moderationRestrictionTypeOptions = [
 
 export const moderationTargetTypeOptions = [
   {
+    value: 'all',
+    label: 'All',
+  },
+  {
     value: ForumModerationTargetType.TOPIC,
     label: 'Topic',
   },
   {
     value: ForumModerationTargetType.COMMENT,
     label: 'Comment',
+  },
+]
+
+export const userRoleOptions = [
+  {
+    value: UserRole.NEMORY,
+    label: 'Nemory',
+  },
+  {
+    value: UserRole.FORUM_ADMIN,
+    label: 'Admin',
+  },
+  {
+    value: UserRole.FORUM_MODERATOR,
+    label: 'Moderator',
+  },
+]
+
+export const topicCategoryOptions = [
+  {
+    label: 'Self growth',
+    value: ForumCategorySlug.SELF_GROWTH,
+  },
+  { label: 'Habits', value: ForumCategorySlug.HABITS },
+  { label: 'Goals', value: ForumCategorySlug.GOALS },
+  {
+    label: 'Productivity',
+    value: ForumCategorySlug.PRODUCTIVITY,
+  },
+  { label: 'Mindset', value: ForumCategorySlug.MINDSET },
+  {
+    label: 'Stress balance',
+    value: ForumCategorySlug.STRESS_BALANCE,
+  },
+  {
+    label: 'Journaling',
+    value: ForumCategorySlug.JOURNALING,
+  },
+  {
+    label: 'Motivation',
+    value: ForumCategorySlug.MOTIVATION,
+  },
+  {
+    label: 'Relationships',
+    value: ForumCategorySlug.RELATIONSHIPS,
+  },
+]
+
+export const topicTypeOptions = [
+  {
+    label: 'Discussion',
+    value: ForumTopicType.DISCUSSION,
+  },
+  {
+    label: 'Advice',
+    value: ForumTopicType.ADVICE,
+  },
+  {
+    label: 'Experience',
+    value: ForumTopicType.EXPERIENCE,
+  },
+  {
+    label: 'Progress',
+    value: ForumTopicType.PROGRESS,
+  },
+  {
+    label: 'Reflection',
+    value: ForumTopicType.REFLECTION,
+  },
+  {
+    label: 'Question',
+    value: ForumTopicType.QUESTION,
   },
 ]

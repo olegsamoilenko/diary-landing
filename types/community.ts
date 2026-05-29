@@ -1,9 +1,11 @@
 import { User } from '@/types/user'
+import { Settings } from '@/types/settings'
 
 export type Topic = {
   author: User
   authorId: number
   authorProfile: AuthorProfile
+  authorSettings: Settings
   category: Category
   categoryId: string
   commentsCount: number
@@ -114,6 +116,7 @@ export type Comment = {
   author: User
   authorId: number
   authorProfile: AuthorProfile
+  authorSettings: Settings
   content: string
   createdAt: string | Date
   deletedAt: string | Date | null
@@ -123,10 +126,12 @@ export type Comment = {
   isRemoved: boolean
   likesCount: number
   parentCommentId: string | null
+  parentComment: Comment
   reactionsCount: number
   removedAt: string | Date | null
   replies: Comment[]
   replyToCommentId: string | null
+  replyToComment: Comment
   reportsCount: number
   status: ForumContentStatus
   topicId: string
@@ -144,4 +149,15 @@ export enum ForumModerationReason {
   PERSONAL_DATA = 'personal_data',
   OFF_TOPIC = 'off_topic',
   OTHER = 'other',
+}
+
+export type CreateSystemTopics = {
+  userId: number
+  type: ForumTopicType
+  categorySlug: ForumCategorySlug
+  topics: {
+    lang: string
+    title: string
+    content: string
+  }[]
 }

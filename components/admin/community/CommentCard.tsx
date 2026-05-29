@@ -4,6 +4,7 @@ import ModerationRestoreCommentDialog from '@/components/admin/community/Moderat
 import { restoreComment } from '@/lib/api/moderation'
 import React, { useState } from 'react'
 import { JsonViewer } from '@/components/ui/JsonViewer'
+import ModerationAnswerTopicDialog from '@/components/admin/community/ModerationAnswerTopicDialog'
 
 type Props = {
   comment: Comment
@@ -39,35 +40,46 @@ export default function CommentCard({
 
   const isOpenComment = expandedCommentId === comment.id
   return (
-    <div className="mb-4 flex flex-col gap-2 rounded-2xl border p-4">
+    <div
+      className="mb-4 flex flex-col gap-2 rounded-2xl border p-4"
+      id={`comment-${comment.id}`}
+    >
       <div className="flex gap-4">
-        <div>{comment.author.name}</div>
-        <div>{comment.author.id}</div>
-        <div>{comment.author.settings.lang}</div>
+        <div>{comment.authorProfile?.username ?? 'unknown'}</div>
+        <div>{comment.author?.id}</div>
+        <div>{comment.author?.settings?.lang}</div>
         <div>{new Date(comment.createdAt).toLocaleString()}</div>
         <div>{comment.status}</div>
       </div>
-      <div>{comment.content}</div>
-      <div className="mb-2">
+      <div>{comment.id}</div>
+      <div className="w-full min-w-0 [overflow-wrap:anywhere] whitespace-pre-wrap">
+        {comment.content}
+      </div>
+      <div className="mb-2 flex gap-4">
         {comment.status === ForumContentStatus.PUBLISHED && (
           <ModerationRemoveCommentDialog
             id={comment.id}
             adminId={adminId}
-            lang={comment.author.settings.lang}
-            targetUserId={comment.author.id}
+            lang={comment.author?.settings?.lang}
+            targetUserId={comment.author?.id}
             onSuccessRemoveComment={onSuccessRemoveComment}
           />
         )}
         {comment.status === ForumContentStatus.REMOVED_BY_MODERATOR && (
           <ModerationRestoreCommentDialog
             id={comment.id}
-            targetUserId={comment.author.id}
+            targetUserId={comment.author?.id}
             onRestore={async (id: string, targetUserId: number) => {
               await handleRestore(id, targetUserId)
               onSuccessRestoreComment()
             }}
           />
         )}
+        <ModerationAnswerTopicDialog
+          id={comment.topicId}
+          adminId={adminId}
+          parentCommentId={comment.id}
+        />
       </div>
       <div className="mb-2">
         <button className="underline" onClick={() => toggleComment(comment.id)}>
@@ -85,20 +97,39 @@ export default function CommentCard({
           <div
             key={reply.id}
             className="ml-4 flex flex-col gap-2 rounded-2xl border p-4"
+            id={`comment-${reply.id}`}
           >
             <div className="flex gap-4">
-              <div>{reply.author.name}</div>
-              <div>{reply.author.id}</div>
+              <div>{reply.authorProfile?.username ?? 'unknown'}</div>
+              <div>{reply.author?.id}</div>
               <div>{new Date(reply.createdAt).toLocaleString()}</div>
               <div>{reply.status}</div>
             </div>
-            <div>{reply.content}</div>
-            <div>
+            <div>{reply.id}</div>
+            {reply.replyToComment && (
+              <div
+                className={
+                  'border- ml-4 flex flex-col gap-2 rounded-2xl border border-gray-300 p-4'
+                }
+              >
+                <div className="flex gap-4 text-gray-500">
+                  <div>Reply to</div>
+                  <div>{reply.replyToComment.authorProfile?.username}</div>
+                </div>
+                <div className="w-full min-w-0 [overflow-wrap:anywhere] whitespace-pre-wrap">
+                  {reply.replyToComment.content}
+                </div>
+              </div>
+            )}
+            <div className="w-full min-w-0 [overflow-wrap:anywhere] whitespace-pre-wrap">
+              {reply.content}
+            </div>
+            <div className="mb-2 flex gap-4">
               {reply.status === ForumContentStatus.PUBLISHED && (
                 <ModerationRemoveCommentDialog
                   id={reply.id}
-                  targetUserId={reply.author.id}
-                  lang={reply.author.settings.lang}
+                  targetUserId={reply.author?.id}
+                  lang={reply.author?.settings?.lang}
                   adminId={adminId}
                   onSuccessRemoveComment={onSuccessRemoveComment}
                 />
@@ -106,13 +137,19 @@ export default function CommentCard({
               {reply.status === ForumContentStatus.REMOVED_BY_MODERATOR && (
                 <ModerationRestoreCommentDialog
                   id={reply.id}
-                  targetUserId={reply.author.id}
+                  targetUserId={reply.author?.id}
                   onRestore={async (id: string, targetUserId: number) => {
                     await handleRestore(id, targetUserId)
                     onSuccessRestoreComment()
                   }}
                 />
               )}
+              <ModerationAnswerTopicDialog
+                id={comment.topicId}
+                adminId={adminId}
+                parentCommentId={comment.id}
+                replyToCommentId={reply.id}
+              />
             </div>
             <div className="mb-2">
               <button
