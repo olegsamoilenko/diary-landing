@@ -50,8 +50,7 @@ export default function AdminsClient({
     setFetchUserError('')
     setLoader(true)
     try {
-      const user = await getUser(email, uuid)
-      console.log('user', user)
+      const user = await getUser(null, email, uuid)
       setUser(user)
     } catch (err: unknown) {
       console.error('error', err)
