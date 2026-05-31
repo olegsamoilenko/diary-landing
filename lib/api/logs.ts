@@ -6,11 +6,14 @@ export const getLogs = async (
   level: LogsLevel,
   userId: number | undefined,
   userUuid: string | undefined,
+  searchTerm: string | undefined,
   page: number,
   limit: number,
 ) => {
   try {
     const params = new URLSearchParams()
+
+    console.log('searchTerm', searchTerm)
 
     const sd = ymdLocal(startDate)
     const ed = ymdLocal(endDate)
@@ -21,6 +24,9 @@ export const getLogs = async (
     params.set('page', String(page))
     params.set('limit', String(limit))
     params.set('userUuid', String(userUuid))
+    if (searchTerm) {
+      params.set('searchTerm', String(searchTerm))
+    }
 
     if (typeof userId === 'number' && userId > 0) {
       params.set('userId', String(userId))
@@ -50,13 +56,14 @@ export const getLogsByUuid = async (
   level: LogsLevel,
   page: number,
   limit: number,
+  searchTerm: string,
 ) => {
   try {
     const res = await fetch(`/api/logs/get-logs-by-uuid`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ uuid, level, page, limit }),
+      body: JSON.stringify({ uuid, level, page, limit, searchTerm }),
     })
 
     if (!res.ok) {

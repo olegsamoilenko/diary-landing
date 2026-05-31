@@ -48,6 +48,7 @@ export default function AdminsClient({
     logs: Log[]
     page: number
     pageCount: number
+    searchTermPages: number[]
   } | null>(null)
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState<Limit>('20')
@@ -55,6 +56,7 @@ export default function AdminsClient({
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const sp = searchParams ? use(searchParams) : undefined
   const queryUuid = sp?.uuid
+  const [searchTerm, setSearchTerm] = useState<string>('')
 
   useEffect(() => {
     if (!queryUuid) return
@@ -81,7 +83,13 @@ export default function AdminsClient({
   const fetchLogs = async () => {
     if (!uuid) return
     try {
-      const res = await getLogsByUuid(uuid, level, page, Number(limit))
+      const res = await getLogsByUuid(
+        uuid,
+        level,
+        page,
+        Number(limit),
+        searchTerm,
+      )
       setLogs(res)
     } catch (err: unknown) {
       console.error('error', err)
@@ -249,31 +257,54 @@ export default function AdminsClient({
               <JsonViewer data={user} />
             </div>
             <div className="col-span-2">
-              <div className="mb-6 items-end">
-                <div className="mb-2">Logs Level</div>
-                <Select
-                  value={level}
-                  onValueChange={(l) => {
-                    setLevel(l as LogsLevel)
+              <div className="mb-6 flex items-end gap-4">
+                <div className="items-end">
+                  <div className="mb-2">Logs Level</div>
+                  <Select
+                    value={level}
+                    onValueChange={(l) => {
+                      setLevel(l as LogsLevel)
+                    }}
+                  >
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Platform" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {logsLevelOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="userUuid" className="mb-2">
+                    Search term
+                  </Label>
+                  <Input
+                    id="searchTerm"
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search Term"
+                  ></Input>
+                </div>
+                <Button
+                  onClick={async () => {
+                    await fetchLogs()
                   }}
+                  loading={loader}
                 >
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Platform" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {logsLevelOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                  Load
+                </Button>
               </div>
               <div ref={scrollRef} className="max-h-[1200px] overflow-auto">
                 <AllLogsTable logs={logs?.logs ?? []} />
                 <Pagination
                   page={logs?.page ?? 0}
                   pageCount={logs?.pageCount ?? 0}
+                  searchTermPages={logs?.searchTermPages ?? []}
                   onPress={(page: number) => {
                     console.log(111)
                     setPage(page)

@@ -7,11 +7,13 @@ export default function Pagination({
   pageCount,
   isComponent = false,
   onPress,
+  searchTermPages,
 }: {
   page: number
   pageCount: number
   isComponent?: boolean
   onPress?: (p: number) => void
+  searchTermPages?: number[]
 }) {
   const pathname = usePathname()
   const params = useSearchParams()
@@ -37,6 +39,8 @@ export default function Pagination({
   const start = Math.max(1, page - Math.floor(windowSize / 2))
   const end = Math.min(pageCount, start + windowSize - 1)
   const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i)
+
+  const isSearchTermPage = (p: number) => searchTermPages?.includes(p) ?? false
 
   return (
     <div className="my-4 flex items-center gap-2">
@@ -69,6 +73,9 @@ export default function Pagination({
               key={p}
               size="sm"
               variant={p === page ? 'default' : 'ghost'}
+              className={
+                isSearchTermPage(p) ? 'font-semibold text-red-400' : undefined
+              }
               onClick={() => handlePressButton(p)}
             >
               {p}

@@ -45,6 +45,7 @@ export default function LogsPage({
   const [errorLogsLevel, setErrorLogsLevel] = useState<string | null>(null)
   const [userId, setUserId] = useState<number | undefined>(undefined)
   const [userUuid, setUserUuid] = useState<string | undefined>(sp.userUuid)
+  const [searchTerm, setSearchTerm] = useState<string>('')
   const page = Number(sp.page ?? '1') || 1
   const limit = 50
   const [logs, setLogs] = useState<{
@@ -66,6 +67,7 @@ export default function LogsPage({
       logsLevel,
       userId,
       userUuid,
+      searchTerm,
       pageNumber,
       limit,
     )
@@ -149,6 +151,18 @@ export default function LogsPage({
             value={userUuid}
             onChange={(e) => setUserUuid(e.target.value)}
             placeholder="User Uuid"
+          ></Input>
+        </div>
+        <div>
+          <Label htmlFor="userUuid" className="mb-2">
+            Search term
+          </Label>
+          <Input
+            id="searchTerm"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search Term"
           ></Input>
         </div>
         <Button onClick={() => loadLogs(1)}>Load</Button>
