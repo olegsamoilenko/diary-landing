@@ -47,7 +47,7 @@ export default function PrivacyPage() {
   return (
     <Container className="py-10">
       <Title>Nemory — Privacy Policy</Title>
-      <Text className="mb-4">Last updated: November 22, 2025</Text>
+      <Text className="mb-4">Last updated: May 29, 2026</Text>
 
       <Title className="mb-2" level={3}>
         Who we are
@@ -64,21 +64,40 @@ export default function PrivacyPage() {
         What we do (product)
       </Title>
       <Text className="mb-2">
-        Nemory is a personal journal with AI support. Users can:
+        Nemory is a personal growth platform that combines private journaling,
+        AI-powered reflections, goals and habits tracking, and a community space
+        where users can participate in discussions.
+      </Text>
+      <Text className="mb-2">
+        <strong>Users can:</strong>
       </Text>
       <UnorderedList className="mb-4">
-        <li>create personal entries (text, images, styles/backgrounds);</li>
+        <li>
+          create personal journal entries (text, images, styles/backgrounds);
+        </li>
         <li>track mood, habits, and goals;</li>
         <li>receive AI analysis, reflections, and tips;</li>
         <li>
           use an AI chat that can reference relevant past entries and
-          user-specific memory.
+          user-specific memory;
+        </li>
+        <li>create community topics and comments;</li>
+        <li>
+          interact with content published by other users in the Nemory
+          Community;
         </li>
       </UnorderedList>
       <Text className="mb-2">
-        The app is designed as offline-first: your journal content lives
+        The app is designed as offline-first: your private journal content lives
         primarily on your device in an encrypted local database. We do not store
-        your journal entries on our servers.
+        your private journal entries, journal images in our server database.
+      </Text>
+      <Text className="mb-2">
+        Private journal content and community content are treated differently.
+        Journal entries remain private to the user and are stored locally on the
+        user's device. Community content, including topics, comments, replies,
+        reactions, reports, and public profile information, is stored on our
+        servers and may be visible to other users of the Service.
       </Text>
       <Text className="mb-2">
         Monetization: subscriptions via App Store / Google Play with regional
@@ -131,8 +150,12 @@ export default function PrivacyPage() {
         <strong>3. Our servers</strong>
       </Text>
       <Text className="mb-2">
-        Our servers store only limited account-related and technical data,
-        specifically:
+        Our servers store data needed to operate the Service, manage accounts
+        and subscriptions, provide community features, maintain safety, and
+        diagnose technical issues.
+      </Text>
+      <Text className="mb-2">
+        <strong>This includes:</strong>
       </Text>
       <UnorderedList className="mb-4">
         <li>
@@ -141,6 +164,28 @@ export default function PrivacyPage() {
             <li>name or nickname (if provided);</li>
             <li>email address (if used/verified);</li>
             <li>id from Google (if you sign in via Google);</li>
+          </UnorderedList>
+        </li>
+        <li>
+          <span className="mb-2">Public community profile data:</span>
+          <UnorderedList className="mb-4 ml-10">
+            <li>username (if provided);</li>
+            <li>avatar (if provided);</li>
+          </UnorderedList>
+        </li>
+        <li>
+          <span className="mb-2">Community content and interactions:</span>
+          <UnorderedList className="mb-4 ml-10">
+            <li>topics created by users;</li>
+            <li>comments and replies;</li>
+            <li>
+              reactions, bookmarks, watched topics, read states, and other
+              community interactions;
+            </li>
+            <li>reports submitted by users;</li>
+            <li>
+              moderation records, moderation notes, and enforcement actions.
+            </li>
           </UnorderedList>
         </li>
         <li>
@@ -179,10 +224,7 @@ export default function PrivacyPage() {
           </UnorderedList>
         </li>
       </UnorderedList>
-      <Text className="mb-2">
-        We do not store your journal entries (text or images) in our server
-        database.
-      </Text>
+      {/*--------------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         How AI processing works
       </Title>
@@ -191,23 +233,23 @@ export default function PrivacyPage() {
       </Text>
       <UnorderedList className="mb-4">
         <li>
-          Your device selects the current entry and, if needed, similar/related
+          your device selects the current entry and, if needed, similar/related
           entries from the local encrypted database.
         </li>
         <li>
-          A context (prompt) is built locally from these entries and
+          a context (prompt) is built locally from these entries and
           user-specific memory.
         </li>
         <li>
-          This context is sent to our backend and then forwarded to one or more
+          this context is sent to our backend and then forwarded to one or more
           third-party AI providers to generate a response.
         </li>
         <li>
-          We do not send payment tokens, subscription identifiers, or your email
+          we do not send payment tokens, subscription identifiers, or your email
           / Google ID as part of the AI prompt.
         </li>
         <li>
-          Where possible, we configure AI providers not to use submitted content
+          where possible, we configure AI providers not to use submitted content
           for training their models beyond providing the service.
         </li>
       </UnorderedList>
@@ -216,6 +258,81 @@ export default function PrivacyPage() {
         timestamps, token counts, error codes) for billing, abuse prevention,
         and diagnostics.
       </Text>
+      {/*---------------------------------------------------------*/}
+      <Title className="mb-2" level={3}>
+        Community Features
+      </Title>
+      <Text className="mb-2">
+        Nemory includes community features that allow users to create topics,
+        publish comments, reply to other users, react to content, and
+        participate in discussions.
+      </Text>
+      <Text className="mb-2">
+        You should not publish sensitive personal information, financial
+        information, passwords, private health information, or other
+        confidential information in public community areas.
+      </Text>
+      <Text className="mb-2">
+        Users may edit or delete community content they create, subject to
+        technical limitations, moderation actions, legal obligations, and
+        abuse-prevention requirements.
+      </Text>
+      {/*--------------------------------------------------*/}
+      <Title className="mb-2" level={3}>
+        Community Moderation
+      </Title>
+      <Text className="mb-2">
+        To help maintain a safe and respectful environment, community content is
+        reviewed using automated systems and human moderation.
+      </Text>
+      <Text className="mb-2">
+        <strong>Moderation may include:</strong>
+      </Text>
+      <UnorderedList className="mb-4">
+        <li>
+          automated detection of spam, abuse, harassment, hate speech, dangerous
+          content, or other violations;
+        </li>
+        <li>review of user reports;</li>
+        <li>
+          manual moderation actions performed by authorized moderators or
+          administrators;
+        </li>
+      </UnorderedList>
+      <Text className="mb-2">
+        We may remove content, restrict visibility, suspend community
+        privileges, temporarily restrict participation, or permanently disable
+        access to community features when content or behavior violates our
+        Community Guidelines, Terms of Service, applicable laws, or platform
+        policies.
+      </Text>
+      <Text className="mb-2">
+        Moderation decisions may be based on automated systems, human review, or
+        a combination of both.
+      </Text>
+      {/*--------------------------------------------------*/}
+      <Title className="mb-2" level={3}>
+        Reports and Safety
+      </Title>
+      <Text className="mb-2">
+        Users may report topics, comments, profiles, or other community content
+        that they believe violates community rules or applicable laws.
+      </Text>
+      <Text className="mb-2">
+        <strong>When a report is submitted, we may collect:</strong>
+      </Text>
+      <UnorderedList className="mb-4">
+        <li>the reported content;</li>
+        <li>the reporting user;</li>
+        <li>timestamps;</li>
+        <li>moderation notes;</li>
+        <li>enforcement actions and investigation records;</li>
+      </UnorderedList>
+      <Text className="mb-2">
+        This information is used to investigate abuse, enforce community
+        standards, protect users, and improve platform safety.
+      </Text>
+      {/*--------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         How we use server-side data
       </Title>
@@ -235,38 +352,56 @@ export default function PrivacyPage() {
         </li>
         <li>
           send essential service communications (e.g. email verification,
-          security notices).
+          security notices);
         </li>
+        <li>provide community features and public user profiles;</li>
+        <li>moderate community content and enforce Community Guidelines;</li>
+        <li>
+          investigate reports, abuse, spam, fraud, and security incidents;
+        </li>
+        <li>prevent misuse of community features;</li>
       </UnorderedList>
       <Text className="mb-2">
         We do not use your journal entries for advertising. We do not sell
         personal data.
       </Text>
+      {/*---------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         Retention
       </Title>
       <UnorderedList className="mb-1">
         <li>
-          Local journal data (entries, images, AI dialogs, local memory) remains
+          local journal data (entries, images, AI dialogs, local memory) remains
           on your device until you delete entries, delete the app, or overwrite
           the local database (for example, by restoring another backup). We do
-          not control this storage.
+          not control this storage;
         </li>
         <li>
-          Account and subscription data on our servers is kept while your
+          account and subscription data on our servers is kept while your
           account exists and as long as necessary for billing, security, and
-          legal obligations.
+          legal obligations;
         </li>
         <li>
-          Technical logs are typically kept for up to 30 days with regular
-          cleanup. Push.
+          technical logs are typically kept for up to 30 days with regular
+          cleanup;
         </li>
-        <li>Server-side database backups may be kept for up to 30 days.</li>
+        <li>server-side database backups may be kept for up to 30 days;</li>
         <li>
-          Payment and subscription records may be kept longer in de-identified
-          or pseudonymised form if required by law or for dispute handling.
+          payment and subscription records may be kept longer in de-identified
+          or pseudonymised form if required by law or for dispute handling;
+        </li>
+        <li>
+          community content may remain available until deleted by the author,
+          removed by moderators, or otherwise removed in accordance with our
+          policies;
+        </li>
+        <li>
+          reports, moderation records, and abuse-prevention records may be
+          retained for a reasonable period to investigate violations, prevent
+          repeated abuse, resolve disputes, and protect the Service;
         </li>
       </UnorderedList>
+      {/*--------------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         Deletion and inactivity
       </Title>
@@ -304,6 +439,18 @@ export default function PrivacyPage() {
         or backup files stored by you. To remove them, you must delete entries
         and/or uninstall the app and delete any backup files you created.
       </Text>
+      <Text className="mb-2">
+        Community content may remain visible after account deletion where
+        permitted by law, unless removed, anonymized, or deleted in accordance
+        with our policies.
+      </Text>
+      <Text className="mb-2">
+        We may retain moderation records, reports, and abuse-prevention
+        information after account deletion where necessary to protect the
+        Service, investigate violations, comply with legal obligations, or
+        prevent repeated abuse.
+      </Text>
+      {/*--------------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         Children’s privacy
       </Title>
@@ -313,6 +460,34 @@ export default function PrivacyPage() {
         and believe your child has provided us with personal data, contact
         nemoryai.diary@gmail.com and we will delete it.
       </Text>
+      {/*---------------------------------------------------------*/}
+      <Title className="mb-2" level={3}>
+        Community Guidelines
+      </Title>
+      <Text className="mb-2">
+        Users of the Community are expected to interact respectfully and
+        responsibly.
+      </Text>
+      <Text className="mb-2">
+        <strong>
+          Content that may be removed includes, but is not limited to:
+        </strong>
+      </Text>
+      <UnorderedList className="mb-1">
+        <li>spam and unsolicited advertising;</li>
+        <li>harassment, bullying, or threats;</li>
+        <li>hate speech or discriminatory content;</li>
+        <li>sexual exploitation or sexually abusive content;</li>
+        <li>content promoting self-harm or violence;</li>
+        <li>illegal activities;</li>
+        <li>fraudulent, deceptive, or malicious content;</li>
+        <li>content that violates the rights of others;</li>
+      </UnorderedList>
+      <Text className="mb-2">
+        Violations may result in content removal, temporary restrictions,
+        permanent restrictions, or account-related enforcement actions.
+      </Text>
+      {/*----------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         Security
       </Title>

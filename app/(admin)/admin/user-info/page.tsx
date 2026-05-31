@@ -14,21 +14,10 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import ChangeRoleDialog from '@/components/admin/admins/ChangeRoleDialog'
-import {
-  GetAllUsersResp,
-  Granularity,
-  PlanStatus,
-  User,
-  SortBy,
-  HasPlan,
-  Limit,
-  Log,
-  LogsLevel,
-} from '@/types'
+import { PlanStatus, User, Limit, Log, LogsLevel } from '@/types'
 import { getErrorMessage } from '@/lib/errors'
 import ChangeStatusDialog from '@/components/admin/admins/ChangeStatusDialog'
 import { JsonViewer } from '@/components/ui/JsonViewer'
-import AllUsersTable from '@/components/admin/admins/AllUsersTable'
 import Pagination from '@/components/ui/pagination'
 import {
   Select,
@@ -37,14 +26,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { UsersHavePlanOptions, UsersSortByOptions } from '@/lib/constants/users'
-import { LimitOptions } from '@/lib/constants/pagination'
 import { getLogsByUuid } from '@/lib/api/logs'
 import { logsLevelOptions } from '@/lib/constants/logs'
 import AllLogsTable from '@/components/admin/logs/AllLogsTable'
 import { formatAcquisitionSource } from '@/lib/utils/formatAcquisitionSource'
 
-type SP = { page?: string }
+type SP = { page?: string; uuid?: string }
 
 export default function AdminsClient({
   searchParams,
@@ -66,12 +53,21 @@ export default function AdminsClient({
   const [limit, setLimit] = useState<Limit>('20')
   const [level, setLevel] = useState<LogsLevel>(LogsLevel.ALL)
   const scrollRef = useRef<HTMLDivElement | null>(null)
+  const sp = searchParams ? use(searchParams) : undefined
+  const queryUuid = sp?.uuid
 
-  const fetchUser = async () => {
+  useEffect(() => {
+    if (!queryUuid) return
+
+    setUuid(queryUuid)
+    fetchUser(queryUuid)
+  }, [queryUuid])
+
+  const fetchUser = async (overrideUuid?: string) => {
     setFetchUserError('')
     setLoader(true)
     try {
-      const user = await getUser(userId, email, uuid)
+      const user = await getUser(userId, email, overrideUuid ?? uuid)
       console.log('user', user)
       setUser(user)
     } catch (err: unknown) {
@@ -94,7 +90,7 @@ export default function AdminsClient({
 
   useEffect(() => {
     fetchLogs()
-  }, [page, level])
+  }, [page, level, uuid])
 
   const scrollToTop = () => {
     scrollRef?.current?.scrollTo({
@@ -253,7 +249,7 @@ export default function AdminsClient({
               <JsonViewer data={user} />
             </div>
             <div className="col-span-2">
-              <div className="items-end">
+              <div className="mb-6 items-end">
                 <div className="mb-2">Logs Level</div>
                 <Select
                   value={level}

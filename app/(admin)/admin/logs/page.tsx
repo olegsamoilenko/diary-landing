@@ -81,7 +81,7 @@ export default function LogsPage({
     console.log('startDate', startDate)
     console.log('endDate', endDate)
     window.open(
-      `/admin/logs?startDate=${startDate}&endDate=${endDate}&userUuid=${uuid}&logsLevel=${logsLevel}&page=${page}`,
+      `/admin/user-info?uuid=${uuid}`,
       '_blank',
       'noopener,noreferrer',
     )
