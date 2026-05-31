@@ -58,6 +58,7 @@ export default function UserLogs({
     page: 0,
     pageCount: 0,
   })
+  const [searchTerm, setSearchTerm] = useState<string>('')
 
   const loadLogs = async (pageNumber: number) => {
     if (!startDate || !endDate) return
@@ -68,6 +69,7 @@ export default function UserLogs({
       logsLevel,
       userId,
       userUuid,
+      searchTerm,
       pageNumber,
       limit,
     )
@@ -124,6 +126,18 @@ export default function UserLogs({
           {errorLogsLevel && (
             <p className="mt-1 text-sm text-red-600">{errorLogsLevel}</p>
           )}
+        </div>
+        <div>
+          <Label htmlFor="userUuid" className="mb-2">
+            Search term
+          </Label>
+          <Input
+            id="searchTerm"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search Term"
+          ></Input>
         </div>
         <Button onClick={() => loadLogs(1)}>Load</Button>
       </div>
