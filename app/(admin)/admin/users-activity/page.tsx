@@ -41,7 +41,7 @@ export default function AdminsClient({
   )
   const [startDate, setStartDate] = useState<Date | undefined>(undefined)
   const [endDate, setEndDate] = useState<Date | undefined>(undefined)
-  const [activityType, setActivityType] = useState<ActivityPlanType>('inTrial')
+  const [activityType, setActivityType] = useState<ActivityPlanType>('all')
   const [activityCountByDayStats, setActivityCountByDayStats] = useState<
     | {
         date: string

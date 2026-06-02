@@ -14,11 +14,20 @@ import { JsonViewer } from '@/components/ui/JsonViewer'
 import { formatAcquisitionSource } from '@/lib/utils/formatAcquisitionSource'
 import { Button } from '@/components/ui/button'
 import UserLogs from '@/components/admin/user-list/UserLogs'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
 type Props = {
   activityRecords: ActivityRecords[]
   onSuccessDelete?: () => void
 }
+
+const ACTIVITY_COLORS = {
+  new: '#6FA77A',
+  returning: '#C99A5B',
+}
+
+dayjs.extend(utc)
 
 export default function UsersActivityTable({ activityRecords }: Props) {
   const [expandedUserId, setExpandedUserId] = useState<number | null>(null)
@@ -58,6 +67,9 @@ export default function UsersActivityTable({ activityRecords }: Props) {
       <TableBody>
         {activityRecords?.map((raw) => {
           const isOpen = expandedUserId === raw.id
+          const isNewUserActivity =
+            dayjs(raw.user.createdAt).utc().format('YYYY-MM-DD') ===
+            dayjs(raw.user.lastActiveAt).utc().format('YYYY-MM-DD')
 
           return (
             <React.Fragment key={raw.id}>
@@ -90,7 +102,13 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>
                   {new Date(raw?.user.createdAt).toLocaleString()}
                 </TableCell>
-                <TableCell>
+                <TableCell
+                  className={
+                    isNewUserActivity
+                      ? 'font-semibold text-[#6FA77A]'
+                      : 'font-semibold text-[#C99A5B]'
+                  }
+                >
                   {new Date(raw?.user.lastActiveAt).toLocaleString()}
                 </TableCell>
                 <TableCell>
