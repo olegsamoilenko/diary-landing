@@ -86,11 +86,12 @@ export default function CommunityTable({
         <TableRow>
           <TableHead className="w-[100px]">Top ID</TableHead>
           <TableHead className="w-[50px]">Aut ID</TableHead>
-          <TableHead className="w-[200px]">Title</TableHead>
+          <TableHead className="w-[300px]">Title</TableHead>
           <TableHead className="w-[150px]">Author</TableHead>
           <TableHead className="w-[50px]">Lang</TableHead>
           <TableHead className="w-[130px]">Category</TableHead>
-          <TableHead className="w-[50px]">Comm</TableHead>
+          <TableHead className="w-[100px]">Comments</TableHead>
+          <TableHead className="w-[50px]">View</TableHead>
           <TableHead>Status</TableHead>
           <TableHead className="w-[100px]">Visibility</TableHead>
           <TableHead>Actions</TableHead>
@@ -115,6 +116,7 @@ export default function CommunityTable({
                   <TableCell>{raw.author?.settings?.lang}</TableCell>
                   <TableCell>{raw.category.title}</TableCell>
                   <TableCell>{raw.commentsCount}</TableCell>
+                  <TableCell>{raw.viewsCount}</TableCell>
                   <TableCell>{raw.status}</TableCell>
                   <TableCell>{raw.visibility}</TableCell>
                   <TableCell
