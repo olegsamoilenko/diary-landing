@@ -74,7 +74,7 @@ export default function CommunityClient({
     <div>
       <h1 className="mb-4 text-xl font-semibold">Community</h1>
       <div className="mb-4">
-        <CreateSystemTopicDialog adminId={adminId} />
+        <CreateSystemTopicDialog adminId={adminId} onCreate={loadTopics} />
       </div>
       <div className="mb-10">
         <CommunityTable

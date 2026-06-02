@@ -40,9 +40,11 @@ import {
 export default function CreateSystemTopicDialog({
   adminId,
   onSuccessCreateTopic,
+  onCreate,
 }: {
   adminId: number
   onSuccessCreateTopic?: () => void
+  onCreate?: () => void
 }) {
   const [open, setOpen] = useState(false)
   const [titleEn, setTitleEn] = useState('')
@@ -99,6 +101,7 @@ export default function CreateSystemTopicDialog({
     }
     await createSystemTopics(data)
     setOpen(false)
+    onCreate?.()
   }
 
   return (
