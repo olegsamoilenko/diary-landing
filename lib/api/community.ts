@@ -101,12 +101,35 @@ export const createSystemTopics = async (data: CreateSystemTopics) => {
 
     const resData = await res.json()
 
-    console.log('comments', resData)
-
     return resData
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
     console.error('createSystemTopics failed:', msg)
+    return undefined
+  }
+}
+
+export const editSystemTopics = async (
+  topicId: string,
+  data: CreateSystemTopics,
+) => {
+  try {
+    const res = await fetch(`/api/admin/forum/topics/${topicId}/edit`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to editSystemTopics')
+    }
+
+    const resData = await res.json()
+
+    return resData
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('editSystemTopics failed:', msg)
     return undefined
   }
 }

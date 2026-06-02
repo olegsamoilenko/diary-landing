@@ -28,6 +28,7 @@ import ModerationRestrictUserDialog from '@/components/admin/community/Moderatio
 import ModerationUnrestrictUser from '@/components/admin/community/ModerationUnrestrictUser'
 import Pagination from '@/components/ui/pagination'
 import ModerationDeleteTopicDialog from '@/components/admin/community/ModerationDeleteTopicDialog'
+import EditSystemTopicDialog from '@/components/admin/community/EditSystemTopicDialog'
 
 type Props = {
   topics: Topic[]
@@ -35,6 +36,7 @@ type Props = {
   onSuccessRemoveTopic: () => void
   onSuccessRestoreTopic: () => void
   onSuccessDeleteTopic: () => void
+  onEditSystemTopic: () => void
 }
 export default function CommunityTable({
   topics,
@@ -42,6 +44,7 @@ export default function CommunityTable({
   onSuccessRemoveTopic,
   onSuccessRestoreTopic,
   onSuccessDeleteTopic,
+  onEditSystemTopic,
 }: Props) {
   const [expandedTopicId, setExpandedTopicId] = useState<string | null>(null)
   const [moderationLogs, setModerationLogs] = useState<{
@@ -101,6 +104,7 @@ export default function CommunityTable({
         {topics &&
           topics.map((raw: Topic) => {
             const isOpen = expandedTopicId === raw.id
+            console.log('raw', raw)
             return (
               <React.Fragment key={raw.id}>
                 <TableRow
@@ -113,7 +117,7 @@ export default function CommunityTable({
                     {raw.title}
                   </TableCell>
                   <TableCell>{raw.author?.name ?? 'unknown'}</TableCell>
-                  <TableCell>{raw.author?.settings?.lang}</TableCell>
+                  <TableCell>{raw.lang}</TableCell>
                   <TableCell>{raw.category.title}</TableCell>
                   <TableCell>{raw.commentsCount}</TableCell>
                   <TableCell>{raw.viewsCount}</TableCell>
@@ -125,6 +129,13 @@ export default function CommunityTable({
                     }}
                     className="flex gap-4"
                   >
+                    {raw.isSystem && (
+                      <EditSystemTopicDialog
+                        topic={raw}
+                        adminId={adminId}
+                        onEdit={onEditSystemTopic}
+                      ></EditSystemTopicDialog>
+                    )}
                     {raw.status === ForumContentStatus.PUBLISHED && (
                       <ModerationRemoveTopicDialog
                         id={raw.id}

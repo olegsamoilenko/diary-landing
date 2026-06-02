@@ -15,6 +15,7 @@ export type Topic = {
   editedAt: string | Date | null
   id: string
   isEdited: boolean
+  isSystem: boolean
   isFeatured: boolean
   isLocked: boolean
   isPinned: boolean
@@ -22,6 +23,8 @@ export type Topic = {
   lastCommentAuthorId: number
   lastCommentId: string
   likesCount: number
+  lang: string
+  translations: SystemTopicTranslation[]
   reactionsCount: number
   reportsCount: number
   status: ForumContentStatus
@@ -31,6 +34,16 @@ export type Topic = {
   viewsCount: number
   visibility: ForumTopicVisibility
   watchersCount: number
+}
+
+export type SystemTopicTranslation = {
+  content: string
+  createdAt: string | Date
+  id: string
+  lang: string
+  title: string
+  topicId: string
+  updatedAt: string | Date
 }
 
 export enum ForumTopicVisibility {

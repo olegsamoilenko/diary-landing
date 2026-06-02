@@ -83,6 +83,7 @@ export default function CommunityClient({
           onSuccessRemoveTopic={loadTopics}
           onSuccessRestoreTopic={loadTopics}
           onSuccessDeleteTopic={loadTopics}
+          onEditSystemTopic={loadTopics}
         />
         <Pagination
           page={topicsResp?.page ?? 0}
