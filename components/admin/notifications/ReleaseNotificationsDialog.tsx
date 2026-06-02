@@ -25,7 +25,7 @@ import { Platforms } from '@/types'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
 
-const LOCALES = ['en', 'uk'] as const
+const LOCALES = ['en', 'uk', 'de', 'pl'] as const
 type Locale = (typeof LOCALES)[number]
 
 export default function ReleaseNotificationsDialog({
@@ -46,7 +46,24 @@ export default function ReleaseNotificationsDialog({
   const editorRef = useRef<Record<Locale, EditorRef | null>>({
     uk: null,
     en: null,
+    de: null,
+    pl: null,
   })
+
+  const initialHtml = (lang: Locale) => {
+    switch (lang) {
+      case 'en':
+        return '<p>We have released a new version of the app. Please update to the latest version to enjoy new features and improvements.</p>'
+      case 'uk':
+        return '<p>Ми випустили нову версію додатку. Будь ласка, оновіть до останньої версії, щоб насолоджуватися новими функціями та покращеннями.</p>'
+      case 'de':
+        return '<p>Wir haben eine neue Version der App veröffentlicht. Bitte aktualisieren Sie auf die neueste Version, um neue Funktionen und Verbesserungen zu genießen.</p>'
+      case 'pl':
+        return '<p>Wydaliśmy nową wersję aplikacji. Proszę zaktualizuj do najnowszej wersji, aby cieszyć się nowymi funkcjami i ulepszeniami.</p>'
+      default:
+        return '<p>We have released a new version of the app. Please update to the latest version to enjoy new features and improvements.</p>'
+    }
+  }
 
   const handleSave = async () => {
     if (platform === undefined) {
@@ -192,11 +209,7 @@ export default function ReleaseNotificationsDialog({
                       ref={(api) => {
                         editorRef.current[l] = api
                       }}
-                      initialHtml={
-                        l === LOCALES[1]
-                          ? '<p>Опис змін…</p>'
-                          : '<p>Describe the updates…</p>'
-                      }
+                      initialHtml={initialHtml(l)}
                     />
                   </TabsContent>
                 ))}
