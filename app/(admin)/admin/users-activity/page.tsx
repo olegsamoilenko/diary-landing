@@ -45,7 +45,9 @@ export default function AdminsClient({
   const [activityCountByDayStats, setActivityCountByDayStats] = useState<
     | {
         date: string
-        usersStat: number
+        newUserActivity: number
+        oldUserActivity: number
+        totalUserActivity: number
       }[]
     | null
   >(null)

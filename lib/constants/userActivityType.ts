@@ -1,5 +1,9 @@
 export const userActivityTypeOptions = [
   {
+    value: 'all',
+    label: 'All',
+  },
+  {
     value: 'inTrial',
     label: 'In Trial',
   },
