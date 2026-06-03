@@ -62,12 +62,25 @@ export default function AdminsClient({
       activityType,
     )
     setActivityCountByDayStats(activityCountByDayStatsRes)
-    const setActivityRecordsRes = await getUsersActivityRecords(
+    const activityRecordsRes = await getUsersActivityRecords(
       startDate,
       endDate,
       activityType,
     )
-    setActivityRecords(setActivityRecordsRes)
+
+    console.log(
+      'API activityRecordsRes length:',
+      activityRecordsRes.length,
+      activityRecordsRes.map((r: ActivityRecords) => ({
+        id: r.id,
+        day: r.day,
+        userId: r.userId,
+        user: r.user?.id,
+        email: r.user?.email,
+      })),
+    )
+
+    setActivityRecords(activityRecordsRes)
   }
 
   return (
