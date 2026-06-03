@@ -168,7 +168,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell colSpan={12} className="p-0">
+                  <TableCell colSpan={20} className="p-0">
                     <div className="bg-muted/20 border-t p-4">
                       <div className="mb-2 text-sm font-medium">
                         User details
