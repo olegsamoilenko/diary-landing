@@ -72,11 +72,7 @@ export default function AdminsClient({
       'API activityRecordsRes length:',
       activityRecordsRes.length,
       activityRecordsRes.map((r: ActivityRecords) => ({
-        id: r.id,
-        day: r.day,
-        userId: r.userId,
-        user: r.user?.id,
-        email: r.user?.email,
+        ...r,
       })),
     )
 

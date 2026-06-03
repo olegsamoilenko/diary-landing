@@ -57,6 +57,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>All Entries</TableHead>
           <TableHead>All Dialogs</TableHead>
+          <TableHead>Activity Day</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Last active</TableHead>
           <TableHead>Source</TableHead>
@@ -99,6 +100,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.dialogs}</TableCell>
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
+                <TableCell>{raw.day}</TableCell>
                 <TableCell>
                   {new Date(raw?.user.createdAt).toLocaleString()}
                 </TableCell>
