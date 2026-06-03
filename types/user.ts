@@ -63,6 +63,8 @@ export type User = {
 
   entriesStatsCount?: number
   dialogsStatsCount?: number
+  forumCommentsStats?: number
+  forumTopicsStats?: number
 }
 
 export enum UserRole {

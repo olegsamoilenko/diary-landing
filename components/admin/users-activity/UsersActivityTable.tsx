@@ -59,6 +59,10 @@ export default function UsersActivityTable({ activityRecords }: Props) {
           <TableHead>All Dialogs</TableHead>
           <TableHead>Goals</TableHead>
           <TableHead>All Goals</TableHead>
+          <TableHead>Topics</TableHead>
+          <TableHead>All Topics</TableHead>
+          <TableHead>Comments</TableHead>
+          <TableHead>All Comments</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Activity Day</TableHead>
           <TableHead>Last active</TableHead>
@@ -103,6 +107,10 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
                 <TableCell>{raw?.goals}</TableCell>
                 <TableCell>{raw?.user.goalsStats?.length}</TableCell>
+                <TableCell>{raw?.topics}</TableCell>
+                <TableCell>{raw?.user.forumTopicsStats}</TableCell>
+                <TableCell>{raw?.comments}</TableCell>
+                <TableCell>{raw?.user.forumCommentsStats}</TableCell>
                 <TableCell>
                   {raw?.user.createdAt
                     ? dayjs(raw.user.createdAt)
