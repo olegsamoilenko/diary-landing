@@ -57,9 +57,11 @@ export default function UsersActivityTable({ activityRecords }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>All Entries</TableHead>
           <TableHead>All Dialogs</TableHead>
+          <TableHead>Goals</TableHead>
+          <TableHead>All Goals</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Activity Day</TableHead>
-          {/*<TableHead>Last active</TableHead>*/}
+          <TableHead>Last active</TableHead>
           <TableHead>Source</TableHead>
           {/*<TableHead>Action</TableHead>*/}
         </TableRow>
@@ -99,6 +101,8 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.dialogs}</TableCell>
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
+                <TableCell>{raw?.user.goalsStats?.length}</TableCell>
+                <TableCell>{raw?.user.goalsStats?.length}</TableCell>
                 <TableCell>
                   {raw?.user.createdAt
                     ? dayjs(raw.user.createdAt)
@@ -115,19 +119,11 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 >
                   {raw.day ? dayjs(raw.day).format('DD.MM.YYYY') : '-'}
                 </TableCell>
-                {/*<TableCell*/}
-                {/*  className={*/}
-                {/*    isNewUserActivity*/}
-                {/*      ? 'font-semibold text-[#6FA77A]'*/}
-                {/*      : 'font-semibold text-[#C99A5B]'*/}
-                {/*  }*/}
-                {/*>*/}
-                {/*  {raw?.user.lastActiveAt*/}
-                {/*    ? dayjs(raw.user.lastActiveAt)*/}
-                {/*        .utc()*/}
-                {/*        .format('DD.MM.YYYY, HH:mm:ss')*/}
-                {/*    : '-'}*/}
-                {/*</TableCell>*/}
+                <TableCell>
+                  {raw?.user.lastActiveAt
+                    ? dayjs(raw.user.lastActiveAt).utc().format('DD.MM.YYYY')
+                    : '-'}
+                </TableCell>
                 <TableCell>
                   <div className="break-words whitespace-pre-line">
                     {formatAcquisitionSource(raw?.user.acquisitionMetaJson)}

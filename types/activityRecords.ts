@@ -5,6 +5,7 @@ export type ActivityRecords = {
   day: string
   dialogs: number
   entries: number
+  goals: number
   id: number
   updatedAt: string
   user: User

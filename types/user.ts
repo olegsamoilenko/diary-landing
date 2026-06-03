@@ -56,6 +56,10 @@ export type User = {
     id: number
     createdAt: string
   }[]
+  goalsStats?: {
+    id: number
+    createdAt: string
+  }[]
 
   entriesStatsCount?: number
   dialogsStatsCount?: number
