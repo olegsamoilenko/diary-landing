@@ -15,4 +15,8 @@ export const LimitOptions = [
     value: '200',
     label: 200,
   },
+  {
+    value: '1000',
+    label: 1000,
+  },
 ]
