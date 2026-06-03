@@ -68,7 +68,7 @@ export default function AdminsClient({
   )
   const [errorSortBy, setErrorSortBy] = useState<string | null>(null)
   const [hasPlan, setHasPlan] = useState<HasPlan>('All')
-  const [limit, setLimit] = useState<Limit>('20')
+  const [limit, setLimit] = useState<Limit>('200')
   const [newUsersStats, setNewUsersStats] = useState<
     UserAcquisitionDayStat[] | null
   >(null)
