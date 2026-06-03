@@ -102,7 +102,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
                 <TableCell>{raw?.user.goalsStats?.length}</TableCell>
-                <TableCell>{raw?.user.goalsStats?.length}</TableCell>
+                <TableCell>{raw?.goals}</TableCell>
                 <TableCell>
                   {raw?.user.createdAt
                     ? dayjs(raw.user.createdAt)
