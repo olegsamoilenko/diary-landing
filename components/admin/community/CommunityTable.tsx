@@ -94,6 +94,7 @@ export default function CommunityTable({
           <TableHead className="w-[50px]">Lang</TableHead>
           <TableHead className="w-[130px]">Category</TableHead>
           <TableHead className="w-[100px]">Comments</TableHead>
+          <TableHead className="w-[50px]">Likes</TableHead>
           <TableHead className="w-[50px]">View</TableHead>
           <TableHead>Status</TableHead>
           <TableHead className="w-[100px]">Visibility</TableHead>
@@ -121,6 +122,7 @@ export default function CommunityTable({
                   <TableCell>{raw.category.title}</TableCell>
                   <TableCell>{raw.commentsCount}</TableCell>
                   <TableCell>{raw.viewsCount}</TableCell>
+                  <TableCell>{raw.likesCount}</TableCell>
                   <TableCell>{raw.status}</TableCell>
                   <TableCell>{raw.visibility}</TableCell>
                   <TableCell
