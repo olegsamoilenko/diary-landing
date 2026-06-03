@@ -37,8 +37,17 @@ import {
 } from '@/components/ui/select'
 import { UsersHavePlanOptions, UsersSortByOptions } from '@/lib/constants/users'
 import { LimitOptions } from '@/lib/constants/pagination'
+import dayjs from 'dayjs'
+import NewUserStatChart from '@/components/admin/user-list/NewUsersStatChart'
 
 type SP = { page?: string }
+
+type UserAcquisitionDayStat = {
+  date: string
+  total: number
+  withAction: number
+  withoutAction: number
+}
 
 export default function AdminsClient({
   searchParams,
@@ -60,6 +69,9 @@ export default function AdminsClient({
   const [errorSortBy, setErrorSortBy] = useState<string | null>(null)
   const [hasPlan, setHasPlan] = useState<HasPlan>('All')
   const [limit, setLimit] = useState<Limit>('20')
+  const [newUsersStats, setNewUsersStats] = useState<
+    UserAcquisitionDayStat[] | null
+  >(null)
 
   useEffect(() => {
     fetchUsers()
@@ -75,9 +87,41 @@ export default function AdminsClient({
 
       console.log('res', res)
       setFetchUsersRes(res)
+      const stats = buildNewUsersActionStats(res.users)
+      setNewUsersStats(stats)
+
+      console.log('stats', stats)
     } catch (err: unknown) {
       console.error('error', err)
     }
+  }
+
+  function buildNewUsersActionStats(users: User[]): UserAcquisitionDayStat[] {
+    const map = new Map<string, UserAcquisitionDayStat>()
+
+    for (const user of users) {
+      const date = dayjs(user.createdAt).format('YYYY-MM-DD')
+      const hasFirstAction = Number(user.entriesStatsCount ?? 0) > 0
+
+      const current = map.get(date) ?? {
+        date,
+        total: 0,
+        withAction: 0,
+        withoutAction: 0,
+      }
+
+      current.total += 1
+
+      if (hasFirstAction) {
+        current.withAction += 1
+      } else {
+        current.withoutAction += 1
+      }
+
+      map.set(date, current)
+    }
+
+    return [...map.values()].sort((a, b) => a.date.localeCompare(b.date))
   }
 
   return (
@@ -159,6 +203,9 @@ export default function AdminsClient({
         <div>
           <Button onClick={fetchUsers}>Load</Button>
         </div>
+      </div>
+      <div>
+        <NewUserStatChart data={newUsersStats as UserAcquisitionDayStat[]} />
       </div>
       <div className="mb-8">
         <AllUsersTable users={fetchUsersRes?.users as User[]} />
