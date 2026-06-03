@@ -57,9 +57,9 @@ export default function UsersActivityTable({ activityRecords }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>All Entries</TableHead>
           <TableHead>All Dialogs</TableHead>
-          <TableHead>Activity Day</TableHead>
           <TableHead>Created At</TableHead>
-          <TableHead>Last active</TableHead>
+          <TableHead>Activity Day</TableHead>
+          {/*<TableHead>Last active</TableHead>*/}
           <TableHead>Source</TableHead>
           {/*<TableHead>Action</TableHead>*/}
         </TableRow>
@@ -69,8 +69,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
         {activityRecords?.map((raw) => {
           const isOpen = expandedUserId === raw.id
           const isNewUserActivity =
-            dayjs(raw.user.createdAt).utc().format('YYYY-MM-DD') ===
-            dayjs(raw.user.lastActiveAt).utc().format('YYYY-MM-DD')
+            dayjs(raw.user.createdAt).utc().format('YYYY-MM-DD') === raw.day
 
           return (
             <React.Fragment key={raw.id}>
@@ -87,12 +86,12 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw.user.plan?.planStatus ?? '-'}</TableCell>
                 <TableCell>
                   {raw.user.plan?.startTime
-                    ? new Date(raw.user.plan.startTime).toUTCString()
+                    ? new Date(raw.user.plan.startTime).toLocaleString()
                     : '-'}
                 </TableCell>
                 <TableCell>
                   {raw.user.plan?.expiryTime
-                    ? new Date(raw.user.plan.expiryTime).toUTCString()
+                    ? new Date(raw.user.plan.expiryTime).toLocaleString()
                     : '-'}
                 </TableCell>
                 <TableCell>{!!raw?.user.usesWithoutSubscription}</TableCell>
@@ -100,9 +99,12 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.dialogs}</TableCell>
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
-                <TableCell>{raw.day}</TableCell>
                 <TableCell>
-                  {new Date(raw?.user.createdAt).toLocaleString()}
+                  {raw?.user.createdAt
+                    ? dayjs(raw.user.createdAt)
+                        .utc()
+                        .format('DD.MM.YYYY, HH:mm:ss')
+                    : '-'}
                 </TableCell>
                 <TableCell
                   className={
@@ -111,8 +113,21 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                       : 'font-semibold text-[#C99A5B]'
                   }
                 >
-                  {new Date(raw?.user.lastActiveAt).toLocaleString()}
+                  {raw.day ? dayjs(raw.day).format('DD.MM.YYYY') : '-'}
                 </TableCell>
+                {/*<TableCell*/}
+                {/*  className={*/}
+                {/*    isNewUserActivity*/}
+                {/*      ? 'font-semibold text-[#6FA77A]'*/}
+                {/*      : 'font-semibold text-[#C99A5B]'*/}
+                {/*  }*/}
+                {/*>*/}
+                {/*  {raw?.user.lastActiveAt*/}
+                {/*    ? dayjs(raw.user.lastActiveAt)*/}
+                {/*        .utc()*/}
+                {/*        .format('DD.MM.YYYY, HH:mm:ss')*/}
+                {/*    : '-'}*/}
+                {/*</TableCell>*/}
                 <TableCell>
                   <div className="break-words whitespace-pre-line">
                     {formatAcquisitionSource(raw?.user.acquisitionMetaJson)}
