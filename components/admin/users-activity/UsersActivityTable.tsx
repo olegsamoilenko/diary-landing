@@ -87,12 +87,12 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw.user.plan?.planStatus ?? '-'}</TableCell>
                 <TableCell>
                   {raw.user.plan?.startTime
-                    ? new Date(raw.user.plan.startTime).toLocaleString()
+                    ? new Date(raw.user.plan.startTime).toUTCString()
                     : '-'}
                 </TableCell>
                 <TableCell>
                   {raw.user.plan?.expiryTime
-                    ? new Date(raw.user.plan.expiryTime).toLocaleString()
+                    ? new Date(raw.user.plan.expiryTime).toUTCString()
                     : '-'}
                 </TableCell>
                 <TableCell>{!!raw?.user.usesWithoutSubscription}</TableCell>
