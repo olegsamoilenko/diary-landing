@@ -83,7 +83,7 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 onClick={() => toggle(raw.id)}
                 className="hover:bg-muted/50 cursor-pointer"
               >
-                <TableCell>{raw.user.uuid}</TableCell>
+                <TableCell>{raw.user.uuid.slice(0, 8)}</TableCell>
                 <TableCell>{raw.user.id}</TableCell>
                 <TableCell>{raw.user.name}</TableCell>
                 <TableCell>{raw.user.email}</TableCell>
