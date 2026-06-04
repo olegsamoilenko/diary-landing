@@ -193,6 +193,39 @@ export const createComment = async (
   }
 }
 
+export const editComment = async (
+  commentId: string,
+  body: {
+    userId: number
+    content: string
+  },
+) => {
+  try {
+    const res = await fetch(
+      `/api/admin/forum/comments/${commentId}/edit-comment`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      },
+    )
+
+    if (!res.ok) {
+      throw new Error('Failed edit comment')
+    }
+
+    const data = await res.json()
+
+    console.log('create comment', data)
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('edit comment failed:', msg)
+    return undefined
+  }
+}
+
 export const getModerationUserLogs = async (
   userId: number,
   body: { page: number; limit: number },

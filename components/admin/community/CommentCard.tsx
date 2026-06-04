@@ -5,12 +5,15 @@ import { restoreComment } from '@/lib/api/moderation'
 import React, { useState } from 'react'
 import { JsonViewer } from '@/components/ui/JsonViewer'
 import ModerationAnswerTopicDialog from '@/components/admin/community/ModerationAnswerTopicDialog'
+import ModerationEditCommentDialog from '@/components/admin/community/ModerationEditCommentDialog'
 
 type Props = {
   comment: Comment
   adminId: number
   onSuccessRemoveComment: () => void
   onSuccessRestoreComment: () => void
+  onSuccessAddAnswerComment?: () => void
+  onSuccessEditComment?: () => void
 }
 
 export default function CommentCard({
@@ -18,6 +21,8 @@ export default function CommentCard({
   adminId,
   onSuccessRemoveComment,
   onSuccessRestoreComment,
+  onSuccessAddAnswerComment,
+  onSuccessEditComment,
 }: Props) {
   const [expandedCommentId, setExpandedCommentId] = useState<string | null>(
     null,
@@ -79,7 +84,16 @@ export default function CommentCard({
           id={comment.topicId}
           adminId={adminId}
           parentCommentId={comment.id}
+          onSuccessAddAnswerComment={onSuccessAddAnswerComment}
         />
+        {(comment.author.role === 'forum_admin' ||
+          comment.author.role === 'forum_moderator' ||
+          comment.author.role === 'nemory') && (
+          <ModerationEditCommentDialog
+            comment={comment}
+            onSuccessEditComment={onSuccessEditComment}
+          />
+        )}
       </div>
       <div className="mb-2">
         <button className="underline" onClick={() => toggleComment(comment.id)}>
@@ -150,6 +164,14 @@ export default function CommentCard({
                 parentCommentId={comment.id}
                 replyToCommentId={reply.id}
               />
+              {(reply.author.role === 'forum_admin' ||
+                reply.author.role === 'forum_moderator' ||
+                reply.author.role === 'nemory') && (
+                <ModerationEditCommentDialog
+                  comment={reply}
+                  onSuccessEditComment={onSuccessEditComment}
+                />
+              )}
             </div>
             <div className="mb-2">
               <button

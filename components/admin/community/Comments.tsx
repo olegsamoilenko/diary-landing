@@ -27,10 +27,12 @@ export default function Comments({
   topicId,
   adminId,
   scrollContainerRef,
+  onSuccessAddAnswerComment,
 }: {
   topicId: string
   adminId: number
   scrollContainerRef?: RefObject<HTMLDivElement | null>
+  onSuccessAddAnswerComment?: () => void
 }) {
   const [take, setTake] = useState<TakeOptions>(TakeOptions.ALL)
   const limit = 20
@@ -83,7 +85,13 @@ export default function Comments({
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold">Comments</h1>
-      <ModerationAnswerTopicDialog id={topicId} adminId={adminId} />
+      <ModerationAnswerTopicDialog
+        id={topicId}
+        adminId={adminId}
+        onSuccessAddAnswerComment={() => {
+          loadComments(page)
+        }}
+      />
       <div className="my-4 flex items-end gap-4">
         <div className="items-end">
           <div className="mb-2">Take</div>
@@ -136,6 +144,8 @@ export default function Comments({
               adminId={adminId}
               onSuccessRemoveComment={() => loadComments(page)}
               onSuccessRestoreComment={() => loadComments(page)}
+              onSuccessAddAnswerComment={() => loadComments(page)}
+              onSuccessEditComment={() => loadComments(page)}
             ></CommentCard>
           ))}
         <Pagination
