@@ -30,6 +30,29 @@ export const getAllTopics = async (page: number, limit: number) => {
   }
 }
 
+export const getCommunityActivity = async (days: number) => {
+  try {
+    const res = await fetch(`/api/admin/forum/activity/get?days=${days}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to getCommunityActivity')
+    }
+
+    const data = await res.json()
+
+    console.log('getCommunityActivity data', data)
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('getCommunityActivity failed:', msg)
+    return undefined
+  }
+}
+
 export const getCommentLocationInTopic = async (
   topicId: string,
   commentId: string,

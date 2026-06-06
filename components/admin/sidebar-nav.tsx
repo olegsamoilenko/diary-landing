@@ -24,6 +24,7 @@ const items = [
   { href: '/admin/server-logs', label: 'Server Logs' },
   { href: '/admin/support', label: 'Support' },
   { href: '/admin/community', label: 'Community' },
+  { href: '/admin/community-activity', label: 'Community Activity' },
   { href: '/admin/reports', label: 'Reports' },
   { href: '/admin/moderation-logs', label: 'Moderation logs' },
   { href: '/admin/moderation-coast', label: 'Moderation coast' },
