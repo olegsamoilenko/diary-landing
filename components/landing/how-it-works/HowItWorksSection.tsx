@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 import HowItWorksCard from '@/components/landing/how-it-works/HowItWorksCard'
 import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'

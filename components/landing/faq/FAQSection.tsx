@@ -1,3 +1,5 @@
+'use client'
+
 import FAQAccordion from '@/components/landing/faq/FAQAccordion'
 import { useTranslations, useMessages } from 'next-intl'
 import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'

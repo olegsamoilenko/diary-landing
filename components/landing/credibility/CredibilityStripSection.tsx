@@ -1,3 +1,5 @@
+'use client'
+
 import CredibilityCard from '@/components/landing/credibility/CredibilityCard'
 import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
 import { useTranslations } from 'next-intl'

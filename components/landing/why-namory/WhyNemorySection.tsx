@@ -1,3 +1,5 @@
+'use client'
+
 import { useLocale, useTranslations } from 'next-intl'
 import WhyNemoryCard from '@/components/landing/why-namory/WhyNemoryCard'
 import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'

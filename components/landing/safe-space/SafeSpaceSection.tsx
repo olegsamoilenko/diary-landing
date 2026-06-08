@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 import SafeSpaceCard from '@/components/landing/safe-space/SafeSpaceCard'
 import { Smartphone, Shield, Brain } from 'lucide-react'
