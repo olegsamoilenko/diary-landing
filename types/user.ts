@@ -1,5 +1,5 @@
 import { Platforms } from './platforms'
-import type { Plan, Settings } from '@/types'
+import { AuthorProfile, Plan, Settings } from '@/types'
 
 type BufferLike = { type: 'Buffer'; data: number[] }
 
@@ -37,6 +37,7 @@ export type User = {
   isRegistered: boolean
   inactivityWarnedAt: string | null
   scheduledDeletionAt: string | null
+  forumPublicProfile: AuthorProfile
 
   hash: string
   password: string | null

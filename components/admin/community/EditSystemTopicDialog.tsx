@@ -30,6 +30,7 @@ import {
   ForumModerationReason,
   ForumTopicType,
   Topic,
+  User,
   UserRole,
 } from '@/types'
 import {
@@ -44,11 +45,13 @@ export default function EditSystemTopicDialog({
   adminId,
   onSuccessEditTopic,
   onEdit,
+  systemUsers,
 }: {
   topic: Topic
   adminId: number
   onSuccessEditTopic?: () => void
   onEdit?: () => void
+  systemUsers: User[]
 }) {
   const [open, setOpen] = useState(false)
   const [titleEn, setTitleEn] = useState(topic.title)
@@ -76,18 +79,15 @@ export default function EditSystemTopicDialog({
   )
   const [plError, setPlError] = useState<string | null>(null)
   const [userId, setUserId] = useState<number | null>(topic.author.id)
-  const [userRole, setUserRole] = useState<UserRole | undefined>(
-    topic.author.role,
-  )
   const [topicType, setTopicType] = useState<string | undefined>(topic.type)
   const [topicCategory, setTopicCategory] = useState<string | undefined>(
     topic.category.slug,
   )
 
-  const handleUserRole = async (userRole: UserRole) => {
-    const user = await getUserByRole(userRole)
-    setUserId(user.id)
-  }
+  const usersOptions = systemUsers.map((user) => ({
+    value: user.id,
+    label: user.forumPublicProfile.username,
+  }))
 
   const handleEditTopics = async () => {
     const data = {
@@ -137,20 +137,19 @@ export default function EditSystemTopicDialog({
           </DialogHeader>
           <div className="overflow-y-auto pr-2">
             <div className="mb-4 items-end">
-              <div className="mb-2">Role</div>
+              <div className="mb-2">User</div>
               <Select
-                value={userRole}
-                onValueChange={(r) => {
-                  setUserRole(r as UserRole)
-                  void handleUserRole(r as UserRole)
+                value={userId ? String(userId) : undefined}
+                onValueChange={(id) => {
+                  setUserId(Number(id))
                 }}
               >
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="User role" />
                 </SelectTrigger>
                 <SelectContent>
-                  {userRoleOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
+                  {usersOptions.map((option) => (
+                    <SelectItem key={option.value} value={String(option.value)}>
                       {option.label}
                     </SelectItem>
                   ))}

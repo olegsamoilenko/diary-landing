@@ -30,6 +30,61 @@ export const getAllTopics = async (page: number, limit: number) => {
   }
 }
 
+export const getSystemUsers = async () => {
+  try {
+    const res = await fetch(`/api/system-users/get-system-users`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch getSystemUsers')
+    }
+
+    const data = await res.json()
+
+    console.log('getSystemUsers data', data)
+
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch getSystemUsers failed:', msg)
+    return undefined
+  }
+}
+
+export const creteSystemUsers = async (body: {
+  uuid: string
+  name: string
+  username: string
+}) => {
+  try {
+    const res = await fetch(`/api/system-users/create-system-user`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+
+    const resBody = await res.json().catch(() => null)
+
+    if (!res.ok) {
+      throw (
+        resBody ?? {
+          statusCode: res.status,
+          message: 'Failed to create system user',
+        }
+      )
+    }
+
+    return body
+  } catch (error) {
+    console.log('error', error)
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch creteSystemUsers failed:', msg)
+    throw error
+  }
+}
+
 export const getCommunityActivity = async (days: number) => {
   try {
     const res = await fetch(`/api/admin/forum/activity/get?days=${days}`, {

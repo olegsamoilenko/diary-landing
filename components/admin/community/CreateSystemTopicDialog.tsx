@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import {
@@ -28,6 +28,7 @@ import {
   ForumCategorySlug,
   ForumModerationReason,
   ForumTopicType,
+  User,
   UserRole,
 } from '@/types'
 import {
@@ -41,10 +42,12 @@ export default function CreateSystemTopicDialog({
   adminId,
   onSuccessCreateTopic,
   onCreate,
+  systemUsers,
 }: {
   adminId: number
   onSuccessCreateTopic?: () => void
   onCreate?: () => void
+  systemUsers: User[]
 }) {
   const [open, setOpen] = useState(false)
   const [titleEn, setTitleEn] = useState('')
@@ -60,16 +63,10 @@ export default function CreateSystemTopicDialog({
   const [contentPl, setContentPl] = useState('')
   const [plError, setPlError] = useState<string | null>(null)
   const [userId, setUserId] = useState<number | null>(null)
-  const [userRole, setUserRole] = useState<UserRole | undefined>(undefined)
   const [topicType, setTopicType] = useState<string | undefined>(undefined)
   const [topicCategory, setTopicCategory] = useState<string | undefined>(
     undefined,
   )
-
-  const handleUserRole = async (userRole: UserRole) => {
-    const user = await getUserByRole(userRole)
-    setUserId(user.id)
-  }
 
   const handleCreateTopics = async () => {
     const data = {
@@ -104,6 +101,11 @@ export default function CreateSystemTopicDialog({
     onCreate?.()
   }
 
+  const usersOptions = systemUsers.map((user) => ({
+    value: user.id,
+    label: user.forumPublicProfile.username,
+  }))
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -119,20 +121,19 @@ export default function CreateSystemTopicDialog({
           </DialogHeader>
           <div className="overflow-y-auto pr-2">
             <div className="mb-4 items-end">
-              <div className="mb-2">Role</div>
+              <div className="mb-2">User</div>
               <Select
-                value={userRole}
-                onValueChange={(r) => {
-                  setUserRole(r as UserRole)
-                  void handleUserRole(r as UserRole)
+                value={userId ? String(userId) : undefined}
+                onValueChange={(id) => {
+                  setUserId(Number(id))
                 }}
               >
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="User role" />
+                  <SelectValue placeholder="User" />
                 </SelectTrigger>
                 <SelectContent>
-                  {userRoleOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
+                  {usersOptions.map((option) => (
+                    <SelectItem key={option.value} value={String(option.value)}>
                       {option.label}
                     </SelectItem>
                   ))}

@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { logsLevelOptions } from '@/lib/constants/logs'
-import { Comment, Log, LogsLevel, TakeOptions } from '@/types'
+import { Comment, Log, LogsLevel, TakeOptions, User } from '@/types'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { getLogs } from '@/lib/api/logs'
@@ -28,11 +28,13 @@ export default function Comments({
   adminId,
   scrollContainerRef,
   onSuccessAddAnswerComment,
+  systemUsers,
 }: {
   topicId: string
   adminId: number
   scrollContainerRef?: RefObject<HTMLDivElement | null>
   onSuccessAddAnswerComment?: () => void
+  systemUsers: User[]
 }) {
   const [take, setTake] = useState<TakeOptions>(TakeOptions.ALL)
   const limit = 20
@@ -91,6 +93,7 @@ export default function Comments({
         onSuccessAddAnswerComment={() => {
           loadComments(page)
         }}
+        systemUsers={systemUsers}
       />
       <div className="my-4 flex items-end gap-4">
         <div className="items-end">
@@ -146,6 +149,7 @@ export default function Comments({
               onSuccessRestoreComment={() => loadComments(page)}
               onSuccessAddAnswerComment={() => loadComments(page)}
               onSuccessEditComment={() => loadComments(page)}
+              systemUsers={systemUsers}
             ></CommentCard>
           ))}
         <Pagination

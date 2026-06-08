@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { ForumModerationReason, UserRole } from '@/types'
+import { ForumModerationReason, User, UserRole } from '@/types'
 import {
   moderationRemoveReasonOptions,
   userRoleOptions,
@@ -33,6 +33,7 @@ export default function ModerationAnswerTopicDialog({
   parentCommentId,
   replyToCommentId,
   onSuccessAddAnswerComment,
+  systemUsers,
 }: {
   id: string
   adminId: number
@@ -40,6 +41,7 @@ export default function ModerationAnswerTopicDialog({
   parentCommentId?: string
   replyToCommentId?: string
   onSuccessAddAnswerComment?: () => void
+  systemUsers: User[]
 }) {
   const [open, setOpen] = useState(false)
   const [answerText, setAnswerText] = useState('')
@@ -64,10 +66,10 @@ export default function ModerationAnswerTopicDialog({
     setUserRole(undefined)
   }
 
-  const handleUserRole = async (userRole: UserRole) => {
-    const user = await getUserByRole(userRole)
-    setUserId(user.id)
-  }
+  const usersOptions = systemUsers.map((user) => ({
+    value: user.id,
+    label: user.forumPublicProfile.username,
+  }))
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -85,18 +87,17 @@ export default function ModerationAnswerTopicDialog({
           <div className="mb-4 items-end">
             <div className="mb-2">Role</div>
             <Select
-              value={userRole}
-              onValueChange={(r) => {
-                setUserRole(r as UserRole)
-                void handleUserRole(r as UserRole)
+              value={userId ? String(userId) : undefined}
+              onValueChange={(id) => {
+                setUserId(Number(id))
               }}
             >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="User role" />
               </SelectTrigger>
               <SelectContent>
-                {userRoleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
+                {usersOptions.map((option) => (
+                  <SelectItem key={option.value} value={String(option.value)}>
                     {option.label}
                   </SelectItem>
                 ))}

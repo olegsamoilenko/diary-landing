@@ -1,4 +1,4 @@
-import { Comment, ForumContentStatus } from '@/types'
+import { Comment, ForumContentStatus, User } from '@/types'
 import ModerationRemoveCommentDialog from '@/components/admin/community/ModerationRemoveCommentDialog'
 import ModerationRestoreCommentDialog from '@/components/admin/community/ModerationRestoreCommentDialog'
 import { restoreComment } from '@/lib/api/moderation'
@@ -14,6 +14,7 @@ type Props = {
   onSuccessRestoreComment: () => void
   onSuccessAddAnswerComment?: () => void
   onSuccessEditComment?: () => void
+  systemUsers: User[]
 }
 
 export default function CommentCard({
@@ -23,6 +24,7 @@ export default function CommentCard({
   onSuccessRestoreComment,
   onSuccessAddAnswerComment,
   onSuccessEditComment,
+  systemUsers,
 }: Props) {
   const [expandedCommentId, setExpandedCommentId] = useState<string | null>(
     null,
@@ -85,6 +87,7 @@ export default function CommentCard({
           adminId={adminId}
           parentCommentId={comment.id}
           onSuccessAddAnswerComment={onSuccessAddAnswerComment}
+          systemUsers={systemUsers}
         />
         {(comment.author.role === 'forum_admin' ||
           comment.author.role === 'forum_moderator' ||
@@ -163,6 +166,7 @@ export default function CommentCard({
                 adminId={adminId}
                 parentCommentId={comment.id}
                 replyToCommentId={reply.id}
+                systemUsers={systemUsers}
               />
               {(reply.author.role === 'forum_admin' ||
                 reply.author.role === 'forum_moderator' ||

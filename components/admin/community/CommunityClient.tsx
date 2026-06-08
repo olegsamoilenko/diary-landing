@@ -6,10 +6,15 @@ import {
   Topic,
   TopicsResponse,
   Comment,
+  User,
 } from '@/types'
 import Pagination from '@/components/ui/pagination'
 import React, { use, useEffect, useState } from 'react'
-import { getAllTopics, getModerationTarget } from '@/lib/api/community'
+import {
+  getAllTopics,
+  getModerationTarget,
+  getSystemUsers,
+} from '@/lib/api/community'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -24,6 +29,7 @@ import { moderationTargetTypeOptions } from '@/lib/constants/community'
 import ModerationTopicCard from '@/components/admin/community/ModerationTopicCard'
 import ModerationCommentCard from '@/components/admin/community/ModerationCommentCard'
 import CreateSystemTopicDialog from '@/components/admin/community/CreateSystemTopicDialog'
+import CreateSystemUserDialog from '@/components/admin/community/CreateSystemUserDialog'
 
 type SP = { page?: string }
 
@@ -54,15 +60,23 @@ export default function CommunityClient({
     useState<ForumModerationTargetType>(ForumModerationTargetType.TOPIC)
   const [moderationTarget, setModerationTarget] =
     useState<ModerationTarget | null>(null)
+  const [systemUsers, setSystemUsers] = useState<User[]>([])
 
   useEffect(() => {
     loadTopics()
+    loadSystemUsers()
   }, [page])
 
   const loadTopics = async () => {
     const res = await getAllTopics(page, limit)
 
     setTopicsResp(res)
+  }
+
+  const loadSystemUsers = async () => {
+    const res = await getSystemUsers()
+
+    setSystemUsers(res)
   }
 
   const handleLoadTarget = async () => {
@@ -73,8 +87,13 @@ export default function CommunityClient({
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold">Community</h1>
-      <div className="mb-4">
-        <CreateSystemTopicDialog adminId={adminId} onCreate={loadTopics} />
+      <div className="mb-4 flex items-center gap-4">
+        <CreateSystemTopicDialog
+          adminId={adminId}
+          onCreate={loadTopics}
+          systemUsers={systemUsers}
+        />
+        <CreateSystemUserDialog adminId={adminId} />
       </div>
       <div className="mb-10">
         <CommunityTable
@@ -84,6 +103,7 @@ export default function CommunityClient({
           onSuccessRestoreTopic={loadTopics}
           onSuccessDeleteTopic={loadTopics}
           onEditSystemTopic={loadTopics}
+          systemUsers={systemUsers}
         />
         <Pagination
           page={topicsResp?.page ?? 0}

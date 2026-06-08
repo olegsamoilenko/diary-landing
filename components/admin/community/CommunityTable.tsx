@@ -13,6 +13,7 @@ import {
   ForumContentStatus,
   ModerationLog,
   Restriction,
+  User,
 } from '@/types'
 import { Topic } from '@/types/community'
 import { JsonViewer } from '@/components/ui/JsonViewer'
@@ -37,6 +38,7 @@ type Props = {
   onSuccessRestoreTopic: () => void
   onSuccessDeleteTopic: () => void
   onEditSystemTopic: () => void
+  systemUsers: User[]
 }
 export default function CommunityTable({
   topics,
@@ -45,6 +47,7 @@ export default function CommunityTable({
   onSuccessRestoreTopic,
   onSuccessDeleteTopic,
   onEditSystemTopic,
+  systemUsers,
 }: Props) {
   const [expandedTopicId, setExpandedTopicId] = useState<string | null>(null)
   const [moderationLogs, setModerationLogs] = useState<{
@@ -136,6 +139,7 @@ export default function CommunityTable({
                         topic={raw}
                         adminId={adminId}
                         onEdit={onEditSystemTopic}
+                        systemUsers={systemUsers}
                       ></EditSystemTopicDialog>
                     )}
                     {raw.status === ForumContentStatus.PUBLISHED && (
@@ -189,7 +193,11 @@ export default function CommunityTable({
                             ref={scrollRef}
                             className="bg-background max-h-[1020px] overflow-auto"
                           >
-                            <Comments topicId={raw.id} adminId={adminId} />
+                            <Comments
+                              topicId={raw.id}
+                              adminId={adminId}
+                              systemUsers={systemUsers}
+                            />
                           </div>
                         </div>
                       </div>
