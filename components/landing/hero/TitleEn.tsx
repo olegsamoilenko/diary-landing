@@ -12,8 +12,9 @@ export default function TitleEn({ className }: TitleProps) {
         Think more clearly.
       </span>
 
+      <span className="mb-2 block whitespace-nowrap">Understand yourself</span>
       <span className="mb-2 block whitespace-nowrap">
-        Understand yourself deeply.
+        deeply with <span className="text-landing-primary">AI.</span>
       </span>
       {/*<span className="block text-nowrap">*/}
       {/*  <span>with</span>{' '}*/}

@@ -17,7 +17,9 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative h-[690px] overflow-hidden bg-cover bg-center bg-no-repeat md:h-[500px] lg:h-[530px] xl:h-[530px]"
+      className={`relative h-[800px] overflow-hidden bg-cover bg-center bg-no-repeat ${
+        locale === 'en' ? 'md:h-[560px]' : 'md:h-[520px]'
+      }`}
       style={{
         background:
           'radial-gradient(circle at 20% 24%, rgba(93, 190, 211, 0.06), transparent 34%), radial-gradient(circle at 82% 18%, rgba(203, 187, 166, 0.12), transparent 32%), linear-gradient(180deg, #FCFBF7 0%, #F8F8F3 54%, #F4F7F5 100%)',
@@ -25,11 +27,11 @@ export default function HeroSection() {
       }}
     >
       <div className="container mx-auto md:flex">
-        <div className="max-w-7xl flex-1 px-6 py-4">
+        <div className="max-w-7xl flex-1 px-6 pt-6 pb-4">
           {locale === 'uk' && <TitleUk className="mb-6"></TitleUk>}
           {locale === 'en' && <TitleEn className="mb-6"></TitleEn>}
-          <div className="mb-6 whitespace-pre-line">
-            <p>{t('subtitle')}</p>
+          <div className="mb-6 max-w-[85%] whitespace-pre-line">
+            <p className="lg:text-xl!">{t('subtitle')}</p>
           </div>
           <div>
             <Suspense fallback={null}>
@@ -160,7 +162,7 @@ export default function HeroSection() {
           </div>
         </div>
         {locale === 'en' && (
-          <div className="mb-4 hidden flex-1 items-center justify-center gap-4 md:flex">
+          <div className="mb-4 hidden w-[40%] items-center justify-center gap-4 md:flex">
             <Image
               src="/assets/images/screens/screen-02-en-v2.webp"
               alt="Nemory prom screen"
@@ -188,7 +190,7 @@ export default function HeroSection() {
           </div>
         )}
         {locale === 'uk' && (
-          <div className="mb-4 hidden flex-1 items-center justify-center gap-4 md:flex">
+          <div className="mb-4 hidden w-[40%] items-center justify-center gap-4 md:flex">
             <Image
               src="/assets/images/screens/screen-02-uk-v2.webp"
               alt="Nemory prom screen"

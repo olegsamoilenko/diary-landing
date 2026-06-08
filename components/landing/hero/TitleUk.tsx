@@ -11,7 +11,10 @@ export default function TitleUk({ className }: TitleProps) {
       <span className="text-landing-primary mb-2 block text-nowrap">
         Думайте ясніше.
       </span>
-      <span className="mb-2 block">Розумійте себе глибше.</span>
+      <span className="l mb-2 block leading-9 md:leading-12 lg:leading-14 xl:leading-16">
+        Розумійте себе глибше з{' '}
+        <span className="text-landing-primary">AI.</span>
+      </span>
       {/*<span className="block text-nowrap">*/}
       {/*  і зростання{' '}*/}
       {/*  <span className="text-landing-primary font-semibold">з AI</span>*/}
