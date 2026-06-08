@@ -1,0 +1,208 @@
+{
+  "Metadata": {
+    "title": "Nemory - Intelligentes Tagebuch",
+    "description": "Privates KI-Tagebuch für Selbstreflexion, Stimmungstracking, Ziele, Gewohnheiten und persönliche Entwicklung."
+  },
+  "PrivacyPage": {
+    "Metadata": {
+      "title": "Datenschutzrichtlinie | Nemory",
+      "description": "Lies die Datenschutzrichtlinie von Nemory und erfahre, wie Tagebuch-, Konto- und Nutzungsdaten verarbeitet werden."
+    }
+  },
+  "TermsPage": {
+    "Metadata": {
+      "title": "Nutzungsbedingungen | Nemory",
+      "description": "Lies die Nutzungsbedingungen von Nemory und die Regeln für die Nutzung der App und der Website."
+    }
+  },
+  "DeleteAccountPage": {
+    "Metadata": {
+      "title": "Konto löschen | Nemory",
+      "description": "Erfahre, wie du dein Nemory-Konto löschen kannst und was nach der Löschung mit deinen Daten passiert."
+    }
+  },
+  "Logo": {
+    "smartJournal": "Intelligentes Tagebuch"
+  },
+  "Header": {
+    "Menu": {
+      "home": "Startseite",
+      "whyUs": "Warum wir",
+      "whyNemory": "Warum Nemory",
+      "features": "Funktionen",
+      "howItWorks": "So funktioniert es",
+      "privacy": "Datenschutz",
+      "gallery": "Galerie",
+      "getStarted": "Loslegen",
+      "faq": "Häufige Fragen"
+    }
+  },
+  "Sections": {
+    "Hero": {
+      "Title": {
+        "yourPersonal": "Dein persönliches",
+        "journal": "Tagebuch",
+        "&": "und",
+        "growth": "Begleiter",
+        "companion": "für persönliches Wachstum",
+        "with": "mit",
+        "ai": "KI"
+      },
+      "subtitle": "Ein intelligentes Tagebuch für Gedanken, Erinnerungen und die wichtigen Momente deines Lebens. Schreibe über das, was in deinem Leben passiert, und entdecke, wie du dich sowie deine Gedanken und Sichtweisen im Laufe der Zeit verändern.",
+      "aiReflections": "KI-Unterstützung",
+      "aIJournal": "KI-Tagebuch",
+      "moodTracking": "Stimmungstracking",
+      "goalsAndHabits": "Ziele und Gewohnheiten",
+      "progressAnalytics": "Fortschrittsanalyse",
+      "getItOn": "Bei Google Play herunterladen",
+      "downloadOn": "Lade Nemory herunter auf"
+    },
+    "Credibility": {
+      "title": "Vertrauen",
+      "card1": "Ein privater Ort für deine Gedanken",
+      "card2": "KI-Unterstützung für ein besseres Selbstverständnis",
+      "card3": "Ziele, Gewohnheiten und Stimmung an einem Ort",
+      "card4": "Verfügbar bei Google Play"
+    },
+    "WhyNemory": {
+      "title": "Warum Nemory?",
+      "Journaling": {
+        "title": "Schreibe frei und verstehe dich selbst besser",
+        "description": "Ein privater Raum für Gedanken, Emotionen und alltägliche Momente – um innezuhalten, den Tag zu reflektieren und dich selbst besser kennenzulernen.",
+        "point1": "Aussagekräftige Tagebucheinträge",
+        "point2": "Stimmung und persönlicher Kontext",
+        "point3": "Raum für ehrliche Gedanken"
+      },
+      "AiReflection": {
+        "title": "KI, die hilft, das Wesentliche zu erkennen",
+        "description": "Erhalte durchdachte Antworten, die dir helfen, deine Emotionen besser zu verstehen, wiederkehrende Muster zu erkennen und die Faktoren zu entdecken, die deinen Tag beeinflussen.",
+        "point1": "Tiefere Erkenntnisse",
+        "point2": "Besseres Selbstverständnis",
+        "point3": "Unterstützende Impulse"
+      },
+      "Goals": {
+        "title": "Verwandle Gedanken in echten Fortschritt",
+        "description": "Verbinde dein Tagebuch mit Zielen, Gewohnheiten und persönlichen Erkenntnissen, damit deine Entwicklung sichtbarer und nachhaltiger wird.",
+        "point1": "Ziele und Gewohnheiten verfolgen",
+        "point2": "Fortschritt, der mit der Zeit sichtbar wird",
+        "point3": "Ein ganzheitlicheres persönliches System"
+      }
+    },
+    "CoreFeatures": {
+      "title": "Wie Nemory Ihre persönliche Entwicklung unterstützt",
+      "description": "Nemory hilft Ihnen dabei, von verstreuten Gedanken zu mehr Selbstverständnis, zielgerichtetem Handeln und kontinuierlichem Fortschritt im Alltag zu gelangen.",
+      "card1": {
+        "title": "Sich selbst besser verstehen",
+        "description": "Nemory hilft Ihnen, über chaotische Gedanken hinauszugehen, indem Tagebucheinträge durch Reflexion, Mustererkennung und KI-gestützte Impulse zu einem tieferen Selbstverständnis werden."
+      },
+      "card2": {
+        "title": "Unterstützung erhalten, wenn der Kopf überlastet ist",
+        "description": "Anstatt mit allem, was Sie fühlen, allein zu bleiben, hilft Nemory dabei, emotionale und mentale Überforderung durch einen ruhigen Raum und KI-Unterstützung besser zu bewältigen."
+      },
+      "card3": {
+        "title": "Gedanken in echte Veränderungen verwandeln",
+        "description": "Nemory verbindet Ihr Tagebuch mit Zielen, Gewohnheiten und persönlicher Ausrichtung, damit Selbsterkenntnis zu konkreten Handlungen wird."
+      },
+      "card4": {
+        "title": "Wachstum erkennen, das leicht übersehen wird",
+        "description": "Durch die Verbindung von Tagebucheinträgen, Mustern und Fortschritten im Zeitverlauf hilft Nemory dabei, wichtige Veränderungen und persönliche Entwicklung sichtbar zu machen, die im Alltag oft unbemerkt bleiben."
+      }
+    },
+    "HowItWorks": {
+      "title": "So funktioniert es",
+      "description": "Ein einfacher Prozess, der dabei hilft, tägliche Gedanken in ein tieferes Selbstverständnis, einen lebendigen Dialog mit KI und persönliches Wachstum zu verwandeln.",
+      "card1": {
+        "title": "Schreiben Sie auf, was Ihnen durch den Kopf geht",
+        "description": "Schreiben Sie über Ihren Tag, Ihre Gedanken oder alles, was Ihnen in diesem Moment wichtig ist."
+      },
+      "card2": {
+        "title": "Erhalten Sie eine Reflexion von Nemory",
+        "description": "Nemory hilft Ihnen, Ihre Emotionen, Entscheidungen und Erfahrungen aus einer tieferen Perspektive zu betrachten."
+      },
+      "card3": {
+        "title": "Führen Sie das Gespräch im Chat fort",
+        "description": "Stellen Sie Folgefragen, besprechen Sie konkrete Situationen oder erkunden Sie Ihre Gedanken tiefer im Chat mit Nemory."
+      },
+      "card4": {
+        "title": "Verwandeln Sie Gedanken in Wachstum",
+        "description": "Nutzen Sie Erkenntnisse, um Tagebucheinträge, Ziele und Gewohnheiten langfristig in echten persönlichen Fortschritt zu verwandeln."
+      }
+    },
+    "SafeSpace": {
+      "title": "Ein persönlicher Raum für ehrliche Gedanken",
+      "description": "Lokale Speicherung, verschlüsselte Daten und ein einfühlsamer KI-Begleiter, der auf Ihren Tagebucheinträgen basiert.",
+      "point1": "Ihre Tagebucheinträge werden lokal auf Ihrem Gerät gespeichert und bleiben dadurch unter Ihrer Kontrolle.",
+      "point2": "Die lokale Datenbank ist verschlüsselt, um Ihre Notizen, Tagebucheinträge und persönlichen Daten zu schützen.",
+      "point3": "Wenn die KI Antworten erstellt, nutzt sie relevante Ausschnitte Ihrer Tagebucheinträge, um sinnvollere und persönlichere Antworten zu geben."
+    },
+    "Showcase": {
+      "title": "Ein Tagebuch, das sich wie Ihr eigener Raum anfühlt",
+      "description": "Wählen Sie sorgfältig gestaltete Designs oder erstellen Sie Ihr eigenes mit individuellen Hintergründen und Farben, damit sich Ihr Tagebuch wirklich persönlich anfühlt."
+    },
+    "FinalCTA": {
+      "subTitle": "Beginnen Sie Ihren Weg mit Nemory",
+      "title1": "Klarer denken.",
+      "title2": "Bewusster wachsen.",
+      "description": "Halten Sie Ihre Gedanken fest, verstehen Sie sich mithilfe von KI besser und bewahren Sie Ihre Ziele, Gewohnheiten und Erkenntnisse an einem ruhigen, privaten Ort auf.",
+      "ctaButton": "Laden Sie Nemory herunter auf",
+      "pill1": "Datenschutz von Anfang an",
+      "pill2": "KI-Unterstützung",
+      "pill3": "Für persönliches Wachstum entwickelt"
+    },
+    "FAQ": {
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Was ist Nemory?",
+          "answer": "Nemory ist eine private Tagebuch-App, die Ihnen hilft, Gedanken festzuhalten, sich mithilfe von KI besser zu verstehen und mit Ihren Zielen, Gewohnheiten und Ihrer persönlichen Entwicklung verbunden zu bleiben."
+        },
+        {
+          "question": "Worin unterscheidet sich Nemory von einem gewöhnlichen Tagebuch?",
+          "answer": "Nemory verbindet ein privates Tagebuch mit KI-Unterstützung, Zielen, Gewohnheiten und Fortschrittsverfolgung. Es ist nicht nur ein Ort für Notizen, sondern ein Raum, der Ihnen hilft, sich selbst und Ihre Entwicklung besser zu verstehen."
+        },
+        {
+          "question": "Kann ich Nemory als persönliches Tagebuch für tägliche Einträge nutzen?",
+          "answer": "Ja. Nemory eignet sich hervorragend für tägliche Einträge, Gedanken, Emotionen und Erfahrungen und bietet zusätzlich KI-Antworten, Ziele, Gewohnheiten und Fortschrittsverfolgung."
+        },
+        {
+          "question": "Wie unterstützt die KI in Nemory?",
+          "answer": "Die KI in Nemory hilft dabei, Einträge zu reflektieren, Muster zu erkennen und klarere persönliche Erkenntnisse zu gewinnen. Sie wurde entwickelt, um Ihre Reflexionen zu unterstützen, nicht um sie zu ersetzen."
+        },
+        {
+          "question": "Ist mein Tagebuch privat?",
+          "answer": "Ihr Tagebuch ist als persönlicher und privater Raum gedacht. Wenn Sie KI-Funktionen nutzen, werden relevante Teile Ihrer Einträge sicher an unsere KI-Anbieter übermittelt, damit Antworten erstellt werden können. Dies geschieht ausschließlich zur Unterstützung Ihrer Reflexionen."
+        },
+        {
+          "question": "Kann ich Nemory auch für Ziele und Gewohnheiten nutzen?",
+          "answer": "Ja. Nemory vereint Tagebuch, Ziele, Gewohnheiten und persönliche Erkenntnisse an einem Ort, damit Ihre täglichen Gedanken und Ihre langfristige Entwicklung miteinander verbunden bleiben."
+        },
+        {
+          "question": "Muss ich jeden Tag schreiben?",
+          "answer": "Überhaupt nicht. Nemory ist für Sie da, wenn Sie es brauchen – egal, ob Sie täglich schreiben oder nur dann, wenn Sie innehalten, nachdenken und Ihre Gedanken ordnen möchten."
+        },
+        {
+          "question": "Ist Nemory nur ein Tagebuch?",
+          "answer": "Nein. Neben dem Tagebuchschreiben hilft Ihnen Nemory dabei, Gewohnheiten aufzubauen, Ziele zu verfolgen und Ihren Fortschritt im Laufe der Zeit besser sichtbar zu machen."
+        },
+        {
+          "question": "Wo kann ich Nemory herunterladen?",
+          "answer": "Derzeit ist Nemory als Android-App im Google Play Store verfügbar."
+        },
+        {
+          "question": "Für wen wurde Nemory entwickelt?",
+          "answer": "Nemory wurde für Menschen entwickelt, die einen ruhigeren und bewussteren Weg suchen, Tagebuch zu führen, ihre Gedanken zu reflektieren und sich weiterzuentwickeln – unabhängig davon, ob sie an Gewohnheiten arbeiten, Ziele verfolgen oder sich selbst besser verstehen möchten."
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "description": "Ein ruhiger Ort für Tagebuch, Reflexion und persönliches Wachstum.",
+    "downloadOn": "Herunterladen bei",
+    "whyNemory": "Warum Nemory",
+    "features": "Funktionen",
+    "privacy": "Datenschutz",
+    "faq": "FAQ",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termOfUse": "Nutzungsbedingungen"
+  }
+}

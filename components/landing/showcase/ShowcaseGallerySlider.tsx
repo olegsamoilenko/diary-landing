@@ -78,7 +78,10 @@ export default function ShowcaseGallerySlider() {
             <div className="relative mx-auto w-[220px] sm:w-[200px] lg:w-[190px] 2xl:w-[180px]">
               <div className="overflow-hidden">
                 <Image
-                  src={getSlideImageSrc(slide.id, locale)}
+                  src={getSlideImageSrc(
+                    slide.id,
+                    locale === 'uk' ? locale : 'en',
+                  )}
                   alt={`${slide.theme} theme preview`}
                   width={1152}
                   height={2048}

@@ -19,6 +19,72 @@ const SITE_URL = 'https://nemoryai.com'
 const SITE_NAME = 'Nemory'
 const DEFAULT_LOCALE = 'en'
 
+const SEO_LOCALES = routing.locales
+
+const OG_LOCALE_MAP: Record<string, string> = {
+  en: 'en_US',
+  uk: 'uk_UA',
+  de: 'de_DE',
+  pl: 'pl_PL',
+}
+
+const KEYWORDS_MAP: Record<string, string[]> = {
+  en: [
+    'AI journal',
+    'smart journal',
+    'private diary app',
+    'mood tracking app',
+    'self reflection journal',
+    'habit tracker',
+    'goal tracking app',
+    'personal growth app',
+  ],
+  uk: [
+    'AI щоденник',
+    'розумний щоденник',
+    'щоденник настрою',
+    'щоденник саморефлексії',
+    'додаток для щоденника',
+    'звички і цілі',
+    'особистий розвиток',
+    'приватний щоденник',
+  ],
+  de: [
+    'KI Tagebuch',
+    'intelligentes Tagebuch',
+    'privates Tagebuch App',
+    'Stimmungstagebuch',
+    'Selbstreflexion Tagebuch',
+    'Gewohnheiten Tracker',
+    'Ziele Tracker App',
+    'persönliche Entwicklung App',
+  ],
+  pl: [
+    'dziennik AI',
+    'inteligentny dziennik',
+    'prywatny pamiętnik aplikacja',
+    'aplikacja do śledzenia nastroju',
+    'dziennik autorefleksji',
+    'tracker nawyków',
+    'aplikacja do celów',
+    'aplikacja rozwoju osobistego',
+  ],
+}
+
+const OG_ALT_MAP: Record<string, string> = {
+  en: 'Nemory app preview — AI journal for self-reflection, mood tracking, goals, habits, and personal growth',
+  uk: 'Попередній перегляд застосунку Nemory — AI-щоденник для саморефлексії, відстеження настрою, цілей, звичок і особистого розвитку',
+  de: 'Vorschau der Nemory App — KI-Tagebuch für Selbstreflexion, Stimmungsverfolgung, Ziele, Gewohnheiten und persönliche Entwicklung',
+  pl: 'Podgląd aplikacji Nemory — dziennik AI do autorefleksji, śledzenia nastroju, celów, nawyków i rozwoju osobistego',
+}
+
+const TWITTER_ALT_MAP: Record<string, string> = {
+  en: 'Nemory smart journal app preview with AI reflections, mood tracking, goals, habits, and personal growth tools',
+  uk: 'Попередній перегляд застосунку Nemory з AI-рефлексіями, відстеженням настрою, цілями, звичками та інструментами особистого розвитку',
+  de: 'Vorschau der Nemory Smart-Journal-App mit KI-Reflexionen, Stimmungsverfolgung, Zielen, Gewohnheiten und Tools für persönliche Entwicklung',
+  pl: 'Podgląd aplikacji Nemory z refleksjami AI, śledzeniem nastroju, celami, nawykami i narzędziami rozwoju osobistego',
+}
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
@@ -35,37 +101,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     namespace: 'Metadata',
   })
 
-  const isUk = locale === 'uk'
-  const path = isUk ? '/uk' : '/en'
-  const absoluteUrl = `${SITE_URL}${path}`
-  const localeTag = isUk ? 'uk_UA' : 'en_US'
-  const alternateLocaleTag = isUk ? 'en_US' : 'uk_UA'
+  const absoluteUrl = `${SITE_URL}/${locale}`
+  const localeTag = OG_LOCALE_MAP[locale] ?? OG_LOCALE_MAP[DEFAULT_LOCALE]
+
+  const alternateLocaleTags = SEO_LOCALES.filter((item) => item !== locale).map(
+    (item) => OG_LOCALE_MAP[item],
+  )
 
   const title = t('title')
   const description = t('description')
 
   return {
-    keywords: isUk
-      ? [
-          'AI щоденник',
-          'розумний щоденник',
-          'щоденник настрою',
-          'щоденник саморефлексії',
-          'додаток для щоденника',
-          'звички і цілі',
-          'особистий розвиток',
-          'приватний щоденник',
-        ]
-      : [
-          'AI journal',
-          'smart journal',
-          'private diary app',
-          'mood tracking app',
-          'self reflection journal',
-          'habit tracker',
-          'goal tracking app',
-          'personal growth app',
-        ],
+    keywords: KEYWORDS_MAP[locale] ?? KEYWORDS_MAP[DEFAULT_LOCALE],
 
     metadataBase: new URL(SITE_URL),
 
@@ -103,6 +150,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         en: `${SITE_URL}/en`,
         uk: `${SITE_URL}/uk`,
+        de: `${SITE_URL}/de`,
+        pl: `${SITE_URL}/pl`,
         'x-default': `${SITE_URL}/${DEFAULT_LOCALE}`,
       },
     },
@@ -114,16 +163,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       locale: localeTag,
-      alternateLocale: [alternateLocaleTag],
+      alternateLocale: alternateLocaleTags,
       images: [
         {
           url: `${SITE_URL}/${locale}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt:
-            locale === 'uk'
-              ? 'Попередній перегляд застосунку Nemory — AI-щоденник для саморефлексії, відстеження настрою, цілей, звичок і особистого розвитку'
-              : 'Nemory app preview — AI journal for self-reflection, mood tracking, goals, habits, and personal growth',
+          alt: OG_ALT_MAP[locale] ?? OG_ALT_MAP[DEFAULT_LOCALE],
         },
       ],
     },
@@ -136,10 +182,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [
         {
           url: `${SITE_URL}/${locale}/twitter-image`,
-          alt:
-            locale === 'uk'
-              ? 'Попередній перегляд застосунку Nemory з AI-рефлексіями, відстеженням настрою, цілями, звичками та інструментами особистого розвитку'
-              : 'Nemory smart journal app preview with AI reflections, mood tracking, goals, habits, and personal growth tools',
+          alt: TWITTER_ALT_MAP[locale] ?? TWITTER_ALT_MAP[DEFAULT_LOCALE],
         },
       ],
     },

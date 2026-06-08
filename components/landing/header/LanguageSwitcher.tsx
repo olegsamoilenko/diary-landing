@@ -6,7 +6,7 @@ import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from '@/lib/i18n/navigation'
 
 type LanguageOption = {
-  code: 'en' | 'uk'
+  code: 'en' | 'uk' | 'pl' | 'de'
   label: string
   shortLabel: string
 }
@@ -14,6 +14,8 @@ type LanguageOption = {
 const LANGUAGES: LanguageOption[] = [
   { code: 'en', label: 'English', shortLabel: 'EN' },
   { code: 'uk', label: 'Українська', shortLabel: 'UA' },
+  { code: 'pl', label: 'Polski', shortLabel: 'PL' },
+  { code: 'de', label: 'Deutsch', shortLabel: 'DE' },
 ]
 
 type LanguageSwitcherProps = {
@@ -46,7 +48,7 @@ export default function LanguageSwitcher({
   const currentLanguage =
     LANGUAGES.find((lang) => lang.code === locale)?.shortLabel ?? 'EN'
 
-  const handleChangeLanguage = (nextLocale: 'en' | 'uk') => {
+  const handleChangeLanguage = (nextLocale: 'en' | 'uk' | 'pl' | 'de') => {
     if (nextLocale === locale) {
       setIsLanguageSwitcherOpenAction(false)
       return

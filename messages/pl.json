@@ -1,0 +1,208 @@
+{
+  "Metadata": {
+    "title": "Nemory - Inteligentny dziennik",
+    "description": "Prywatny dziennik AI do autorefleksji, śledzenia nastroju, celów, nawyków i rozwoju osobistego."
+  },
+  "PrivacyPage": {
+    "Metadata": {
+      "title": "Polityka prywatności | Nemory",
+      "description": "Zapoznaj się z polityką prywatności Nemory i dowiedz się, jak przetwarzane są dane dziennika, konta oraz korzystania z aplikacji."
+    }
+  },
+  "TermsPage": {
+    "Metadata": {
+      "title": "Warunki korzystania | Nemory",
+      "description": "Zapoznaj się z warunkami korzystania z Nemory oraz zasadami używania aplikacji i strony internetowej."
+    }
+  },
+  "DeleteAccountPage": {
+    "Metadata": {
+      "title": "Usuwanie konta | Nemory",
+      "description": "Dowiedz się, jak usunąć konto Nemory i co dzieje się z danymi po usunięciu."
+    }
+  },
+  "Logo": {
+    "smartJournal": "Inteligentny dziennik"
+  },
+  "Header": {
+    "Menu": {
+      "home": "Strona główna",
+      "whyUs": "Dlaczego my",
+      "whyNemory": "Dlaczego Nemory",
+      "features": "Funkcje",
+      "howItWorks": "Jak to działa",
+      "privacy": "Prywatność",
+      "gallery": "Galeria",
+      "getStarted": "Rozpocznij",
+      "faq": "Najczęściej zadawane pytania"
+    }
+  },
+  "Sections": {
+    "Hero": {
+      "Title": {
+        "yourPersonal": "Twój osobisty",
+        "journal": "dziennik",
+        "&": "i",
+        "growth": "towarzysz",
+        "companion": "rozwoju osobistego",
+        "with": "z",
+        "ai": "AI"
+      },
+      "subtitle": "Inteligentny dziennik dla myśli, wspomnień i ważnych chwil życia. Pisz o tym, co dzieje się w Twoim życiu, i obserwuj, jak z czasem zmieniają się Ty, Twoje myśli i spojrzenie na świat.",
+      "aiReflections": "Wsparcie AI",
+      "aIJournal": "Dziennik AI",
+      "moodTracking": "Śledzenie nastroju",
+      "goalsAndHabits": "Cele i nawyki",
+      "progressAnalytics": "Analiza postępów",
+      "getItOn": "Pobierz z Google Play",
+      "downloadOn": "Pobierz Nemory z"
+    },
+    "Credibility": {
+      "title": "Zaufanie",
+      "card1": "Prywatna przestrzeń dla Twoich myśli",
+      "card2": "Wsparcie AI w lepszym zrozumieniu siebie",
+      "card3": "Cele, nawyki i nastrój w jednym miejscu",
+      "card4": "Dostępne w Google Play"
+    },
+    "WhyNemory": {
+      "title": "Dlaczego Nemory?",
+      "Journaling": {
+        "title": "Pisz swobodnie i lepiej poznawaj siebie",
+        "description": "Prywatna przestrzeń dla myśli, emocji i codziennych chwil — aby zwolnić, spojrzeć na swój dzień z perspektywy i lepiej zrozumieć siebie.",
+        "point1": "Wartościowe wpisy w dzienniku",
+        "point2": "Nastrój i osobisty kontekst",
+        "point3": "Miejsce na szczere myśli"
+      },
+      "AiReflection": {
+        "title": "AI, które pomaga dostrzegać to, co ważne",
+        "description": "Otrzymuj przemyślane odpowiedzi, które pomagają lepiej rozumieć emocje, zauważać powtarzające się schematy i odkrywać, co wpływa na Twój dzień.",
+        "point1": "Głębsze refleksje",
+        "point2": "Lepsze zrozumienie siebie",
+        "point3": "Wspierające wskazówki"
+      },
+      "Goals": {
+        "title": "Zamieniaj myśli w realne postępy",
+        "description": "Połącz dziennik z celami, nawykami i osobistymi refleksjami, aby rozwój był bardziej widoczny i konsekwentny.",
+        "point1": "Śledzenie celów i nawyków",
+        "point2": "Postępy widoczne z czasem",
+        "point3": "Bardziej kompletne wsparcie rozwoju osobistego"
+      }
+    },
+    "CoreFeatures": {
+      "title": "Jak Nemory wspiera Twój rozwój osobisty",
+      "description": "Nemory pomaga przejść od rozproszonych myśli do lepszego zrozumienia siebie, świadomego działania i stałego rozwoju w codziennym życiu.",
+      "card1": {
+        "title": "Lepiej rozumieć siebie",
+        "description": "Nemory pomaga wyjść poza chaotyczne myśli, zamieniając wpisy w dzienniku w głębsze zrozumienie siebie dzięki refleksji, dostrzeganiu wzorców i wskazówkom AI."
+      },
+      "card2": {
+        "title": "Otrzymywać wsparcie, gdy w głowie jest zbyt wiele",
+        "description": "Zamiast pozostawać samemu z tym, co czujesz, Nemory pomaga łagodniej radzić sobie z przeciążeniem emocjonalnym i psychicznym dzięki spokojnej przestrzeni oraz wsparciu AI."
+      },
+      "card3": {
+        "title": "Zamieniaj myśli w realne zmiany",
+        "description": "Nemory łączy Twój dziennik z celami, nawykami i osobistym kierunkiem rozwoju, aby lepsze zrozumienie siebie prowadziło do konkretnych działań."
+      },
+      "card4": {
+        "title": "Dostrzegaj rozwój, który łatwo przeoczyć",
+        "description": "Łącząc wpisy w dzienniku, wzorce i postępy w czasie, Nemory pomaga zauważać ważne zmiany i rozwój osobisty, które łatwo umykają w codziennym życiu."
+      }
+    },
+    "HowItWorks": {
+      "title": "Jak to działa",
+      "description": "Prosty proces, który pomaga zamieniać codzienne myśli w głębsze zrozumienie siebie, wartościowy dialog z AI i rozwój osobisty.",
+      "card1": {
+        "title": "Zapisz to, co masz na myśli",
+        "description": "Pisz o swoim dniu, swoich myślach lub o wszystkim, co jest dla Ciebie ważne w danym momencie."
+      },
+      "card2": {
+        "title": "Otrzymaj refleksję od Nemory",
+        "description": "Nemory pomaga spojrzeć głębiej na Twoje emocje, decyzje i doświadczenia."
+      },
+      "card3": {
+        "title": "Kontynuuj rozmowę na czacie",
+        "description": "Zadawaj dodatkowe pytania, omawiaj konkretne sytuacje lub jeszcze głębiej analizuj swoje myśli w rozmowie z Nemory."
+      },
+      "card4": {
+        "title": "Zamieniaj myśli w rozwój",
+        "description": "Wykorzystuj zdobyte wnioski, aby przekształcać wpisy w dzienniku, cele i nawyki w realny postęp osobisty z biegiem czasu."
+      }
+    },
+    "SafeSpace": {
+      "title": "Osobista przestrzeń do szczerych refleksji",
+      "description": "Lokalne przechowywanie danych, szyfrowanie oraz wspierające AI oparte na Twoich wpisach w dzienniku.",
+      "point1": "Twoje wpisy w dzienniku są przechowywane lokalnie na Twoim urządzeniu, dzięki czemu pozostają pod Twoją kontrolą.",
+      "point2": "Lokalna baza danych jest szyfrowana, aby chronić Twoje notatki, wpisy w dzienniku i dane osobiste.",
+      "point3": "Gdy AI tworzy odpowiedzi, wykorzystuje odpowiednie fragmenty Twoich wpisów, aby dostarczać bardziej trafne i wartościowe refleksje."
+    },
+    "Showcase": {
+      "title": "Dziennik, który naprawdę jest Twoją własną przestrzenią",
+      "description": "Wybieraj spośród starannie zaprojektowanych motywów lub stwórz własny za pomocą niestandardowych teł i kolorów, aby Twój dziennik był naprawdę osobisty."
+    },
+    "FinalCTA": {
+      "subTitle": "Rozpocznij swoją drogę z Nemory",
+      "title1": "Myśl jaśniej.",
+      "title2": "Rozwijaj się bardziej świadomie.",
+      "description": "Zapisuj swoje myśli, lepiej rozumiej siebie dzięki AI i przechowuj swoje cele, nawyki oraz refleksje w jednej spokojnej, prywatnej przestrzeni.",
+      "ctaButton": "Pobierz Nemory z",
+      "pill1": "Prywatność od podstaw",
+      "pill2": "Wsparcie AI",
+      "pill3": "Stworzone dla rozwoju"
+    },
+    "FAQ": {
+      "title": "Najczęściej zadawane pytania",
+      "items": [
+        {
+          "question": "Czym jest Nemory?",
+          "answer": "Nemory to prywatna aplikacja do prowadzenia dziennika, która pomaga zapisywać myśli, lepiej rozumieć siebie dzięki AI oraz pozostawać w kontakcie ze swoimi celami, nawykami i rozwojem osobistym."
+        },
+        {
+          "question": "Czym Nemory różni się od zwykłego pamiętnika?",
+          "answer": "Nemory łączy prywatny dziennik ze wsparciem AI, celami, nawykami i śledzeniem postępów. To nie tylko miejsce do zapisywania myśli, ale także przestrzeń pomagająca lepiej rozumieć siebie i własny rozwój."
+        },
+        {
+          "question": "Czy mogę używać Nemory jako osobistego dziennika do codziennych wpisów?",
+          "answer": "Tak. Nemory świetnie nadaje się do codziennych wpisów, myśli, emocji i doświadczeń, a jednocześnie oferuje dodatkowe funkcje, takie jak odpowiedzi AI, cele, nawyki i śledzenie postępów."
+        },
+        {
+          "question": "Jak AI pomaga w Nemory?",
+          "answer": "AI w Nemory pomaga analizować wpisy, dostrzegać wzorce i uzyskiwać bardziej przejrzyste osobiste refleksje. Zostało stworzone po to, aby wspierać Twoje przemyślenia, a nie je zastępować."
+        },
+        {
+          "question": "Czy mój dziennik jest prywatny?",
+          "answer": "Twój dziennik został zaprojektowany jako osobista i prywatna przestrzeń. Gdy korzystasz z funkcji AI, odpowiednie fragmenty wpisów są bezpiecznie przesyłane do naszych dostawców AI w celu wygenerowania odpowiedzi. Odbywa się to wyłącznie po to, aby wspierać Twoje refleksje."
+        },
+        {
+          "question": "Czy mogę używać Nemory również do celów i nawyków?",
+          "answer": "Tak. Nemory łączy dziennik, cele, nawyki i osobiste refleksje w jednym miejscu, aby codzienne myśli i długoterminowy rozwój pozostawały ze sobą powiązane."
+        },
+        {
+          "question": "Czy muszę pisać codziennie?",
+          "answer": "Absolutnie nie. Nemory jest obok wtedy, gdy go potrzebujesz — niezależnie od tego, czy piszesz codziennie, czy tylko wtedy, gdy chcesz się zatrzymać, zastanowić i uporządkować swoje myśli."
+        },
+        {
+          "question": "Czy Nemory to tylko dziennik?",
+          "answer": "Nie. Oprócz prowadzenia dziennika Nemory pomaga budować nawyki, realizować cele i lepiej dostrzegać własne postępy w czasie."
+        },
+        {
+          "question": "Gdzie mogę pobrać Nemory?",
+          "answer": "Obecnie Nemory jest dostępne jako aplikacja na Androida w Google Play."
+        },
+        {
+          "question": "Dla kogo zostało stworzone Nemory?",
+          "answer": "Nemory zostało stworzone dla osób, które szukają spokojniejszego i bardziej świadomego sposobu prowadzenia dziennika, refleksji nad swoimi myślami i rozwoju osobistego — niezależnie od tego, czy pracują nad nawykami, dążą do celów, czy po prostu chcą lepiej zrozumieć siebie."
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "description": "Spokojna przestrzeń do prowadzenia dziennika, refleksji i rozwoju osobistego.",
+    "downloadOn": "Pobierz z",
+    "whyNemory": "Dlaczego Nemory",
+    "features": "Funkcje",
+    "privacy": "Prywatność",
+    "faq": "FAQ",
+    "privacyPolicy": "Polityka prywatności",
+    "termOfUse": "Warunki korzystania"
+  }
+}

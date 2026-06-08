@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://nemoryai.com'
-const LAST_MODIFIED = new Date('2026-03-20T00:00:00.000Z')
+const LAST_MODIFIED = new Date('2026-06-08T00:00:00.000Z')
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -13,6 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/uk`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${BASE_URL}/de`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${BASE_URL}/pl`,
       lastModified: LAST_MODIFIED,
       changeFrequency: 'weekly',
       priority: 1,
@@ -30,6 +42,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/de/privacy`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/pl/privacy`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/en/terms`,
       lastModified: LAST_MODIFIED,
       changeFrequency: 'monthly',
@@ -42,6 +66,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/de/terms`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/pl/terms`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/en/delete-account`,
       lastModified: LAST_MODIFIED,
       changeFrequency: 'monthly',
@@ -49,6 +85,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/uk/delete-account`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/de/delete-account`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/pl/delete-account`,
       lastModified: LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.6,

@@ -37,7 +37,7 @@ export default function Navigation({
       const width = window.innerWidth
 
       if (width >= 1360) {
-        setRegularVisibleCount(regularItems.length)
+        setRegularVisibleCount(7)
       } else if (width >= 1280) {
         setRegularVisibleCount(7)
       } else if (width >= 1024) {

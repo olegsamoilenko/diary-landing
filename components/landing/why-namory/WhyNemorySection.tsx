@@ -29,7 +29,11 @@ export default function WhyNemorySection() {
           src={
             locale === 'uk'
               ? '/assets/images/screens/screen-06-uk-v2.jpg'
-              : '/assets/images/screens/screen-06-en-v2.jpg'
+              : locale === 'de'
+                ? '/assets/images/screens/screen-06-de-v2.jpg'
+                : locale === 'pl'
+                  ? '/assets/images/screens/screen-06-pl-v2.jpg'
+                  : '/assets/images/screens/screen-06-en-v2.jpg'
           }
         />
         <WhyNemoryCard
@@ -41,7 +45,11 @@ export default function WhyNemorySection() {
           src={
             locale === 'uk'
               ? '/assets/images/screens/screen-08-uk-v2.jpg'
-              : '/assets/images/screens/screen-08-en-v2.jpg'
+              : locale === 'de'
+                ? '/assets/images/screens/screen-08-de-v2.jpg'
+                : locale === 'pl'
+                  ? '/assets/images/screens/screen-08-pl-v2.jpg'
+                  : '/assets/images/screens/screen-08-en-v2.jpg'
           }
           reverse={true}
         />
@@ -54,7 +62,11 @@ export default function WhyNemorySection() {
           src={
             locale === 'uk'
               ? '/assets/images/screens/screen-09-uk-v2.jpg'
-              : '/assets/images/screens/screen-09-en-v2.jpg'
+              : locale === 'de'
+                ? '/assets/images/screens/screen-09-de-v2.jpg'
+                : locale === 'pl'
+                  ? '/assets/images/screens/screen-09-pl-v2.jpg'
+                  : '/assets/images/screens/screen-09-en-v2.jpg'
           }
           className="mb-3"
         />

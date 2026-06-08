@@ -11,6 +11,8 @@ import { useLocale } from 'next-intl'
 import { Suspense, useEffect } from 'react'
 import TitleUk from '@/components/landing/hero/TitleUk'
 import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
+import TitleDe from '@/components/landing/hero/TitleDe'
+import TitlePL from '@/components/landing/hero/TitlePL'
 
 export default function HeroSection() {
   const t = useTranslations('Sections.Hero')
@@ -20,8 +22,14 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className={`relative h-[800px] overflow-hidden bg-cover bg-center bg-no-repeat ${
-        locale === 'en' ? 'md:h-[560px]' : 'md:h-[520px]'
+      className={`relative overflow-hidden bg-cover bg-center bg-no-repeat ${
+        locale === 'en'
+          ? 'h-[800px] md:h-[560px]'
+          : locale === 'pl'
+            ? 'h-[780px] md:h-[560px]'
+            : locale === 'de'
+              ? 'h-[850px] md:h-[580px]'
+              : 'h-[790px] md:h-[520px]'
       }`}
       style={{
         background:
@@ -33,6 +41,8 @@ export default function HeroSection() {
         <div className="max-w-7xl flex-1 px-6 pt-6 pb-4">
           {locale === 'uk' && <TitleUk className="mb-6"></TitleUk>}
           {locale === 'en' && <TitleEn className="mb-6"></TitleEn>}
+          {locale === 'pl' && <TitlePL className="mb-6"></TitlePL>}
+          {locale === 'de' && <TitleDe className="mb-6"></TitleDe>}
           <div className="mb-6 max-w-[85%] whitespace-pre-line">
             <p className="lg:text-xl!">{t('subtitle')}</p>
           </div>
@@ -96,6 +106,63 @@ export default function HeroSection() {
               />
               <Image
                 src="/assets/images/screens/screen-03-uk-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative right-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent"
+                priority
+              />
+            </div>
+          )}
+          {locale === 'de' && (
+            <div className="mb-4 flex items-center justify-center gap-4 md:hidden">
+              <Image
+                src="/assets/images/screens/screen-02-de-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative left-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent"
+                priority
+              />
+              <Image
+                src="/assets/images/screens/screen-01-de-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative z-2 h-[250px] w-auto bg-transparent"
+                priority
+              />
+              <Image
+                src="/assets/images/screens/screen-03-de-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative right-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent"
+                priority
+              />
+            </div>
+          )}
+
+          {locale === 'pl' && (
+            <div className="mb-4 flex items-center justify-center gap-4 md:hidden">
+              <Image
+                src="/assets/images/screens/screen-02-pl-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative left-14 z-1 -mb-4 h-[210px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent"
+                priority
+              />
+              <Image
+                src="/assets/images/screens/screen-01-pl-v2.webp"
+                alt="Nemory prom screen"
+                width={1152}
+                height={2048}
+                className="relative z-2 h-[250px] w-auto bg-transparent"
+                priority
+              />
+              <Image
+                src="/assets/images/screens/screen-03-pl-v2.webp"
                 alt="Nemory prom screen"
                 width={1152}
                 height={2048}
@@ -212,6 +279,62 @@ export default function HeroSection() {
             />
             <Image
               src="/assets/images/screens/screen-03-uk-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative right-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent lg:h-[280px] xl:right-22 xl:h-[310px]"
+              priority
+            />
+          </div>
+        )}
+        {locale === 'de' && (
+          <div className="mb-4 hidden w-[40%] items-center justify-center gap-4 md:flex">
+            <Image
+              src="/assets/images/screens/screen-02-de-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative left-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent lg:h-[280px] xl:left-22 xl:h-[310px]"
+              priority
+            />
+            <Image
+              src="/assets/images/screens/screen-01-de-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative z-2 h-[320px] w-auto bg-transparent lg:h-[350px] xl:h-[380px]"
+              priority
+            />
+            <Image
+              src="/assets/images/screens/screen-03-de-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative right-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(24deg)] bg-transparent lg:h-[280px] xl:right-22 xl:h-[310px]"
+              priority
+            />
+          </div>
+        )}
+        {locale === 'pl' && (
+          <div className="mb-4 hidden w-[40%] items-center justify-center gap-4 md:flex">
+            <Image
+              src="/assets/images/screens/screen-02-pl-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative left-20 z-1 -mb-4 h-[250px] w-auto [transform:perspective(1000px)_rotateY(-24deg)] bg-transparent lg:h-[280px] xl:left-22 xl:h-[310px]"
+              priority
+            />
+            <Image
+              src="/assets/images/screens/screen-01-pl-v2.webp"
+              alt="Nemory prom screen"
+              width={1152}
+              height={2048}
+              className="relative z-2 h-[320px] w-auto bg-transparent lg:h-[350px] xl:h-[380px]"
+              priority
+            />
+            <Image
+              src="/assets/images/screens/screen-03-pl-v2.webp"
               alt="Nemory prom screen"
               width={1152}
               height={2048}
