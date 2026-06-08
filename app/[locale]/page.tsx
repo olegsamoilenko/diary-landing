@@ -10,6 +10,7 @@ import FAQSection from '@/components/landing/faq/FAQSection'
 import Header from '@/components/landing/header/Header'
 import Footer from '@/components/landing/footer/Footer'
 import { getHomeJsonLd } from '@/lib/seo/jsonld'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 type Props = {
   params: Promise<{ locale: string }>

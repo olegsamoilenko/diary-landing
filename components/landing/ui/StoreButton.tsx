@@ -31,33 +31,42 @@ function getSearchParam(
   return value || null
 }
 
-function buildPlayStoreHref(searchParams: URLSearchParams) {
-  const referrerParams = new URLSearchParams()
-
-  referrerParams.set(
+function getAttributionParams(searchParams: URLSearchParams) {
+  const utmKeys = [
     'utm_source',
-    getSearchParam(searchParams, 'utm_source') ?? DEFAULT_UTM.source,
-  )
-
-  referrerParams.set(
     'utm_medium',
-    getSearchParam(searchParams, 'utm_medium') ?? DEFAULT_UTM.medium,
-  )
-
-  referrerParams.set(
     'utm_campaign',
-    getSearchParam(searchParams, 'utm_campaign') ?? DEFAULT_UTM.campaign,
-  )
+    'utm_content',
+    'utm_term',
+  ] as const
 
-  const optionalUtmKeys = ['utm_content', 'utm_term'] as const
+  const receivedParams = new URLSearchParams()
 
-  optionalUtmKeys.forEach((key) => {
+  utmKeys.forEach((key) => {
     const value = getSearchParam(searchParams, key)
 
     if (value) {
-      referrerParams.set(key, value)
+      receivedParams.set(key, value)
     }
   })
+
+  const hasAnyUtm = Array.from(receivedParams.keys()).length > 0
+
+  if (hasAnyUtm) {
+    return receivedParams
+  }
+
+  const defaultParams = new URLSearchParams()
+
+  defaultParams.set('utm_source', DEFAULT_UTM.source)
+  defaultParams.set('utm_medium', DEFAULT_UTM.medium)
+  defaultParams.set('utm_campaign', DEFAULT_UTM.campaign)
+
+  return defaultParams
+}
+
+function buildPlayStoreHref(searchParams: URLSearchParams) {
+  const referrerParams = getAttributionParams(searchParams)
 
   const playStoreUrl = new URL('https://play.google.com/store/apps/details')
 
@@ -78,7 +87,7 @@ function trackGooglePlayClick(placement: 'hero' | 'middle' | 'footer') {
 
   if (!gtag) return
 
-  gtag('event', 'click_google_play', {
+  gtag('event', `click_google_play_${placement}`, {
     placement,
     destination: 'google_play',
   })

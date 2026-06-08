@@ -2,12 +2,15 @@ import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import clsx from 'clsx'
 import ShowcaseGallerySlider from '@/components/landing/showcase/ShowcaseGallerySlider'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function ShowcaseGallerySection() {
   const t = useTranslations('Sections.Showcase')
   const locale = useLocale()
+  const sectionRef = useSectionViewTracking('gallery_7')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage:

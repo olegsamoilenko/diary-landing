@@ -1,11 +1,14 @@
 import { useLocale, useTranslations } from 'next-intl'
 import WhyNemoryCard from '@/components/landing/why-namory/WhyNemoryCard'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function WhyNemorySection() {
   const t = useTranslations('Sections.WhyNemory')
   const locale = useLocale()
+  const sectionRef = useSectionViewTracking('why_nemory_3')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage: "url('/assets/images/backgrounds/why-nemory.png')",

@@ -7,11 +7,14 @@ import HeadIdeaIcon from '@/components/landing/credibility/HeadIdeaIcon'
 import GoalsHabitsInsightsIcon from '@/components/landing/credibility/GoalsHabitsInsightsIcon'
 import TargetIcon from '@/components/landing/credibility/TargetIcon'
 import AvailableOnGooglePlayIcon from '@/components/landing/credibility/AvailableOnGooglePlayIcon'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function CredibilityStripSection() {
   const t = useTranslations('Sections.Credibility')
+  const sectionRef = useSectionViewTracking('credibility_2')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage:

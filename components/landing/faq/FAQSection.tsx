@@ -1,5 +1,6 @@
 import FAQAccordion from '@/components/landing/faq/FAQAccordion'
 import { useTranslations, useMessages } from 'next-intl'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 type FAQItem = {
   question: string
@@ -20,8 +21,10 @@ export default function FAQSection() {
   const messages = useMessages() as unknown as Messages
 
   const items = messages.Sections.FAQ.items
+  const sectionRef = useSectionViewTracking('gallery_7')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage: "url('/assets/images/backgrounds/faq-bg.png')",

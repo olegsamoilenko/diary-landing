@@ -1,11 +1,14 @@
 import { useTranslations } from 'next-intl'
 import SafeSpaceCard from '@/components/landing/safe-space/SafeSpaceCard'
 import { Smartphone, Shield, Brain } from 'lucide-react'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function SafeSpaceSection() {
   const t = useTranslations('Sections.SafeSpace')
+  const sectionRef = useSectionViewTracking('privacy_6')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage: "url('/assets/images/backgrounds/safe-space-bg.png')",

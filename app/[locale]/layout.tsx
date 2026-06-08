@@ -8,6 +8,7 @@ import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/lib/i18n/routing'
 import type { Metadata } from 'next'
+import Script from 'next/script'
 
 type Props = {
   children: React.ReactNode
@@ -168,11 +169,27 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages()
 
+  const GA_ID = 'G-6GHVVK4BB3'
+
   return (
     <NextIntlClientProvider messages={messages}>
       <div lang={locale} className="landing-theme min-h-screen">
         {children}
       </div>
+
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}');
+      `}
+      </Script>
     </NextIntlClientProvider>
   )
 }

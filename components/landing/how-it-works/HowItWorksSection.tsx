@@ -1,10 +1,13 @@
 import { useTranslations } from 'next-intl'
 import HowItWorksCard from '@/components/landing/how-it-works/HowItWorksCard'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function HowItWorksSection() {
   const t = useTranslations('Sections.HowItWorks')
+  const sectionRef = useSectionViewTracking('how_it_works_5')
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         // backgroundImage: "url('/assets/images/backgrounds/how-it-work-bg.png')",

@@ -10,13 +10,16 @@ import GooglePlayIcon from '@/components/landing/ui/GooglePlayIcon'
 import { useLocale } from 'next-intl'
 import { Suspense, useEffect } from 'react'
 import TitleUk from '@/components/landing/hero/TitleUk'
+import { useSectionViewTracking } from '@/lib/hooks/useSectionViewTracking'
 
 export default function HeroSection() {
   const t = useTranslations('Sections.Hero')
   const locale = useLocale()
+  const sectionRef = useSectionViewTracking('hero_1')
 
   return (
     <section
+      ref={sectionRef}
       className={`relative h-[800px] overflow-hidden bg-cover bg-center bg-no-repeat ${
         locale === 'en' ? 'md:h-[560px]' : 'md:h-[520px]'
       }`}
