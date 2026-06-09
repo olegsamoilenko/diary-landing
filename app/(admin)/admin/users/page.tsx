@@ -11,6 +11,7 @@ import {
   getTotalPaidUsers,
   getPaidUsersByPlan,
   getUsersActivityByDates,
+  getPaidUsersProfile,
 } from '@/lib/api/usersStatistics'
 import { DatePicker } from '@/components/ui/DatePicker'
 import { Button } from '@/components/ui/button'
@@ -63,6 +64,7 @@ export default function UsersPage() {
     fetchGetUsersStatistics()
     fetchTotalPaidUsers()
     fetchTotalPaidUsersByPlan()
+    fetchPaidUsersProfile()
   }, [])
 
   const fetchGetUsersStatistics = async () => {
@@ -90,6 +92,10 @@ export default function UsersPage() {
     } catch (error) {
       console.error('Error fetching paid users by plan:', error)
     }
+  }
+
+  const fetchPaidUsersProfile = async () => {
+    await getPaidUsersProfile()
   }
 
   const loadStatistic = async () => {

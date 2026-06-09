@@ -96,6 +96,27 @@ export const getTotalPaidUsers = async () => {
   }
 }
 
+export const getPaidUsersProfile = async () => {
+  try {
+    const res = await fetch('/api/user-statistics/get-paid-users-profile', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch getPaidUsersProfile')
+    }
+
+    const data = await res.json()
+    console.log('getPaidUsersProfile', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch getPaidUsersProfile failed:', msg)
+    return undefined
+  }
+}
+
 export const getPaidUsersByPlan = async () => {
   try {
     const res = await fetch('/api/user-statistics/get-paid-users-by-plan', {
