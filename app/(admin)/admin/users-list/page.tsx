@@ -101,7 +101,10 @@ export default function AdminsClient({
 
     for (const user of users) {
       const date = dayjs(user.createdAt).format('YYYY-MM-DD')
-      const hasFirstAction = Number(user.entriesStatsCount ?? 0) > 0
+      const hasFirstAction =
+        Number(user.entriesStatsCount ?? 0) > 0 ||
+        Number(user.checkinsStatsCount ?? 0) > 0 ||
+        Number(user.goalsStats?.length ?? 0) > 0
 
       const current = map.get(date) ?? {
         date,
