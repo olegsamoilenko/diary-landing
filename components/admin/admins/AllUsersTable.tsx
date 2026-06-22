@@ -46,6 +46,9 @@ export default function AllUsersTable({ users }: Props) {
           <TableHead>Without Subs</TableHead>
           <TableHead>Entries</TableHead>
           <TableHead>Dialogs</TableHead>
+          <TableHead>Checkins</TableHead>
+          <TableHead>Dialogs</TableHead>
+          <TableHead>Goals</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Last active</TableHead>
           <TableHead>Source</TableHead>
@@ -83,6 +86,9 @@ export default function AllUsersTable({ users }: Props) {
                 <TableCell>{!!raw?.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.entriesStatsCount ?? 0}</TableCell>
                 <TableCell>{raw?.dialogsStatsCount ?? 0}</TableCell>
+                <TableCell>{raw?.checkinsStatsCount ?? 0}</TableCell>
+                <TableCell>{raw?.checkinDialogsStatsCount ?? 0}</TableCell>
+                <TableCell>{raw?.goalsStats?.length ?? 0}</TableCell>
                 <TableCell>
                   {new Date(raw?.createdAt).toLocaleString()}
                 </TableCell>

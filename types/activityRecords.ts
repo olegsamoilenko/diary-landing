@@ -7,6 +7,8 @@ export type ActivityRecords = {
   entries: number
   goals: number
   comments: number
+  checkins: number
+  checkinDialogs: number
   topics: number
   id: number
   updatedAt: string

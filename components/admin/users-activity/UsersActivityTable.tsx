@@ -57,6 +57,10 @@ export default function UsersActivityTable({ activityRecords }: Props) {
           <TableHead>Dialogs</TableHead>
           <TableHead>All Entries</TableHead>
           <TableHead>All Dialogs</TableHead>
+          <TableHead>Checkins</TableHead>
+          <TableHead>Dialogs</TableHead>
+          <TableHead>All Checkins</TableHead>
+          <TableHead>All Dialogs</TableHead>
           <TableHead>Goals</TableHead>
           <TableHead>All Goals</TableHead>
           <TableHead>Topics</TableHead>
@@ -105,6 +109,10 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{raw?.dialogs}</TableCell>
                 <TableCell>{raw?.user.entriesStats?.length}</TableCell>
                 <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
+                <TableCell>{raw?.checkins}</TableCell>
+                <TableCell>{raw?.checkinDialogs}</TableCell>
+                <TableCell>{raw?.user.checkinsStats?.length}</TableCell>
+                <TableCell>{raw?.user.checkinDialogsStats?.length}</TableCell>
                 <TableCell>{raw?.goals}</TableCell>
                 <TableCell>{raw?.user.goalsStats?.length}</TableCell>
                 <TableCell>{raw?.topics}</TableCell>

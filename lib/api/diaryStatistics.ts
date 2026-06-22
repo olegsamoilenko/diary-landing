@@ -71,3 +71,48 @@ export const getTotalDialogs = async () => {
     return undefined
   }
 }
+
+export const getTotalCheckins = async () => {
+  try {
+    const res = await fetch('/api/diary-statistics/get-total-checkins-stat', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch total checkins')
+    }
+
+    const data = await res.json()
+    console.log('getTotalCheckins', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch total checkins failed:', msg)
+    return undefined
+  }
+}
+
+export const getTotalCheckinDialogs = async () => {
+  try {
+    const res = await fetch(
+      "/api/diary-statistics/'get-total-checkin-dialogs-stat",
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
+    )
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch total checkin dialogs')
+    }
+
+    const data = await res.json()
+    console.log('getTotalCheckinDialogs', data)
+    return data
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('fetch total checkin dialogs failed:', msg)
+    return undefined
+  }
+}

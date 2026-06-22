@@ -57,6 +57,14 @@ export type User = {
     id: number
     createdAt: string
   }[]
+  checkinsStats?: {
+    id: number
+    createdAt: string
+  }[]
+  checkinDialogsStats?: {
+    id: number
+    createdAt: string
+  }[]
   goalsStats?: {
     id: number
     createdAt: string
@@ -66,6 +74,8 @@ export type User = {
   dialogsStatsCount?: number
   forumCommentsStats?: number
   forumTopicsStats?: number
+  checkinDialogsStatsCount?: number
+  checkinsStatsCount?: number
 }
 
 export enum UserRole {

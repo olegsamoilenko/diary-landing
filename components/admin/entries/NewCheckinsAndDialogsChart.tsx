@@ -12,24 +12,24 @@ import {
 } from 'recharts'
 import dayjs from 'dayjs'
 
-type Point = { date: string | Date; entries: number; dialogs: number }
+type Point = { date: string | Date; checkins: number; checkinDialogs: number }
 type Props = {
   data: Point[]
   height?: number
   barName?: string
 }
 
-export default function NewEntriesAndDialogsChart({
+export default function NewCheckinsAndDialogsChart({
   data,
   height = 300,
-  barName = 'New Entries and Dialogs',
+  barName = 'New Checkins and Dialogs',
 }: Props) {
   const chartData = useMemo(
     () =>
       (data ?? []).map((d) => ({
         x: d.date,
-        ey: d.entries ?? 0,
-        dy: d.dialogs ?? 0,
+        ey: d.checkins ?? 0,
+        dy: d.checkinDialogs ?? 0,
       })),
     [data],
   )
@@ -45,8 +45,8 @@ export default function NewEntriesAndDialogsChart({
           <XAxis dataKey="x" tickMargin={8} />
           <YAxis allowDecimals={false} />
           <Tooltip />
-          <Bar dataKey="ey" fill="#aad8e3" name="Entries" />
-          <Bar dataKey="dy" fill="#83a6ae" name="Dialogs" />
+          <Bar dataKey="ey" fill="#aad8e3" name="checkins" />
+          <Bar dataKey="dy" fill="#83a6ae" name="checkinDialogs" />
         </BarChart>
       </ResponsiveContainer>
     </div>

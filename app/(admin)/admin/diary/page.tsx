@@ -5,6 +5,8 @@ import {
   getTotalEntries,
   getTotalDialogs,
   getNewEntriesAndDialogsByDate,
+  getTotalCheckins,
+  getTotalCheckinDialogs,
 } from '@/lib/api/diaryStatistics'
 import TotalStatChart from '@/components/admin/users/TotalStatChart'
 import EntriesByUserTable from '@/components/admin/entries/EntriesByUserTable'
@@ -20,12 +22,19 @@ import { Granularity } from '@/types'
 import { granularityOptions } from '@/lib/constants/granularity'
 import { Button } from '@/components/ui/button'
 import NewEntriesAndDialogsChart from '@/components/admin/entries/NewEntriesAndDialogsChart'
+import NewCheckinsAndDialogsChart from '@/components/admin/entries/NewCheckinsAndDialogsChart'
 
 export default function EntriesPage() {
   const [totalEntries, setTotalEntries] = useState<
     { day: string; count: number }[]
   >([])
   const [totalDialogs, setTotalDialogs] = useState<
+    { day: string; count: number }[]
+  >([])
+  const [totalCheckins, setTotalCheckins] = useState<
+    { day: string; count: number }[]
+  >([])
+  const [totalCheckinDialogs, setTotalCheckinDialogs] = useState<
     { day: string; count: number }[]
   >([])
   const [startDate, setStartDate] = useState<Date | undefined>(undefined)
@@ -37,6 +46,8 @@ export default function EntriesPage() {
       date: string
       entries: number
       dialogs: number
+      checkins: number
+      checkinDialogs: number
     }[]
   >([])
 
@@ -44,6 +55,8 @@ export default function EntriesPage() {
     ;(async () => {
       await fetchTotalEntries()
       await fetchTotalDialogs()
+      await fetchTotalCheckins()
+      await fetchTotalCheckinDialogs()
     })()
   }, [])
 
@@ -62,6 +75,24 @@ export default function EntriesPage() {
       setTotalDialogs(data)
     } catch (error) {
       console.error('Error fetching total dialogs:', error)
+    }
+  }
+
+  const fetchTotalCheckins = async () => {
+    try {
+      const data = await getTotalCheckins()
+      setTotalCheckins(data)
+    } catch (error) {
+      console.error('Error fetching total Checkins:', error)
+    }
+  }
+
+  const fetchTotalCheckinDialogs = async () => {
+    try {
+      const data = await getTotalCheckinDialogs()
+      setTotalCheckinDialogs(data)
+    } catch (error) {
+      console.error('Error fetching total Checkin dialogs:', error)
     }
   }
 
@@ -93,6 +124,14 @@ export default function EntriesPage() {
       <div className="mb-8">
         <h3 className="mb-4 text-xl font-semibold">Total dialogs</h3>
         <TotalStatChart data={totalDialogs} barName="Total dialogs" />
+      </div>
+      <div className="mb-8">
+        <h3 className="mb-4 text-xl font-semibold">Total checkins</h3>
+        <TotalStatChart data={totalCheckins} barName="Total dialogs" />
+      </div>
+      <div className="mb-8">
+        <h3 className="mb-4 text-xl font-semibold">Total checkin dialogs</h3>
+        <TotalStatChart data={totalCheckinDialogs} barName="Total dialogs" />
       </div>
       <div className="my-4 flex items-end gap-4">
         <DatePicker
@@ -136,6 +175,10 @@ export default function EntriesPage() {
       <div>
         <h3 className="mb-4 text-xl font-semibold">New Entries And Dialogs</h3>
         <NewEntriesAndDialogsChart data={newEntriesAndDialogs} />
+      </div>
+      <div>
+        <h3 className="mb-4 text-xl font-semibold">New Checkins And Dialogs</h3>
+        <NewCheckinsAndDialogsChart data={newEntriesAndDialogs} />
       </div>
 
       {/*<div className="mb-8">*/}
