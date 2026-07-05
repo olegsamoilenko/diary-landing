@@ -28,6 +28,7 @@ const items = [
   { href: '/admin/reports', label: 'Reports' },
   { href: '/admin/moderation-logs', label: 'Moderation logs' },
   { href: '/admin/moderation-coast', label: 'Moderation coast' },
+  { href: '/admin/subscriptions-migration', label: 'Subscriptions migration' },
 ]
 
 export function SidebarNav() {
