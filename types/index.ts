@@ -30,6 +30,11 @@ import { Limit } from './pagination'
 import type { ModelReview } from './modelReview'
 import type { ActivityPlanType } from './activityPlanType'
 import type { ActivityRecords } from './activityRecords'
+import type {
+  AiResponseMonitoringMode,
+  AiResponseMonitoringRecord,
+  AiResponseMonitoringRecordsResponse,
+} from './aiResponseMonitoring'
 export * from './community'
 export * from './moderation'
 export * from './admin'
@@ -60,6 +65,9 @@ export type {
   ModelReview,
   ActivityPlanType,
   ActivityRecords,
+  AiResponseMonitoringMode,
+  AiResponseMonitoringRecord,
+  AiResponseMonitoringRecordsResponse,
 }
 
 export {

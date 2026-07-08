@@ -19,6 +19,7 @@ export type Plan = {
   subscriptionId: string
   usedCredits: number
   usedTrial: boolean
+  metadata?: Record<string, unknown> | null
 }
 
 export enum BasePlanIds {

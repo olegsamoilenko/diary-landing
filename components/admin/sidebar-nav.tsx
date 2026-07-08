@@ -12,6 +12,7 @@ const items = [
   { href: '/admin/user-info', label: 'User Info' },
   { href: '/admin/user-monitoring', label: 'User Monitoring' },
   { href: '/admin/diary', label: 'Diary' },
+  { href: '/admin/ai-response-monitoring', label: 'AI Response Monitoring' },
   { href: '/admin/tokens', label: 'Credits ' },
   { href: '/admin/tokens-usage', label: 'Credits  usage' },
   { href: '/admin/finance', label: 'Finance' },
