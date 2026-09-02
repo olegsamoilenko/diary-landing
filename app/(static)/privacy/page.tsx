@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <Container className="py-10">
       <Title>Nemory — Privacy Policy</Title>
-      <Text className="mb-4">Last updated: May 29, 2026</Text>
+      <Text className="mb-4">Last updated: July 16, 2026</Text>
 
       <Title className="mb-2" level={3}>
         Who we are
@@ -49,15 +49,16 @@ export default function PrivacyPage() {
       </UnorderedList>
       <Text className="mb-2">
         The app is designed as offline-first: your private journal content lives
-        primarily on your device in an encrypted local database. We do not store
-        your private journal entries, journal images in our server database.
+        primarily on your device in an encrypted local database. We do not keep
+        a complete server-side copy of your private journal. Limited server-side
+        processing related to AI features is described below.
       </Text>
       <Text className="mb-2">
         Private journal content and community content are treated differently.
         Journal entries remain private to the user and are stored locally on the
-        user's device. Community content, including topics, comments, replies,
-        reactions, reports, and public profile information, is stored on our
-        servers and may be visible to other users of the Service.
+        user&apos;s device. Community content, including topics, comments,
+        replies, reactions, reports, and public profile information, is stored
+        on our servers and may be visible to other users of the Service.
       </Text>
       <Text className="mb-2">
         Monetization: subscriptions via App Store / Google Play with regional
@@ -218,6 +219,16 @@ export default function PrivacyPage() {
         timestamps, token counts, error codes) for billing, abuse prevention,
         and diagnostics.
       </Text>
+      <Text className="mb-2">
+        When quality review is enabled, authorized team members may evaluate a
+        limited selection of text entries together with their AI responses to
+        improve response quality and diagnose related errors. The records are
+        stored without user or account identifiers, name, email address, device
+        or advertising ID, or IP address. Because an entry may contain details
+        you chose to write, access is restricted. Each record is automatically
+        deleted within 7 days and is not used for advertising, profiling, or
+        sale.
+      </Text>
       {/*---------------------------------------------------------*/}
       <Title className="mb-2" level={3}>
         Community Features
@@ -306,10 +317,7 @@ export default function PrivacyPage() {
           refunds/disputes;
         </li>
         <li>secure the Service, detect abuse, and debug issues;</li>
-        <li>
-          understand overall feature usage in aggregate (without reading your
-          journal content);
-        </li>
+        <li>understand overall feature usage in aggregate;</li>
         <li>
           send essential service communications (e.g. email verification,
           security notices);
@@ -344,6 +352,11 @@ export default function PrivacyPage() {
         <li>
           technical logs are typically kept for up to 30 days with regular
           cleanup;
+        </li>
+        <li>
+          selected text entries and corresponding AI responses used for quality
+          review are kept for no longer than 7 days and are then automatically
+          deleted;
         </li>
         <li>server-side database backups may be kept for up to 30 days;</li>
         <li>
