@@ -126,6 +126,45 @@ export default function TokensPage({
         page={tokenUsageStatistics?.meta.page ?? 0}
         pageCount={tokenUsageStatistics?.meta.pageCount ?? 0}
       />
+      {(
+        [
+          'checkin',
+          'daily_analysis',
+          'weekly_analysis',
+          'monthly_analysis',
+          'yearly_analysis',
+          'entry_capsule',
+          'checkin_capsule',
+          'entry_response_capsule',
+          'checkin_response_capsule',
+          'dialog_capsule',
+          'conversation',
+          'entry_dialog',
+          'checkin_dialog',
+          'daily_analysis_dialog',
+          'weekly_analysis_dialog',
+          'monthly_analysis_dialog',
+          'yearly_analysis_dialog',
+          'periodic_analysis_dialog',
+          'nemory_actions',
+          'daily_capsule',
+        ] as const
+      ).map((kind) => (
+        <React.Fragment key={kind}>
+          <h3 className="mb-2 text-lg font-semibold">
+            Tokens statistics {kind}
+          </h3>
+          <TokenUsageStatisticsChart
+            data={tokenUsageStatistics?.stat[kind] ?? []}
+          />
+          <h3 className="mb-2 text-lg font-semibold">
+            Credits statistics {kind}
+          </h3>
+          <TokenUsageCoastStatisticsChart
+            data={tokenUsageStatistics?.stat[kind] ?? []}
+          />
+        </React.Fragment>
+      ))}
     </div>
   )
 }
