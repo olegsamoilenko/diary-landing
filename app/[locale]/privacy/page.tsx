@@ -2,6 +2,7 @@ import Container from '@/components/static/Container'
 import Title from '@/components/static/Title'
 import Text from '@/components/static/Text'
 import UnorderedList from '@/components/static/UnorderedList'
+import PrivacyAdvertisingSection from '@/components/static/PrivacyAdvertisingSection'
 import { getTranslations } from 'next-intl/server'
 import type { Metadata } from 'next'
 
@@ -64,7 +65,7 @@ export default function PrivacyPage() {
   return (
     <Container className="py-10">
       <Title>Nemory — Privacy Policy</Title>
-      <Text className="mb-4">Last updated: July 16, 2026</Text>
+      <Text className="mb-4">Last updated: October 5, 2026</Text>
 
       <Title className="mb-2" level={3}>
         Who we are
@@ -119,8 +120,10 @@ export default function PrivacyPage() {
       </Text>
       <Text className="mb-2">
         Monetization: subscriptions via App Store / Google Play with regional
-        pricing, purchase restore, and receipt verification.
+        pricing, purchase restore, and receipt verification, plus advertising in
+        the Android app for users without ad-free access.
       </Text>
+      <PrivacyAdvertisingSection />
       <Title className="mb-2" level={3}>
         Where your data lives
       </Title>
