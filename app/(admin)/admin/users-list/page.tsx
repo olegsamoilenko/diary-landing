@@ -39,6 +39,7 @@ import { UsersHavePlanOptions, UsersSortByOptions } from '@/lib/constants/users'
 import { LimitOptions } from '@/lib/constants/pagination'
 import dayjs from 'dayjs'
 import NewUserStatChart from '@/components/admin/user-list/NewUsersStatChart'
+import { hasUserCreationActivity } from '@/lib/utils/userCreationStats'
 
 type SP = { page?: string }
 
@@ -101,10 +102,7 @@ export default function AdminsClient({
 
     for (const user of users) {
       const date = dayjs(user.createdAt).format('YYYY-MM-DD')
-      const hasFirstAction =
-        Number(user.entriesStatsCount ?? 0) > 0 ||
-        Number(user.checkinsStatsCount ?? 0) > 0 ||
-        Number(user.goalsStats?.length ?? 0) > 0
+      const hasFirstAction = hasUserCreationActivity(user)
 
       const current = map.get(date) ?? {
         date,
@@ -208,9 +206,18 @@ export default function AdminsClient({
         </div>
       </div>
       <div>
+        <p className="text-muted-foreground mb-2 text-sm">
+          Users on this page, grouped by registration date. With Action includes
+          any recorded entry, checkin, dialog or planner creation.
+        </p>
         <NewUserStatChart data={newUsersStats as UserAcquisitionDayStat[]} />
       </div>
       <div className="mb-8">
+        <p className="text-muted-foreground my-2 text-sm">
+          Recorded creation counts. Planners include deleted items and exclude
+          technical recurrence branches. Older and offline activity may be
+          missing. — means planner statistics are unavailable from the server.
+        </p>
         <AllUsersTable users={fetchUsersRes?.users as User[]} />
         <Pagination
           page={fetchUsersRes?.page ?? 0}

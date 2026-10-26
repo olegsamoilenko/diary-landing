@@ -1,6 +1,57 @@
 import { apiFetch } from '@/lib/api/apiFetch'
 import { GetAllUsersResp, HasPlan, PlanStatus, UserRole } from '@/types'
 import type { User } from '@/types'
+import type {
+  NewUsersPageResult,
+  NewUsersDay,
+  AdminUserOverview,
+} from '@/types/user'
+
+export function getAdminUserOverview(signal?: AbortSignal) {
+  return apiFetch<AdminUserOverview>('/api/users/admin-overview', {
+    signal,
+    toastOnError: false,
+    cache: 'no-store',
+  })
+}
+
+export function getNewUsers(
+  from: string,
+  to: string,
+  page: number,
+  limit: number,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({
+    from,
+    to,
+    page: String(page),
+    limit: String(limit),
+  })
+  return apiFetch<NewUsersPageResult>(`/api/users/admin-new-users?${params}`, {
+    signal,
+    toastOnError: false,
+  })
+}
+
+export function getNewUsersDays(
+  from: string,
+  to: string,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({ from, to })
+  return apiFetch<{ days: NewUsersDay[]; timezone: string }>(
+    `/api/users/admin-new-users/days?${params}`,
+    { signal, toastOnError: false },
+  )
+}
+
+export function getAdminUserDetails(id: number, signal?: AbortSignal) {
+  return apiFetch<Record<string, unknown>>(`/api/users/admin-details/${id}`, {
+    signal,
+    toastOnError: false,
+  })
+}
 
 export const getUser = async (
   userId: number | null,

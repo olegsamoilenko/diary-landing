@@ -6,7 +6,7 @@ import { jwtVerify } from 'jose'
 
 const handleI18nRouting = createMiddleware(routing)
 
-const ADMIN_PREFIX = '/admin'
+const ADMIN_PREFIXES = ['/admin', '/admin-v2']
 const AUTH_PATH = '/admin/auth'
 const LOGIN_PATH = '/admin/login'
 const PUBLIC_ADMIN = [AUTH_PATH, LOGIN_PATH]
@@ -21,7 +21,7 @@ async function verify(token?: string) {
     const { payload } = await jwtVerify(token, SECRET, {
       algorithms: ['HS256'],
     })
-    return payload as any
+    return payload
   } catch (err) {
     console.error('JWT verify failed', err)
     return null
@@ -43,7 +43,11 @@ export async function proxy(req: NextRequest) {
     return NextResponse.next()
   }
 
-  if (pathname === ADMIN_PREFIX || pathname.startsWith(`${ADMIN_PREFIX}/`)) {
+  if (
+    ADMIN_PREFIXES.some(
+      (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+    )
+  ) {
     const token = req.cookies.get('admin_session')?.value
     const session = await verify(token)
 

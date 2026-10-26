@@ -1,4 +1,12 @@
-import { ActivityPlanType, Granularity } from '@/types'
+import type { ActivityPlanType, ActivityRecords, Granularity } from '@/types'
+import { apiFetch } from '@/lib/api/apiFetch'
+
+export type UserActivityDayStat = {
+  date: string
+  newUserActivity: number
+  oldUserActivity: number
+  totalUserActivity: number
+}
 
 export const getUsersStatistics = async () => {
   try {
@@ -169,59 +177,36 @@ export const getUsersActivityByDates = async (
   }
 }
 
-export const getUsersActivityCountByDays = async (
+export async function getUsersActivityCountByDays(
   startDate: Date | undefined,
   endDate: Date | undefined,
   type: ActivityPlanType,
-) => {
-  try {
-    const res = await fetch(
-      '/api/user-statistics/get-users-activity-count-by-dates',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ startDate, endDate, type }),
-      },
-    )
-
-    if (!res.ok) {
-      throw new Error('Failed to fetch user activity By Dates')
-    }
-
-    const data = await res.json()
-    console.log('getUsersActivityCountByDays', data)
-    return data
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error)
-    console.error('fetch user activity failed:', msg)
-    return undefined
-  }
-}
-
-export const getUsersActivityRecords = async (
-  startDate: Date | undefined,
-  endDate: Date | undefined,
-  type: ActivityPlanType,
-) => {
-  try {
-    const res = await fetch('/api/user-statistics/get-users-activity-records', {
+): Promise<UserActivityDayStat[]> {
+  return apiFetch<UserActivityDayStat[]>(
+    '/api/user-statistics/get-users-activity-count-by-dates',
+    {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({ startDate, endDate, type }),
-    })
+      toastOnError: false,
+    },
+  )
+}
 
-    if (!res.ok) {
-      throw new Error('Failed to fetch user activity By Dates')
-    }
-
-    const data = await res.json()
-    console.log('getUsersActivityRecords', data)
-    return data
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error)
-    console.error('fetch user activity failed:', msg)
-    return undefined
-  }
+export async function getUsersActivityRecords(
+  startDate: Date | undefined,
+  endDate: Date | undefined,
+  type: ActivityPlanType,
+): Promise<ActivityRecords[]> {
+  return apiFetch<ActivityRecords[]>(
+    '/api/user-statistics/get-users-activity-records',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ startDate, endDate, type, compact: true }),
+      toastOnError: false,
+    },
+  )
 }

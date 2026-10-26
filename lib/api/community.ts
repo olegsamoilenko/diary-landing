@@ -3,6 +3,29 @@ import {
   ForumModerationTargetType,
   TakeOptions,
 } from '@/types'
+import type { AuthorProfile } from '@/types'
+
+export async function updateSystemUserAvatar(
+  userId: number,
+  file: File,
+): Promise<AuthorProfile> {
+  const body = new FormData()
+  body.append('avatar', file)
+  const res = await fetch(`/api/forum/profiles/system/${userId}/avatar`, {
+    method: 'PATCH',
+    body,
+  })
+  if (!res.ok) {
+    if (res.status === 401 || res.status === 403)
+      throw new Error('Потрібно увійти в адмінку повторно.')
+    if (res.status === 413)
+      throw new Error('Зображення має бути не більшим за 2 МБ.')
+    if (res.status === 400)
+      throw new Error('Оберіть коректне зображення PNG, JPEG або WebP.')
+    throw new Error('Не вдалося зберегти аватар. Спробуйте ще раз.')
+  }
+  return res.json()
+}
 
 export const getAllTopics = async (page: number, limit: number) => {
   try {

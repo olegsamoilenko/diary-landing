@@ -30,6 +30,7 @@ import ModerationTopicCard from '@/components/admin/community/ModerationTopicCar
 import ModerationCommentCard from '@/components/admin/community/ModerationCommentCard'
 import CreateSystemTopicDialog from '@/components/admin/community/CreateSystemTopicDialog'
 import CreateSystemUserDialog from '@/components/admin/community/CreateSystemUserDialog'
+import SystemProfilesDialog from '@/components/admin/community/SystemProfilesDialog'
 
 type SP = { page?: string }
 
@@ -76,7 +77,7 @@ export default function CommunityClient({
   const loadSystemUsers = async () => {
     const res = await getSystemUsers()
 
-    setSystemUsers(res)
+    setSystemUsers(res ?? [])
   }
 
   const handleLoadTarget = async () => {
@@ -87,13 +88,28 @@ export default function CommunityClient({
   return (
     <div>
       <h1 className="mb-4 text-xl font-semibold">Community</h1>
-      <div className="mb-4 flex items-center gap-4">
+      <div className="mb-4 flex flex-wrap items-center gap-4">
         <CreateSystemTopicDialog
           adminId={adminId}
           onCreate={loadTopics}
           systemUsers={systemUsers}
         />
-        <CreateSystemUserDialog adminId={adminId} />
+        <CreateSystemUserDialog
+          adminId={adminId}
+          onSuccessCreateUser={loadSystemUsers}
+        />
+        <SystemProfilesDialog
+          users={systemUsers}
+          onSaved={(userId, profile) => {
+            setSystemUsers((users) =>
+              users.map((user) =>
+                user.id === userId
+                  ? { ...user, forumPublicProfile: profile }
+                  : user,
+              ),
+            )
+          }}
+        />
       </div>
       <div className="mb-10">
         <CommunityTable

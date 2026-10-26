@@ -107,14 +107,32 @@ export default function UsersActivityTable({ activityRecords }: Props) {
                 <TableCell>{!!raw?.user.usesWithoutSubscription}</TableCell>
                 <TableCell>{raw?.entries}</TableCell>
                 <TableCell>{raw?.dialogs}</TableCell>
-                <TableCell>{raw?.user.entriesStats?.length}</TableCell>
-                <TableCell>{raw?.user.dialogsStats?.length}</TableCell>
+                <TableCell>
+                  {raw.user.entriesStatsCount ??
+                    raw.user.entriesStats?.length ??
+                    0}
+                </TableCell>
+                <TableCell>
+                  {raw.user.dialogsStatsCount ??
+                    raw.user.dialogsStats?.length ??
+                    0}
+                </TableCell>
                 <TableCell>{raw?.checkins}</TableCell>
                 <TableCell>{raw?.checkinDialogs}</TableCell>
-                <TableCell>{raw?.user.checkinsStats?.length}</TableCell>
-                <TableCell>{raw?.user.checkinDialogsStats?.length}</TableCell>
+                <TableCell>
+                  {raw.user.checkinsStatsCount ??
+                    raw.user.checkinsStats?.length ??
+                    0}
+                </TableCell>
+                <TableCell>
+                  {raw.user.checkinDialogsStatsCount ??
+                    raw.user.checkinDialogsStats?.length ??
+                    0}
+                </TableCell>
                 <TableCell>{raw?.goals}</TableCell>
-                <TableCell>{raw?.user.goalsStats?.length}</TableCell>
+                <TableCell>
+                  {raw.user.goalsStatsCount ?? raw.user.goalsStats?.length ?? 0}
+                </TableCell>
                 <TableCell>{raw?.topics}</TableCell>
                 <TableCell>{raw?.user.forumTopicsStats}</TableCell>
                 <TableCell>{raw?.comments}</TableCell>

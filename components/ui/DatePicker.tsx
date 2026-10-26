@@ -26,17 +26,18 @@ export function DatePicker({
   setDateAction,
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
+  const id = React.useId()
 
   return (
     <div className="flex flex-col gap-3">
-      <Label htmlFor="date" className="px-1">
+      <Label htmlFor={id} className="px-1">
         {label}
       </Label>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            id="date"
+            id={id}
             className="w-48 justify-between font-normal"
           >
             {date ? date.toLocaleDateString() : placeholder}

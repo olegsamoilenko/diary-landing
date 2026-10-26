@@ -1,6 +1,6 @@
 'use client'
 
-import React, { RefObject, use, useEffect, useState } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 import { DatePicker } from '@/components/ui/DatePicker'
 import {
   Select,
@@ -15,105 +15,125 @@ import { Log, LogsLevel } from '@/types'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { getLogs } from '@/lib/api/logs'
+import { getErrorMessage } from '@/lib/errors'
 import AllLogsTable from '@/components/admin/logs/AllLogsTable'
 import Pagination from '@/components/ui/pagination'
 
-type SP = { page?: string; userUuid?: string }
-
-const getDefaultStartDate = () => {
-  const d = new Date()
-  d.setDate(d.getDate() - 7)
-  d.setHours(0, 0, 0, 0)
-  return d
+function defaultStart() {
+  const date = new Date()
+  date.setDate(date.getDate() - 7)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+function defaultEnd() {
+  const date = new Date()
+  date.setDate(date.getDate() + 1)
+  date.setHours(0, 0, 0, 0)
+  return date
 }
 
-const getDefaultEndDate = () => {
-  const d = new Date()
-  d.setDate(d.getDate() + 1)
-  d.setHours(0, 0, 0, 0)
-  return d
-}
 export default function UserLogs({
   userUuid,
   scrollContainerRef,
+  initialStartDate,
 }: {
   userUuid: string
   scrollContainerRef?: RefObject<HTMLDivElement | null>
+  initialStartDate?: Date
 }) {
   const [startDate, setStartDate] = useState<Date | undefined>(
-    getDefaultStartDate,
+    () => initialStartDate ?? defaultStart(),
   )
-  const [endDate, setEndDate] = useState<Date | undefined>(getDefaultEndDate)
-  const [logsLevel, setLogsLevel] = useState<LogsLevel>(LogsLevel.ALL)
-  const [errorLogsLevel, setErrorLogsLevel] = useState<string | null>(null)
-  const [userId, setUserId] = useState<number | undefined>(undefined)
-  const [page, setPage] = useState<number>(1)
-  const limit = 50
+  const [endDate, setEndDate] = useState<Date | undefined>(defaultEnd)
+  const [level, setLevel] = useState<LogsLevel>(LogsLevel.ALL)
+  const [search, setSearch] = useState('')
+  const [page, setPage] = useState(1)
+  const [filters, setFilters] = useState(() => ({
+    startDate,
+    endDate,
+    level,
+    search,
+  }))
+  const [attempt, setAttempt] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
   const [logs, setLogs] = useState<{
     logs: Log[]
     page: number
     pageCount: number
-  }>({
-    logs: [],
-    page: 0,
-    pageCount: 0,
-  })
-  const [searchTerm, setSearchTerm] = useState<string>('')
-
-  const loadLogs = async (pageNumber: number) => {
-    if (!startDate || !endDate) return
-
-    const logsRes = await getLogs(
-      startDate,
-      endDate,
-      logsLevel,
-      userId,
-      userUuid,
-      searchTerm,
-      pageNumber,
-      limit,
-    )
-    setLogs(logsRes)
-  }
+  } | null>(null)
 
   useEffect(() => {
-    loadLogs(page)
-  }, [page, startDate, endDate, logsLevel, userId, userUuid])
-
-  const scrollToTop = () => {
-    scrollContainerRef?.current?.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
+    let current = true
+    setLoading(true)
+    setError('')
+    setLogs(null)
+    if (!filters.startDate || !filters.endDate) {
+      setLoading(false)
+      return
+    }
+    getLogs(
+      filters.startDate,
+      filters.endDate,
+      filters.level,
+      undefined,
+      userUuid,
+      filters.search,
+      page,
+      50,
+    )
+      .then((result) => {
+        if (!current) return
+        if (!result || !Array.isArray(result.logs))
+          throw new Error('Не вдалося завантажити логи.')
+        setLogs(result)
+      })
+      .catch((err) => {
+        if (current) setError(getErrorMessage(err))
+      })
+      .finally(() => {
+        if (current) setLoading(false)
+      })
+    return () => {
+      current = false
+    }
+  }, [userUuid, page, filters, attempt])
 
   return (
-    <div>
-      <h1 className="mb-4 text-xl font-semibold">Logs</h1>
-      <div className="my-4 flex items-end gap-4">
+    <div className="min-w-0">
+      <h3 className="mb-4 text-lg font-semibold">Логи користувача</h3>
+      <form
+        className="mb-5 flex flex-wrap items-end gap-3"
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (!startDate || !endDate || startDate > endDate) {
+            setError('Вкажіть коректний період логів.')
+            return
+          }
+          setPage(1)
+          setFilters({ startDate, endDate, level, search })
+        }}
+      >
         <DatePicker
-          label={'Start date'}
-          placeholder={'Start date'}
+          label="Від"
+          placeholder="Від"
           date={startDate}
           setDateAction={setStartDate}
         />
         <DatePicker
-          label={'End date'}
-          placeholder={'End date'}
+          label="До"
+          placeholder="До"
           date={endDate}
           setDateAction={setEndDate}
         />
-        <div className="items-end">
-          <div className="mb-2">Level</div>
+        <div className="flex flex-col gap-3">
+          <Label htmlFor={`log-level-${userUuid}`}>Рівень</Label>
           <Select
-            value={logsLevel}
-            onValueChange={(l) => {
-              setLogsLevel(l as LogsLevel)
-              setErrorLogsLevel(null)
-            }}
+            value={level}
+            onValueChange={(value) => setLevel(value as LogsLevel)}
           >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Platform" />
+            <SelectTrigger id={`log-level-${userUuid}`} className="w-36">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {logsLevelOptions.map((option) => (
@@ -123,36 +143,60 @@ export default function UserLogs({
               ))}
             </SelectContent>
           </Select>
-          {errorLogsLevel && (
-            <p className="mt-1 text-sm text-red-600">{errorLogsLevel}</p>
-          )}
         </div>
-        <div>
-          <Label htmlFor="userUuid" className="mb-2">
-            Search term
-          </Label>
+        <div className="flex flex-col gap-3">
+          <Label htmlFor={`log-search-${userUuid}`}>Пошук</Label>
           <Input
-            id="searchTerm"
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search Term"
-          ></Input>
+            id={`log-search-${userUuid}`}
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
         </div>
-        <Button onClick={() => loadLogs(1)}>Load</Button>
-      </div>
-      <div>
-        <AllLogsTable logs={logs.logs} />
-        <Pagination
-          page={logs?.page ?? 0}
-          pageCount={logs?.pageCount ?? 0}
-          onPress={(p) => {
-            scrollToTop()
-            setPage(p)
-          }}
-          isComponent={true}
-        />
-      </div>
+        <Button type="submit" disabled={loading}>
+          Показати
+        </Button>
+      </form>
+      {loading && (
+        <p role="status" className="text-muted-foreground py-4">
+          Завантаження логів…
+        </p>
+      )}
+      {error && (
+        <div role="alert" className="text-destructive py-4">
+          {error}{' '}
+          <Button
+            variant="outline"
+            onClick={() => setAttempt((value) => value + 1)}
+          >
+            Повторити
+          </Button>
+        </div>
+      )}
+      {!loading && logs && (
+        <>
+          {logs.logs.length ? (
+            <div className="max-h-[600px] overflow-auto">
+              <AllLogsTable logs={logs.logs} />
+            </div>
+          ) : (
+            <p className="text-muted-foreground py-4">
+              Логів за цей період немає.
+            </p>
+          )}
+          <Pagination
+            page={logs.page || 1}
+            pageCount={Math.max(1, logs.pageCount)}
+            isComponent
+            onPress={(next) => {
+              setPage(next)
+              scrollContainerRef?.current?.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }}
+          />
+        </>
+      )}
     </div>
   )
 }

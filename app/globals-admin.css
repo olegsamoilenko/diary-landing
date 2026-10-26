@@ -80,6 +80,29 @@
   --sidebar-ring: oklch(0.7 0.08 278);
 }
 
+.admin-v2 {
+  --admin-chart-action: #5e9a84;
+  --admin-chart-inactive: #d3c09d;
+  --admin-brand: #31605f;
+  --background: #f5f7f8;
+  --foreground: #202e35;
+  --card: #ffffff;
+  --card-foreground: #202e35;
+  --muted: #edf1f3;
+  --muted-foreground: #677781;
+  --accent: #e7eff0;
+  --accent-foreground: #34575f;
+  --border: #e1e7ea;
+  --ring: #6f929a;
+  --primary-foreground: #ffffff;
+}
+
+@layer base {
+  .admin-v2 * {
+    border-color: var(--border);
+  }
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

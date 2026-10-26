@@ -5,6 +5,11 @@ type BufferLike = { type: 'Buffer'; data: number[] }
 
 type PlatformStr = Platforms
 
+export type PlannerCreatedCounts = Record<
+  'goal' | 'habit' | 'checklist' | 'task' | 'event' | 'reminder' | 'note',
+  number
+>
+
 export type User = {
   id: number
   uuid: string
@@ -20,6 +25,7 @@ export type User = {
   dekVersion: number | null
   dekEncrypted: BufferLike | null
   acquisitionMetaJson: string | null
+  acquisitionSource?: string | null
 
   emailVerified: boolean
   emailVerificationCode: string | null
@@ -76,6 +82,10 @@ export type User = {
   forumTopicsStats?: number
   checkinDialogsStatsCount?: number
   checkinsStatsCount?: number
+  entriesAnalysis?: AnalysisCounts
+  checkinsAnalysis?: AnalysisCounts
+  plannerCreatedCounts?: PlannerCreatedCounts
+  goalsStatsCount?: number
 }
 
 export enum UserRole {
@@ -94,6 +104,56 @@ export type GetAllUsersResp = {
   page: number
   pageCount: number
   limit: number
+}
+
+export type AdminUserSummary = Pick<
+  User,
+  | 'id'
+  | 'uuid'
+  | 'name'
+  | 'email'
+  | 'regionCode'
+  | 'createdAt'
+  | 'lastActiveAt'
+  | 'usesWithoutSubscription'
+  | 'acquisitionMetaJson'
+  | 'acquisitionSource'
+  | 'plan'
+  | 'entriesStatsCount'
+  | 'dialogsStatsCount'
+  | 'checkinsStatsCount'
+  | 'entriesAnalysis'
+  | 'checkinsAnalysis'
+  | 'checkinDialogsStatsCount'
+  | 'plannerCreatedCounts'
+  | 'goalsStatsCount'
+>
+
+export type AnalysisCounts = {
+  withAnalysis: number
+  withoutAnalysis: number
+  unknown: number
+}
+
+export type NewUsersPageResult = Omit<GetAllUsersResp, 'users'> & {
+  users: AdminUserSummary[]
+}
+export type NewUsersDay = {
+  date: string
+  total: number
+  withAction: number
+  withoutAction: number
+}
+
+export type AdminUserOverview = {
+  total: number
+  trial: number
+  purchasedCredits: number
+  active: number
+  subscribed: number
+  subscriptions: { basePlanId: string; name: string; count: number }[]
+  activePeriod: { from: string; to: string; days: number; timezone: string }
+  calculatedAt: string
 }
 
 export type SortBy = 'dialog' | 'entry' | 'createdAt' | 'lastActiveAt'

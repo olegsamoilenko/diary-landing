@@ -1,15 +1,8 @@
 'use client'
 
-import React, { useEffect, useState, use } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import {
-  GetAllUsersResp,
-  User,
-  ActivityPlanType,
-  ActivityRecords,
-} from '@/types'
-import AllUsersTable from '@/components/admin/admins/AllUsersTable'
-import Pagination from '@/components/ui/pagination'
+import { ActivityPlanType, ActivityRecords } from '@/types'
 import {
   Select,
   SelectContent,
@@ -22,61 +15,56 @@ import { userActivityTypeOptions } from '@/lib/constants/userActivityType'
 import {
   getUsersActivityCountByDays,
   getUsersActivityRecords,
+  type UserActivityDayStat,
 } from '@/lib/api/usersStatistics'
-import TotalStatChart from '@/components/admin/users/TotalStatChart'
+import { getErrorMessage } from '@/lib/errors'
 import TotalUserActivityStatChart from '@/components/admin/users-activity/TotalUserActivityStatChart'
 import UsersActivityTable from '@/components/admin/users-activity/UsersActivityTable'
 
-type SP = { page?: string }
-
-export default function AdminsClient({
-  searchParams,
-}: {
-  searchParams?: Promise<SP>
-}) {
-  const spPromise: Promise<SP> = searchParams ?? Promise.resolve({})
-  const sp = use(spPromise)
-  const [fetchUsersRes, setFetchUsersRes] = useState<GetAllUsersResp | null>(
-    null,
-  )
+export default function AdminsClient() {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined)
   const [endDate, setEndDate] = useState<Date | undefined>(undefined)
   const [activityType, setActivityType] = useState<ActivityPlanType>('all')
   const [activityCountByDayStats, setActivityCountByDayStats] = useState<
-    | {
-        date: string
-        newUserActivity: number
-        oldUserActivity: number
-        totalUserActivity: number
-      }[]
-    | null
-  >(null)
-  const [activityRecords, setActivityRecords] = useState<
-    ActivityRecords[] | null
-  >(null)
+    UserActivityDayStat[]
+  >([])
+  const [activityRecords, setActivityRecords] = useState<ActivityRecords[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const loadStatistic = async () => {
-    const activityCountByDayStatsRes = await getUsersActivityCountByDays(
-      startDate,
-      endDate,
-      activityType,
-    )
-    setActivityCountByDayStats(activityCountByDayStatsRes)
-    const activityRecordsRes = await getUsersActivityRecords(
-      startDate,
-      endDate,
-      activityType,
-    )
-
-    console.log(
-      'API activityRecordsRes length:',
-      activityRecordsRes.length,
-      activityRecordsRes.map((r: ActivityRecords) => ({
-        ...r,
-      })),
-    )
-
-    setActivityRecords(activityRecordsRes)
+    if (loading) return
+    setError(null)
+    if (!startDate || !endDate || startDate > endDate) {
+      setError(
+        'Select a start and end date. Start date must not be after end date.',
+      )
+      return
+    }
+    setLoading(true)
+    setActivityCountByDayStats([])
+    setActivityRecords([])
+    try {
+      const days = await getUsersActivityCountByDays(
+        startDate,
+        endDate,
+        activityType,
+      )
+      const records = await getUsersActivityRecords(
+        startDate,
+        endDate,
+        activityType,
+      )
+      if (!Array.isArray(days) || !Array.isArray(records)) {
+        throw new Error('The server returned an invalid activity response.')
+      }
+      setActivityCountByDayStats(days)
+      setActivityRecords(records)
+    } catch (err) {
+      setError(getErrorMessage(err))
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -114,23 +102,24 @@ export default function AdminsClient({
             </SelectContent>
           </Select>
         </div>
-        <Button onClick={loadStatistic}>Show</Button>
+        <Button onClick={loadStatistic} disabled={loading}>
+          {loading ? 'Loading…' : 'Show'}
+        </Button>
       </div>
+      {error && (
+        <p role="alert" className="mb-4 text-sm text-red-600">
+          {error}
+        </p>
+      )}
       <div className="mb-8">
-        <h3 className="mb-4 text-xl font-semibold">Total Paid Users</h3>
+        <h3 className="mb-4 text-xl font-semibold">Users Activity</h3>
         <TotalUserActivityStatChart
-          data={activityCountByDayStats ? [...activityCountByDayStats] : []}
+          data={activityCountByDayStats}
           barName="Users activity"
         />
       </div>
       <div className="mb-8">
-        <UsersActivityTable
-          activityRecords={activityRecords as ActivityRecords[]}
-        />
-        <Pagination
-          page={fetchUsersRes?.page ?? 0}
-          pageCount={fetchUsersRes?.pageCount ?? 0}
-        />
+        <UsersActivityTable activityRecords={activityRecords} />
       </div>
     </>
   )
