@@ -27,12 +27,14 @@ export const getAllCommonNotifications = async (
 
 export const deleteCommonNotification = async (id: number) => {
   try {
-    await fetch(`/api/common-notifications/${id}`, {
+    const res = await fetch(`/api/common-notifications/${id}`, {
       method: 'DELETE',
     })
 
+    if (!res.ok) return false
     return true
   } catch (error) {
     console.error('Error delete common notification:', error)
+    return false
   }
 }

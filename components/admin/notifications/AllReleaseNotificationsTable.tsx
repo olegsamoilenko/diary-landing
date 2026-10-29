@@ -1,3 +1,4 @@
+import { sanitizeNotificationHtml } from '@/lib/notificationHtml'
 import {
   Table,
   TableBody,
@@ -49,7 +50,7 @@ export default function AllReleaseNotificationsTable({
                 <div
                   className="prose prose-sm dark:prose-invert max-w-none"
                   dangerouslySetInnerHTML={{
-                    __html: getHtml(raw, 'en'),
+                    __html: sanitizeNotificationHtml(getHtml(raw, 'en')),
                   }}
                 />
               </TableCell>
@@ -57,7 +58,7 @@ export default function AllReleaseNotificationsTable({
                 <div
                   className="prose prose-sm dark:prose-invert max-w-none"
                   dangerouslySetInnerHTML={{
-                    __html: getHtml(raw, 'uk'),
+                    __html: sanitizeNotificationHtml(getHtml(raw, 'uk')),
                   }}
                 />
               </TableCell>

@@ -2,7 +2,7 @@ import { useEditor, EditorContent, EditorContext } from '@tiptap/react'
 import { StarterKit } from '@tiptap/starter-kit'
 import { HeadingDropdownMenu } from '@/components/tiptap-ui/heading-dropdown-menu'
 import * as React from 'react'
-import sanitizeHtml from 'sanitize-html'
+import { sanitizeNotificationHtml } from '@/lib/notificationHtml'
 import '@/components/tiptap-node/code-block-node/code-block-node.scss'
 import '@/components/tiptap-node/list-node/list-node.scss'
 import '@/components/tiptap-node/paragraph-node/paragraph-node.scss'
@@ -20,53 +20,6 @@ import { TextStyle } from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 import { ColorDropdown } from '@/components/tiptap-ui/color-dropdown/color-dropdown'
 
-const SANITIZE_OPTS: sanitizeHtml.IOptions = {
-  allowedTags: [
-    'p',
-    'br',
-    'strong',
-    'em',
-    'u',
-    'a',
-    'ul',
-    'ol',
-    'li',
-    'h1',
-    'h2',
-    'h3',
-    'blockquote',
-    'span',
-    'img',
-    'hr',
-    'code',
-    'pre',
-  ],
-  allowedAttributes: {
-    a: ['href', 'target', 'rel'],
-    img: ['src', 'alt'],
-    span: ['style'],
-    p: ['style'],
-    h1: ['style'],
-    h2: ['style'],
-    h3: ['style'],
-    blockquote: ['style'],
-  },
-  allowedStyles: {
-    '*': {
-      'text-align': [/^left$|^right$|^center$|^justify$/],
-      color: [/^#[0-9a-fA-F]{3,8}$/i, /^rgb\(.+\)$/, /^rgba\(.+\)$/],
-    },
-  },
-  transformTags: {
-    a: sanitizeHtml.simpleTransform('a', {
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    }),
-  },
-
-  allowedSchemes: ['http', 'https', 'mailto'],
-}
-
 const Editor = forwardRef<EditorRef, { initialHtml: string }>(
   ({ initialHtml }, ref) => {
     const editor = useEditor({
@@ -79,19 +32,21 @@ const Editor = forwardRef<EditorRef, { initialHtml: string }>(
         Color,
       ],
       immediatelyRender: false,
-      content: initialHtml,
+      content: sanitizeNotificationHtml(initialHtml),
     })
 
     useImperativeHandle(ref, () => ({
       get: () => {
         if (!editor) return { html: '', docJson: null }
         const rawHtml = editor.getHTML()
-        const html = sanitizeHtml(rawHtml, SANITIZE_OPTS)
+        const html = sanitizeNotificationHtml(rawHtml)
         const docJson = editor.getJSON()
         return { html, docJson }
       },
       setHtml: (html: string) => {
-        editor?.commands.setContent(html, { emitUpdate: false })
+        editor?.commands.setContent(sanitizeNotificationHtml(html), {
+          emitUpdate: false,
+        })
       },
     }))
 

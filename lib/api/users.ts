@@ -1,4 +1,5 @@
 import { apiFetch } from '@/lib/api/apiFetch'
+import type { AdminUserGrowth, GrowthGranularity } from '@/types/adminGrowth'
 import { GetAllUsersResp, HasPlan, PlanStatus, UserRole } from '@/types'
 import type { User } from '@/types'
 import type {
@@ -9,6 +10,20 @@ import type {
 
 export function getAdminUserOverview(signal?: AbortSignal) {
   return apiFetch<AdminUserOverview>('/api/users/admin-overview', {
+    signal,
+    toastOnError: false,
+    cache: 'no-store',
+  })
+}
+
+export function getAdminUserGrowth(
+  from: string,
+  to: string,
+  granularity: GrowthGranularity,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({ from, to, granularity })
+  return apiFetch<AdminUserGrowth>(`/api/users/admin-growth?${params}`, {
     signal,
     toastOnError: false,
     cache: 'no-store',

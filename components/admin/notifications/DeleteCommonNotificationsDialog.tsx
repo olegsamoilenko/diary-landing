@@ -1,3 +1,4 @@
+import { notify } from '@/lib/utils/toast/notify'
 import {
   Dialog,
   DialogClose,
@@ -43,7 +44,14 @@ export default function DeleteCommonNotificationsDialog({
               <Button
                 type="button"
                 onClick={async () => {
-                  await deleteCommonNotification(id)
+                  const deleted = await deleteCommonNotification(id)
+                  if (!deleted) {
+                    notify.error(
+                      'Не вдалося видалити повідомлення. Перевір сесію адміністратора та спробуй ще раз.',
+                    )
+                    return
+                  }
+                  setOpen(false)
                   if (onSuccessDelete) onSuccessDelete()
                 }}
               >

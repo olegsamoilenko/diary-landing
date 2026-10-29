@@ -30,12 +30,14 @@ export const getAllReleaseNotificationsByPlatform = async (
 
 export const deleteNotification = async (id: number) => {
   try {
-    await fetch(`/api/release-notifications/${id}`, {
+    const res = await fetch(`/api/release-notifications/${id}`, {
       method: 'DELETE',
     })
 
+    if (!res.ok) return false
     return true
   } catch (error) {
     console.error('Error delete notification:', error)
+    return false
   }
 }

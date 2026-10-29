@@ -81,6 +81,14 @@
 }
 
 .admin-v2 {
+  --admin-chart-adfree-month: #558998;
+  --admin-chart-adfree-year: #8474b2;
+  --admin-chart-lite: #5e9a84;
+  --admin-chart-base: #cf9b55;
+  --admin-chart-pro: #bd7183;
+  --admin-chart-credits-small: #5489bb;
+  --admin-chart-credits-medium: #a08767;
+  --admin-chart-credits-large: #a568aa;
   --admin-chart-action: #5e9a84;
   --admin-chart-inactive: #d3c09d;
   --admin-brand: #31605f;

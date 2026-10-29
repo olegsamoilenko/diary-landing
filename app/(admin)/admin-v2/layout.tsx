@@ -31,6 +31,12 @@ const navItems: AdminNavItem[] = [
     icon: 'observations',
     section: 'Користувачі',
   },
+  {
+    href: '/admin-v2/finance',
+    label: 'Надходження',
+    icon: 'finance',
+    section: 'Фінанси',
+  },
 ]
 
 export default function AdminV2Layout({ children }: { children: ReactNode }) {

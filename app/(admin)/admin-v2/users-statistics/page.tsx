@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import AdminPageHeader from '@/components/admin/AdminPageHeader'
 import StatisticBlock from '@/components/admin/users/StatisticBlock'
+import UserGrowthCharts from '@/components/admin/users/UserGrowthCharts'
 import { Button } from '@/components/ui/button'
 import { getAdminUserOverview } from '@/lib/api/users'
 import { getErrorMessage } from '@/lib/errors'
@@ -153,6 +154,7 @@ export default function UsersStatisticsPage() {
           </>
         )
       )}
+      <UserGrowthCharts />
     </div>
   )
 }

@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   UserPlus,
   UsersRound,
+  Wallet,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -44,7 +45,13 @@ const items = [
 export type AdminNavItem = {
   href: string
   label: string
-  icon?: 'dashboard' | 'users' | 'new-users' | 'activity' | 'observations'
+  icon?:
+    | 'dashboard'
+    | 'users'
+    | 'new-users'
+    | 'activity'
+    | 'observations'
+    | 'finance'
   section?: string
 }
 
@@ -54,6 +61,7 @@ const navIcons = {
   'new-users': UserPlus,
   activity: Activity,
   observations: Eye,
+  finance: Wallet,
 }
 
 export function SidebarNav({
