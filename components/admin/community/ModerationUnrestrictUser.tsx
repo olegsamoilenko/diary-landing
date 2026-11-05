@@ -24,8 +24,8 @@ export default function ModerationUnrestrictUser({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm" asChild className="cursor-pointer">
-          <span>Unrestrict</span>
+        <Button variant="default" size="sm" className="cursor-pointer">
+          <span>Зняти обмеження</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

@@ -7,12 +7,245 @@
     "Metadata": {
       "title": "Datenschutzrichtlinie | Nemory",
       "description": "Lies die Datenschutzrichtlinie von Nemory und erfahre, wie Tagebuch-, Konto- und Nutzungsdaten verarbeitet werden."
+    },
+    "Document": {
+      "title": "Nemory — Datenschutzerklärung",
+      "intro": "Diese Erklärung beschreibt, wie Nemory Informationen bei der Nutzung von App, Website, KI-Funktionen, Käufen und Community verarbeitet. Private Tagebuchinhalte, öffentliche Community-Inhalte und Kontodaten haben unterschiedliche Speicherzwecke und Aufbewahrungsfristen.",
+      "sections": [
+        {
+          "id": "local-data",
+          "title": "1. Ihr Gerät und Sicherungen",
+          "paragraphs": [
+            "Private Einträge, Check-ins, Messwerte, Pläne, KI-Gespräche und zugehörige lokale Daten liegen auf Ihrem Gerät. Die Tagebuchdatenbank ist verschlüsselt; der Schlüssel wird im sicheren Speicher des Betriebssystems geschützt. Mediendateien liegen im lokalen App-Speicher. Wir speichern keine vollständige Serverkopie Ihres privaten Tagebuchs.",
+            "Sie können eine passwortgeschützte, verschlüsselte Sicherung erstellen und deren Speicherort wählen. Wir kennen das Passwort nicht und können die Sicherung nicht für Sie wiederherstellen. Exportierte Kopien auf Geräten, Cloud-Speichern oder anderen Zielen bleiben unter Ihrer Kontrolle und unterliegen den Regeln des jeweiligen Anbieters."
+          ]
+        },
+        {
+          "id": "account-data",
+          "title": "2. Konto- und technische Daten",
+          "paragraphs": [
+            "Wir verarbeiten Kontokennungen, gegebenenfalls Namen und E-Mail-Adresse, Authentifizierungsdaten, Einstellungen, Geräte- und App-Informationen sowie für den Kontobetrieb erforderliche Aktivitäten. Bei externer Anmeldung erhalten wir die dafür benötigten Informationen.",
+            "Technische Aufzeichnungen können Zeitstempel, IP-Adresse, Fehler, App- und Betriebssystemversionen, Funktionsereignisse und Diagnosedaten enthalten. Sie dienen Betrieb, Sicherheit, Fehlerbehebung und dem Verständnis der Funktionsnutzung. Sie sind von den nachfolgend beschriebenen ausgewählten KI-Inhalten zu unterscheiden."
+          ]
+        },
+        {
+          "id": "ai-processing",
+          "title": "3. KI-Verarbeitung und ausgewählte Speicherung",
+          "paragraphs": [
+            "Bei Nutzung von KI-Funktionen werden relevante Texte, ausgewählte Anhänge und Kontext vom Gerät über unser Backend an KI-Dienstleister übermittelt. Je nach Anfrage kann der Kontext frühere Einträge und Gespräche, lokal gespeicherte Erinnerungen, Messwerte oder Planungsdaten umfassen. Die Verarbeitung kann Analyse, Gespräch, Medieninterpretation und Bilderzeugung beinhalten.",
+            "Damit Nemory zuverlässig funktioniert und die Qualität der KI-Analyse verbessert wird, speichern wir ausgewählte KI-Gespräche ohne Verknüpfung mit Ihrem Konto. Nach 7 Tagen werden sie automatisch gelöscht.",
+            "Autorisierte Personen können eine begrenzte Auswahl von Anfragen und Antworten zur Fehlerdiagnose und Bewertung der Analysequalität prüfen. Diesen Qualitätsprüfungsaufzeichnungen werden keine Nutzer- oder Kontokennung, kein Name, keine E-Mail-Adresse, Gerätekennung, Werbekennung oder IP-Adresse beigefügt. Ihre Texte können selbst identifizierende Angaben enthalten; deshalb bezeichnen wir die Aufzeichnungen nicht als vollständig anonym. Der Zugriff ist beschränkt.",
+            "Vorübergehende Medien zur Durchführung eines Vorgangs oder Wiederherstellung seines Ergebnisses können während der Verarbeitung dem Konto zugeordnet bleiben. Technische Nutzungs- und Transaktionsdaten können getrennt für die Abrechnung und zur Verhinderung wiederholter kostenpflichtiger Vorgänge erhalten bleiben; dafür muss das Bild oder die vollständige KI-Antwort nicht gespeichert werden.",
+            "KI-Inhalte werden weder für Werbung verwendet noch verkauft. Verbesserung der Analyse bedeutet hier die Prüfung der Antwortqualität und Korrektur der App-Funktion, keine Erlaubnis zur Nutzung privater Inhalte für fremde Zwecke. Externe KI-Dienste verarbeiten die für Ihre Anfrage benötigten Inhalte nach ihren geltenden Bedingungen und Datenschutzvereinbarungen; wir versprechen keine identischen internen Speicherfristen bei allen Anbietern."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "4. Community und Moderation",
+          "paragraphs": [
+            "Wir speichern Community-Themen, Kommentare, Antworten, Reaktionen, öffentliche Profilinformationen und Community-Einstellungen auf unseren Servern. Veröffentlichte Inhalte und öffentliche Profildaten sind für andere Nutzer sichtbar. Lesezeichen, Lesestatus, Meldungen und interne Moderationsnotizen sind nicht automatisch öffentlich.",
+            "Meldungen können den gemeldeten Inhalt, das meldende Konto, Zeitstempel und Moderationsentscheidungen umfassen. Automatisierte Systeme einschließlich KI-Diensten und autorisierte Moderatoren können Community-Inhalte prüfen, um Missbrauch zu erkennen, Meldungen zu bearbeiten und die Bedingungen durchzusetzen. Veröffentlichen Sie keine vertraulichen oder sensiblen Angaben, die andere nicht sehen sollen."
+          ]
+        },
+        {
+          "id": "payments",
+          "title": "5. Abonnements und Credits",
+          "paragraphs": [
+            "Wir speichern Tarif und Berechtigungsstatus, Guthaben und Bewegungen gekaufter Credits, Nutzungswerte, Store-Transaktionskennungen und Verifizierungsdaten. Damit gewähren wir Zugang, stellen berechtigte Käufe wieder her, verhindern doppelte Belastungen und bearbeiten Erstattungen, Streitfälle und Buchführungspflichten. Kartendaten verarbeitet der Store oder Zahlungsanbieter; wir erhalten keine vollständigen Kartendaten.",
+            "AdFree entfernt Werbung während der aktiven Berechtigung, beendet aber nicht die Verarbeitung für Konten, Käufe, Sicherheit oder andere von Ihnen genutzte Funktionen."
+          ]
+        },
+        {
+          "id": "advertising-and-consent",
+          "title": "6. Werbung und Ihre Wahlmöglichkeiten",
+          "paragraphs": [
+            "Die Android-App nutzt Google AdMob für native und bildschirmfüllende Anzeigen zwischen Aktionen, sofern Ihr Zugang Werbung umfasst. Google und Partner können IP-Adressen und ungefähren Standort, Gerätekennungen wie Werbe-ID und App-Set-ID, App- und Anzeigeninteraktionen sowie Diagnosedaten für Anzeigenauslieferung, Messung und Betrugsprävention verarbeiten.",
+            "Nemory übermittelt keine privaten Einträge, Check-in-Antworten, Stimmungsdaten, Ziele, Aufgaben, Gewohnheiten, KI-Gespräche oder Anhänge an Werbepartner. Wir verwenden diese Inhalte oder daraus abgeleitete Interessen nicht für Werbung. Unsere Anzeigenanfragen enthalten keine Nemory-Kontokennung, E-Mail-Adresse, Kauftokens oder genaue GPS-Position.",
+            "Die Google User Messaging Platform verwaltet Datenschutzentscheidungen für Werbung, soweit erforderlich. Je nach Auswahl und Region können Anzeigen personalisiert, nicht personalisiert, eingeschränkt oder nicht verfügbar sein. Auch nicht personalisierte Anzeigen können technische Daten verarbeiten. Wenn ein Zugang zu Datenschutzoptionen erforderlich ist, können Sie ihn in den Einstellungen erneut öffnen und Ihre Einwilligung ändern oder widerrufen. In Android können Sie außerdem die Werbe-ID zurücksetzen oder löschen.",
+            "Eine bestätigte aktive werbefreie Berechtigung stoppt neue Anzeigenanfragen. Bereits von Werbeanbietern verarbeitete Informationen werden dadurch nicht gelöscht. Zähler zur Anzeigenhäufigkeit und der Verlauf von AdFree-Hinweisen werden lokal gespeichert und enthalten keine Tagebuchinhalte. Die Speicherfristen von Google und Partnern sind von Nemorys 7-tägiger Speicherung von KI-Inhalten getrennt. Der Einwilligungsdialog und gegebenenfalls das Informationssymbol einer Anzeige enthalten weitere Partnerinformationen."
+          ],
+          "links": [
+            {
+              "label": "Google-Datenschutzerklärung",
+              "href": "https://policies.google.com/privacy"
+            },
+            {
+              "label": "Wie Google Informationen aus Partner-Apps verwendet",
+              "href": "https://policies.google.com/technologies/partner-sites"
+            }
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "7. Zwecke und Rechtsgrundlagen",
+          "paragraphs": [
+            "Soweit das anwendbare Datenschutzrecht eine Rechtsgrundlage verlangt, stützen wir uns auf Vertragserfüllung für angeforderte Funktionen und Kaufverwaltung; berechtigte Interessen für verhältnismäßige Sicherheit, Betrugsprävention, Diagnose und Qualitätsprüfung; gesetzliche Pflichten für vorgeschriebene Aufzeichnungen; sowie Einwilligung, soweit erforderlich, einschließlich entsprechender Werbeentscheidungen. Sie können einer Verarbeitung aufgrund berechtigter Interessen widersprechen und Einwilligungen widerrufen, ohne die Rechtmäßigkeit der vorherigen Verarbeitung zu berühren.",
+            "Ihr Tagebuch kann sensible Angaben enthalten, auch Gesundheitsinformationen. Sie entscheiden, was Sie eingeben und an Online-Funktionen übermitteln. Soweit das Gesetz eine ausdrückliche Einwilligung oder andere besondere Voraussetzung für solche Daten verlangt, gilt diese Anforderung. Wir verkaufen keine personenbezogenen Daten und nutzen private Tagebuchinhalte nicht zur gezielten Werbung."
+          ]
+        },
+        {
+          "id": "sharing",
+          "title": "8. Empfänger und internationale Verarbeitung",
+          "paragraphs": [
+            "Wir nutzen Anbieter für Hosting, Infrastruktur, KI, Authentifizierung, E-Mail, Benachrichtigungen, Analyse, Diagnose und betriebliche Kommunikation, soweit für den Dienst erforderlich. App-Stores und Werbedienste verarbeiten Daten für ihre jeweiligen Aufgaben. Autorisierte Personen können auf für Support, Verwaltung und Moderation erforderliche Informationen zugreifen. Wir können Informationen bei gesetzlicher Verpflichtung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen offenlegen.",
+            "Anbieter können Daten außerhalb Ihres Landes verarbeiten. Gelten die Datenübermittlungsvorschriften des EWR oder Vereinigten Königreichs, ist ein zulässiger Mechanismus erforderlich, etwa ein Angemessenheitsbeschluss oder vertragliche Garantien. Kontaktieren Sie uns für Informationen zu den für Ihre Daten relevanten Empfängern und Garantien. Öffentliche Community-Inhalte sind außerdem ihrem Publikum zugänglich."
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "9. Aufbewahrung",
+          "paragraphs": [],
+          "items": [
+            "Ausgewählte Inhalte der KI-Verarbeitung: 7 Tage ausschließlich für ordnungsgemäßen App-Betrieb und bessere Analysequalität, anschließend automatische Löschung.",
+            "Lokale Tagebuchinhalte und Ihre Sicherungen: bis Sie sie löschen oder die lokalen Daten ersetzen; eine Serverlöschung entfernt diese Kopien nicht aus der Ferne.",
+            "Konto-, Berechtigungs- und Credit-Daten: während des Bestehens des Kontos und, soweit erforderlich, danach für rechtliche, buchhalterische, sicherheitsbezogene Zwecke oder Streitfälle. Aufzeichnungen abgeschlossener kostenpflichtiger Vorgänge können ohne KI-Inhalt erhalten bleiben, um doppelte Belastungen zu vermeiden.",
+            "Technische Protokolle werden normalerweise bis zu 30 Tage aufbewahrt; Sicherungen der Serverdatenbank können bis zu 30 Tage erhalten bleiben. Ein gelöschter Datensatz kann bis zum Ablauf einer zugriffsbeschränkten Sicherung darin verbleiben, statt aktiv genutzt zu werden.",
+            "Community-Inhalte bleiben bis zur Entfernung durch Sie oder die Moderation erhalten. Meldungen und Moderationsaufzeichnungen werden so lange aufbewahrt, wie für Missbrauchsuntersuchung, Streitbeilegung und gesetzliche Pflichten erforderlich. Zahlungs- und gesetzlich vorgeschriebene Aufzeichnungen können länger erforderlich sein; identifizierende Angaben werden soweit möglich minimiert."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "10. Löschung und inaktive Konten",
+          "paragraphs": [
+            "Fordern Sie die Kontolöschung unter Einstellungen → Profil → Konto löschen oder über die unten verlinkte Löschseite an. Nach Verifizierung entfernen wir Konto und zugehörige Daten, vorbehaltlich der oben beschriebenen begrenzten Aufbewahrungsgründe. Die Kontolöschung kündigt kein Store-Abonnement; verwalten Sie die Kündigung im Store.",
+            "Community-Beiträge können ohne Verknüpfung zum Autorenkonto erhalten bleiben. Das garantiert keine Anonymität des Textes. Entfernen Sie Beiträge vor der Kontolöschung oder bitten Sie uns um Entfernung persönlicher Informationen. Von anderen Nutzern angefertigte Kopien liegen außerhalb unserer direkten Kontrolle.",
+            "Konten ohne aktives kostenpflichtiges Abonnement und ohne ungenutzte gekaufte Credits können nach 180 Tagen Inaktivität automatisch gelöscht werden; nach 150 Tagen erfolgt eine Warnung an die verfügbare Konto-E-Mail-Adresse. Jedes positive Guthaben gekaufter Credits oder ein aktives kostenpflichtiges Abonnement verhindert die automatische Löschung wegen Inaktivität.",
+            "Die Kontolöschung kann Tagebuchdateien und Sicherungen unter Ihrer Kontrolle auf anderen Geräten oder Cloud-Diensten nicht aus der Ferne entfernen. Löschen Sie diese Kopien bei Bedarf separat."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "11. Ihre Rechte",
+          "paragraphs": [
+            "Je nach anwendbarem Recht können Sie Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung oder Datenübertragbarkeit verlangen, bestimmten Verarbeitungen widersprechen und Einwilligungen widerrufen. Nutzen Sie die oben genannten Kontakte; wir müssen gegebenenfalls prüfen, ob die Anfrage Ihre Daten betrifft. Sie können sich auch bei der zuständigen Datenschutzaufsichtsbehörde beschweren. Diese Rechte unterliegen den gesetzlichen Voraussetzungen und setzen keinen Verzicht auf andere Verbraucherrechte voraus."
+          ]
+        },
+        {
+          "id": "security-and-updates",
+          "title": "12. Sicherheit, Kinder und Aktualisierungen",
+          "paragraphs": [
+            "Wir verwenden verschlüsselte Verbindungen, lokale Datenbankverschlüsselung, sichere Schlüsselspeicherung und serverseitige Zugriffskontrollen. Kein Speicher- oder Übertragungssystem ist vollständig sicher. Schützen Sie Gerät, Konto und Sicherungspasswort.",
+            "Nemory richtet sich nicht an Kinder unter 13 Jahren oder unter einem höheren örtlich vorgeschriebenen Mindestalter. Kontaktieren Sie uns, wenn Sie annehmen, dass ein Kind entgegen diesen Regeln personenbezogene Daten übermittelt hat.",
+            "Wir aktualisieren diese Erklärung bei Änderungen unserer Verfahren oder rechtlicher Anforderungen, ändern das Datum oben und informieren über wesentliche Änderungen, soweit erforderlich. Datenschutzfragen, Löschanfragen und Beschwerden können an die oben genannten Kontakte gerichtet werden."
+          ]
+        }
+      ]
     }
   },
   "TermsPage": {
     "Metadata": {
       "title": "Nutzungsbedingungen | Nemory",
       "description": "Lies die Nutzungsbedingungen von Nemory und die Regeln für die Nutzung der App und der Website."
+    },
+    "Document": {
+      "title": "Nemory — Nutzungsbedingungen",
+      "intro": "Diese Bedingungen regeln die Nutzung der Nemory-App und -Website (des Dienstes). Mit der Nutzung stimmen Sie diesen Bedingungen zu. Die Datenschutzerklärung erläutert die Verarbeitung personenbezogener Daten.",
+      "sections": [
+        {
+          "id": "service",
+          "title": "1. Der Dienst und Voraussetzungen",
+          "paragraphs": [
+            "Nemory verbindet ein privates Tagebuch, Check-ins, Stimmung und weitere Messwerte, Planung, Ziele, Aufgaben, Gewohnheiten, Fortschrittsverfolgung, KI-gestützte Reflexion und eine Community. Funktionen können von App-Version, Plattform und Ihrem Zugang abhängen.",
+            "Sie müssen mindestens 13 Jahre alt sein und ein gegebenenfalls höheres gesetzliches Mindestalter erfüllen. Wenn Sie Verträge nicht selbstständig schließen dürfen, muss ein Elternteil oder gesetzlicher Vertreter der Nutzung und Käufen zustimmen, soweit erforderlich."
+          ]
+        },
+        {
+          "id": "account",
+          "title": "2. Ihr Konto",
+          "paragraphs": [
+            "Halten Sie Ihre Kontodaten aktuell und schützen Sie Zugangsdaten und Gerät. Wenden Sie sich bei Verdacht auf unbefugten Zugriff an den Support. Greifen Sie nicht auf fremde Konten zu, umgehen Sie keine Sicherheits- oder Zahlungskontrollen und beeinträchtigen Sie den Dienst nicht."
+          ]
+        },
+        {
+          "id": "ai",
+          "title": "3. KI-Funktionen",
+          "paragraphs": [
+            "Wenn Sie KI nutzen, werden relevante Inhalte und Kontext vom Gerät über unsere Server an KI-Dienstleister übermittelt, um Ihre Anfrage zu bearbeiten. Dazu können Text, ausgewählte Anhänge, frühere Gespräche und weiterer relevanter Tagebuchkontext gehören. Die KI-Funktionen werden hier allgemein beschrieben, ohne Bindung an ein bestimmtes Modell oder einen Anbieter.",
+            "Damit Nemory zuverlässig funktioniert und die Qualität der KI-Analyse verbessert wird, speichern wir ausgewählte KI-Gespräche ohne Verknüpfung mit Ihrem Konto. Nach 7 Tagen werden sie automatisch gelöscht.",
+            "KI-Antworten und erzeugte Medien können ungenau oder ungeeignet sein. Prüfen Sie diese, bevor Sie sich darauf verlassen. Nemory bietet keine medizinische, psychotherapeutische, rechtliche oder finanzielle Beratung und ist kein Notfalldienst. Sie bleiben für Ihre Entscheidungen verantwortlich."
+          ]
+        },
+        {
+          "id": "subscriptions",
+          "title": "4. Abonnements und Zahlungen",
+          "paragraphs": [
+            "Verfügbare Tarife, Preise, Abrechnungszeiträume, Funktionen und Nutzungskontingente werden vor dem Kauf angezeigt. KI-Abonnements, einmalige Credit-Käufe und werbefreie Abonnements sind unterschiedliche Produkte. Die kostenlosen Tagebuchfunktionen bleiben ohne kostenpflichtigen KI-Tarif verfügbar.",
+            "Abonnements verlängern sich automatisch, sofern Sie sie nicht im jeweiligen Store kündigen. Eine Kündigung verhindert normalerweise die nächste Verlängerung; der Zugang bleibt für den bezahlten Zeitraum bestehen, vorbehaltlich Erstattungen und Store-Regeln. Die Deinstallation oder Kontolöschung kündigt ein Store-Abonnement nicht automatisch.",
+            "Zahlungen, Kaufprüfung, Wiederherstellung berechtigter Käufe und Erstattungen richten sich nach den Verfahren des jeweiligen Stores und geltendem Recht. Wenden Sie sich bei fehlendem Zugang oder fehlenden Credits an den Support. Diese Bedingungen schließen gesetzliche Erstattungs-, Widerrufs- oder sonstige Verbraucherrechte nicht aus. Preis- und Abonnementänderungen unterliegen den Informations- und Zustimmungsvorgaben des Stores."
+          ]
+        },
+        {
+          "id": "credits",
+          "title": "5. KI-Credits",
+          "paragraphs": [
+            "Gekaufte Credits sind Ihrem Nemory-Konto zugeordnet und vom Abonnementkontingent getrennt. Sie können für unterstützte KI-Funktionen ohne KI-Abonnement verwendet werden, sofern Guthaben und Zugangsvoraussetzungen ausreichen. Der Verbrauch hängt von Funktion, Modell und Inhaltsumfang ab; eine vorab angezeigte Schätzung kann vom tatsächlichen Verbrauch abweichen.",
+            "Unverbrauchte gekaufte Credits verfallen nicht allein durch das Ende eines Abonnements oder Inaktivität. Abonnementkontingente unterliegen den jeweiligen Erneuerungs- und Zurücksetzungsregeln. Credits sind kein Geld, nicht auf andere Nutzer übertragbar und nicht gegen Bargeld einlösbar; sie entfernen für sich genommen keine Werbung. Erstattungen oder rückgängig gemachte Zahlungen können zur Rücknahme der entsprechenden Credit-Gutschrift führen, unter Wahrung Ihrer gesetzlichen Rechte.",
+            "Jedes positive Guthaben ungenutzter gekaufter Credits schützt ein Konto vor automatischer Löschung wegen Inaktivität. Bei freiwilliger Kontolöschung wird das Credit-Guthaben mitgelöscht; klären Sie Kauf- oder Erstattungsfragen vor der Bestätigung. Gesetzliche Rechte bleiben unberührt."
+          ]
+        },
+        {
+          "id": "advertising",
+          "title": "6. Werbung und werbefreier Zugang",
+          "paragraphs": [
+            "Die Android-App kann Werbung anzeigen, wenn Ihr Zugang Werbung vorsieht. Ein aktives AdFree-Abonnement entfernt diese Werbung, enthält jedoch kein KI-Credit-Kontingent. Andere Tarife können gemäß ihrer Beschreibung werbefreien Zugang einschließen. Dieser gilt für den bestätigten Berechtigungszeitraum.",
+            "Die Einwilligung zur Werbedatenverarbeitung und werbefreier Zugang sind getrennte Entscheidungen. Die Ablehnung personalisierter Werbung ist kein AdFree-Kauf. Private Tagebuchinhalte werden nicht für Werbung genutzt; Einzelheiten und Datenschutzoptionen finden Sie in der Datenschutzerklärung."
+          ]
+        },
+        {
+          "id": "content",
+          "title": "7. Ihre Inhalte und lokale Speicherung",
+          "paragraphs": [
+            "Sie behalten Ihre Rechte an bereitgestellten Inhalten. Sie erteilen uns und unseren Dienstleistern eine begrenzte, nicht ausschließliche Erlaubnis zur Verarbeitung, soweit dies für die genutzten Funktionen, den Betrieb und die Moderation der Community sowie die in der Datenschutzerklärung beschriebene begrenzte Qualitätsprüfung erforderlich ist. Dies überträgt kein Eigentum.",
+            "Ihre private Tagebuchdatenbank liegt lokal auf Ihrem Gerät. Erstellen Sie Sicherungen, wenn Sie Ihre Daten erhalten möchten. Ein Serverkonto ist keine vollständige Cloud-Sicherung Ihres Tagebuchs. Wir können ein verlorenes Sicherungspasswort nicht wiederherstellen und die Wiederherstellung lokaler Dateien nicht garantieren, auch nicht bei generierten Bildern nach Löschung ihrer vorübergehenden Serverkopie.",
+            "Übermitteln und veröffentlichen Sie nur Inhalte, zu deren Nutzung Sie berechtigt sind. Rechte an KI-generiertem Material hängen vom geltenden Recht und Rechten Dritter ab; Einzigartigkeit und urheberrechtlicher Schutz werden nicht garantiert."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "8. Community-Regeln und Moderation",
+          "paragraphs": [
+            "Community-Themen, Kommentare, Antworten, Reaktionen und öffentliche Profilinformationen sind für andere Nutzer sichtbar. Ihr privates Tagebuch wird nicht automatisch veröffentlicht. Veröffentlichen Sie keine vertraulichen Informationen über sich oder andere.",
+            "Zur Moderation öffentlicher Inhalte und Prüfung von Meldungen nutzen wir automatisierte Werkzeuge, einschließlich KI, sowie autorisierte menschliche Prüfung. Je nach Verstoß können wir Inhalte entfernen, die Teilnahme beschränken oder den Kontozugang einschränken. Sie können Inhalte in der App melden und eine Moderationsentscheidung beim Support beanstanden. Einschränkungen berühren Ihre gesetzlichen Rechte nicht."
+          ],
+          "items": [
+            "Veröffentlichen Sie keine rechtswidrigen Inhalte, Darstellungen sexueller Ausbeutung, Drohungen, Belästigungen, Hassrede oder Aufrufe zu Gewalt.",
+            "Fördern Sie keine Selbstverletzung, betrügen Sie niemanden und verbreiten Sie weder Spam noch schädliche Inhalte oder unerwünschte Werbung.",
+            "Achten Sie Privatsphäre und geistiges Eigentum. Geben Sie keine vertraulichen Daten anderer preis und versuchen Sie nicht, Personen ohne Rechtsgrundlage zu identifizieren oder zu verfolgen."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "9. Kontolöschung und Inaktivität",
+          "paragraphs": [
+            "Sie können die Löschung unter Einstellungen → Profil → Konto löschen oder über die unten verlinkte Löschseite anfordern. Schließen Sie die Verifizierung zur Bestätigung ab. Lokale Dateien und Sicherungen unter Ihrer Kontrolle müssen separat entfernt werden; eine Kontolöschung kann Ihre Kopien auf anderen Geräten oder Cloud-Speichern nicht aus der Ferne löschen.",
+            "Wir können ein Konto nach 180 Tagen Inaktivität löschen, wenn weder ein aktives kostenpflichtiges Abonnement noch ungenutzte gekaufte Credits vorhanden sind. Nach 150 Tagen senden wir eine Warnung an die verfügbare Konto-E-Mail-Adresse. Ein aktives kostenpflichtiges Abonnement oder jedes positive Guthaben gekaufter Credits schützt vor dieser automatischen Löschung.",
+            "Community-Beiträge können ohne Kontoverknüpfung erhalten bleiben. Der Text selbst kann Sie weiterhin identifizieren: Entfernen Sie ihn vor der Kontolöschung oder kontaktieren Sie den Support. Bestimmte Aufzeichnungen können für gesetzliche Pflichten, Streitfälle und Sicherheit gemäß Datenschutzerklärung erhalten bleiben."
+          ]
+        },
+        {
+          "id": "service-rights",
+          "title": "10. Rechte am Dienst und Verfügbarkeit",
+          "paragraphs": [
+            "Software, Marke und Gestaltung von Nemory gehören uns oder unseren Lizenzgebern. Sie erhalten die Erlaubnis zur vertragsgemäßen Nutzung, nicht das Eigentum am Dienst.",
+            "Wir bemühen uns um Verfügbarkeit, garantieren aber keinen unterbrechungs- oder fehlerfreien Betrieb und keine fehlerfreien KI-Ausgaben. Wir können Funktionen ändern oder Zugang wegen schwerer Verstöße, Sicherheitsgründen oder rechtlicher Pflichten aussetzen. Auswirkungen auf bezahlten Zugang unterliegen weiterhin geltenden Verbraucherrechten und Erstattungspflichten."
+          ]
+        },
+        {
+          "id": "liability",
+          "title": "11. Haftung und Verbraucherrechte",
+          "paragraphs": [
+            "Soweit gesetzlich zulässig, haften wir nicht für mittelbare Schäden oder entgangenen Gewinn aus der Nutzung des Dienstes. Unsere Gesamthaftung ist auf den Betrag begrenzt, den Sie in den vorherigen 12 Monaten für den Dienst bezahlt haben, sofern eine solche Begrenzung gesetzlich zulässig ist.",
+            "Diese Ausschlüsse gelten nicht für Betrug, Vorsatz, grobe Fahrlässigkeit, Tod oder Personenschäden, soweit eine Haftung nicht ausgeschlossen werden darf, oder sonstige zwingende Haftung. Zwingende Verbraucherrechte, insbesondere in Ihrem Wohnsitzland im EWR oder Vereinigten Königreich, bleiben unberührt."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "12. Änderungen und Fragen",
+          "paragraphs": [
+            "Wir können diese Bedingungen an Änderungen des Dienstes oder rechtlicher Anforderungen anpassen. Wir veröffentlichen die neue Fassung mit Aktualisierungsdatum und informieren über wesentliche Änderungen, soweit erforderlich. Änderungen kostenpflichtiger Leistungen unterliegen geltenden Informations-, Zustimmungs- und Kündigungsrechten. Für Fragen, Beschwerden oder Kaufprobleme nutzen Sie die oben genannten Kontakte."
+          ]
+        }
+      ]
     }
   },
   "DeleteAccountPage": {
@@ -204,5 +437,22 @@
     "faq": "FAQ",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termOfUse": "Nutzungsbedingungen"
+  },
+  "Legal": {
+    "updated": "Zuletzt aktualisiert:",
+    "date": "5. November 2026",
+    "contactTitle": "Diensteanbieter und Kontakt",
+    "contactIntro": "Nemory wird von dem nachfolgend genannten Unternehmer angeboten, der auch für die in der Datenschutzerklärung beschriebene Verarbeitung personenbezogener Daten verantwortlich ist.",
+    "contact": {
+      "name": "Vollständiger Name / rechtlicher Unternehmensname",
+      "address": "Postanschrift",
+      "email": "Kontakt-E-Mail",
+      "phone": "Kontakttelefon"
+    },
+    "support": "Aktueller Supportkontakt:",
+    "related": "Weitere Informationen",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzerklärung",
+    "deletion": "Konto löschen"
   }
 }

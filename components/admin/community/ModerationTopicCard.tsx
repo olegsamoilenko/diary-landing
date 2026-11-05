@@ -56,7 +56,7 @@ export default function ModerationTopicCard({
   }
   return (
     <div>
-      <div className="flex items-center gap-10">
+      <div className="flex flex-wrap items-center gap-4">
         <div>
           <div>Title</div>
           <div>{topic?.title}</div>
@@ -78,7 +78,7 @@ export default function ModerationTopicCard({
         </div>
         <div className="h-5 w-1 border-l"></div>
         <div>
-          <div> Comments</div>
+          <div> Коментарі</div>
           <div>{topic?.commentsCount}</div>
         </div>
         <div className="h-5 w-1 border-l"></div>
@@ -92,11 +92,11 @@ export default function ModerationTopicCard({
           <div>{topic?.visibility}</div>
         </div>
       </div>
-      <div className="mt-8 flex gap-10">
-        <div className="w-[40%]">
+      <div className="mt-8 grid gap-6 xl:grid-cols-2">
+        <div className="min-w-0">
           <JsonViewer data={topic} />
         </div>
-        <div className="flex w-[60%] flex-col gap-10">
+        <div className="flex min-w-0 flex-col gap-6">
           <div className="mb-10">{topic?.content}</div>
           <div>
             {topic?.status === ForumContentStatus.PUBLISHED && (
@@ -124,7 +124,7 @@ export default function ModerationTopicCard({
               <Button
                 onClick={() => loadModerationUserLogs(topic!.authorId, 1)}
               >
-                Load user logs
+                Журнал користувача
               </Button>
             </div>
             <div className="mb-4">
@@ -142,11 +142,11 @@ export default function ModerationTopicCard({
             <div className="mb-4 h-1 w-full border-t"></div>
             <div className="mb-4">
               <Button onClick={() => loadUserRestriction(topic!.authorId)}>
-                Get user restriction
+                Перевірити обмеження
               </Button>
             </div>
             {userRestriction && userRestriction.isRestricted && (
-              <div className="mb-4 flex gap-8">
+              <div className="mb-4 flex flex-wrap gap-4">
                 <div>
                   <div>Status</div>
                   <div>
@@ -203,7 +203,7 @@ export default function ModerationTopicCard({
               </div>
             )}
             {userRestriction && !userRestriction.isRestricted && (
-              <div className="mb-4">Not Restricted</div>
+              <div className="mb-4">Без обмежень</div>
             )}
             <div className="mb-4 h-1 w-full border-t"></div>
 

@@ -28,8 +28,12 @@ export default function ModerationDeleteTopicDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="error" size="sm" asChild className="cursor-pointer">
-          <span>Delete</span>
+        <Button
+          variant="outline"
+          size="sm"
+          className="text-destructive cursor-pointer"
+        >
+          <span>Видалити</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

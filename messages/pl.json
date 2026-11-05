@@ -7,12 +7,245 @@
     "Metadata": {
       "title": "Polityka prywatności | Nemory",
       "description": "Zapoznaj się z polityką prywatności Nemory i dowiedz się, jak przetwarzane są dane dziennika, konta oraz korzystania z aplikacji."
+    },
+    "Document": {
+      "title": "Nemory — Polityka prywatności",
+      "intro": "Polityka opisuje, jak Nemory przetwarza informacje podczas korzystania z aplikacji, witryny, funkcji AI, zakupów i społeczności. Prywatny dziennik, publiczne treści społeczności i dane konta mają różne cele i okresy przechowywania.",
+      "sections": [
+        {
+          "id": "local-data",
+          "title": "1. Urządzenie i kopie zapasowe",
+          "paragraphs": [
+            "Prywatne wpisy, wpisy kontrolne, wskaźniki, plany, rozmowy AI i powiązane dane lokalne pozostają na urządzeniu. Baza dziennika jest szyfrowana, a klucz chroniony przez bezpieczny magazyn systemu operacyjnego. Pliki multimedialne znajdują się w lokalnej pamięci aplikacji. Nie przechowujemy pełnej kopii prywatnego dziennika na serwerze.",
+            "Możesz utworzyć zaszyfrowaną kopię chronioną hasłem i wybrać miejsce przechowywania. Nie znamy hasła i nie możemy przywrócić kopii za Ciebie. Eksportowane kopie na urządzeniach, dyskach w chmurze lub w innych miejscach pozostają pod Twoją kontrolą i podlegają zasadom odpowiedniego dostawcy."
+          ]
+        },
+        {
+          "id": "account-data",
+          "title": "2. Dane konta i informacje techniczne",
+          "paragraphs": [
+            "Przetwarzamy identyfikatory konta, podane imię i adres e-mail, dane uwierzytelniania, ustawienia, informacje o urządzeniu i aplikacji oraz aktywność potrzebną do obsługi konta. Przy logowaniu zewnętrznym otrzymujemy informacje wymagane do takiego logowania.",
+            "Zapisy techniczne mogą obejmować znaczniki czasu, adres IP, błędy, wersje aplikacji i systemu, zdarzenia użycia funkcji oraz diagnostykę. Służą działaniu, bezpieczeństwu, rozwiązywaniu problemów i zrozumieniu korzystania z funkcji. Są odrębne od wybiórczo przechowywanych treści AI opisanych poniżej."
+          ]
+        },
+        {
+          "id": "ai-processing",
+          "title": "3. Przetwarzanie AI i wybiórcze przechowywanie",
+          "paragraphs": [
+            "Gdy używasz funkcji AI, odpowiedni tekst, wybrane załączniki i kontekst są przesyłane z urządzenia przez nasz backend do dostawców AI. W zależności od żądania kontekst może zawierać wcześniejsze wpisy i rozmowy, lokalną pamięć, wskaźniki lub plany. Przetwarzanie może obejmować analizę, rozmowę, interpretację mediów i generowanie obrazów.",
+            "Aby Nemory działało prawidłowo, a analiza AI była coraz lepsza, przechowujemy wybrane rozmowy z AI bez powiązania z Twoim kontem. Po 7 dniach są one automatycznie usuwane.",
+            "Upoważnione osoby mogą przeglądać ograniczoną próbkę żądań i odpowiedzi, aby diagnozować błędy i oceniać jakość analizy. Do tych zapisów kontroli jakości nie dołączamy identyfikatorów użytkownika ani konta, imienia, adresu e-mail, identyfikatora urządzenia, identyfikatora reklamowego ani adresu IP. Sam wpisany tekst może jednak zawierać dane identyfikujące, dlatego nie określamy tych zapisów jako w pełni anonimowych. Dostęp jest ograniczony.",
+            "Tymczasowe media potrzebne do wykonania operacji lub odzyskania wyniku mogą pozostawać powiązane z kontem podczas przetwarzania. Techniczne dane użycia i transakcji mogą pozostać osobno do rozliczeń i zapobiegania powtórnej płatnej operacji; nie wymaga to przechowywania obrazu ani pełnej odpowiedzi AI.",
+            "Treści przetwarzane przez AI nie służą reklamie i nie są sprzedawane. Poprawa analizy oznacza tu kontrolę jakości odpowiedzi i usprawnianie działania aplikacji, a nie zgodę na użycie prywatnych treści do niezwiązanych celów. Zewnętrzne usługi AI przetwarzają treści potrzebne do żądania zgodnie z właściwymi warunkami i ustaleniami ochrony danych; nie obiecujemy identycznych wewnętrznych okresów przechowywania u wszystkich dostawców."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "4. Społeczność i moderacja",
+          "paragraphs": [
+            "Przechowujemy na serwerach tematy, komentarze, odpowiedzi, reakcje, publiczne dane profilowe i preferencje społeczności. Opublikowane treści i publiczne dane profilu są widoczne dla innych użytkowników. Zakładki, stany przeczytania, zgłoszenia i wewnętrzne notatki moderacji nie są automatycznie publiczne.",
+            "Zgłoszenia mogą zawierać zgłaszaną treść, konto zgłaszającego, znaczniki czasu i decyzje moderacji. Systemy automatyczne, w tym AI, i upoważnieni moderatorzy mogą badać treści społeczności w celu wykrywania nadużyć, rozpatrywania zgłoszeń i egzekwowania Warunków. Nie publikuj poufnych lub wrażliwych informacji, których nie chcesz pokazywać innym."
+          ]
+        },
+        {
+          "id": "payments",
+          "title": "5. Subskrypcje i kredyty",
+          "paragraphs": [
+            "Przechowujemy plan i status uprawnień, saldo i operacje zakupionych kredytów, dane zużycia, identyfikatory transakcji sklepu i dane weryfikacyjne. Pozwala to udzielać dostępu, przywracać kwalifikujące się zakupy, zapobiegać podwójnym opłatom oraz obsługiwać zwroty, spory i obowiązki księgowe. Dane kart płatniczych obsługuje sklep lub dostawca płatności; nie otrzymujemy pełnych danych karty.",
+            "AdFree usuwa reklamy w okresie obowiązywania uprawnienia, ale nie zatrzymuje przetwarzania potrzebnego do kont, zakupów, bezpieczeństwa ani innych używanych funkcji."
+          ]
+        },
+        {
+          "id": "advertising-and-consent",
+          "title": "6. Reklamy i Twoje wybory",
+          "paragraphs": [
+            "Aplikacja na Androida używa Google AdMob do reklam natywnych i pełnoekranowych między działaniami, jeśli Twój dostęp przewiduje reklamy. Google i partnerzy mogą przetwarzać adres IP i przybliżoną lokalizację, identyfikatory urządzenia, takie jak identyfikator reklamowy i app set ID, interakcje z aplikacją i reklamami oraz diagnostykę w celu wyświetlania reklam, pomiaru i zapobiegania oszustwom.",
+            "Nemory nie przekazuje partnerom reklamowym prywatnych wpisów, odpowiedzi we wpisach kontrolnych, nastroju, celów, zadań, nawyków, rozmów AI ani załączników. Nie używamy tych treści ani wywnioskowanych z nich zainteresowań do reklam. Nasze żądania reklamowe nie zawierają identyfikatora konta Nemory, adresu e-mail, tokenów zakupów ani dokładnej lokalizacji GPS.",
+            "Google User Messaging Platform obsługuje wybory prywatności reklam tam, gdzie jest to wymagane. W zależności od wyborów i regionu reklamy mogą być spersonalizowane, niespersonalizowane, ograniczone lub niedostępne. Reklamy niespersonalizowane również mogą przetwarzać dane techniczne. Gdy wymagany jest dostęp do opcji prywatności, można je ponownie otworzyć w Ustawieniach oraz zmienić lub wycofać zgodę. Ustawienia Androida pozwalają też zresetować lub usunąć identyfikator reklamowy.",
+            "Potwierdzone aktywne uprawnienie bez reklam zatrzymuje nowe żądania reklamowe. Nie usuwa danych już przetworzonych przez dostawców reklam. Liczniki częstotliwości reklam i historia przypomnień AdFree są lokalne i nie zawierają treści dziennika. Okresy przechowywania Google i partnerów są odrębne od 7-dniowego przechowywania treści AI przez Nemory. Ekran zgody i ikona informacji o reklamie, jeśli dostępna, zawierają dalsze informacje o partnerach."
+          ],
+          "links": [
+            {
+              "label": "Polityka prywatności Google",
+              "href": "https://policies.google.com/privacy"
+            },
+            {
+              "label": "Jak Google używa informacji z aplikacji partnerów",
+              "href": "https://policies.google.com/technologies/partner-sites"
+            }
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "7. Cele i podstawy prawne",
+          "paragraphs": [
+            "Gdy właściwe przepisy wymagają podstawy prawnej, opieramy się na wykonaniu umowy w odniesieniu do zamówionych funkcji i obsługi zakupów; prawnie uzasadnionych interesach w zakresie proporcjonalnego bezpieczeństwa, zapobiegania oszustwom, diagnostyki i kontroli jakości; obowiązkach prawnych dotyczących wymaganych zapisów; oraz zgodzie tam, gdzie jest wymagana, w tym dla odpowiednich wyborów reklamowych. Możesz sprzeciwić się przetwarzaniu opartemu na uzasadnionym interesie i wycofać zgodę bez wpływu na wcześniejsze zgodne z prawem przetwarzanie.",
+            "Dziennik może zawierać dane wrażliwe, w tym informacje o zdrowiu. Decydujesz, co wpisujesz i przesyłasz do funkcji online. Jeśli prawo wymaga wyraźnej zgody lub innego szczególnego warunku przetwarzania takich danych, wymóg ten obowiązuje. Nie sprzedajemy danych osobowych ani nie używamy prywatnego dziennika do targetowania reklam."
+          ]
+        },
+        {
+          "id": "sharing",
+          "title": "8. Odbiorcy i przetwarzanie międzynarodowe",
+          "paragraphs": [
+            "W zakresie potrzebnym do działania Usługi korzystamy z dostawców hostingu, infrastruktury, AI, uwierzytelniania, poczty, powiadomień, analityki, diagnostyki i komunikacji operacyjnej. Sklepy i usługi reklamowe przetwarzają dane na potrzeby swoich funkcji. Upoważniony personel może mieć dostęp do informacji potrzebnych do pomocy, administracji i moderacji. Możemy ujawnić dane, gdy wymaga tego prawo lub jest to konieczne do ustalenia, dochodzenia albo obrony roszczeń.",
+            "Dostawcy mogą przetwarzać dane poza Twoim krajem. Gdy mają zastosowanie przepisy EOG lub Wielkiej Brytanii o przekazywaniu danych, wymagany jest właściwy mechanizm prawny, np. decyzja stwierdzająca odpowiedni poziom ochrony lub zabezpieczenia umowne. Skontaktuj się z nami w sprawie odbiorców i zabezpieczeń dotyczących Twoich danych. Publiczne treści społeczności są także dostępne jej odbiorcom."
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "9. Okresy przechowywania",
+          "paragraphs": [],
+          "items": [
+            "Wybrane treści przetwarzania AI: 7 dni wyłącznie dla prawidłowego działania aplikacji i poprawy jakości analizy, a następnie automatyczne usunięcie.",
+            "Lokalny dziennik i Twoje kopie: do ich usunięcia lub zastąpienia danych lokalnych; usunięcie na serwerze nie kasuje tych kopii zdalnie.",
+            "Dane konta, uprawnień i kredytów: przez okres istnienia konta oraz, gdy jest to konieczne, później dla celów prawnych, księgowych, bezpieczeństwa lub sporów. Zapisy zakończonych płatnych operacji mogą pozostać bez treści AI, aby zapobiegać ponownym opłatom.",
+            "Logi techniczne zwykle są przechowywane do 30 dni; kopie serwerowej bazy mogą być przechowywane do 30 dni. Usunięty zapis może pozostać w kopii z ograniczonym dostępem do końca jej okresu przechowywania, zamiast pozostawać w aktywnym użyciu.",
+            "Treści społeczności pozostają do usunięcia przez Ciebie lub moderację. Zgłoszenia i zapisy moderacji przechowujemy tak długo, jak potrzeba do badania nadużyć, rozwiązywania sporów i spełnienia obowiązków prawnych. Zapisy płatnicze i wymagane prawem mogą wymagać dłuższego przechowywania, z ograniczeniem informacji identyfikujących, gdzie to możliwe."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "10. Usuwanie i nieaktywne konta",
+          "paragraphs": [
+            "Zażądaj usunięcia w Ustawienia → Profil → Usuń konto lub na stronie usuwania konta dostępnej poniżej. Po weryfikacji usuwamy konto i powiązane dane z uwzględnieniem ograniczonych podstaw dalszego przechowywania opisanych wyżej. Usunięcie konta nie anuluje subskrypcji w sklepie; anuluj ją poprzez sklep.",
+            "Wpisy społeczności mogą pozostać bez powiązania z kontem autora. Nie gwarantuje to anonimowości tekstu. Usuń swoje materiały przed usunięciem konta lub poproś nas o usunięcie informacji osobowych. Kopie wykonane przez innych użytkowników są poza naszą bezpośrednią kontrolą.",
+            "Konta bez aktywnej płatnej subskrypcji i niewykorzystanych zakupionych kredytów mogą zostać automatycznie usunięte po 180 dniach nieaktywności, z ostrzeżeniem po 150 dniach na dostępny adres e-mail konta. Każde dodatnie saldo zakupionych kredytów lub aktywna płatna subskrypcja zapobiega automatycznemu usunięciu za nieaktywność.",
+            "Usunięcie konta nie może zdalnie usunąć plików dziennika i kopii pod Twoją kontrolą na innych urządzeniach lub w chmurze. Usuń je osobno, jeśli chcesz je wymazać."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "11. Twoje prawa",
+          "paragraphs": [
+            "Zależnie od właściwego prawa możesz żądać dostępu, sprostowania, usunięcia, ograniczenia przetwarzania lub przeniesienia danych, sprzeciwić się niektórym operacjom i wycofać zgodę. Skontaktuj się z nami pod danymi powyżej; możemy potrzebować potwierdzenia, że żądanie dotyczy Twoich danych. Możesz też złożyć skargę do właściwego organu ochrony danych. Prawa te podlegają warunkom ustawowym i nie wymagają rezygnacji z innych praw konsumenta."
+          ]
+        },
+        {
+          "id": "security-and-updates",
+          "title": "12. Bezpieczeństwo, dzieci i aktualizacje",
+          "paragraphs": [
+            "Stosujemy szyfrowane połączenia, szyfrowanie lokalnej bazy, bezpieczne przechowywanie kluczy i kontrolę dostępu do serwera. Żaden system przechowywania lub transmisji nie jest całkowicie bezpieczny. Chroń urządzenie, konto i hasło kopii zapasowej.",
+            "Nemory nie jest przeznaczone dla dzieci poniżej 13 lat lub wyższego minimalnego wieku wymaganego lokalnym prawem. Skontaktuj się z nami, jeśli sądzisz, że dziecko przekazało dane niezgodnie z tymi zasadami.",
+            "Aktualizujemy Politykę wraz ze zmianami praktyk lub prawa, zmieniamy datę powyżej i informujemy o istotnych zmianach, gdy jest to wymagane. Pytania o prywatność, usuwanie danych i skargi można kierować na powyższe dane kontaktowe."
+          ]
+        }
+      ]
     }
   },
   "TermsPage": {
     "Metadata": {
       "title": "Warunki korzystania | Nemory",
       "description": "Zapoznaj się z warunkami korzystania z Nemory oraz zasadami używania aplikacji i strony internetowej."
+    },
+    "Document": {
+      "title": "Nemory — Warunki korzystania",
+      "intro": "Niniejsze Warunki regulują korzystanie z aplikacji i witryny Nemory (Usługi). Korzystając z Usługi, akceptujesz te Warunki. Polityka prywatności wyjaśnia przetwarzanie danych osobowych.",
+      "sections": [
+        {
+          "id": "service",
+          "title": "1. Usługa i wymagania wiekowe",
+          "paragraphs": [
+            "Nemory łączy prywatny dziennik, wpisy kontrolne, nastrój i inne wskaźniki, planowanie, cele, zadania, nawyki, śledzenie postępów, refleksję wspomaganą AI oraz społeczność. Dostępność funkcji może zależeć od wersji aplikacji, platformy i posiadanego dostępu.",
+            "Musisz mieć co najmniej 13 lat lub osiągnąć wyższy minimalny wiek wymagany przez właściwe prawo. Jeżeli nie możesz samodzielnie zawierać umów, rodzic lub opiekun prawny musi wyrazić zgodę na korzystanie z Usługi i zakupy, gdy jest to wymagane."
+          ]
+        },
+        {
+          "id": "account",
+          "title": "2. Twoje konto",
+          "paragraphs": [
+            "Dbaj o aktualność danych konta oraz bezpieczeństwo danych logowania i urządzenia. W razie podejrzenia nieuprawnionego dostępu skontaktuj się z pomocą. Nie uzyskuj dostępu do cudzych kont, nie obchodź zabezpieczeń ani kontroli płatności i nie zakłócaj działania Usługi."
+          ]
+        },
+        {
+          "id": "ai",
+          "title": "3. Funkcje AI",
+          "paragraphs": [
+            "Gdy korzystasz z AI, odpowiednie treści i kontekst z urządzenia są przesyłane przez nasze serwery do dostawców usług AI w celu realizacji żądania. Mogą obejmować tekst, wybrane załączniki, wcześniejsze rozmowy i inny istotny kontekst dziennika. Funkcje AI opisujemy ogólnie, bez powiązania z konkretnym modelem lub dostawcą.",
+            "Aby Nemory działało prawidłowo, a analiza AI była coraz lepsza, przechowujemy wybrane rozmowy z AI bez powiązania z Twoim kontem. Po 7 dniach są one automatycznie usuwane.",
+            "Odpowiedzi AI i wygenerowane materiały mogą być niedokładne lub nieodpowiednie. Sprawdź je, zanim na nich polegasz. Nemory nie udziela porad medycznych, psychoterapeutycznych, prawnych ani finansowych i nie jest służbą ratunkową. Odpowiadasz za własne decyzje."
+          ]
+        },
+        {
+          "id": "subscriptions",
+          "title": "4. Subskrypcje i płatności",
+          "paragraphs": [
+            "Dostępne plany, ceny, okresy rozliczeniowe, funkcje i limity są przedstawiane przed zakupem. Subskrypcje AI, jednorazowe zakupy kredytów i subskrypcje bez reklam to odrębne produkty. Bezpłatne funkcje dziennika pozostają dostępne bez płatnego planu AI.",
+            "Subskrypcje odnawiają się automatycznie, dopóki nie anulujesz ich w sklepie, w którym dokonano zakupu. Anulowanie zwykle zatrzymuje kolejne odnowienie, a dostęp trwa do końca opłaconego okresu, z uwzględnieniem zwrotów i zasad sklepu. Odinstalowanie aplikacji lub usunięcie konta samo w sobie nie anuluje subskrypcji w sklepie.",
+            "Płatności, weryfikacja i przywracanie kwalifikujących się zakupów oraz zwroty podlegają procedurom odpowiedniego sklepu i właściwemu prawu. Jeśli nie otrzymasz dostępu lub kredytów, skontaktuj się z pomocą. Warunki nie wyłączają ustawowych praw do zwrotu, odstąpienia od umowy ani innych praw konsumenta. Zmiany cen i subskrypcji podlegają wymaganiom sklepu dotyczącym powiadomienia i zgody."
+          ]
+        },
+        {
+          "id": "credits",
+          "title": "5. Kredyty AI",
+          "paragraphs": [
+            "Zakupione kredyty są przypisane do konta Nemory i oddzielone od limitu subskrypcji. Można ich używać do obsługiwanych funkcji AI bez subskrypcji AI, pod warunkiem posiadania wystarczającego salda i spełnienia wymagań dostępu do funkcji. Zużycie zależy od funkcji, modelu i ilości treści; oszacowanie przed operacją może różnić się od rzeczywistego zużycia.",
+            "Niewykorzystane zakupione kredyty nie wygasają wyłącznie z powodu zakończenia subskrypcji lub nieaktywności konta. Limity subskrypcji podlegają zasadom odnawiania i resetowania danego planu. Kredyty nie są pieniędzmi, nie można przekazywać ich innym użytkownikom ani wymieniać na gotówkę i same w sobie nie usuwają reklam. Zwrot lub cofnięcie płatności może skutkować cofnięciem odpowiedniego przyznania kredytów, z poszanowaniem Twoich praw.",
+            "Każde dodatnie saldo niewykorzystanych zakupionych kredytów chroni konto przed automatycznym usunięciem za nieaktywność. Jeśli dobrowolnie usuniesz konto, jego saldo kredytów zostanie usunięte wraz z nim; rozwiąż sprawy zakupu lub zwrotu przed potwierdzeniem usunięcia. Nie oznacza to zrzeczenia się ustawowych praw."
+          ]
+        },
+        {
+          "id": "advertising",
+          "title": "6. Reklamy i dostęp bez reklam",
+          "paragraphs": [
+            "Aplikacja na Androida może wyświetlać reklamy, jeśli Twój dostęp je przewiduje. Aktywna subskrypcja AdFree usuwa te reklamy, ale nie obejmuje limitu kredytów AI. Inne plany mogą zawierać dostęp bez reklam zgodnie ze swoim opisem. Dostęp ten obowiązuje przez potwierdzony okres uprawnienia.",
+            "Zgoda na przetwarzanie danych reklamowych i dostęp bez reklam to osobne wybory. Odmowa reklam spersonalizowanych nie jest zakupem AdFree. Prywatne treści dziennika nie służą reklamie; szczegóły i ustawienia prywatności opisuje Polityka prywatności."
+          ]
+        },
+        {
+          "id": "content",
+          "title": "7. Twoje treści i lokalne przechowywanie",
+          "paragraphs": [
+            "Zachowujesz prawa do udostępnianych treści. Udzielasz nam i naszym dostawcom ograniczonego, niewyłącznego zezwolenia na ich przetwarzanie w zakresie niezbędnym do używanych funkcji, obsługi i moderacji społeczności oraz ograniczonej kontroli jakości opisanej w Polityce prywatności. Nie jest to przeniesienie własności.",
+            "Baza prywatnego dziennika znajduje się lokalnie na urządzeniu. Twórz kopie zapasowe, jeśli chcesz zachować dane. Konto na serwerze nie jest pełną kopią dziennika w chmurze. Nie możemy odzyskać utraconego hasła kopii ani zagwarantować odzyskania lokalnych plików, w tym wygenerowanych obrazów po usunięciu ich tymczasowej kopii serwerowej.",
+            "Przesyłaj i publikuj tylko treści, do których używania masz prawo. Prawa do materiałów wygenerowanych przez AI zależą od właściwego prawa i praw osób trzecich; nie gwarantujemy ich unikalności ani ochrony prawnoautorskiej."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "8. Zasady społeczności i moderacja",
+          "paragraphs": [
+            "Tematy, komentarze, odpowiedzi, reakcje i publiczne informacje profilowe w społeczności są udostępniane innym użytkownikom. Prywatny dziennik nie jest automatycznie publikowany. Unikaj ujawniania poufnych informacji o sobie i innych.",
+            "Do moderowania publicznych treści i rozpatrywania zgłoszeń używamy narzędzi automatycznych, w tym AI, oraz oceny upoważnionych osób. Zależnie od naruszenia możemy usunąć treść, ograniczyć udział w społeczności lub dostęp do konta. Możesz zgłaszać treści w aplikacji i kontaktować się z pomocą, aby zakwestionować decyzję moderacji. Ograniczenia nie wyłączają Twoich ustawowych praw."
+          ],
+          "items": [
+            "Nie publikuj treści nielegalnych, materiałów przedstawiających wykorzystywanie seksualne, gróźb, nękania, mowy nienawiści ani nawoływania do przemocy.",
+            "Nie zachęcaj do samookaleczania, nie oszukuj, nie spamuj i nie publikuj szkodliwych treści ani niezamówionych reklam.",
+            "Szanuj prywatność i własność intelektualną. Nie ujawniaj cudzych poufnych danych i nie próbuj identyfikować ani śledzić osób bez podstawy prawnej."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "9. Usunięcie konta i nieaktywność",
+          "paragraphs": [
+            "Możesz zażądać usunięcia w Ustawienia → Profil → Usuń konto lub na stronie usuwania konta dostępnej poniżej. Wykonaj kroki weryfikacji, aby potwierdzić żądanie. Lokalne pliki i kopie pod Twoją kontrolą trzeba usunąć oddzielnie; usunięcie konta nie może zdalnie skasować kopii na innych urządzeniach lub dyskach w chmurze.",
+            "Możemy usunąć konto po 180 dniach nieaktywności, jeśli nie ma aktywnej płatnej subskrypcji ani niewykorzystanych zakupionych kredytów. Po 150 dniach wysyłamy ostrzeżenie na dostępny adres e-mail konta. Aktywna płatna subskrypcja lub dowolne dodatnie saldo zakupionych kredytów chroni przed takim automatycznym usunięciem.",
+            "Wpisy społeczności mogą pozostać po usunięciu powiązania z kontem. Sam tekst nadal może Cię identyfikować: usuń go przed usunięciem konta lub skontaktuj się z pomocą. Ograniczone zapisy mogą pozostać z powodu obowiązków prawnych, sporów i bezpieczeństwa, zgodnie z Polityką prywatności."
+          ]
+        },
+        {
+          "id": "service-rights",
+          "title": "10. Prawa do Usługi i dostępność",
+          "paragraphs": [
+            "Oprogramowanie, marka i projekt Nemory należą do nas lub naszych licencjodawców. Otrzymujesz zezwolenie na korzystanie zgodnie z Warunkami, nie prawo własności do Usługi.",
+            "Dążymy do zapewnienia dostępności, lecz nie gwarantujemy nieprzerwanej i bezbłędnej pracy ani dokładności AI. Możemy zmieniać funkcje lub zawieszać dostęp z powodu poważnych naruszeń, bezpieczeństwa lub wymogów prawnych. Wpływ tych działań na płatny dostęp nadal podlega prawom konsumenta i obowiązkom zwrotu."
+          ]
+        },
+        {
+          "id": "liability",
+          "title": "11. Odpowiedzialność i prawa konsumenta",
+          "paragraphs": [
+            "W zakresie dozwolonym prawem nie odpowiadamy za szkody pośrednie ani utracone zyski wynikające z korzystania z Usługi. Łączna odpowiedzialność jest ograniczona do kwoty zapłaconej za Usługę w poprzednich 12 miesiącach, chyba że prawo zabrania takiego ograniczenia.",
+            "Wyłączenia te nie dotyczą oszustwa, umyślnego działania, rażącego niedbalstwa, śmierci lub uszczerbku na zdrowiu, gdy odpowiedzialności nie można wyłączyć, ani innych obowiązkowych przypadków odpowiedzialności. Warunki nie ograniczają bezwzględnie obowiązującej ochrony konsumenta, w tym ochrony w kraju zamieszkania w EOG lub Wielkiej Brytanii."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "12. Zmiany i pytania",
+          "paragraphs": [
+            "Możemy aktualizować Warunki wraz ze zmianami Usługi lub prawa. Publikujemy nową treść z datą aktualizacji i informujemy o istotnych zmianach, gdy jest to wymagane. Zmiany płatnych usług podlegają właściwym wymogom powiadomienia, zgody i prawom do rezygnacji. Pytania, skargi i sprawy zakupów kieruj na podane wyżej dane kontaktowe."
+          ]
+        }
+      ]
     }
   },
   "DeleteAccountPage": {
@@ -204,5 +437,22 @@
     "faq": "FAQ",
     "privacyPolicy": "Polityka prywatności",
     "termOfUse": "Warunki korzystania"
+  },
+  "Legal": {
+    "updated": "Ostatnia aktualizacja:",
+    "date": "5 listopada 2026 r.",
+    "contactTitle": "Usługodawca i dane kontaktowe",
+    "contactIntro": "Usługi Nemory świadczy wskazany poniżej przedsiębiorca, który jest również administratorem danych osobowych opisanych w Polityce prywatności.",
+    "contact": {
+      "name": "Imię i nazwisko / nazwa prawna",
+      "address": "Adres pocztowy",
+      "email": "Kontaktowy adres e-mail",
+      "phone": "Telefon kontaktowy"
+    },
+    "support": "Aktualny kontakt do pomocy:",
+    "related": "Powiązane informacje",
+    "terms": "Warunki korzystania",
+    "privacy": "Polityka prywatności",
+    "deletion": "Usuń konto"
   }
 }

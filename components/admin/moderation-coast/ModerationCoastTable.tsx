@@ -15,16 +15,16 @@ type Props = {
 }
 export default function ModerationCoastTable({ moderationCoast }: Props) {
   return (
-    <Table className="w-full table-fixed">
+    <Table className="w-full min-w-[800px] table-fixed">
       <TableHeader>
         <TableRow>
-          <TableHead>Month</TableHead>
-          <TableHead>Input T</TableHead>
-          <TableHead>Output T</TableHead>
-          <TableHead>Total T</TableHead>
-          <TableHead>LLM calls</TableHead>
-          <TableHead>Api calls</TableHead>
-          <TableHead>Cost</TableHead>
+          <TableHead>Місяць</TableHead>
+          <TableHead>Вхідні токени</TableHead>
+          <TableHead>Вихідні токени</TableHead>
+          <TableHead>Усього токенів</TableHead>
+          <TableHead>Виклики LLM</TableHead>
+          <TableHead>Виклики API</TableHead>
+          <TableHead>Оцінка, $</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -39,7 +39,16 @@ export default function ModerationCoastTable({ moderationCoast }: Props) {
                   <TableCell>{raw.totalTokens}</TableCell>
                   <TableCell>{raw.llmReviewCalls}</TableCell>
                   <TableCell>{raw.moderationApiCalls}</TableCell>
-                  <TableCell>{Number(raw.estimatedCostUsd)}</TableCell>
+                  <TableCell>
+                    {raw.estimatedCostUsd != null &&
+                    String(raw.estimatedCostUsd).trim() !== '' &&
+                    Number.isFinite(Number(raw.estimatedCostUsd))
+                      ? Number(raw.estimatedCostUsd).toLocaleString('uk-UA', {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 6,
+                        })
+                      : 'Немає даних'}
+                  </TableCell>
                 </TableRow>
               </React.Fragment>
             )

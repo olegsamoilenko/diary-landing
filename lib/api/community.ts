@@ -43,8 +43,6 @@ export const getAllTopics = async (page: number, limit: number) => {
 
     const data = await res.json()
 
-    console.log('getAllTopics data', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -65,8 +63,6 @@ export const getSystemUsers = async () => {
     }
 
     const data = await res.json()
-
-    console.log('getSystemUsers data', data)
 
     return data
   } catch (error) {
@@ -101,7 +97,6 @@ export const creteSystemUsers = async (body: {
 
     return body
   } catch (error) {
-    console.log('error', error)
     const msg = error instanceof Error ? error.message : String(error)
     console.error('fetch creteSystemUsers failed:', msg)
     throw error
@@ -121,8 +116,6 @@ export const getCommunityActivity = async (days: number) => {
 
     const data = await res.json()
 
-    console.log('getCommunityActivity data', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -138,7 +131,7 @@ export const getCommentLocationInTopic = async (
 ) => {
   try {
     const res = await fetch(
-      `/api/admin/forum/topics/${topicId}/comments/${commentId}/location`,
+      `/api/admin/forum/topics/${topicId}/comments/${commentId}/location?limit=${limit ?? 20}`,
       {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -150,8 +143,6 @@ export const getCommentLocationInTopic = async (
     }
 
     const data = await res.json()
-
-    console.log('location', data)
 
     return data
   } catch (error) {
@@ -177,8 +168,6 @@ export const getComments = async (
     }
 
     const data = await res.json()
-
-    console.log('comments', data)
 
     return data
   } catch (error) {
@@ -248,8 +237,6 @@ export const getUserByRole = async (role: string) => {
 
     const data = await res.json()
 
-    console.log('getUserByRole', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -284,8 +271,6 @@ export const createComment = async (
 
     const data = await res.json()
 
-    console.log('create comment', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -317,8 +302,6 @@ export const editComment = async (
 
     const data = await res.json()
 
-    console.log('create comment', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -346,8 +329,6 @@ export const getModerationUserLogs = async (
 
     const data = await res.json()
 
-    console.log('getModerationUserLogs', data)
-
     return data
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
@@ -371,8 +352,6 @@ export const getUserRestriction = async (userId: number) => {
     }
 
     const data = await res.json()
-
-    console.log('getUserRestriction', data)
 
     return data
   } catch (error) {
@@ -400,8 +379,6 @@ export const getModerationTarget = async (
     }
 
     const data = await res.json()
-
-    console.log('getModerationTarget', data)
 
     return data
   } catch (error) {

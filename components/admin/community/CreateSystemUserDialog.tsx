@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { v4 as uuid } from 'uuid'
 import { creteSystemUsers } from '@/lib/api/community'
+import { getErrorMessage } from '@/lib/errors'
 
 export default function CreateSystemUserDialog({
   adminId,
@@ -39,23 +40,23 @@ export default function CreateSystemUserDialog({
 
       setOpen(false)
       onSuccessCreateUser?.()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error creating user:', error)
-      setError(error.message)
+      setError(getErrorMessage(error))
     }
   }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" asChild className="cursor-pointer">
-          <span>Create system user</span>
+        <Button variant="outline" size="sm" className="cursor-pointer">
+          <span>Створити автора</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <div className="grid max-h-[85vh] grid-rows-[auto_minmax(0,1fr)_auto]">
           <DialogHeader className="mb-4">
-            <DialogTitle>Create system user</DialogTitle>
+            <DialogTitle>Створити автора</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <div className="overflow-y-auto pr-2">

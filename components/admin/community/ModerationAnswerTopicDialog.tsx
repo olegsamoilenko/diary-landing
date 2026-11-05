@@ -74,8 +74,8 @@ export default function ModerationAnswerTopicDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" asChild className="cursor-pointer">
-          <span>Add comment</span>
+        <Button size="sm" className="cursor-pointer">
+          <span>Відповісти</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

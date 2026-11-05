@@ -65,6 +65,7 @@ export default function ReportsTable({
     null,
   )
   const toggle = (id: string) => {
+    setUserRestriction(null)
     setExpandedReportId((prev) => (prev === id ? null : id))
   }
 
@@ -85,18 +86,18 @@ export default function ReportsTable({
     onSuccessUpdateStatus()
   }
   return (
-    <Table className="w-full table-fixed">
+    <Table className="w-full min-w-[850px] table-fixed">
       <TableHeader>
         <TableRow>
           <TableHead className="w-22">ID</TableHead>
-          <TableHead className="w-16">User Id</TableHead>
-          <TableHead className="w-18">Nickname</TableHead>
-          <TableHead className="w-26">Type</TableHead>
-          <TableHead>Reason</TableHead>
-          <TableHead className="w-36">Details</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Reviewed By</TableHead>
-          <TableHead>Reviewed At</TableHead>
+          <TableHead className="w-16">Користувач</TableHead>
+          <TableHead className="w-18">Нікнейм</TableHead>
+          <TableHead className="w-26">Тип</TableHead>
+          <TableHead>Причина</TableHead>
+          <TableHead className="w-36">Подробиці</TableHead>
+          <TableHead>Статус</TableHead>
+          <TableHead>Модератор</TableHead>
+          <TableHead>Перевірено</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -109,12 +110,29 @@ export default function ReportsTable({
                   onClick={() => toggle(raw.id)}
                   className="hover:bg-muted/50 cursor-pointer"
                 >
-                  <TableCell>{raw.id.slice(0, 8)}</TableCell>
+                  <TableCell>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        toggle(raw.id)
+                      }}
+                      className="text-left font-medium hover:underline"
+                    >
+                      <span aria-hidden="true">{isOpen ? '− ' : '+ '}</span>
+                      {raw.id.slice(0, 8)}
+                    </button>
+                  </TableCell>
                   <TableCell>{raw.reporterId}</TableCell>
-                  <TableCell>{raw.reporterProfile.username}</TableCell>
+                  <TableCell>{raw.reporterProfile?.username ?? '—'}</TableCell>
                   <TableCell>{raw.targetType}</TableCell>
-                  <TableCell>{raw.reason}</TableCell>
-                  <TableCell>{raw.details}</TableCell>
+                  <TableCell className="whitespace-normal">
+                    {raw.reason}
+                  </TableCell>
+                  <TableCell className="whitespace-normal">
+                    {raw.details}
+                  </TableCell>
                   <TableCell>{raw.status}</TableCell>
                   <TableCell>{raw.reviewedBy}</TableCell>
                   <TableCell>
@@ -126,7 +144,7 @@ export default function ReportsTable({
                 {isOpen && (
                   <TableRow>
                     <TableCell colSpan={9} className="p-0">
-                      <div className="bg-muted/20 grid grid-cols-[460px_1fr] gap-4 border-t p-4">
+                      <div className="bg-muted/20 grid grid-cols-1 gap-4 border-t p-4 xl:grid-cols-[minmax(260px,1fr)_minmax(0,2fr)]">
                         <div>
                           <div className="mb-2 text-sm font-medium">
                             Report details

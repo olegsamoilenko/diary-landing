@@ -24,8 +24,8 @@ export default function ModerationRestoreCommentDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm" asChild className="cursor-pointer">
-          <span>Restore</span>
+        <Button variant="default" size="sm" className="cursor-pointer">
+          <span>Відновити</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

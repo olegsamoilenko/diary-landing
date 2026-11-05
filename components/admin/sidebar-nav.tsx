@@ -11,6 +11,9 @@ import {
   UserPlus,
   UsersRound,
   Wallet,
+  MessagesSquare,
+  Flag,
+  ShieldCheck,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -52,6 +55,9 @@ export type AdminNavItem = {
     | 'activity'
     | 'observations'
     | 'finance'
+    | 'community'
+    | 'reports'
+    | 'moderation'
   section?: string
 }
 
@@ -62,6 +68,9 @@ const navIcons = {
   activity: Activity,
   observations: Eye,
   finance: Wallet,
+  community: MessagesSquare,
+  reports: Flag,
+  moderation: ShieldCheck,
 }
 
 export function SidebarNav({

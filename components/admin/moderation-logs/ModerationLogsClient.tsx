@@ -1,11 +1,16 @@
 'use client'
 
+import CommunityPage, {
+  CommunityLoadState,
+} from '@/components/admin/community/CommunityPage'
+
 import {
   ForumAutoModerationLogsResp,
   ForumModerationTargetType,
   TopicsResponse,
 } from '@/types'
-import React, { use, useEffect, useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import React, { use, useEffect, useState, useRef, useCallback } from 'react'
 import ModerationCoastTable from '@/components/admin/moderation-coast/ModerationCoastTable'
 import { getModerationLogs } from '@/lib/api/moderation'
 import { Label } from '@/components/ui/label'
@@ -25,15 +30,26 @@ import ModerationLogsTable from '@/components/admin/moderation-logs/ModerationLo
 type SP = { page?: string }
 
 export default function ModerationLogsClient({
+  variant = 'classic',
   spPromise,
   adminId,
 }: {
+  variant?: 'classic' | 'v2'
   spPromise: Promise<SP>
   adminId: number
 }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const [appliedFilters, setAppliedFilters] = useState<{
+    targetType?: 'topic' | 'comment'
+    userId?: number
+  }>({})
   const sp = use(spPromise)
   const page = Number(sp.page ?? '1') || 1
   const limit = 20
+  const requestId = useRef(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [autoModerationLogsResp, setAutoModerationLogsResp] =
     useState<ForumAutoModerationLogsResp | null>(null)
   const [targetType, setTargetType] = useState<'topic' | 'comment' | 'all'>(
@@ -41,34 +57,46 @@ export default function ModerationLogsClient({
   )
   const [userId, setUserId] = useState<number | undefined>(undefined)
 
-  useEffect(() => {
-    loadModerationLogs()
-  }, [page])
-
-  const loadModerationLogs = async () => {
+  const loadModerationLogs = useCallback(async () => {
+    const request = ++requestId.current
+    setLoading(true)
+    setError(null)
     const res = await getModerationLogs({
       page,
       limit,
-      targetType: targetType === 'all' ? undefined : targetType,
-      userId: userId === undefined || userId === 0 ? undefined : userId,
+      ...appliedFilters,
     })
 
-    console.log('moderation logs resp', res)
+    if (request !== requestId.current) return
+    if (!res) {
+      setError('Не вдалося завантажити дані. Спробуйте ще раз.')
+    } else {
+      setAutoModerationLogsResp(res)
+    }
+    setLoading(false)
+  }, [page, appliedFilters])
 
-    setAutoModerationLogsResp(res)
-  }
+  useEffect(() => {
+    void loadModerationLogs()
+  }, [loadModerationLogs])
 
   const fetchLogs = async () => {
     await loadModerationLogs()
   }
 
   return (
-    <div>
-      <h1 className="mb-4 text-xl font-semibold">Moderation Logs</h1>
-      <div className="mb-10 flex items-end gap-10">
+    <CommunityPage
+      variant={variant}
+      title="Журнал модерації"
+      description="Рішення автоматичної модерації, причини та контекст перевірки."
+    >
+      {variant === 'classic' && (
+        <h1 className="mb-4 text-xl font-semibold">Moderation Logs</h1>
+      )}
+      <div className="community-toolbar mb-6 flex flex-wrap items-end gap-4">
         <div className="items-end">
-          <Label htmlFor="uuid" className="mb-2">
-            Target Type
+          <Label htmlFor="moderation-type" className="mb-2">
+            Тип контенту
           </Label>
           <Select
             value={targetType}
@@ -76,7 +104,7 @@ export default function ModerationLogsClient({
               setTargetType(t as 'topic' | 'comment' | 'all')
             }}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger id="moderation-type" className="w-[180px]">
               <SelectValue placeholder="Type" />
             </SelectTrigger>
             <SelectContent>
@@ -89,33 +117,47 @@ export default function ModerationLogsClient({
           </Select>
         </div>
         <div>
-          <Label htmlFor="email" className="mb-2">
-            User ID
+          <Label htmlFor="userId" className="mb-2">
+            ID користувача
           </Label>
           <Input
             id="userId"
             type="number"
-            value={userId as number}
+            value={userId ?? ''}
             onChange={(e) => setUserId(Number(e.target.value))}
             placeholder="ID"
           />
         </div>
         <Button
+          disabled={loading}
           onClick={async () => {
-            await fetchLogs()
+            if (page !== 1) router.replace(pathname + '?page=1')
+            setAppliedFilters({
+              targetType: targetType === 'all' ? undefined : targetType,
+              userId: userId || undefined,
+            })
           }}
         >
-          Load
+          Показати
         </Button>
       </div>
-      <ModerationLogsTable
-        moderationLogs={autoModerationLogsResp?.logs ?? []}
-        adminId={adminId}
+      <CommunityLoadState
+        loading={loading}
+        error={error}
+        empty={!autoModerationLogsResp?.logs.length}
+        onRetry={loadModerationLogs}
       />
+      {!loading && !error && (
+        <ModerationLogsTable
+          key={page}
+          moderationLogs={autoModerationLogsResp?.logs ?? []}
+          adminId={adminId}
+        />
+      )}
       <Pagination
         page={autoModerationLogsResp?.page ?? 0}
         pageCount={autoModerationLogsResp?.pageCount ?? 0}
       />
-    </div>
+    </CommunityPage>
   )
 }

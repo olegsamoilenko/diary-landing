@@ -106,8 +106,17 @@ export default function Pagination({
         </>
       ) : (
         <>
-          <Button variant="outline" size="sm" asChild disabled={prevDisabled}>
-            <Link href={makeHref(page - 1)}>Prev</Link>
+          <Button
+            variant="outline"
+            size="sm"
+            asChild={!prevDisabled}
+            disabled={prevDisabled}
+          >
+            {prevDisabled ? (
+              'Prev'
+            ) : (
+              <Link href={makeHref(page - 1)}>Prev</Link>
+            )}
           </Button>
 
           {start > 1 && (
@@ -144,8 +153,17 @@ export default function Pagination({
             </>
           )}
 
-          <Button variant="outline" size="sm" asChild disabled={nextDisabled}>
-            <Link href={makeHref(page + 1)}>Next</Link>
+          <Button
+            variant="outline"
+            size="sm"
+            asChild={!nextDisabled}
+            disabled={nextDisabled}
+          >
+            {nextDisabled ? (
+              'Next'
+            ) : (
+              <Link href={makeHref(page + 1)}>Next</Link>
+            )}
           </Button>
         </>
       )}

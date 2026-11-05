@@ -18,11 +18,11 @@ export default function UserLogsTable({ moderationLogs }: Props) {
     <Table className="w-full table-fixed">
       <TableHeader>
         <TableRow>
-          <TableHead>User ID</TableHead>
-          <TableHead>Action</TableHead>
-          <TableHead>Reason</TableHead>
-          <TableHead>Note</TableHead>
-          <TableHead>CreatedAt</TableHead>
+          <TableHead>Користувач</TableHead>
+          <TableHead>Дія</TableHead>
+          <TableHead>Причина</TableHead>
+          <TableHead>Примітка</TableHead>
+          <TableHead>Дата</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

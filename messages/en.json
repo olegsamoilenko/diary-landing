@@ -7,12 +7,245 @@
     "Metadata": {
       "title": "Privacy Policy | Nemory",
       "description": "Read Nemory's privacy policy and learn how journal data, account data, and app usage data are handled."
+    },
+    "Document": {
+      "title": "Nemory — Privacy Policy",
+      "intro": "This Policy explains how Nemory processes information when you use the app, website, AI features, purchases and community. Private journal content, public community content and account records have different storage purposes and retention periods.",
+      "sections": [
+        {
+          "id": "local-data",
+          "title": "1. Your device and backups",
+          "paragraphs": [
+            "Your private entries, check-ins, metrics, plans, AI conversations and associated local data are kept on your device. The journal database is encrypted and its key is protected using operating-system secure storage. Media files are stored in the app’s local storage. We do not keep a complete server-side copy of your private journal.",
+            "You may create a password-protected encrypted backup and choose where to store it. We do not know your backup password and cannot restore the backup for you. Copies exported to your devices, cloud drives or other destinations remain under your control and the relevant provider’s policies."
+          ]
+        },
+        {
+          "id": "account-data",
+          "title": "2. Account and technical information",
+          "paragraphs": [
+            "We process account identifiers, name and email where provided, authentication information, settings, device and app information, and service activity needed to operate your account. If you use an external sign-in method, we receive the information required for that sign-in.",
+            "Technical records may include timestamps, IP address, errors, app and operating-system versions, feature-use events and diagnostic information. They support operation, security, troubleshooting and understanding feature use. They are distinct from the selectively retained AI content described below."
+          ]
+        },
+        {
+          "id": "ai-processing",
+          "title": "3. AI processing and selective retention",
+          "paragraphs": [
+            "When you use AI features, relevant text, chosen attachments and context are sent from your device through our backend to AI service providers. Depending on your request, context can include previous entries and conversations, locally stored memory, metrics or planning information. Processing can include analysis, conversation, media interpretation and image generation.",
+            "To keep Nemory working reliably and improve the quality of AI analysis, we selectively store AI conversations without linking them to your account. They are automatically deleted after 7 days.",
+            "A limited selection of requests and responses may be reviewed by authorized personnel to diagnose errors and assess analysis quality. These quality-review records have no attached user or account identifier, name, email, device identifier, advertising identifier or IP address. Content you write can itself contain identifying information, so we do not describe these records as fully anonymous. Access is restricted.",
+            "Temporary media needed to fulfil an operation or recover its result may remain linked to your account during processing. Technical usage and transaction records can remain separately for billing and to prevent a repeated paid operation; they do not require keeping the image or full AI response.",
+            "AI-processing content is not used for advertising or sold. Improving analysis here means checking response quality and correcting how the app works; it is not permission to use your private content for unrelated purposes. External AI services process the content needed for your request under their applicable terms and data-protection arrangements; we do not promise that all providers have identical internal retention rules."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "4. Community and moderation",
+          "paragraphs": [
+            "We store community topics, comments, replies, reactions, public profile information and community preferences on our servers. Published content and public profile details are visible to other users. Bookmarks, read states, reports and internal moderation notes are not automatically public.",
+            "Reports may include the content reported, the reporting account, timestamps and moderation decisions. Automated systems, including AI services, and authorized moderators may examine community content to detect abuse, respond to reports and enforce the Terms. Do not publish confidential or sensitive information you do not want other people to see."
+          ]
+        },
+        {
+          "id": "payments",
+          "title": "5. Subscriptions and credits",
+          "paragraphs": [
+            "We keep your plan and entitlement status, purchased-credit balance and movements, usage counts, store transaction identifiers and verification data. This allows us to grant access, restore eligible purchases, prevent duplicate charges, and handle refunds, disputes and accounting obligations. Payment card details are handled by the store or payment provider; we do not receive your full card details.",
+            "AdFree removes ads while that entitlement is active; it does not stop processing needed for accounts, purchases, security or other features you use."
+          ]
+        },
+        {
+          "id": "advertising-and-consent",
+          "title": "6. Advertising and your choices",
+          "paragraphs": [
+            "The Android app uses Google AdMob to show native ads and full-screen ads between actions where your access includes advertising. Google and its partners may process IP addresses and approximate location, device identifiers such as advertising ID and app set ID, app and ad interactions, and diagnostic information for ad delivery, measurement and fraud prevention.",
+            "Nemory does not send private entries, check-in answers, mood records, goals, tasks, habits, AI conversations or attachments to advertising partners. We do not use this content or interests inferred from it for advertising. Our ad requests do not include your Nemory account ID, email, purchase tokens or precise GPS location.",
+            "Google’s User Messaging Platform manages advertising privacy choices where required. Ads may be personalized, non-personalized, limited or unavailable depending on your choices and region. Non-personalized ads can still process technical data. Where the privacy-options control is required, you can reopen it in Settings and change or withdraw consent. Android settings also let you reset or delete your advertising ID.",
+            "An active ad-free entitlement stops future ad requests while verified. It does not erase information already processed by advertising providers. Ad-frequency counters and ad-free reminder history are stored locally and do not contain journal content. Google’s and its partners’ retention rules are separate from Nemory’s 7-day AI-content retention. The consent screen and an ad’s information icon, where available, provide further partner information."
+          ],
+          "links": [
+            {
+              "label": "Google Privacy Policy",
+              "href": "https://policies.google.com/privacy"
+            },
+            {
+              "label": "How Google uses information from partner apps",
+              "href": "https://policies.google.com/technologies/partner-sites"
+            }
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "7. Purposes and legal grounds",
+          "paragraphs": [
+            "Where applicable data-protection law requires a legal basis, we rely on performance of our contract for the features you request and purchase administration; legitimate interests for proportionate security, fraud prevention, diagnostics and service-quality review; legal obligations for mandatory records; and consent where required, including relevant advertising choices. You may object to processing based on legitimate interests and withdraw consent without affecting earlier lawful processing.",
+            "Your journal may contain sensitive information, including health-related details. You control what you enter and choose to submit to online features. Where the law requires explicit consent or another specific condition for processing such information, that requirement applies. We do not sell personal data or use private journal content to target ads."
+          ]
+        },
+        {
+          "id": "sharing",
+          "title": "8. Recipients and international processing",
+          "paragraphs": [
+            "We use hosting, infrastructure, AI, authentication, email, notification, analytics, diagnostics and operational communication providers as needed to run the Service. App stores and advertising services process data for their respective functions. Authorized personnel may access information necessary for support, service administration and moderation. We may disclose information when legally required or necessary to establish, exercise or defend legal claims.",
+            "Providers may process information outside your country. Where EEA or UK data-transfer rules apply, transfers require an applicable lawful mechanism, such as an adequacy decision or contractual safeguards. Contact us for information about the recipients and safeguards relevant to your data. Public community content is also accessible to its audience."
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "9. Retention",
+          "paragraphs": [],
+          "items": [
+            "Selectively retained AI-processing content: 7 days, solely for correct app operation and improving analysis quality, followed by automatic deletion.",
+            "Local journal content and your backups: retained until you remove them or replace the local data; server deletion does not remotely erase these copies.",
+            "Account, entitlement and credit records: while your account exists and, where necessary, for legal, accounting, security or dispute-handling purposes afterwards. Records of completed paid operations may be retained without their AI content to prevent duplicate charging.",
+            "Technical logs are normally retained for up to 30 days; server database backups may be retained for up to 30 days. A deleted record may remain in a restricted backup until that backup expires, rather than in active use.",
+            "Community content remains until removed by you or through moderation. Reports and moderation records are retained as needed to investigate abuse, resolve disputes and meet legal obligations. Payment and legally required records may need longer retention, with identifying information minimized where possible."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "10. Deletion and inactive accounts",
+          "paragraphs": [
+            "Request account deletion in Settings → Profile → Delete account or on the account-deletion page linked below. After verification, we remove the account and associated data, subject to the limited retention grounds above. Deleting an account does not cancel a store subscription; manage cancellation through the store.",
+            "Community contributions may remain with the author’s account link removed. That does not guarantee that the text is anonymous. Remove your contributions before deleting the account or contact us to request removal of personal information. Copies made by other users are outside our direct control.",
+            "Accounts without an active paid subscription and without unused purchased credits may be automatically deleted after 180 days of inactivity, with a warning after 150 days to the available account email. Any positive purchased-credit balance or active paid subscription prevents automatic deletion for inactivity.",
+            "Account deletion cannot remotely remove journal files or backups you control on other devices or cloud services. Remove those copies separately if you want to erase them."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "11. Your rights",
+          "paragraphs": [
+            "Depending on applicable law, you may request access, correction, deletion, restriction or portability of your personal data, object to certain processing, and withdraw consent. Contact us using the details above; we may need to verify that the request concerns your data. You may also complain to your competent data-protection authority. These rights are subject to applicable legal conditions and do not require you to give up other consumer rights."
+          ]
+        },
+        {
+          "id": "security-and-updates",
+          "title": "12. Security, children and updates",
+          "paragraphs": [
+            "We use encrypted connections, local database encryption, secure key storage and server access controls. No storage or transmission system is completely secure. Protect your device, account and backup password.",
+            "Nemory is not intended for children under 13, or below a higher minimum age required by local law. Contact us if you believe a child has provided personal data in violation of these rules.",
+            "We update this Policy when our practices or legal requirements change, revise the date above and provide notice of material changes where required. Questions about privacy, deletion or complaints can be sent to the contacts above."
+          ]
+        }
+      ]
     }
   },
   "TermsPage": {
     "Metadata": {
       "title": "Terms of Service | Nemory",
       "description": "Read the terms of service for Nemory and learn the rules for using the app and website."
+    },
+    "Document": {
+      "title": "Nemory — Terms of Use",
+      "intro": "These Terms govern your use of the Nemory app and website (the Service). By using the Service, you agree to these Terms. The Privacy Policy explains how personal data is processed.",
+      "sections": [
+        {
+          "id": "service",
+          "title": "1. The Service and eligibility",
+          "paragraphs": [
+            "Nemory combines a private journal, check-ins, mood and other metrics, planning, goals, tasks, habits, progress tracking, AI-assisted reflection and a community. Features may depend on the app version, platform and access you have.",
+            "You must be at least 13 and meet any higher minimum age required by the law applicable to you. If you cannot enter into a contract independently, a parent or legal guardian must agree to your use and purchases where required."
+          ]
+        },
+        {
+          "id": "account",
+          "title": "2. Your account",
+          "paragraphs": [
+            "Keep your account information accurate and protect your login credentials and device. Contact support if you suspect unauthorized access. Do not access someone else’s account, bypass security or payment controls, or interfere with the Service."
+          ]
+        },
+        {
+          "id": "ai",
+          "title": "3. AI features",
+          "paragraphs": [
+            "When you use AI, relevant content and context from your device are sent through our servers to AI service providers to fulfil your request. This may include text, selected attachments, previous conversations and other relevant journal context. AI functionality is described generally here and is not tied to a particular model or provider.",
+            "To keep Nemory working reliably and improve the quality of AI analysis, we selectively store AI conversations without linking them to your account. They are automatically deleted after 7 days.",
+            "AI responses and generated media may be inaccurate or unsuitable. Review them before relying on them. Nemory does not provide medical, psychotherapeutic, legal or financial advice and is not an emergency service. You remain responsible for your decisions."
+          ]
+        },
+        {
+          "id": "subscriptions",
+          "title": "4. Subscriptions and payments",
+          "paragraphs": [
+            "Available plans, prices, billing periods, included features and usage allowances are shown before purchase. AI subscriptions, one-time credit purchases and ad-free subscriptions are different products. The journal’s free features remain available without a paid AI plan.",
+            "Subscriptions renew automatically unless cancelled through the store where you purchased them. Cancellation normally stops the next renewal; access continues for the paid period, subject to refunds and the store’s rules. Uninstalling Nemory or deleting an account does not itself cancel a store subscription.",
+            "Payments, purchase verification, eligible purchase restoration and refunds are handled under the relevant store’s procedures and applicable law. Contact support about missing access or credits. Nothing in these Terms removes statutory refund, withdrawal or other consumer rights. Price and subscription changes are subject to the store’s notice and consent requirements."
+          ]
+        },
+        {
+          "id": "credits",
+          "title": "5. AI credits",
+          "paragraphs": [
+            "Purchased credits are linked to your Nemory account and are separate from a subscription’s included allowance. They can be used for supported AI features without an AI subscription, subject to the available balance and the feature’s access requirements. Usage depends on the selected feature, model and amount of content; estimates shown before an operation may differ from actual usage.",
+            "Unused purchased credits do not expire solely because a subscription ends or the account is inactive. Subscription allowances follow the plan’s own renewal and reset rules. Credits are not money, cannot be transferred to another user or exchanged for cash, and do not by themselves remove ads. Refunds or reversed payments may result in the corresponding credit grant being reversed, subject to your legal rights.",
+            "An account with any unused purchased credits is protected from automatic deletion for inactivity. If you voluntarily delete the account, its credit balance is removed with it; resolve any purchase or refund issue before confirming deletion. This does not waive your statutory rights."
+          ]
+        },
+        {
+          "id": "advertising",
+          "title": "6. Advertising and ad-free access",
+          "paragraphs": [
+            "The Android app may display ads where your access includes advertising. An active AdFree subscription removes these ads but does not include an AI-credit allowance. Other plans may include ad-free access as specified in their description. Ad-free access lasts for the verified entitlement period.",
+            "Advertising consent and ad-free access are separate choices. Declining personalized ads does not purchase AdFree. Private journal content is not used for advertising; details and available privacy choices are in the Privacy Policy."
+          ]
+        },
+        {
+          "id": "content",
+          "title": "7. Your content and local storage",
+          "paragraphs": [
+            "You retain your rights to the content you provide. You grant us and the service providers we use a limited, non-exclusive permission to process it as necessary to deliver the features you use, operate and moderate the community, and perform the limited quality review described in the Privacy Policy. This is not a transfer of ownership.",
+            "Your private journal database is stored locally on your device. Keep backups if you need to preserve it. A server account is not a complete cloud backup of your journal. We cannot recover a lost backup password or guarantee recovery of local files, including generated images after their temporary server copy is deleted.",
+            "Only submit or publish content you have the right to use. Rights in AI-generated material depend on applicable law and any third-party rights; uniqueness or copyright protection is not guaranteed."
+          ]
+        },
+        {
+          "id": "community",
+          "title": "8. Community rules and moderation",
+          "paragraphs": [
+            "Community topics, comments, replies, reactions and public profile information are shared with other users. Your private journal is not automatically published to the community. Avoid posting confidential information about yourself or others.",
+            "We use automated tools, including AI, and authorized human review to moderate public content and investigate reports. Depending on the violation, we may remove content or restrict participation or account access. You can report content in the app and contact support to contest a moderation decision. Restrictions do not remove your applicable legal rights."
+          ],
+          "items": [
+            "Do not post unlawful content, sexual exploitation material, threats, harassment, hate speech or incitement to violence.",
+            "Do not encourage self-harm, defraud others, spam, or publish malicious content or unsolicited advertising.",
+            "Respect privacy and intellectual property rights. Do not disclose another person’s confidential data or attempt to identify or track them without a lawful basis."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "9. Account deletion and inactivity",
+          "paragraphs": [
+            "You can request deletion in Settings → Profile → Delete account or through the account-deletion page linked below. Complete the verification steps to confirm the request. Local files and backups under your control need to be removed separately; account deletion cannot remotely erase your copies on other devices or cloud drives.",
+            "We may delete an account after 180 days of inactivity if it has neither an active paid subscription nor unused purchased credits. We send a warning after 150 days to the available account email. An active paid subscription or any positive purchased-credit balance protects the account from this automatic deletion.",
+            "Community contributions may remain with the account link removed. Content itself may still identify you: delete it before account deletion or contact support about removal. Limited records may be retained for legal obligations, disputes and security as explained in the Privacy Policy."
+          ]
+        },
+        {
+          "id": "service-rights",
+          "title": "10. Service rights and availability",
+          "paragraphs": [
+            "Nemory’s software, branding and design belong to us or our licensors. You receive permission to use the Service in accordance with these Terms, not ownership of it.",
+            "We aim to keep the Service available, but cannot guarantee uninterrupted or error-free operation or the accuracy of AI outputs. We may change features or suspend access for serious violations, security reasons or legal obligations. Any effect on paid access remains subject to applicable consumer rights and refund obligations."
+          ]
+        },
+        {
+          "id": "liability",
+          "title": "11. Liability and consumer rights",
+          "paragraphs": [
+            "To the extent permitted by law, we are not liable for indirect losses or loss of profits arising from use of the Service. Our total liability is limited to the amount you paid for the Service in the previous 12 months, except where such a limit is prohibited by law.",
+            "These exclusions do not apply to fraud, intentional misconduct, gross negligence, death or personal injury where liability cannot be excluded, or any other non-excludable liability. Nothing in these Terms limits mandatory consumer protections, including those in your country of residence in the EEA or UK."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "12. Changes and questions",
+          "paragraphs": [
+            "We may update these Terms as the Service or legal requirements change. We publish the revised text with its update date and provide notice of material changes where required. Changes affecting paid services are subject to applicable notice, consent and cancellation rights. For questions, complaints or purchase issues, use the contacts above."
+          ]
+        }
+      ]
     }
   },
   "DeleteAccountPage": {
@@ -204,5 +437,22 @@
     "faq": "FAQ",
     "privacyPolicy": "Privacy Policy",
     "termOfUse": "Terms of Use"
+  },
+  "Legal": {
+    "updated": "Last updated:",
+    "date": "November 5, 2026",
+    "contactTitle": "Service provider and contact details",
+    "contactIntro": "Nemory is provided by the trader identified below, who is also responsible for personal data processing described in the Privacy Policy.",
+    "contact": {
+      "name": "Legal name / business name",
+      "address": "Postal address",
+      "email": "Contact email",
+      "phone": "Contact phone"
+    },
+    "support": "Current support contact:",
+    "related": "Related information",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "deletion": "Delete account"
   }
 }

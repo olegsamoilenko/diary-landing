@@ -68,8 +68,8 @@ export default function ModerationEditCommentDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" asChild className="cursor-pointer">
-          <span>Edit comment</span>
+        <Button size="sm" className="cursor-pointer">
+          <span>Редагувати</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

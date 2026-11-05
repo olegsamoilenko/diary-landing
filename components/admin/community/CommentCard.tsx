@@ -51,7 +51,7 @@ export default function CommentCard({
       className="mb-4 flex flex-col gap-2 rounded-2xl border p-4"
       id={`comment-${comment.id}`}
     >
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-3">
         <div>{comment.authorProfile?.username ?? 'unknown'}</div>
         <div>{comment.author?.id}</div>
         <div>{comment.author?.settings?.lang}</div>
@@ -62,7 +62,7 @@ export default function CommentCard({
       <div className="w-full min-w-0 [overflow-wrap:anywhere] whitespace-pre-wrap">
         {comment.content}
       </div>
-      <div className="mb-2 flex gap-4">
+      <div className="mb-2 flex flex-wrap gap-3">
         {comment.status === ForumContentStatus.PUBLISHED && (
           <ModerationRemoveCommentDialog
             id={comment.id}
@@ -116,7 +116,7 @@ export default function CommentCard({
             className="ml-4 flex flex-col gap-2 rounded-2xl border p-4"
             id={`comment-${reply.id}`}
           >
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3">
               <div>{reply.authorProfile?.username ?? 'unknown'}</div>
               <div>{reply.author?.id}</div>
               <div>{new Date(reply.createdAt).toLocaleString()}</div>
@@ -129,7 +129,7 @@ export default function CommentCard({
                   'border- ml-4 flex flex-col gap-2 rounded-2xl border border-gray-300 p-4'
                 }
               >
-                <div className="flex gap-4 text-gray-500">
+                <div className="flex flex-wrap gap-3 text-gray-500">
                   <div>Reply to</div>
                   <div>{reply.replyToComment.authorProfile?.username}</div>
                 </div>
@@ -141,7 +141,7 @@ export default function CommentCard({
             <div className="w-full min-w-0 [overflow-wrap:anywhere] whitespace-pre-wrap">
               {reply.content}
             </div>
-            <div className="mb-2 flex gap-4">
+            <div className="mb-2 flex flex-wrap gap-3">
               {reply.status === ForumContentStatus.PUBLISHED && (
                 <ModerationRemoveCommentDialog
                   id={reply.id}
@@ -166,6 +166,7 @@ export default function CommentCard({
                 adminId={adminId}
                 parentCommentId={comment.id}
                 replyToCommentId={reply.id}
+                onSuccessAddAnswerComment={onSuccessAddAnswerComment}
                 systemUsers={systemUsers}
               />
               {(reply.author.role === 'forum_admin' ||

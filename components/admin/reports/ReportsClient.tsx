@@ -1,11 +1,16 @@
 'use client'
 
+import CommunityPage, {
+  CommunityLoadState,
+} from '@/components/admin/community/CommunityPage'
+
 import {
   ForumAutoModerationLogsResp,
   ForumModerationTargetType,
   TopicsResponse,
 } from '@/types'
-import React, { use, useEffect, useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import React, { use, useEffect, useState, useRef, useCallback } from 'react'
 import ModerationCoastTable from '@/components/admin/moderation-coast/ModerationCoastTable'
 import { getModerationLogs } from '@/lib/api/moderation'
 import { Label } from '@/components/ui/label'
@@ -27,73 +32,107 @@ import { ReportsResp } from '@/types/reports'
 type SP = { page?: string }
 
 export default function ReportsClient({
+  variant = 'classic',
   spPromise,
   adminId,
 }: {
+  variant?: 'classic' | 'v2'
   spPromise: Promise<SP>
   adminId: number
 }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const [appliedReportId, setAppliedReportId] = useState('')
   const sp = use(spPromise)
   const page = Number(sp.page ?? '1') || 1
   const limit = 20
+  const requestId = useRef(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [reportsResp, setReportsResp] = useState<ReportsResp | null>(null)
   const [reportId, setReportId] = useState<string>('')
 
-  useEffect(() => {
-    loadReports()
-  }, [page])
-
-  const loadReports = async () => {
+  const loadReports = useCallback(async () => {
+    const request = ++requestId.current
+    setLoading(true)
+    setError(null)
     const res = await getReports({
       page,
       limit,
-      reportId: reportId ?? undefined,
+      reportId: appliedReportId || undefined,
     })
 
-    console.log('report resp', res)
+    if (request !== requestId.current) return
+    if (!res) {
+      setError('Не вдалося завантажити дані. Спробуйте ще раз.')
+    } else {
+      setReportsResp(res)
+    }
+    setLoading(false)
+  }, [page, appliedReportId])
 
-    setReportsResp(res)
-  }
+  useEffect(() => {
+    void loadReports()
+  }, [loadReports])
 
   const fetchReports = async () => {
     await loadReports()
   }
 
   return (
-    <div>
-      <h1 className="mb-4 text-xl font-semibold">Reports</h1>
-      <div className="mb-10 flex items-end gap-10">
+    <CommunityPage
+      variant={variant}
+      title="Скарги"
+      description="Скарги користувачів, їхній статус і рішення модератора."
+    >
+      {variant === 'classic' && (
+        <h1 className="mb-4 text-xl font-semibold">Reports</h1>
+      )}
+      <div className="community-toolbar mb-6 flex flex-wrap items-end gap-4">
         <div>
-          <Label htmlFor="email" className="mb-2">
-            Report ID
+          <Label htmlFor="reportId" className="mb-2">
+            ID скарги
           </Label>
           <Input
             id="reportId"
-            type="string"
+            type="text"
             value={reportId}
             onChange={(e) => setReportId(e.target.value)}
             placeholder="ID"
           />
         </div>
         <Button
+          disabled={loading}
           onClick={async () => {
-            await fetchReports()
+            if (page !== 1) router.replace(pathname + '?page=1')
+            setAppliedReportId(reportId.trim())
+            if (page === 1 && reportId.trim() === appliedReportId)
+              await fetchReports()
           }}
         >
-          Load
+          Показати
         </Button>
       </div>
-      <ReportsTable
-        reports={reportsResp?.items ?? []}
-        adminId={adminId}
-        onSuccessRemoveTopic={fetchReports}
-        onSuccessRemoveComment={fetchReports}
-        onSuccessUpdateStatus={fetchReports}
+      <CommunityLoadState
+        loading={loading}
+        error={error}
+        empty={!reportsResp?.items.length}
+        onRetry={loadReports}
       />
+      {!loading && !error && (
+        <ReportsTable
+          key={page}
+          reports={reportsResp?.items ?? []}
+          adminId={adminId}
+          onSuccessRemoveTopic={fetchReports}
+          onSuccessRemoveComment={fetchReports}
+          onSuccessUpdateStatus={fetchReports}
+        />
+      )}
       <Pagination
         page={reportsResp?.page ?? 0}
         pageCount={reportsResp?.pageCount ?? 0}
       />
-    </div>
+    </CommunityPage>
   )
 }

@@ -109,14 +109,14 @@ export default function CreateSystemTopicDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" asChild className="cursor-pointer">
-          <span>Create system topic</span>
+        <Button size="sm" className="cursor-pointer">
+          <span>Створити тему</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <div className="grid max-h-[85vh] grid-rows-[auto_minmax(0,1fr)_auto]">
           <DialogHeader className="mb-4">
-            <DialogTitle>Create system topic</DialogTitle>
+            <DialogTitle>Створити тему</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <div className="overflow-y-auto pr-2">

@@ -111,6 +111,52 @@
   }
 }
 
+/* Community uses the same live tools in V1 and V2; composition is scoped. */
+.admin-v2 .community-toolbar,
+.admin-v2 .community-lookup {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.admin-v2 .community-lookup[open] > summary {
+  margin-bottom: 1.25rem;
+}
+.admin-v2 .community-lookup .community-toolbar {
+  border: 0;
+  padding: 0;
+}
+.admin-v2 .community-content [data-slot='table-container'] {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+.admin-v2 .community-content thead {
+  background: var(--muted);
+}
+.admin-v2 .community-content th {
+  height: 3rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+.admin-v2 .community-content th,
+.admin-v2 .community-content td {
+  padding: 1rem;
+}
+.admin-v2 .community-content td {
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.admin-v2 .community-content td[colspan] {
+  padding: 1.25rem;
+}
+.admin-v2 .community-content td[colspan] > .flex {
+  flex-wrap: wrap;
+}
+.admin-v2 .community-content .community-details {
+  border-radius: 0.75rem;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

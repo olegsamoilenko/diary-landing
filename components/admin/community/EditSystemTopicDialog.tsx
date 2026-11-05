@@ -125,14 +125,14 @@ export default function EditSystemTopicDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" asChild className="cursor-pointer">
-          <span>Edit system topic</span>
+        <Button size="sm" className="cursor-pointer">
+          <span>Редагувати</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <div className="grid max-h-[85vh] grid-rows-[auto_minmax(0,1fr)_auto]">
           <DialogHeader className="mb-4">
-            <DialogTitle>Edit system topic</DialogTitle>
+            <DialogTitle>Редагувати тему</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <div className="overflow-y-auto pr-2">

@@ -1,6 +1,7 @@
 'use client'
 
-import React, { RefObject, use, useEffect, useState } from 'react'
+import React, { RefObject, useState } from 'react'
+import { CommunityLoadState } from './CommunityPage'
 import { DatePicker } from '@/components/ui/DatePicker'
 import {
   Select,
@@ -36,6 +37,9 @@ export default function Comments({
   onSuccessAddAnswerComment?: () => void
   systemUsers: User[]
 }) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [loaded, setLoaded] = useState(false)
   const [take, setTake] = useState<TakeOptions>(TakeOptions.ALL)
   const limit = 20
   const [commentsResp, setCommentsResp] = useState<{
@@ -51,12 +55,19 @@ export default function Comments({
   const [commentId, setCommentId] = useState<string>('')
 
   const loadComments = async (pageNumber: number) => {
+    setLoading(true)
+    setError(null)
     const logsRes = await getComments(topicId, {
       page: pageNumber,
       limit,
       take,
     })
-    setCommentsResp(logsRes)
+    if (logsRes) {
+      setCommentsResp(logsRes)
+      setPage(logsRes.page)
+      setLoaded(true)
+    } else setError('Не вдалося завантажити коментарі.')
+    setLoading(false)
   }
 
   const scrollToTop = () => {
@@ -67,17 +78,38 @@ export default function Comments({
   }
 
   const findComment = async () => {
-    const location = await getCommentLocationInTopic(topicId, commentId, limit)
+    if (!commentId.trim()) return
+    setLoading(true)
+    setError(null)
+    const location = await getCommentLocationInTopic(
+      topicId,
+      commentId.trim(),
+      limit,
+    )
+    if (!location?.page) {
+      setError('Коментар не знайдено, або сервіс недоступний.')
+      setLoading(false)
+      return
+    }
+    setTake(TakeOptions.ALL)
 
     const logsRes = await getComments(topicId, {
       page: location.page,
       limit: location.limit,
-      take,
+      take: TakeOptions.ALL,
     })
+    if (!logsRes) {
+      setError('Не вдалося завантажити коментарі.')
+      setLoading(false)
+      return
+    }
     setCommentsResp(logsRes)
+    setPage(logsRes.page)
+    setLoaded(true)
+    setLoading(false)
 
     requestAnimationFrame(() => {
-      document.getElementById(`comment-${commentId}`)?.scrollIntoView({
+      document.getElementById(`comment-${commentId.trim()}`)?.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       })
@@ -86,7 +118,7 @@ export default function Comments({
 
   return (
     <div>
-      <h1 className="mb-4 text-xl font-semibold">Comments</h1>
+      <h3 className="mb-4 text-lg font-semibold">Коментарі</h3>
       <ModerationAnswerTopicDialog
         id={topicId}
         adminId={adminId}
@@ -95,7 +127,7 @@ export default function Comments({
         }}
         systemUsers={systemUsers}
       />
-      <div className="my-4 flex items-end gap-4">
+      <div className="my-4 flex flex-wrap items-end gap-3">
         <div className="items-end">
           <div className="mb-2">Take</div>
           <Select
@@ -116,7 +148,9 @@ export default function Comments({
             </SelectContent>
           </Select>
         </div>
-        <Button onClick={() => loadComments(1)}>Load</Button>
+        <Button disabled={loading} onClick={() => loadComments(1)}>
+          Показати
+        </Button>
         <div>
           <Label htmlFor="uuid" className="mb-2">
             ID
@@ -130,13 +164,20 @@ export default function Comments({
           />
         </div>
         <Button
+          disabled={loading || !commentId.trim()}
           onClick={async () => {
             await findComment()
           }}
         >
-          Find
+          Знайти
         </Button>
       </div>
+      <CommunityLoadState
+        loading={loading}
+        error={error}
+        empty={loaded && !commentsResp.items.length}
+        onRetry={() => loadComments(page)}
+      />
       <div>
         {commentsResp.items &&
           commentsResp.items.length > 0 &&
@@ -157,7 +198,6 @@ export default function Comments({
           pageCount={commentsResp?.pageCount ?? 0}
           onPress={(p) => {
             scrollToTop()
-            setPage(p)
             void loadComments(p)
           }}
           isComponent={true}

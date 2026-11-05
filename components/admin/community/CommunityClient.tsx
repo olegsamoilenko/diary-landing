@@ -1,5 +1,9 @@
 'use client'
 
+import CommunityPage, {
+  CommunityLoadState,
+} from '@/components/admin/community/CommunityPage'
+
 import CommunityTable from '@/components/admin/community/CommunityTable'
 import {
   ForumModerationTargetType,
@@ -9,7 +13,7 @@ import {
   User,
 } from '@/types'
 import Pagination from '@/components/ui/pagination'
-import React, { use, useEffect, useState } from 'react'
+import React, { use, useEffect, useState, useRef, useCallback } from 'react'
 import {
   getAllTopics,
   getModerationTarget,
@@ -45,17 +49,25 @@ type ModerationTarget =
     }
 
 export default function CommunityClient({
+  variant = 'classic',
   spPromise,
   adminId,
 }: {
+  variant?: 'classic' | 'v2'
   spPromise: Promise<SP>
   adminId: number
 }) {
   const sp = use(spPromise)
 
-  const page = Number(sp.page ?? '1') || 1
+  const page = Math.max(1, Math.floor(Number(sp.page ?? '1')) || 1)
   const limit = 10
+  const requestId = useRef(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [topicsResp, setTopicsResp] = useState<TopicsResponse | null>(null)
+  const [targetLoading, setTargetLoading] = useState(false)
+  const [targetError, setTargetError] = useState<string | null>(null)
+  const [systemError, setSystemError] = useState<string | null>(null)
   const [targetId, setTargetId] = useState('')
   const [moderationTargetType, setModerationTargetType] =
     useState<ForumModerationTargetType>(ForumModerationTargetType.TOPIC)
@@ -64,31 +76,68 @@ export default function CommunityClient({
   const [systemUsers, setSystemUsers] = useState<User[]>([])
 
   useEffect(() => {
-    loadTopics()
-    loadSystemUsers()
-  }, [page])
+    void loadSystemUsers()
+  }, [])
 
-  const loadTopics = async () => {
+  const loadTopics = useCallback(async () => {
+    const request = ++requestId.current
+    setLoading(true)
+    setError(null)
     const res = await getAllTopics(page, limit)
 
-    setTopicsResp(res)
-  }
+    if (request !== requestId.current) return
+    if (!res) {
+      setError('Не вдалося завантажити дані. Спробуйте ще раз.')
+    } else {
+      setTopicsResp(res)
+    }
+    setLoading(false)
+  }, [page])
+
+  useEffect(() => {
+    void loadTopics()
+  }, [loadTopics])
 
   const loadSystemUsers = async () => {
     const res = await getSystemUsers()
 
-    setSystemUsers(res ?? [])
+    setSystemError(res ? null : 'Не вдалося завантажити системних авторів.')
+    if (res) setSystemUsers(res)
   }
 
   const handleLoadTarget = async () => {
-    const resp = await getModerationTarget(moderationTargetType, targetId)
-    setModerationTarget(resp)
+    if (!targetId.trim()) return
+    setTargetLoading(true)
+    setTargetError(null)
+    setModerationTarget(null)
+    const resp = await getModerationTarget(
+      moderationTargetType,
+      targetId.trim(),
+    )
+    if (resp?.item) setModerationTarget(resp)
+    else
+      setTargetError('Тему або коментар не знайдено, або сервіс недоступний.')
+    setTargetLoading(false)
   }
 
   return (
-    <div>
-      <h1 className="mb-4 text-xl font-semibold">Community</h1>
-      <div className="mb-4 flex flex-wrap items-center gap-4">
+    <CommunityPage
+      variant={variant}
+      title="Теми та коментарі"
+      description="Публікації, відповіді та керування доступом. Розкрийте тему, щоб переглянути її вміст і дії модерації."
+    >
+      {variant === 'classic' && (
+        <h1 className="mb-4 text-xl font-semibold">Community</h1>
+      )}
+      {systemError && (
+        <p role="alert" className="text-destructive text-sm">
+          {systemError}{' '}
+          <Button variant="outline" size="sm" onClick={loadSystemUsers}>
+            Повторити
+          </Button>
+        </p>
+      )}
+      <div className="community-toolbar mb-4 flex flex-wrap items-center gap-3">
         <CreateSystemTopicDialog
           adminId={adminId}
           onCreate={loadTopics}
@@ -111,26 +160,14 @@ export default function CommunityClient({
           }}
         />
       </div>
-      <div className="mb-10">
-        <CommunityTable
-          topics={(topicsResp?.items as Topic[]) ?? []}
-          adminId={adminId}
-          onSuccessRemoveTopic={loadTopics}
-          onSuccessRestoreTopic={loadTopics}
-          onSuccessDeleteTopic={loadTopics}
-          onEditSystemTopic={loadTopics}
-          systemUsers={systemUsers}
-        />
-        <Pagination
-          page={topicsResp?.page ?? 0}
-          pageCount={topicsResp?.pageCount ?? 0}
-        />
-      </div>
-      <div>
-        <div className="mb-10 flex items-end gap-10">
+      <details className="community-lookup">
+        <summary className="cursor-pointer text-sm font-semibold">
+          Знайти тему або коментар за ID
+        </summary>
+        <div className="community-toolbar mb-6 flex flex-wrap items-end gap-4">
           <div className="items-end">
-            <Label htmlFor="uuid" className="mb-2">
-              Target Type
+            <Label htmlFor="community-target-type" className="mb-2">
+              Тип контенту
             </Label>
             <Select
               value={moderationTargetType}
@@ -138,41 +175,50 @@ export default function CommunityClient({
                 setModerationTargetType(t as ForumModerationTargetType)
               }}
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger id="community-target-type" className="w-[180px]">
                 <SelectValue placeholder="Period" />
               </SelectTrigger>
               <SelectContent>
-                {moderationTargetTypeOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
+                {moderationTargetTypeOptions
+                  .filter((option) => option.value !== 'all')
+                  .map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Label htmlFor="uuid" className="mb-2">
-              ID
+            <Label htmlFor="community-target-id" className="mb-2">
+              ID теми або коментаря
             </Label>
             <Input
-              id="uuid"
+              id="community-target-id"
               type="text"
               value={targetId}
               onChange={(e) => setTargetId(e.target.value)}
-              placeholder="Uuid"
+              placeholder="Вставте повний ID"
             />
           </div>
           <Button
+            disabled={targetLoading || !targetId.trim()}
             onClick={async () => {
               await handleLoadTarget()
             }}
           >
-            Load
+            Показати
           </Button>
         </div>
+        <CommunityLoadState
+          loading={targetLoading}
+          error={targetError}
+          onRetry={handleLoadTarget}
+        />
         {moderationTarget &&
           moderationTarget.targetType === ForumModerationTargetType.TOPIC && (
             <ModerationTopicCard
+              key={moderationTarget.item.id}
               topic={moderationTarget.item}
               adminId={adminId}
               onSuccessRemoveTopic={handleLoadTarget}
@@ -183,13 +229,39 @@ export default function CommunityClient({
         {moderationTarget &&
           moderationTarget.targetType === ForumModerationTargetType.COMMENT && (
             <ModerationCommentCard
+              key={moderationTarget.item.id}
               comment={moderationTarget.item}
               adminId={adminId}
               onSuccessRemoveComment={handleLoadTarget}
               onSuccessRestoreComment={handleLoadTarget}
             />
           )}
+      </details>
+      <div className="mb-10">
+        <CommunityLoadState
+          loading={loading}
+          error={error}
+          empty={!topicsResp?.items.length}
+          onRetry={loadTopics}
+        />
+        {!loading && !error && (
+          <CommunityTable
+            variant={variant}
+            key={page}
+            topics={(topicsResp?.items as Topic[]) ?? []}
+            adminId={adminId}
+            onSuccessRemoveTopic={loadTopics}
+            onSuccessRestoreTopic={loadTopics}
+            onSuccessDeleteTopic={loadTopics}
+            onEditSystemTopic={loadTopics}
+            systemUsers={systemUsers}
+          />
+        )}
+        <Pagination
+          page={topicsResp?.page ?? 1}
+          pageCount={topicsResp?.pageCount ?? 0}
+        />
       </div>
-    </div>
+    </CommunityPage>
   )
 }

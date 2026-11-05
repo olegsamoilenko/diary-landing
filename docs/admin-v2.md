@@ -262,3 +262,40 @@ verification was performed.
 
 Usage ledger: exact fresh/cached input and output counts unavailable; no cost or
 account quota estimate asserted.
+
+## Community migration — 31 October 2026
+
+User authorized moving the complete community block to Admin V2, including
+Reports, Moderation logs and Moderation cost. V1 stays available.
+
+Routes in the new **Спільнота** menu:
+- `/admin-v2/community`: topics, comments, system authors/avatars and moderation.
+- `/admin-v2/community-activity`: daily community visitors, existing 14-day default
+  and 1–365-day selection; reuses the V2 SimpleBarChart.
+- `/admin-v2/reports`: report lookup, review/status actions and restrictions.
+- `/admin-v2/moderation-logs`: automatic moderation decisions and user/type filters.
+- `/admin-v2/moderation-cost`: monthly token/call usage and estimated USD cost.
+
+Both versions render the same client tools and mutation dialogs. `CommunityPage`
+adds the V2 header, shared loading/error/empty presentation and scoped CSS.
+Topics have six grouped columns, a keyboard-accessible expansion, content and
+comments first, optional complete JSON, and the existing user moderation tools.
+Lookup by ID is an expandable panel above the list. The route spelling `cost`
+is corrected in V2; the legacy route/API spelling `coast` is preserved.
+
+Connected fixes: real button semantics for modal triggers; disabled pagination
+boundaries cannot navigate; comments retain their page after reload/search,
+lookup sends its limit and loads all replies for the located page; reply-to-reply
+creation refreshes the list. Page requests discard stale responses; topic
+restriction/log responses stay with the selected row. Filters are applied with
+Show. Removed raw community-record console dumps. No backend/schema changes.
+
+Validation: TypeScript, scoped ESLint and diff checks passed. Six focused tests
+cover V1/V2 moderation action gating, pagination boundaries and comment lookup;
+four existing admin compatibility tests also passed. Authenticated local browser:
+all five pages loaded, graph rendered, topic expanded, comments loaded and page 2
+opened, topic/comment ID lookup succeeded, create-topic and profile dialogs opened
+without submitting. Local system-author list is empty, so avatar editing wasn't
+exercised. Older monthly cost values include NaN; these display `Немає даних`,
+not zero. No real content, report status, avatar, access restriction or production
+data was changed. Publishing/moderation mutations and deployment remain untested.

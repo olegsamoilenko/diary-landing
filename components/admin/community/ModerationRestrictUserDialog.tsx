@@ -64,8 +64,8 @@ export default function ModerationRestrictUserDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="error" size="sm" asChild className="cursor-pointer">
-          <span>Restrict user</span>
+        <Button variant="error" size="sm" className="cursor-pointer">
+          <span>Обмежити доступ</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">

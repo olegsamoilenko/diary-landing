@@ -37,6 +37,36 @@ const navItems: AdminNavItem[] = [
     icon: 'finance',
     section: 'Фінанси',
   },
+  {
+    href: '/admin-v2/community',
+    label: 'Теми та коментарі',
+    icon: 'community',
+    section: 'Спільнота',
+  },
+  {
+    href: '/admin-v2/community-activity',
+    label: 'Активність спільноти',
+    icon: 'activity',
+    section: 'Спільнота',
+  },
+  {
+    href: '/admin-v2/reports',
+    label: 'Скарги',
+    icon: 'reports',
+    section: 'Спільнота',
+  },
+  {
+    href: '/admin-v2/moderation-logs',
+    label: 'Журнал модерації',
+    icon: 'moderation',
+    section: 'Спільнота',
+  },
+  {
+    href: '/admin-v2/moderation-cost',
+    label: 'Витрати модерації',
+    icon: 'finance',
+    section: 'Спільнота',
+  },
 ]
 
 export default function AdminV2Layout({ children }: { children: ReactNode }) {

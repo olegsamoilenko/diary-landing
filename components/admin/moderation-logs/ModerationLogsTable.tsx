@@ -36,6 +36,7 @@ export default function ModerationLogsTable({
   } | null>(null)
   const [violationCount, setViolationCount] = useState<number>(0)
   const toggle = (id: string) => {
+    setUserRestriction(null)
     setExpandedLogId((prev) => (prev === id ? null : id))
   }
 
@@ -48,14 +49,14 @@ export default function ModerationLogsTable({
     await unrestrictUser(userId, { createdByAdminId: adminId })
   }
   return (
-    <Table className="w-full table-fixed">
+    <Table className="w-full min-w-[850px] table-fixed">
       <TableHeader>
         <TableRow>
           <TableHead className="w-22">ID</TableHead>
-          <TableHead className="w-16">User Id</TableHead>
-          <TableHead className="w-26">Type</TableHead>
-          <TableHead className="w-36">Decision</TableHead>
-          <TableHead>Reason</TableHead>
+          <TableHead className="w-16">Користувач</TableHead>
+          <TableHead className="w-26">Тип</TableHead>
+          <TableHead className="w-36">Рішення</TableHead>
+          <TableHead>Причина</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -68,16 +69,31 @@ export default function ModerationLogsTable({
                   onClick={() => toggle(raw.id)}
                   className="hover:bg-muted/50 cursor-pointer"
                 >
-                  <TableCell>{raw.id.slice(0, 8)}</TableCell>
+                  <TableCell>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        toggle(raw.id)
+                      }}
+                      className="text-left font-medium hover:underline"
+                    >
+                      <span aria-hidden="true">{isOpen ? '− ' : '+ '}</span>
+                      {raw.id.slice(0, 8)}
+                    </button>
+                  </TableCell>
                   <TableCell>{raw.userId}</TableCell>
                   <TableCell>{raw.targetType}</TableCell>
                   <TableCell>{raw.decision}</TableCell>
-                  <TableCell>{raw.reason}</TableCell>
+                  <TableCell className="whitespace-normal">
+                    {raw.reason}
+                  </TableCell>
                 </TableRow>
                 {isOpen && (
                   <TableRow>
-                    <TableCell colSpan={9} className="p-0">
-                      <div className="bg-muted/20 grid grid-cols-[460px_1fr] gap-4 border-t p-4">
+                    <TableCell colSpan={5} className="p-0">
+                      <div className="bg-muted/20 grid grid-cols-1 gap-4 border-t p-4 xl:grid-cols-[minmax(260px,1fr)_minmax(0,2fr)]">
                         <div>
                           <div className="mb-2 text-sm font-medium">
                             Log details

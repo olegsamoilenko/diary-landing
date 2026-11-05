@@ -32,6 +32,7 @@ import ModerationDeleteTopicDialog from '@/components/admin/community/Moderation
 import EditSystemTopicDialog from '@/components/admin/community/EditSystemTopicDialog'
 
 type Props = {
+  variant?: 'classic' | 'v2'
   topics: Topic[]
   adminId: number
   onSuccessRemoveTopic: () => void
@@ -41,6 +42,7 @@ type Props = {
   systemUsers: User[]
 }
 export default function CommunityTable({
+  variant = 'classic',
   topics,
   adminId,
   onSuccessRemoveTopic,
@@ -61,7 +63,11 @@ export default function CommunityTable({
     restriction: Restriction
   } | null>(null)
 
+  const detailRequest = useRef(0)
   const toggle = (id: string) => {
+    detailRequest.current++
+    setModerationLogs(null)
+    setUserRestriction(null)
     setExpandedTopicId((prev) => (prev === id ? null : id))
   }
 
@@ -73,13 +79,15 @@ export default function CommunityTable({
   }
 
   const loadModerationUserLogs = async (userId: number, page: number) => {
+    const request = detailRequest.current
     const raw = await getModerationUserLogs(userId, { page: page, limit: 20 })
-    setModerationLogs(raw)
+    if (request === detailRequest.current) setModerationLogs(raw)
   }
 
   const loadUserRestriction = async (userId: number) => {
+    const request = detailRequest.current
     const resp = await getUserRestriction(userId)
-    setUserRestriction(resp)
+    if (request === detailRequest.current) setUserRestriction(resp)
   }
 
   const handleUnrestrict = async (userId: number, adminId: number) => {
@@ -87,52 +95,145 @@ export default function CommunityTable({
   }
 
   return (
-    <Table className="w-full table-fixed">
+    <Table
+      className={
+        variant === 'v2'
+          ? 'w-full min-w-[850px] table-fixed'
+          : 'w-full table-fixed'
+      }
+    >
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Top ID</TableHead>
-          <TableHead className="w-[50px]">Aut ID</TableHead>
-          <TableHead className="w-[300px]">Title</TableHead>
-          <TableHead className="w-[150px]">Author</TableHead>
-          <TableHead className="w-[50px]">Lang</TableHead>
-          <TableHead className="w-[130px]">Category</TableHead>
-          <TableHead className="w-[100px]">Comments</TableHead>
-          <TableHead className="w-[50px]">View</TableHead>
-          <TableHead className="w-[50px]">Likes</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead className="w-[100px]">Visibility</TableHead>
-          <TableHead>Actions</TableHead>
+          {variant === 'v2' ? (
+            <>
+              <TableHead className="w-[26%]">Тема</TableHead>
+              <TableHead className="w-[15%]">Автор</TableHead>
+              <TableHead className="w-[12%]">Категорія</TableHead>
+              <TableHead className="w-[17%]">Активність</TableHead>
+              <TableHead className="w-[15%]">Стан і доступ</TableHead>
+              <TableHead className="w-[15%]">Дії</TableHead>
+            </>
+          ) : (
+            <>
+              <TableHead className="w-[100px]">Top ID</TableHead>
+              <TableHead className="w-[50px]">Aut ID</TableHead>
+              <TableHead className="w-[300px]">Title</TableHead>
+              <TableHead className="w-[150px]">Author</TableHead>
+              <TableHead className="w-[50px]">Lang</TableHead>
+              <TableHead className="w-[130px]">Category</TableHead>
+              <TableHead className="w-[100px]">Коментарі</TableHead>
+              <TableHead className="w-[50px]">View</TableHead>
+              <TableHead className="w-[50px]">Likes</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead className="w-[100px]">Visibility</TableHead>
+              <TableHead>Actions</TableHead>
+            </>
+          )}
         </TableRow>
       </TableHeader>
       <TableBody>
         {topics &&
           topics.map((raw: Topic) => {
             const isOpen = expandedTopicId === raw.id
-            console.log('raw', raw)
             return (
               <React.Fragment key={raw.id}>
                 <TableRow
                   onClick={() => toggle(raw.id)}
                   className="hover:bg-muted/50 cursor-pointer"
                 >
-                  <TableCell>{raw.id.slice(0, 8)}</TableCell>
-                  <TableCell>{raw.authorId}</TableCell>
-                  <TableCell className="w-[200px] break-words whitespace-normal">
-                    {raw.title}
-                  </TableCell>
-                  <TableCell>{raw.author?.name ?? 'unknown'}</TableCell>
-                  <TableCell>{raw.lang}</TableCell>
-                  <TableCell>{raw.category.title}</TableCell>
-                  <TableCell>{raw.commentsCount}</TableCell>
-                  <TableCell>{raw.viewsCount}</TableCell>
-                  <TableCell>{raw.likesCount}</TableCell>
-                  <TableCell>{raw.status}</TableCell>
-                  <TableCell>{raw.visibility}</TableCell>
+                  {variant === 'v2' ? (
+                    <>
+                      <TableCell className="whitespace-normal">
+                        <button
+                          type="button"
+                          aria-expanded={isOpen}
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            toggle(raw.id)
+                          }}
+                          className="text-left font-semibold hover:underline"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="text-muted-foreground mr-2"
+                          >
+                            {isOpen ? '−' : '+'}
+                          </span>
+                          {raw.title}
+                        </button>
+                        <div className="text-muted-foreground mt-2 flex flex-wrap gap-2 text-xs">
+                          <span title={raw.id}>{raw.id.slice(0, 8)}</span>
+                          <span>· {raw.lang}</span>
+                          {raw.isSystem && (
+                            <span className="text-accent-foreground bg-accent rounded px-1.5">
+                              Системна
+                            </span>
+                          )}
+                        </div>
+                      </TableCell>
+                      <TableCell className="whitespace-normal">
+                        <div className="font-medium">
+                          {raw.authorProfile?.username ||
+                            raw.author?.name ||
+                            '—'}
+                        </div>
+                        <div className="text-muted-foreground mt-1 text-xs">
+                          ID {raw.authorId}
+                        </div>
+                      </TableCell>
+                      <TableCell className="whitespace-normal">
+                        {raw.category?.title ?? '—'}
+                      </TableCell>
+                      <TableCell className="whitespace-normal">
+                        <div className="space-y-1 text-xs">
+                          <div>{raw.commentsCount} коментарів</div>
+                          <div className="text-muted-foreground">
+                            {raw.viewsCount} переглядів · {raw.likesCount}{' '}
+                            вподобань
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell className="whitespace-normal">
+                        <span className="bg-muted inline-flex rounded-full px-2.5 py-1 text-xs">
+                          {(
+                            {
+                              published: 'Опубліковано',
+                              draft: 'Чернетка',
+                              pending_review: 'На перевірці',
+                              removed_by_moderator: 'Приховано',
+                              deleted_by_author: 'Видалено автором',
+                            } as Record<string, string>
+                          )[raw.status] ?? raw.status}
+                        </span>
+                        <div className="text-muted-foreground mt-2 text-xs">
+                          {raw.visibility === 'public'
+                            ? 'Публічна'
+                            : 'Для підписників'}
+                        </div>
+                      </TableCell>
+                    </>
+                  ) : (
+                    <>
+                      <TableCell>{raw.id.slice(0, 8)}</TableCell>
+                      <TableCell>{raw.authorId}</TableCell>
+                      <TableCell className="w-[200px] break-words whitespace-normal">
+                        {raw.title}
+                      </TableCell>
+                      <TableCell>{raw.author?.name ?? 'unknown'}</TableCell>
+                      <TableCell>{raw.lang}</TableCell>
+                      <TableCell>{raw.category.title}</TableCell>
+                      <TableCell>{raw.commentsCount}</TableCell>
+                      <TableCell>{raw.viewsCount}</TableCell>
+                      <TableCell>{raw.likesCount}</TableCell>
+                      <TableCell>{raw.status}</TableCell>
+                      <TableCell>{raw.visibility}</TableCell>
+                    </>
+                  )}
                   <TableCell
                     onClick={(e) => {
                       e.stopPropagation()
                     }}
-                    className="flex gap-4"
+                    className="space-x-2 whitespace-normal [&_button]:mb-2"
                   >
                     {raw.isSystem && (
                       <EditSystemTopicDialog
@@ -170,20 +271,36 @@ export default function CommunityTable({
 
                 {isOpen && (
                   <TableRow>
-                    <TableCell colSpan={10} className="p-0">
-                      <div className="bg-muted/20 grid grid-cols-[460px_1fr] gap-4 border-t p-4">
-                        <div>
-                          <div className="mb-2 text-sm font-medium">
-                            Topic details
-                          </div>
+                    <TableCell
+                      colSpan={variant === 'v2' ? 6 : 12}
+                      className="p-0 whitespace-normal"
+                    >
+                      <div
+                        className={
+                          variant === 'v2'
+                            ? 'community-details bg-muted/20 grid gap-6 border-t p-6'
+                            : 'grid grid-cols-[minmax(260px,1fr)_minmax(0,2fr)] gap-6 border-t p-6'
+                        }
+                      >
+                        <details
+                          open={variant === 'classic' ? true : undefined}
+                          className={
+                            variant === 'v2'
+                              ? 'order-last rounded-xl border p-4'
+                              : undefined
+                          }
+                        >
+                          <summary className="cursor-pointer text-sm font-medium">
+                            Повні дані теми · JSON
+                          </summary>
 
                           <div className="bg-background max-h-[1020px] overflow-auto rounded-md border p-3">
                             <JsonViewer data={raw} />
                           </div>
-                        </div>
+                        </details>
 
                         <div className="min-w-0">
-                          <div className="mb-2">Content</div>
+                          <div className="mb-2 font-medium">Вміст</div>
 
                           <div className="mb-2 w-full rounded-md border p-4 text-sm font-medium break-words whitespace-normal">
                             {raw.content}
@@ -194,6 +311,8 @@ export default function CommunityTable({
                             className="bg-background max-h-[1020px] overflow-auto"
                           >
                             <Comments
+                              key={raw.id}
+                              scrollContainerRef={scrollRef}
                               topicId={raw.id}
                               adminId={adminId}
                               systemUsers={systemUsers}
@@ -207,7 +326,7 @@ export default function CommunityTable({
                             loadModerationUserLogs(raw.authorId, 1)
                           }
                         >
-                          Load user logs
+                          Журнал користувача
                         </Button>
                       </div>
                       <div className="mb-4">
@@ -229,7 +348,7 @@ export default function CommunityTable({
                         <Button
                           onClick={() => loadUserRestriction(raw.authorId)}
                         >
-                          Get user restriction
+                          Перевірити обмеження
                         </Button>
                       </div>
                       {userRestriction && userRestriction.isRestricted && (
@@ -294,7 +413,7 @@ export default function CommunityTable({
                         </div>
                       )}
                       {userRestriction && !userRestriction.isRestricted && (
-                        <div className="mb-4">Not Restricted</div>
+                        <div className="mb-4">Без обмежень</div>
                       )}
                       <div className="mb-4 h-1 w-full border-t"></div>
 
