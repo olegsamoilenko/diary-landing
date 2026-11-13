@@ -23,6 +23,7 @@ type Props = {
   data: Point[]
   height?: number
   barName?: string
+  ariaLabel?: string
   variant?: 'v1' | 'v2'
   color?: string
   formatTick?: (value: string) => string
@@ -35,6 +36,7 @@ export default function SimpleBarChart({
   data,
   height = 300,
   barName = 'New users',
+  ariaLabel,
   variant = 'v1',
   color = 'var(--admin-brand)',
   formatTick,
@@ -60,7 +62,10 @@ export default function SimpleBarChart({
       <div
         className="w-full min-w-0"
         role={series ? 'group' : 'img'}
-        aria-label={`${barName}: ${formatValue(data.reduce((sum, point) => sum + point.count, 0))} за вибраний період`}
+        aria-label={
+          ariaLabel ??
+          `${barName}: ${formatValue(data.reduce((sum, point) => sum + point.count, 0))} за вибраний період`
+        }
       >
         <ResponsiveContainer width="100%" height={height}>
           <BarChart

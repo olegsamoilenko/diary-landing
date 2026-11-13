@@ -38,8 +38,8 @@ export default function AdminPeriodFilter({
   to: Date | undefined
   onFromChange: (date: Date | undefined) => void
   onToChange: (date: Date | undefined) => void
-  granularity: GrowthGranularity
-  onGranularityChange: (group: GrowthGranularity) => void
+  granularity?: GrowthGranularity
+  onGranularityChange?: (group: GrowthGranularity) => void
   onApply: () => void
   loading: boolean
   error?: string
@@ -66,26 +66,28 @@ export default function AdminPeriodFilter({
         date={to}
         setDateAction={onToChange}
       />
-      <div className="flex flex-col gap-3">
-        <Label htmlFor={id} className="px-1">
-          Групування
-        </Label>
-        <Select
-          value={granularity}
-          onValueChange={(v) => onGranularityChange(v as GrowthGranularity)}
-        >
-          <SelectTrigger id={id} className="w-40">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {adminPeriodGroups.map((g) => (
-              <SelectItem key={g.value} value={g.value}>
-                {g.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+      {onGranularityChange && (
+        <div className="flex flex-col gap-3">
+          <Label htmlFor={id} className="px-1">
+            Групування
+          </Label>
+          <Select
+            value={granularity}
+            onValueChange={(v) => onGranularityChange(v as GrowthGranularity)}
+          >
+            <SelectTrigger id={id} className="w-40">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {adminPeriodGroups.map((g) => (
+                <SelectItem key={g.value} value={g.value}>
+                  {g.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
       <Button type="submit" disabled={loading}>
         {loading ? 'Завантаження…' : 'Показати'}
       </Button>

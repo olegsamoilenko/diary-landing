@@ -9,7 +9,10 @@ modern design. Keep V1 available until its retirement is explicitly requested.
   - `/admin-v2/users-activity` — Активність користувачів.
   - `/admin-v2/users-statistics` — Статистика користувачів.
   - `/admin-v2/observations` — Спостереження.
-- Dashboard, activity and observations remain placeholders. User statistics is
+- Activity shows distinct returning users per Kyiv calendar day using identified
+  frontend `app_start` events. Registration must precede that calendar day. The
+  default is the last 10 days including today, within the 30-day log history.
+- Dashboard and observations remain placeholders. User statistics is
   first in the Users block, followed by New users, Activity and Observations.
   New users has live registration statistics and a paginated accordion table.
 - Both versions share `AdminShell`, `SidebarNav`, the existing Button and

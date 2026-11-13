@@ -16,6 +16,20 @@ export function getAdminUserOverview(signal?: AbortSignal) {
   })
 }
 
+export type ReturningUsersDay = { date: string; count: number }
+
+export function getReturningUsersDays(
+  from: string,
+  to: string,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({ from, to })
+  return apiFetch<{ days: ReturningUsersDay[]; timezone: string }>(
+    `/api/users/admin-returning-users/days?${params}`,
+    { signal, toastOnError: false, cache: 'no-store' },
+  )
+}
+
 export function getAdminUserGrowth(
   from: string,
   to: string,
